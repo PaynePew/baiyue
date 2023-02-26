@@ -16,10 +16,16 @@ export default function App() {
     return (
         <html lang="en">
             <head>
+                <link rel="preconnect" href="https://fonts.googleapis.com" />
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link
+                    href="https://fonts.googleapis.com/css2?family=Gafata&family=Noto+Sans+TC:wght@100;400&display=swap"
+                    rel="stylesheet"
+                />
                 <Meta />
                 <Links />
             </head>
-            <body className="bg-red-500">
+            <body>
                 <Outlet />
                 <ScrollRestoration />
                 <Scripts />

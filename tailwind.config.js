@@ -5,7 +5,7 @@ module.exports = {
         screens: {
             sm: "360px",
             md: "768px",
-            large: "1440px",
+            lg: "1440px",
         },
         fontFamily: {
             sans: ["Noto Sans TC", "sans-serif"],
@@ -18,6 +18,7 @@ module.exports = {
                     spotlight: "#FFCA6D",
                     light: "#FFE8BE",
                 },
+                "iron-gray": "#302E31",
             },
         },
     },

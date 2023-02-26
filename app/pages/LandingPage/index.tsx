@@ -19,6 +19,14 @@ export function LandingPage() {
             <div className="body-1">測試測試</div>
             <div className="body-2">測試測試</div>
             <div className="body-3">測試測試</div>
+
+            <div className="en-h1">TESTTEST</div>
+            <div className="en-h2">TESTTEST</div>
+            <div className="en-h3">TESTTEST</div>
+            <div className="en-h4">TESTTEST</div>
+            <div className="en-body-1">TESTTEST</div>
+            <div className="en-body-ag">TESTTEST</div>
+            <div className="en-minimum">TESTTEST</div>
         </div>
     );
 }

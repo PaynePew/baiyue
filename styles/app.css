@@ -131,6 +131,75 @@
             font-size: 15px;
         }
     }
+    /* english typography */
+    .en-h1,
+    .en-h2,
+    .en-h3,
+    .en-h4,
+    .en-body-1,
+    .en-body-ag,
+    .en-minimum {
+        @apply font-ga tracking-[.1em];
+    }
+    .en-h1 {
+        font-size: 36px;
+        line-height: 140%;
+    }
+    .en-h2 {
+        font-size: 22px;
+        line-height: 170%;
+    }
+    .en-h3 {
+        font-size: 24px;
+        line-height: 120%;
+    }
+    .en-h4 {
+        font-size: 16px;
+        line-height: 170%;
+    }
+    .en-body-1 {
+        font-size: 14px;
+        line-height: 160%;
+    }
+    .en-body-ag {
+        font-size: 15px;
+        line-height: 160%;
+    }
+    .en-minimum {
+        font-size: 15px;
+        line-height: 160%;
+    }
+    @media screen(md) {
+        .en-h1 {
+            font-size: 48px;
+        }
+        .en-h2 {
+            font-size: 30px;
+        }
+        .en-h3 {
+            font-size: 26px;
+        }
+        .en-h4 {
+            font-size: 18px;
+        }
+        .en-body-1 {
+            font-size: 15px;
+        }
+    }
+    @media screen(lg) {
+        .en-h1 {
+            font-size: 52px;
+        }
+        .en-h2 {
+            font-size: 42px;
+        }
+        .en-h3 {
+            font-size: 32px;
+        }
+        .en-h4 {
+            font-size: 48px;
+        }
+    }
 
     /* shadow-effect */
     .card-shadow,

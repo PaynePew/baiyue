@@ -7,7 +7,7 @@ export const links: LinksFunction = () => {
 
 export function Header() {
     return (
-        <section className="fixed w-full p-[24px]">
+        <section className="fixed z-50 w-full p-[24px]">
             <div className="flex justify-between">
                 <div className="menu-shadow w-[72px] h-[48px] flex justify-center items-center rounded-[128px] md:w-[144.81px] md:h-[64px] lg:w-[256px] lg:h-[120px]">
                     <img

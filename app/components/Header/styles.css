@@ -5,19 +5,15 @@
 
 .inner-shadow {
     position: absolute;
-    width: 100%;
-    height: 100%;
     background: #302e31;
     opacity: 0.9;
+    border-radius: 9999px;
     box-shadow: inset 0px 0px 7.05217px rgba(9, 8, 8, 0.7);
 }
 
+
 .outter-shadow {
     position: absolute;
-    width: 440px;
-    height: 440px;
-    left: -40px;
-    top: 101.54px;
 
     /* grayscale/iron-gray */
     background: #302e31;

@@ -1,6 +1,9 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
-import styles from "./styles/app.css";
+import { Header } from "~/components/Header";
+import { Footer } from "~/components/Footer";
+import tailWindStyles from "./styles/app.css";
+import headerStyles from "~/components/Header/styles.css";
 
 export const meta: MetaFunction = () => ({
     charset: "utf-8",
@@ -9,7 +12,10 @@ export const meta: MetaFunction = () => ({
 });
 
 export const links: LinksFunction = () => {
-    return [{ rel: "stylesheet", href: styles }];
+    return [
+        { rel: "stylesheet", href: tailWindStyles },
+        { rel: "stylesheet", href: headerStyles },
+    ];
 };
 
 export default function App() {
@@ -25,8 +31,10 @@ export default function App() {
                 <Meta />
                 <Links />
             </head>
-            <body className="bg-iron-gray">
+            <body className="bg-grayscale-iron">
+                <Header />
                 <Outlet />
+                <Footer />
                 <ScrollRestoration />
                 <Scripts />
                 <LiveReload />

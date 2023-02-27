@@ -5,28 +5,14 @@ export function links() {
 
 export function LandingPage() {
     return (
-        <div>
-            <h1 className="bg-red-500">測試測試</h1>
-            <h2 className="bg-red-500">測試測試</h2>
-            <h3 className="bg-red-500">測試測試</h3>
-            <h4 className="bg-red-500">測試測試</h4>
-            <h5 className="bg-red-500">測試測試</h5>
-            <h6 className="bg-red-500">測試測試</h6>
-
-            <div className="display-1">測試測試</div>
-            <div className="display-2">測試測試</div>
-            <div className="nav-title">測試測試</div>
-            <div className="body-1">測試測試</div>
-            <div className="body-2">測試測試</div>
-            <div className="body-3">測試測試</div>
-
-            <div className="en-h1">TESTTEST</div>
-            <div className="en-h2">TESTTEST</div>
-            <div className="en-h3">TESTTEST</div>
-            <div className="en-h4">TESTTEST</div>
-            <div className="en-body-1">TESTTEST</div>
-            <div className="en-body-ag">TESTTEST</div>
-            <div className="en-minimum">TESTTEST</div>
-        </div>
+        <section className="w-full overflow-clip">
+            <div className="w-full h-screen flex justify-center items-center overflow-clip">
+                <div className="relative w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
+                    <div className="inner-shadow"></div>
+                    <img className="" src="/assets/hero.png" alt="hero_image" />
+                    {/* <div className="outter-shadow"></div> */}
+                </div>
+            </div>
+        </section>
     );
 }

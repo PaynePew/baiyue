@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     content: ["./app/**/*.{ts,tsx,jsx,js}"],
@@ -18,9 +20,27 @@ module.exports = {
                     spotlight: "#FFCA6D",
                     light: "#FFE8BE",
                 },
-                "iron-gray": "#302E31",
+                grayscale: {
+                    white: "#FFFFFF",
+                    gainsboro: "#E2E2E2",
+                    light: "#BFBFBF",
+                    silver: "#686868",
+                    dark: "#4A484B",
+                    gray: "#3D3B3F",
+                    dim: "#363437",
+                    iron: "#302E31",
+                    black: "#211F21",
+                },
             },
         },
     },
-    plugins: [],
+    plugins: [
+        plugin(function ({ addUtilities }) {
+            addUtilities({
+                ".h-screen": {
+                    height: "100dvh",
+                },
+            });
+        }),
+    ],
 };

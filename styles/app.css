@@ -137,7 +137,7 @@
     .en-h3,
     .en-h4,
     .en-body-1,
-    .en-body-ag,
+    .en-body-1-ag,
     .en-minimum {
         @apply font-ga tracking-[.1em];
     }
@@ -161,7 +161,7 @@
         font-size: 14px;
         line-height: 160%;
     }
-    .en-body-ag {
+    .en-body-1-ag {
         font-size: 15px;
         line-height: 160%;
     }
@@ -210,8 +210,8 @@
     .dec-shadow-2,
     .dec-shadow-3 {
         /* grayscale/dim-gray */
-        background: #363437;
         border-radius: 8px;
+        @apply bg-grayscale-dim 
     }
 
     .card-shadow {

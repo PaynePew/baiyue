@@ -3,21 +3,3 @@
     border: 1px solid #bfbfbf;
 }
 
-.inner-shadow {
-    position: absolute;
-    background: #302e31;
-    opacity: 0.9;
-    border-radius: 9999px;
-    box-shadow: inset 0px 0px 7.05217px rgba(9, 8, 8, 0.7);
-}
-
-
-.outter-shadow {
-    position: absolute;
-
-    /* grayscale/iron-gray */
-    background: #302e31;
-    box-shadow: -0.881521px -0.881521px 0.881521px #414041, -1.76304px -1.76304px 1.76304px #252426,
-        inset -0.881521px -0.881521px 0.881521px #414041, inset -1.76304px -1.76304px 1.76304px #262527;
-    border-radius: 9999px;
-}

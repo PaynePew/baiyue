@@ -1,0 +1,24 @@
+.divine {
+    border: 1px solid #302e31;
+    box-shadow: -1px -1px 1px #414041, -2px -2px 1px #252426;
+}
+
+.inner-shadow {
+    background: #302e31;
+    opacity: 0.9;
+    border-radius: 9999px;
+    box-shadow: inset 0px 0px 7.05217px rgba(9, 8, 8, 0.7);
+}
+
+.outter-shadow {
+    /* grayscale/iron-gray */
+    background: #302e31;
+    box-shadow: -0.881521px -0.881521px 0.881521px #414041, -1.76304px -1.76304px 1.76304px #252426,
+        inset -0.881521px -0.881521px 0.881521px #414041, inset -1.76304px -1.76304px 1.76304px #262527;
+    border-radius: 9999px;
+}
+
+.contact-shadow {
+    box-shadow: 2.25888px 2.82361px 6.77665px rgba(33, 32, 34, 0.3), -2.25888px -2.25888px 6.77665px #343235;
+    border-radius: 3.61739px;
+}

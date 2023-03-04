@@ -31,7 +31,7 @@ export default function App() {
                 <Meta />
                 <Links />
             </head>
-            <body className="bg-grayscale-iron">
+            <body className="">
                 <Header />
                 <Outlet />
                 <Footer />

@@ -4,6 +4,7 @@ import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
 import tailWindStyles from "./styles/app.css";
 import headerStyles from "~/components/Header/styles.css";
+import footerStyles from "~/components/Footer/styles.css";
 
 export const meta: MetaFunction = () => ({
     charset: "utf-8",
@@ -15,6 +16,7 @@ export const links: LinksFunction = () => {
     return [
         { rel: "stylesheet", href: tailWindStyles },
         { rel: "stylesheet", href: headerStyles },
+        { rel: "stylesheet", href: footerStyles },
     ];
 };
 

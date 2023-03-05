@@ -1,3 +1,11 @@
 .to-top-shadow {
     box-shadow: 4.99561px 6.24451px 14.9868px #212022, -4.99561px -4.99561px 14.9868px #343235;
 }
+
+.divine-slash {
+    width: 24px;
+    height: 0px;
+    border: 1px solid #363437;
+    box-shadow: -1px -1px 1px #414041, -2px -2px 1px #252426;
+    transform: rotate(105deg);
+}

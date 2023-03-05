@@ -14,7 +14,7 @@ const fakeData = [
 function About() {
     return (
         <section className="w-full bg-grayscale-dim flex justify-center items-center">
-            <div className="relative flex flex-col pt-[74px] pb-[103px] mx-[24px] md:mx-[129px] md:pb-[92px] md:w-[510px] lg:flex-row lg:w-auto lg:gap-[126px]">
+            <div className="relative flex flex-col max-w-[312px] pt-[74px] pb-[103px] mx-[24px] md:max-w-none md:mx-[129px] md:pb-[92px] md:w-[510px] lg:flex-row lg:w-auto lg:gap-[126px]">
                 {/* TODO: BG PIC */}
                 {/* <div className="absolute -z-10 bg-grayscale-dim about-bg-shadow w-[80%] h-[20%] bottom-[0] left-[0]"></div> */}
                 <div className="divine mb-[32px]"></div>
@@ -49,22 +49,23 @@ function About() {
 function FeaturedProject() {
     return (
         <section className="w-full flex justify-center items-center">
-            <div className="w-full flex flex-col gap-[48px] py-[80px] mx-[24px]">
+            <div className="flex flex-col max-w-[312px] gap-[48px] py-[80px] mx-[24px] md:max-w-[688px] lg:max-w-[1200px] ">
                 <div className="flex flex-col items-center justify-center gap-[8px]">
                     <h1 className="text-grayscale-gainsboro">近期實績</h1>
                     <div className="en-h3 text-primary">FEATURED PROJECT</div>
                 </div>
-                <div className="flex flex-col gap-[24px]">
+                {/* Card Project */}
+                <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center">
                     {fakeData.map(({ alt, pic, desc }) => {
                         return (
                             <div
-                                className="card-shadow rounded-[12px] flex justify-center items-center overflow-clip"
+                                className="card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col md:w-[332px] lg:w-[580px]"
                                 key={alt}
                             >
-                                <div className="basis-[37%]">
-                                    <img className="object-cover h-[167px]" src={`assets/${pic}`} alt={alt} />
+                                <div className="basis-[37%] md:basis-[50%]">
+                                    <img className="object-cover h-[167px] md:h-full" src={`assets/${pic}`} alt={alt} />
                                 </div>
-                                <div className="flex flex-col gap-[16px] basis-[63%] p-[24px]">
+                                <div className="flex flex-col gap-[16px] basis-[63%] p-[24px] md:basis-[50%]">
                                     <h6 className="text-grayscale-gainsboro">{desc}</h6>
                                     <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
                                         其他

@@ -18,6 +18,11 @@
     border-radius: 9999px;
 }
 
+.about-bg-shadow {
+    box-shadow: 4.99561px 6.24451px 14.9868px #212022, -4.99561px -4.99561px 14.9868px #343235;
+    border-radius: 4px;
+}
+
 .contact-shadow {
     box-shadow: 2.25888px 2.82361px 6.77665px rgba(33, 32, 34, 0.3), -2.25888px -2.25888px 6.77665px #343235;
     border-radius: 3.61739px;

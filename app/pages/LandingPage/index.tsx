@@ -14,24 +14,30 @@ const fakeData = [
 function About() {
     return (
         <section className="w-full bg-grayscale-dim flex justify-center items-center">
-            <div className="flex flex-col pt-[74px] pb-[103px] mx-[24px]">
+            <div className="relative flex flex-col pt-[74px] pb-[103px] mx-[24px] md:mx-[129px] md:pb-[92px] md:w-[510px] lg:flex-row lg:w-auto lg:gap-[126px]">
+                {/* TODO: BG PIC */}
+                {/* <div className="absolute -z-10 bg-grayscale-dim about-bg-shadow w-[80%] h-[20%] bottom-[0] left-[0]"></div> */}
                 <div className="divine mb-[32px]"></div>
-                <div className="flex flex-col gap-[16px]">
-                    <div className="flex flex-col items-center justify-center gap-[8px]">
+                <div className="flex flex-col gap-[16px] lg:w-[384px] lg:h-fit lg:items-start lg:gap-[24px]">
+                    <div className="flex flex-col items-center justify-center gap-[8px] lg:items-start">
                         <h1 className="text-grayscale-gainsboro">百越價值</h1>
                         <div className="en-h3 text-primary">ABOUT US</div>
                     </div>
-                    <div className="body-1 text-white text-center">
+                    <div className="body-1 text-white text-center lg:text-left">
                         彙來說辦何歡希天大資難張為等思堆櫥凍鳳恩則原。攪一的繃欒業試上癸狂如著轉三大處過銘論若！稚秒脂我曼！
                     </div>
+                    <button className="hidden button-shadow-1 bg-grayscale-gray nav-title lg:flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] lg:w-[173px] hover:bg-grayscale-light hover:text-grayscale-iron">
+                        <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
+                        <div className="">關於百越</div>
+                    </button>
                 </div>
                 <div className="divine mt-[32px] mb-[48px]"></div>
                 <div className="flex flex-col gap-[48px]">
                     <div className="flex justify-center items-center">
                         <img className="" src="assets/about_pic.png" alt="about_pic" />
                     </div>
-                    <button className="button-shadow-1 nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px]">
-                        <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></div>
+                    <button className="button-shadow-1 bg-grayscale-gray nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] lg:hidden hover:bg-grayscale-light hover:text-grayscale-iron">
+                        <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
                         <div className="">關於百越</div>
                     </button>
                 </div>
@@ -68,8 +74,8 @@ function FeaturedProject() {
                         );
                     })}
                 </div>
-                <button className="button-shadow-1 nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px]">
-                    <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></div>
+                <button className="button-shadow-1 bg-grayscale-gray nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] hover:bg-grayscale-light hover:text-grayscale-iron">
+                    <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
                     <div className="">所有實績</div>
                 </button>
             </div>
@@ -107,12 +113,12 @@ function Contact() {
                     <div className="en-h3 text-primary">CONTACT US</div>
                 </div>
                 <div className="body-1 text-white text-center">
-                    彙來說辦何歡希天大資難張為等思堆櫥凍鳳恩則原。攪一的繃欒業試上癸狂如著轉三大處過銘論若！稚秒脂我曼！
+                    一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案
                 </div>
                 <div className="w-[312px] h-[300px] contact-shadow my-[40px] mx-auto"></div>
-                <button className="button-shadow-1 flex justify-center items-center gap-[16px] nav-title text-[15px] text-grayscale-light h-[56px] rounded-[128px]">
+                <button className="button-shadow-1 bg-grayscale-gray flex justify-center items-center gap-[16px] nav-title text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] hover:bg-grayscale-light hover:text-grayscale-iron">
                     <div className="">聯絡我們</div>
-                    <img src="assets/icon_mail_send.png" alt="icon_mail_send" />
+                    <img className="hover:hidden" src="assets/icon_mail_send.png" alt="icon_mail_send" />
                 </button>
             </div>
         </section>

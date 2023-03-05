@@ -1,0 +1,12 @@
+.before-dec {
+    position: absolute;
+    width: 49.32px;
+    height: 27.68px;
+    border: 1px solid #e5ae00;
+    border-radius: 39.72px;
+}
+
+.tablet-card-layout:nth-child(even) {
+    position:relative;
+    top:40px;
+}

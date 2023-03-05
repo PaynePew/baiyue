@@ -1,3 +1,4 @@
+import { Footer } from "~/components/Footer";
 import styles from "./styles.css";
 export function links() {
     return [{ rel: "stylesheet", href: styles }];
@@ -172,6 +173,7 @@ export function LandingPage() {
             <FeaturedProject />
             <Partners />
             <Contact />
+            <Footer />
         </section>
     );
 }

@@ -1,3 +1,4 @@
+import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 export function links() {
     return [{ rel: "stylesheet", href: styles }];
@@ -90,7 +91,7 @@ function Slider() {
 
 function Services() {
     return (
-        <section>
+        <section className="pb-[80px] md:pb-[129px]">
             <div className="flex flex-col mx-[24px] gap-[64px] md:mx-[40px]">
                 <div className="flex flex-col items-start justify-center gap-[8px]">
                     <h1 className="text-grayscale-gainsboro">服務項目</h1>
@@ -102,7 +103,7 @@ function Services() {
                         return (
                             <div
                                 key={alt}
-                                className="flex card-shadow min-h-[212px] max-w-[312px] rounded-[12px] overflow-clip tablet-card-layout md:flex-col md:rounded-[16px] md:max-w-[332px] lg:max-w-[384px]"
+                                className="flex card-shadow min-h-[212px] max-w-[312px] rounded-[12px] overflow-clip md:flex-col md:tablet-card-layout md:rounded-[16px] md:max-w-[332px] lg:max-w-[384px]"
                             >
                                 <div className="basis-[50%] md:basis-auto md:h-[250px] lg:h-[290px]">
                                     <img className="h-full max-w-full object-cover md:w-full" src={pic} alt={alt} />
@@ -124,32 +125,35 @@ function Services() {
 
 export function AboutPage() {
     return (
-        <section className="w-full bg-grayscale-iron">
-            <div className="flex flex-col pt-[141px] mx-[24px] mb-[103.58px]">
-                <div className="flex flex-col items-start justify-center gap-[4px] mb-[47.87px]">
-                    <div className="display-1 text-grayscale-gainsboro">關於百越</div>
-                    <div className="en-h2 text-primary">ABOUT US</div>
-                </div>
-                <div className="flex flex-col items-start justify-center text-white mb-[38.13px]">
-                    <div className="flex justify-center items-center gap-[5px]">
-                        {/* <div className="flex w-[49.32px] h-[27.68px] border-[1px] border-solid border-primary rounded-[39.72px] md:w-[120px] md:h-[54.4px]"> */}
-                        <div className="en-h2 flex justify-center items-center h-[27.68px] px-[5.2px] border-[1px] border-solid border-primary rounded-[39.72px]">
-                            BIM
-                        </div>
-                        {/* </div> */}
-                        {/* <div className="before-dec left-[-5.2px] top-[5.33px]"></div> */}
-                        {/* <div className="en-h2">BIM</div> */}
-                        <h2 className="">的本質</h2>
+        <>
+            <section className="w-full bg-grayscale-iron">
+                <div className="flex flex-col pt-[141px] mx-[24px] mb-[103.58px]">
+                    <div className="flex flex-col items-start justify-center gap-[4px] mb-[47.87px]">
+                        <div className="display-1 text-grayscale-gainsboro">關於百越</div>
+                        <div className="en-h2 text-primary">ABOUT US</div>
                     </div>
-                    <h2>是融入工程 提升工程</h2>
+                    <div className="flex flex-col items-start justify-center text-white mb-[38.13px]">
+                        <div className="flex justify-center items-center gap-[5px]">
+                            {/* <div className="flex w-[49.32px] h-[27.68px] border-[1px] border-solid border-primary rounded-[39.72px] md:w-[120px] md:h-[54.4px]"> */}
+                            <div className="en-h2 flex justify-center items-center h-[27.68px] px-[5.2px] border-[1px] border-solid border-primary rounded-[39.72px]">
+                                BIM
+                            </div>
+                            {/* </div> */}
+                            {/* <div className="before-dec left-[-5.2px] top-[5.33px]"></div> */}
+                            {/* <div className="en-h2">BIM</div> */}
+                            <h2 className="">的本質</h2>
+                        </div>
+                        <h2>是融入工程 提升工程</h2>
+                    </div>
+                    <div className="body-2 text-grayscale-light">
+                        百越工程資訊有限公司成立至今保持一貫的態度，堅持為工程有所幫助，才有我們的存在!
+                        不斷在設計階段密切討論、施工階段多樣化管線排佈檢討。嚴謹的BIM導入工程標準程序、嚴格的模型把關與工程現場密切配合，目的是為了讓BIM紮實融入於工程。
+                    </div>
                 </div>
-                <div className="body-2 text-grayscale-light">
-                    百越工程資訊有限公司成立至今保持一貫的態度，堅持為工程有所幫助，才有我們的存在!
-                    不斷在設計階段密切討論、施工階段多樣化管線排佈檢討。嚴謹的BIM導入工程標準程序、嚴格的模型把關與工程現場密切配合，目的是為了讓BIM紮實融入於工程。
-                </div>
-            </div>
-            <Slider />
-            <Services />
-        </section>
+                <Slider />
+                <Services />
+            </section>
+            <FooterSimple />
+        </>
     );
 }

@@ -35,3 +35,21 @@ export function Footer() {
         </div>
     );
 }
+
+export function FooterSimple() {
+    return (
+        <div className="relative bg-grayscale-iron border-t-[1px] border-grayscale-gray rounded-tl-[16px] rounded-tr-[16px] mt-[-16px]">
+            <div className="absolute right-[24px] top-[-41px] flex flex-col justify-center items-center gap-[10px] bg-grayscale-iron button-shadow-2 rounded-[16px] w-[85px] h-[82px] hover:bg-grayscale-dim lg:w-[101px] lg:h-[98px] lg:right-[72px]">
+                <div className="border-primary border-x-transparent border-t-transparent border-solid border-b-[14px] border-x-[14px] rounded-[2px]"></div>
+                <div className="en-body-1 text-[15px] text-secondary-light">TO TOP</div>
+            </div>
+            <div className="flex flex-col pt-[80px] pb-[32px] mx-[24px] md:pt-[48px] md:mx-[40px] lg:pt-[104px] lg:pb-[56px] lg:mx-[80px]">
+                <div className="text-grayscale-light/50 lg:flex lg:flex-row lg:justify-end">
+                    <div className="en-minimum text-[12px] text-center h-fit">
+                        Copyright © 2022 BAIYUE INFORMATION CO.,LTD. All rights reserved .
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

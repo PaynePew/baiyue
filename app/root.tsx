@@ -1,7 +1,6 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import { Header } from "~/components/Header";
-import { Footer } from "~/components/Footer";
 import tailWindStyles from "./styles/app.css";
 import headerStyles from "~/components/Header/styles.css";
 import footerStyles from "~/components/Footer/styles.css";
@@ -36,7 +35,6 @@ export default function App() {
             <body className="">
                 <Header />
                 <Outlet />
-                <Footer />
                 <ScrollRestoration />
                 <Scripts />
                 <LiveReload />

@@ -3,3 +3,6 @@
     border: 1px solid #bfbfbf;
 }
 
+.dropdown-header {
+    border-radius: 24px;
+}

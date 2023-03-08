@@ -49,7 +49,7 @@ function About() {
 function FeaturedProject() {
     return (
         <section className="w-full flex justify-center items-center">
-            <div className="flex flex-col max-w-[312px] gap-[48px] my-[80px] mx-[24px] md:max-w-[688px] md:gap-[64px] md:mx-[40px] lg:max-w-[1200px] lg:gap-[72px] lg:my-[113px] lg:mx-[120px] ">
+            <div className="flex flex-col items-center max-w-[312px] gap-[48px] my-[80px] mx-[24px] md:max-w-[688px] md:gap-[64px] md:mx-[40px] lg:max-w-[1200px] lg:gap-[72px] lg:my-[113px] lg:mx-[120px] ">
                 <div className="flex flex-col items-center justify-center gap-[8px]">
                     <h1 className="text-grayscale-gainsboro">近期實績</h1>
                     <div className="en-h3 text-primary">FEATURED PROJECT</div>
@@ -83,7 +83,7 @@ function FeaturedProject() {
                         );
                     })}
                 </div>
-                <button className="button-shadow-1 bg-grayscale-gray nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] hover:bg-grayscale-light hover:text-grayscale-iron">
+                <button className="button-shadow-1 w-[312px] bg-grayscale-gray nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] lg:w-[173px] hover:bg-grayscale-light hover:text-grayscale-iron">
                     <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
                     <div className="">所有實績</div>
                 </button>

@@ -95,14 +95,52 @@ function FeaturedProject() {
 function Partners() {
     return (
         <section className="w-full flex justify-center items-center bg-grayscale-dim">
-            <div className="w-full flex flex-col pt-[64px] pb-[80px] mx-[24px]">
-                <div className="flex flex-col items-center justify-center gap-[8px] mb-[40px]">
+            <div className="w-full flex flex-col justify-center items-center pt-[64px] pb-[80px] mx-[24px] md:pt-[80px] md:mx-[40px] md:pb-[120px] lg:flex-row lg:gap-[162px] lg:pt-[120px] lg:mx-[120px] lg:pb-[183px] lg:items-start">
+                <div className="flex flex-col items-center justify-center gap-[8px] mb-[40px] md:mb-[64px] lg:items-start">
                     <h1 className="text-grayscale-gainsboro">信賴夥伴</h1>
                     <div className="en-h3 text-primary">PARTNERS</div>
                 </div>
-                <div className="flex">
-                    <div className="card-shadow">
-                        <img className="w-[137px] h-[102px] " src="assets/logo_atter1.png" alt="logo_atter" />
+                <div className="relative">
+                    <div className="hidden absolute z-20  w-[500px] h-[500px] bg-secondary-spotlight lg:block rounded-full mix-blend-overlay"></div>
+                    <div className="relative z-10 flex flex-wrap gap-[24px] justify-center items-center lg:gap-[32px] lg:max-w-[792px]">
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            {/* <img className="w-[137px] h-[102px] " src="assets/logo_atter1.png" alt="logo_atter" /> */}
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            {/* <img className="w-[137px] h-[102px] " src="assets/logo_atter1.png" alt="logo_atter" /> */}
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px] ">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
+                            SHOPLine
+                        </div>
                     </div>
                 </div>
             </div>

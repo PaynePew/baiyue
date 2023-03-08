@@ -49,27 +49,35 @@ function About() {
 function FeaturedProject() {
     return (
         <section className="w-full flex justify-center items-center">
-            <div className="flex flex-col max-w-[312px] gap-[48px] py-[80px] mx-[24px] md:max-w-[688px] lg:max-w-[1200px] ">
+            <div className="flex flex-col max-w-[312px] gap-[48px] my-[80px] mx-[24px] md:max-w-[688px] md:gap-[64px] md:mx-[40px] lg:max-w-[1200px] lg:gap-[72px] lg:my-[113px] lg:mx-[120px] ">
                 <div className="flex flex-col items-center justify-center gap-[8px]">
                     <h1 className="text-grayscale-gainsboro">近期實績</h1>
                     <div className="en-h3 text-primary">FEATURED PROJECT</div>
                 </div>
                 {/* Card Project */}
-                <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center">
+                <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center md:mb-[56px]">
                     {fakeData.map(({ alt, pic, desc }) => {
                         return (
                             <div
-                                className="card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col md:w-[332px] lg:w-[580px]"
+                                className="relative card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col  md:even:top-[56px] md:w-[332px] md:items-start lg:w-[580px]"
                                 key={alt}
                             >
                                 <div className="basis-[37%] md:basis-[50%]">
                                     <img className="object-cover h-[167px] md:h-full" src={`assets/${pic}`} alt={alt} />
                                 </div>
-                                <div className="flex flex-col gap-[16px] basis-[63%] p-[24px] md:basis-[50%]">
-                                    <h6 className="text-grayscale-gainsboro">{desc}</h6>
-                                    <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                        其他
-                                    </button>
+                                <div className="flex flex-col gap-[16px] basis-[63%] p-[24px] md:basis-[50%] md:w-full">
+                                    <h6 className="text-grayscale-gainsboro lg:hidden">{desc}</h6>
+                                    <h5 className="hidden text-grayscale-gainsboro lg:block">{desc}</h5>
+                                    <div className="flex justify-between items-center">
+                                        <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
+                                            其他
+                                        </button>
+                                        <img
+                                            className="hidden w-[38px] md:h-[11px] md:block"
+                                            src="assets/arrow_r.png"
+                                            alt="arrorw_r_pic"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         );

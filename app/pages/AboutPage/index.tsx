@@ -92,8 +92,8 @@ function Slider() {
 function Services() {
     return (
         <section className="pb-[80px] md:pb-[129px]">
-            <div className="flex flex-col mx-[24px] gap-[64px] md:mx-[40px]">
-                <div className="flex flex-col items-start justify-center gap-[8px]">
+            <div className="relative flex flex-col mx-[24px] gap-[64px] md:mx-[40px] lg:flex-row lg:gap-[167.5px] lg:items-start lg:justify-center lg:mx-[120px]">
+                <div className="flex flex-col items-start justify-center gap-[8px] lg:sticky top-[25%]">
                     <h1 className="text-grayscale-gainsboro">服務項目</h1>
                     <div className="en-h3 text-primary">OUR SERVICES</div>
                 </div>
@@ -103,7 +103,7 @@ function Services() {
                         return (
                             <div
                                 key={alt}
-                                className="flex card-shadow min-h-[212px] max-w-[312px] rounded-[12px] overflow-clip md:flex-col md:tablet-card-layout md:rounded-[16px] md:max-w-[332px] lg:max-w-[384px]"
+                                className="relative flex card-shadow min-h-[212px] w-[312px] rounded-[12px] overflow-clip md:flex-col md:even:top-[40px] md:rounded-[16px] md:w-[332px] lg:w-[384px]"
                             >
                                 <div className="basis-[50%] md:basis-auto md:h-[250px] lg:h-[290px]">
                                     <img className="h-full max-w-full object-cover md:w-full" src={pic} alt={alt} />

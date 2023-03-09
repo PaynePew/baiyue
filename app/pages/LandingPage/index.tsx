@@ -59,7 +59,7 @@ function FeaturedProject() {
                     {fakeData.map(({ alt, pic, desc }) => {
                         return (
                             <div
-                                className="relative card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col  md:even:top-[56px] md:w-[332px] md:items-start lg:w-[580px]"
+                                className="relative card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col md:even:top-[56px] md:w-[332px] md:items-start lg:w-[580px]"
                                 key={alt}
                             >
                                 <div className="basis-[37%] md:basis-[50%]">

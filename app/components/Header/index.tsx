@@ -115,7 +115,7 @@ export function Header() {
     return (
         <section className="fixed z-50 w-full ">
             {isOpen ? <ModalMenu /> : null}
-            <div className="flex flex-shrink justify-between px-[24px] pt-[24px]">
+            <div className="flex flex-shrink justify-between px-[24px] pt-[24px] md:px-[40px] md:pt-[32px] lg:px-[48px]">
                 <Link
                     to="/"
                     className="menu-shadow bg-grayscale-iron w-[72px] h-[48px] flex justify-center items-center rounded-[128px] hover:bg-grayscale-dim md:w-[144.81px] md:h-[64px] lg:w-[256px] lg:h-[120px]"

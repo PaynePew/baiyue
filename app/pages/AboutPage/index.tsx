@@ -127,27 +127,40 @@ export function AboutPage() {
     return (
         <>
             <section className="w-full bg-grayscale-iron">
-                <div className="flex flex-col pt-[141px] mx-[24px] mb-[103.58px]">
-                    <div className="flex flex-col items-start justify-center gap-[4px] mb-[47.87px]">
+                <div className="flex flex-col pt-[141px] mx-[24px] mb-[104px] gap-[47.87px] md:mx-[40px] md:pt-[206px] md:mb-[244px] md:gap-[92.51px] lg:pt-[336px] lg:mx-[120px] lg:mb-[306.48px] lg:gap-[162.32px]">
+                    <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
                         <div className="display-1 text-grayscale-gainsboro">關於百越</div>
                         <div className="en-h2 text-primary">ABOUT US</div>
                     </div>
-                    <div className="flex flex-col items-start justify-center text-white mb-[38.13px]">
-                        <div className="flex justify-center items-center gap-[5px]">
-                            {/* <div className="flex w-[49.32px] h-[27.68px] border-[1px] border-solid border-primary rounded-[39.72px] md:w-[120px] md:h-[54.4px]"> */}
-                            <div className="en-h2 flex justify-center items-center h-[27.68px] px-[5.2px] border-[1px] border-solid border-primary rounded-[39.72px]">
-                                BIM
+                    <div className="flex flex-col gap-[38.13px] md:gap-[72.6px] md:items-end lg:gap-[65.26px]">
+                        <div className="relative flex flex-col items-start justify-center text-white md:w-full md:justify-start md:left-[38px]">
+                            <div className="flex justify-center items-center gap-[5px]">
+                                {/* <div className="flex w-[49.32px] h-[27.68px] border-[1px] border-solid border-primary rounded-[39.72px] md:w-[120px] md:h-[54.4px]"> */}
+                                <div className="en-h2 flex justify-center items-center h-[27.68px] px-[5.2px] border-[1px] border-solid border-primary rounded-[39.72px] md:h-[44.83px] md:w-[80.61px] lg:w-[101.52px] lg:h-[54.38px]">
+                                    BIM
+                                </div>
+                                {/* </div> */}
+                                {/* <div className="before-dec left-[-5.2px] top-[5.33px]"></div> */}
+                                {/* <div className="en-h2">BIM</div> */}
+                                <h2 className="">的本質</h2>
                             </div>
-                            {/* </div> */}
-                            {/* <div className="before-dec left-[-5.2px] top-[5.33px]"></div> */}
-                            {/* <div className="en-h2">BIM</div> */}
-                            <h2 className="">的本質</h2>
+                            <h2>是融入工程 提升工程</h2>
                         </div>
-                        <h2>是融入工程 提升工程</h2>
-                    </div>
-                    <div className="body-2 text-grayscale-light">
-                        百越工程資訊有限公司成立至今保持一貫的態度，堅持為工程有所幫助，才有我們的存在!
-                        不斷在設計階段密切討論、施工階段多樣化管線排佈檢討。嚴謹的BIM導入工程標準程序、嚴格的模型把關與工程現場密切配合，目的是為了讓BIM紮實融入於工程。
+                        <div className="body-2 text-grayscale-light md:hidden">
+                            百越工程資訊有限公司成立至今保持一貫的態度，堅持為工程有所幫助，才有我們的存在!
+                            不斷在設計階段密切討論、施工階段多樣化管線排佈檢討。嚴謹的BIM導入工程標準程序、嚴格的模型把關與工程現場密切配合，目的是為了讓BIM紮實融入於工程。
+                        </div>
+                        <div className="hidden body-2 text-grayscale-light md:block md:w-[510px] lg:w-[588px]">
+                            百越工程資訊有限公司成立至今保持一貫的態度，
+                            <br />
+                            堅持為工程有所幫助，才有我們的存在!
+                            <br />
+                            不斷在設計階段密切討論、施工階段多樣化管線排佈檢討。
+                            <br />
+                            嚴謹的BIM導入工程標準程序、嚴格的模型把關與工程現場密切配合，
+                            <br />
+                            目的是為了讓BIM紮實融入於工程。
+                        </div>
                     </div>
                 </div>
                 <Slider />

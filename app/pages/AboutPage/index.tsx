@@ -128,10 +128,20 @@ export function AboutPage() {
         <>
             <section className="w-full bg-grayscale-iron">
                 <div className="flex flex-col pt-[141px] mx-[24px] mb-[104px] gap-[47.87px] md:mx-[40px] md:pt-[206px] md:mb-[244px] md:gap-[92.51px] lg:pt-[336px] lg:mx-[120px] lg:mb-[306.48px] lg:gap-[162.32px]">
-                    <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
-                        <div className="display-1 text-grayscale-gainsboro">關於百越</div>
-                        <div className="en-h2 text-primary">ABOUT US</div>
+                    <div className="flex justify-between items-end">
+                        <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
+                            <div className="display-1 text-grayscale-gainsboro">關於百越</div>
+                            <div className="en-h2 text-primary">ABOUT US</div>
+                        </div>
+                        <div className="flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">
+                            <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
+                            <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
+                            <div className="py-[8px] opacity-50 hover:text-grayscale-light hover:opacity-100">
+                                關於百越
+                            </div>
+                        </div>
                     </div>
+
                     <div className="flex flex-col gap-[38.13px] md:gap-[72.6px] md:items-end lg:gap-[65.26px]">
                         <div className="relative flex flex-col items-start justify-center text-white md:w-full md:justify-start md:left-[38px]">
                             <div className="flex justify-center items-center gap-[5px]">

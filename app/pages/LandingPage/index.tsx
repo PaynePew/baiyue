@@ -136,42 +136,6 @@ function Partners() {
                                 </div>
                             );
                         })}
-                        {/* <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]">
-                            <img className="" src="assets/logo_1.png" alt="logo_1" />
-                        </div>
-                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]">
-                            <img className="" src="assets/logo_2.png" alt="logo_2" />
-                        </div>
-                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div>
-                        <div className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
-                        </div> */}
                     </div>
                 </div>
             </div>
@@ -257,7 +221,7 @@ export function LandingPage() {
                     <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
                         <img className="" src="/assets/hero.png" alt="hero_image" />
                     </div>
-                    <div className="absolute inner-shadow mix-blend-normal w-[381px] h-[381px] md:w-[431px] md:h-[431px] md:mix-blend-multiply"></div>
+                    <div className="absolute inner-shadow mix-blend-multiply w-[381px] h-[381px] md:w-[431px] md:h-[431px]"></div>
                     <div className="absolute flex flex-col md:items-center">
                         <div className="flex flex-col md:flex-row">
                             <div className="flex items-end self-center text-[#E7E7E7] md:items-center">

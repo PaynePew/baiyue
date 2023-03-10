@@ -11,6 +11,19 @@ const fakeData = [
     { alt: "project_pic4", pic: "project_4.png", desc: "臺北市立明倫高級中學多功能大樓新建工程" },
 ];
 
+const fakePartners = [
+    { pic: "logo_1" },
+    { pic: "logo_2" },
+    { pic: "logo_3" },
+    { pic: "logo_4" },
+    { pic: "logo_5" },
+    { pic: "logo_6" },
+    { pic: "logo_7" },
+    { pic: "logo_8" },
+];
+
+const fakePartnersTablet = [{ pic: "logo_9" }, { pic: "logo_10" }, { pic: "logo_11" }, { pic: "logo_12" }];
+
 function About() {
     return (
         <section className="w-full bg-grayscale-dim flex justify-center items-center">
@@ -103,12 +116,31 @@ function Partners() {
                 <div className="relative">
                     <div className="hidden absolute z-20  w-[500px] h-[500px] bg-secondary-spotlight lg:block rounded-full mix-blend-overlay"></div>
                     <div className="relative z-10 flex flex-wrap gap-[24px] justify-center items-center lg:gap-[32px] lg:max-w-[792px]">
-                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            {/* <img className="w-[137px] h-[102px] " src="assets/logo_atter1.png" alt="logo_atter" /> */}
-                            SHOPLine
+                        {fakePartners.map(({ pic }) => {
+                            return (
+                                <div
+                                    key={pic}
+                                    className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]"
+                                >
+                                    <img className="" src={`assets/${pic}.png`} alt={pic} />
+                                </div>
+                            );
+                        })}
+                        {fakePartnersTablet.map(({ pic }) => {
+                            return (
+                                <div
+                                    key={pic}
+                                    className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]"
+                                >
+                                    <img className="" src={`assets/${pic}.png`} alt={pic} />
+                                </div>
+                            );
+                        })}
+                        {/* <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]">
+                            <img className="" src="assets/logo_1.png" alt="logo_1" />
                         </div>
-                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
-                            SHOPLine
+                        <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]">
+                            <img className="" src="assets/logo_2.png" alt="logo_2" />
                         </div>
                         <div className="card-shadow flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
                             SHOPLine
@@ -139,7 +171,7 @@ function Partners() {
                         </div>
                         <div className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] rounded-[16px] text-grayscale-light text-[24px] lg:w-[240px]">
                             SHOPLine
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

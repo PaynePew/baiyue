@@ -7,6 +7,17 @@ export const links: LinksFunction = () => {
     return [{ rel: "stylesheet", href: styles }];
 };
 
+const projectTab = [
+    { title: "全部" },
+    { title: "住宅" },
+    { title: "辦公" },
+    { title: "教育" },
+    { title: "工業" },
+    { title: "停車場" },
+    { title: "營區" },
+    { title: "其他" },
+];
+
 function ProjectDropMenu() {
     return (
         <section className="flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
@@ -41,30 +52,16 @@ function ProjectDropMenu() {
 function ProjectMenu() {
     return (
         <section className="mt-[20px] flex flex-wrap gap-[8px] md:mt-[16px] md:max-w-[432px]">
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                全部
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                住宅
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                辦公
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                教育
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                工業
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                停車場
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                營區
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                其他
-            </button>
+            {projectTab.map(({ title }) => {
+                return (
+                    <button
+                        key={title}
+                        className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                    >
+                        {title}
+                    </button>
+                );
+            })}
         </section>
     );
 }

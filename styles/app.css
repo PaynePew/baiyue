@@ -106,6 +106,7 @@
     .body-3 {
         font-size: 13px;
         line-height: 160%;
+        font-weight: 400;
     }
     @media screen(md) {
         .display-1 {

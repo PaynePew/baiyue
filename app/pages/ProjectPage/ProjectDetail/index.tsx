@@ -6,20 +6,8 @@ export function links() {
 }
 
 const fakeData = [
-    { alt: "project_pic1", pic: "projectlist_1.png", desc: "臺北市殯葬管理處第二殯儀館二期整建工程" },
-    { alt: "project_pic2", pic: "projectlist_2.png", desc: "大潭電廠建燃氣複循環機組發電計畫" },
-    { alt: "project_pic3", pic: "projectlist_3.png", desc: "臺北市萬華區莒光段公共住宅新建工程" },
-    { alt: "project_pic4", pic: "projectlist_4.png", desc: "臺北市立明倫高級中學多功能大樓新建工程" },
-    { alt: "project_pic5", pic: "projectlist_5.png", desc: "桃園流行音樂露天劇場新建工程" },
-    { alt: "project_pic6", pic: "projectlist_6.png", desc: "頎邦科技新竹光復廠辦工程" },
     { alt: "project_pic7", pic: "projectlist_7.png", desc: "台北市信義區松信社會住宅新建工程" },
-    { alt: "project_pic8", pic: "projectlist_8.png", desc: "雙連安養中心四期新建工程" },
-    { alt: "project_pic9", pic: "projectlist_9.png", desc: "臺北市士林區百齡水岸社會住宅新建工程" },
-    { alt: "project_pic10", pic: "projectlist_10.png", desc: "板橋五權公園停車場統包工程" },
-    { alt: "project_pic11", pic: "projectlist_11.png", desc: "新北市樹林區長壽公園停車場新建統包工程" },
-    { alt: "project_pic12", pic: "projectlist_12.png", desc: "明台化工湖口廠新建工程" },
-    { alt: "project_pic13", pic: "projectlist_13.png", desc: "中壢區仁和段公共化幼兒園新建工程" },
-    { alt: "project_pic14", pic: "projectlist_14.png", desc: "頎邦科技新竹光復廠辦工程" },
+    { alt: "project_pic2", pic: "projectlist_2.png", desc: "大潭電廠建燃氣複循環機組發電計畫" },
 ];
 
 const flow = [
@@ -33,6 +21,198 @@ const flow = [
     { step: "H", desc: "竣工" },
 ];
 
+function OthersSection() {
+    return (
+        <section className="w-full bg-grayscale-iron">
+            <div className="flex flex-col pt-[48px] pb-[80px] mx-[24px] md:mx-[40px] md:pt-[40px] md:pb-[120px] lg:pt-[80px] lg:pb-[218px] lg:mx-[120px]">
+                <div className="flex flex-col items-start justify-cente mb-[40px] gap-[2px] md:gap-[4px] lg:gap-[8px] md:mb-[64px]">
+                    <h3 className="text-grayscale-gainsboro">相關案例</h3>
+                    <div className="en-h4 lg:text-[24px] text-primary uppercase">others</div>
+                </div>
+                <div className="flex flex-wrap justify-center gap-[24px] md:items-cente">
+                    {fakeData.map(({ alt, pic, desc }, idx) => {
+                        if (idx === 0) {
+                            return (
+                                <div
+                                    className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]"
+                                    key={idx}
+                                >
+                                    <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-full lg:w-[512px]">
+                                        <img className="object-cover w-full h-full" src={`/assets/${pic}`} alt={alt} />
+                                    </div>
+                                    <div className="flex flex-col gap-[16px] p-[24px] lg:p-[40px] lg:h-full lg:justify-between">
+                                        <h6 className="text-grayscale-gainsboro lg:hidden">{desc}</h6>
+                                        <h5 className="hidden text-grayscale-gainsboro lg:block">{desc}</h5>
+                                        <div className="flex justify-between items-center">
+                                            <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
+                                                其他
+                                            </button>
+                                            <img
+                                                className="hidden w-[38px] md:h-[11px] md:block"
+                                                src="/assets/arrow_r.png"
+                                                alt="arrorw_r_pic"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        }
+                        return (
+                            <div
+                                className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
+                                key={idx}
+                            >
+                                <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-[220px]">
+                                    <img className="object-cover w-full h-full" src={`/assets/${pic}`} alt={alt} />
+                                </div>
+                                <div className="flex flex-col gap-[16px] p-[24px]">
+                                    <h6 className="text-grayscale-gainsboro md:min-h-[56px]">{desc}</h6>
+                                    <div className="flex justify-between items-center">
+                                        <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
+                                            其他
+                                        </button>
+                                        <img
+                                            className="hidden w-[38px] md:h-[11px] md:block"
+                                            src="/assets/arrow_r.png"
+                                            alt="arrorw_r_pic"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
+    );
+}
+
+function ProjectCardPlainReverse() {
+    return (
+        <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
+            <div className="flex flex-col md:basis-[50%] order-2">
+                <div className="body-2 text-grayscale-light">
+                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
+                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。
+                </div>
+            </div>
+            <div className="w-full h-[230px] flex justify-center items-center bg-grayscale-gray rounded-[12px] order-1 md:basis-[50%] md:h-[246.5px] lg:h-[430px]">
+                <img
+                    className="object-scale-down w-full h-full"
+                    src="/assets/project_sample_7.png"
+                    alt="project_model_7"
+                />
+            </div>
+        </div>
+    );
+}
+
+function ProjectCardPlain() {
+    return (
+        <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
+            <div className="flex flex-col md:basis-[50%] ">
+                <div className="body-2 text-grayscale-light">
+                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。
+                    力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
+                </div>
+            </div>
+            <div className="w-full h-[230px] flex justify-center items-center bg-grayscale-gray rounded-[12px] md:basis-[50%] md:h-[246.5px] lg:h-[430px]">
+                <img
+                    className="object-scale-down w-full h-full"
+                    src="/assets/project_sample_6.png"
+                    alt="project_model_6"
+                />
+            </div>
+        </div>
+    );
+}
+
+function ProjectGallery() {
+    return (
+        <div className="w-full flex flex-col gap-[16px] lg:[24px]">
+            <div className="w-full flex flex-col gap-[16px] md:flex-row lg:[24px]">
+                <div className="w-full h-[120px] rounded-[12px] overflow-hidden md:rounded-[16px] md:h-[246.5px] lg:h-[430px]">
+                    <img
+                        className="object-cover w-full h-full"
+                        src="/assets/project_sample_3.png"
+                        alt="project_model_3"
+                    />
+                </div>
+                <div className="w-full h-[120px] rounded-[12px] overflow-hidden md:rounded-[16px] md:h-[246.5px] lg:h-[430px]">
+                    <img
+                        className="object-cover w-full h-full"
+                        src="/assets/project_sample_4.png"
+                        alt="project_model_4"
+                    />
+                </div>
+            </div>
+            <div className="w-full h-[120px] flex justify-center items-center rounded-[12px] bg-grayscale-gray md:rounded-[16px] md:h-[246.5px] lg:h-[430px]">
+                <img
+                    className="object-scale-down w-full h-full"
+                    src="/assets/project_sample_5.png"
+                    alt="project_model_5"
+                />
+            </div>
+        </div>
+    );
+}
+
+function ProjectCardReverse() {
+    return (
+        <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
+            <div className="flex flex-col gap-[9.17px] md:basis-[50%] lg:gap-[16px] order-2">
+                <h3 className="text-grayscale-gainsboro md:text-right">(左圖右文)_段落標題</h3>
+                <div className="body-2 text-grayscale-light">
+                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
+                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。
+                </div>
+            </div>
+            <div className="w-full flex justify-center items-center bg-grayscale-gray rounded-[12px] md:basis-[50%] order-1 md:h-[246.5px] lg:h-[430px]">
+                <img
+                    className="object-scale-down w-full h-full"
+                    src="/assets/project_sample_2.png"
+                    alt="project_model_2"
+                />
+            </div>
+        </div>
+    );
+}
+
+function ProjectCard() {
+    return (
+        <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
+            <div className="flex flex-col gap-[9.17px] md:basis-[50%] lg:gap-[16px]">
+                <h3 className="text-grayscale-gainsboro">(左文右圖)_段落標題</h3>
+                <div className="body-2 text-grayscale-light">
+                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，
+                    能怎樂歡後白星老片民萃統驢也湊的變。力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
+                </div>
+            </div>
+            <div className="w-full flex justify-center items-center bg-grayscale-gray rounded-[12px] md:basis-[50%] md:h-[246.5px] lg:h-[430px]">
+                <img
+                    className="object-scale-down w-full h-full"
+                    src="/assets/project_sample_1.png"
+                    alt="project_model_1"
+                />
+            </div>
+        </div>
+    );
+}
+
+function ProjectDetailCards() {
+    return (
+        <section className="w-full bg-grayscale-dim">
+            <div className="flex flex-col py-[48px] mx-[24px] gap-[64px] md:mx-[40px] md:py-[80px] md:gap-[80px] lg:py-[160px] lg:mx-[120px] lg:gap-[120px]">
+                <ProjectCard />
+                <ProjectCardReverse />
+                <ProjectGallery />
+                <ProjectCardPlain />
+                <ProjectCardPlainReverse />
+            </div>
+        </section>
+    );
+}
+
 export function ProjectDetail({ projectId }) {
     return (
         <section className="w-full bg-grayscale-iron">
@@ -45,7 +225,7 @@ export function ProjectDetail({ projectId }) {
                     <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
                 </div>
             </div>
-            <div className="flex flex-col pt-[131px] mx-[24px] gap-[32px] mb-[60.5px] md:mx-[40px] md:pt-[200px] md:gap-[64px] lg:pt-[120px] lg:mx-[120px] lg:gap-[80px] ">
+            <div className="flex flex-col pt-[131px] mx-[24px] gap-[32px] mb-[60.5px] md:mx-[40px] md:pt-[200px] md:gap-[64px] md:mb-[77px] lg:pt-[120px] lg:mx-[120px] lg:mb-[80px] lg:gap-[80px] ">
                 <div className="w-full flex flex-col gap-[32px] md:gap-[64px] lg:flex-row lg:gap-[0] lg:items-start lg:justify-end">
                     {/* Project Title */}
                     <div className="flex flex-col justify-center items-center gap-[12px] lg:items-start lg:ml-[40px] lg:gap-[32px]">
@@ -144,6 +324,8 @@ export function ProjectDetail({ projectId }) {
                     </div>
                 </div>
             </div>
+            <ProjectDetailCards />
+            <OthersSection />
             <FooterSimple />
         </section>
     );

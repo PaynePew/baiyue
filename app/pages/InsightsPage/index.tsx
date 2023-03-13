@@ -78,7 +78,7 @@ function InsightsList() {
                             <div className="flex items-center">
                                 <img
                                     className="hidden w-[38px] md:h-[11px] md:block"
-                                    src="assets/arrow_r.png"
+                                    src="/assets/arrow_r.png"
                                     alt="arrorw_r_pic"
                                 />
                             </div>

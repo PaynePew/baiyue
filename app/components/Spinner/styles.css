@@ -1,0 +1,52 @@
+/* .loading-animation:before {
+    position: absolute;
+    content: "";
+    transform: translateX(50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 50%;
+} */
+
+.loading-animation {
+    animation: logo-loading 1.5s ease-in-out 0s 1 normal forwards;
+}
+
+.overlay-animation {
+    animation: overlay-fade 1s normal;
+}
+
+.spinner-off {
+    animation: spinner-fade 1s 1.5s forwards;
+    /* display: none; */
+}
+
+@keyframes logo-loading {
+    0% {
+        inset: 0;
+    }
+    100% {
+        inset: 0 0 0 100%;
+    }
+}
+
+@keyframes overlay-fade {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    45%,
+    55% {
+        opacity: 1;
+    }
+}
+
+@keyframes spinner-fade {
+    from {
+        display: block;
+    }
+    to {
+        opacity: 0;
+    }
+}

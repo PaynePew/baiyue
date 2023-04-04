@@ -1,7 +1,16 @@
+import { useNavigation } from "@remix-run/react";
+import { useEffect } from "react";
 import { Footer } from "~/components/Footer";
+import { Spinner } from "~/components/Spinner";
+import spinnerStyles from "~/components/Spinner/styles.css";
+
 import styles from "./styles.css";
 export function links() {
-    return [{ rel: "stylesheet", href: styles }];
+    return [
+        { rel: "stylesheet", href: styles },
+        { rel: "stylesheet", href: spinnerStyles },
+        { rel: "preload", as: "video", href: "/assets/baiyu_logo_animation.mp4" },
+    ];
 }
 
 const fakeData = [
@@ -208,6 +217,14 @@ function Contact() {
 export function LandingPage() {
     return (
         <section className="w-full bg-grayscale-iron">
+            <Spinner />
+
+            {/* <div className="">
+                <video autoPlay preload={"auto"} muted playsInline controls className="" id="vid">
+                    <source src="/assets/baiyu_logo_animation.mp4" type="video/mp4" />
+                    Sorry, your browser doesn't support videos.
+                </video>
+            </div> */}
             <div className="relative w-full h-screen flex justify-center items-center overflow-clip">
                 <div className="relative z-40 w-full flex justify-center items-center">
                     <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end">

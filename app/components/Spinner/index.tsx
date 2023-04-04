@@ -38,7 +38,7 @@ export function Spinner() {
     return (
         <section className={`${isVidVisible ? "fixed" : "hidden"} z-50 w-full h-screen`}>
             <div className="fixed bg-grayscale-iron flex w-full h-screen justify-center items-center">
-                <video ref={vidRef} preload={"auto"} muted className="" onEnded={handleVidEnd} id="vid">
+                <video ref={vidRef} preload={"auto"} muted playsInline className="" onEnded={handleVidEnd} id="vid">
                     <source src="/assets/baiyu_logo_animation.mp4" type="video/mp4" />
                     Sorry, your browser doesn't support videos.
                 </video>

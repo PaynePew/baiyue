@@ -38,8 +38,8 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
             } z-50 w-full h-screen flex justify-center items-center bg-grayscale-iron`}
         >
             {/* opening video  */}
-            <div className="fixed bg-grayscale-iron flex flex-col max-w-[1440px] h-screen justify-center items-center">
-                <div className="w-full h-[80%]">
+            <div className="bg-grayscale-iron flex flex-col max-w-[1440px] h-[85%] justify-center items-center">
+                <div className="w-full h-full">
                     <video
                         className="w-full h-full"
                         ref={vidRef}
@@ -56,7 +56,7 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
                 {/* skip video */}
                 <button
                     onClick={handleVidEnd}
-                    className="absolute right-[16px] bottom-[32px] en-body-1 uppercase text-grayscale-light cursor-pointer"
+                    className="absolute right-[15%] bottom-[18px] en-body-1 uppercase text-grayscale-light cursor-pointer"
                 >
                     <button
                         onClick={handleVidEnd}

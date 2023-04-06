@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./styles.css";
 export function links() {
     return [
@@ -7,31 +7,27 @@ export function links() {
     ];
 }
 
-export function Spinner() {
+export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
     const [isVisible, setIsVisible] = useState(true);
-    const [isVidVisible, setIsVidVisible] = useState(true);
     const [toggleAnimation, setToggleAnimtion] = useState(false);
-    const vidRef = useRef(null);
-    const handlePlayVideo = () => {
-        if (!vidRef.current) {
-            setIsVidVisible(false);
-        }
-        vidRef.current.play();
-        setToggleAnimtion(false);
-    };
 
     const handleAnimationEnd = () => {
         setToggleAnimtion(true);
         setTimeout(() => {
             setIsVisible(false);
-            handlePlayVideo();
+            vidRef.current.currentTime = 0;
+            vidRef.current.play();
+            setToggleAnimtion(false);
         }, 550);
     };
 
     const handleVidEnd = () => {
         setToggleAnimtion(true);
         setTimeout(() => {
-            setIsVidVisible(false);
+            handleVideoOpen();
+            vidRef.current.pause();
+            vidRef.current.currentTime = 0;
+            setToggleAnimtion(false);
         }, 550);
     };
 
@@ -42,7 +38,7 @@ export function Spinner() {
             } z-50 w-full h-screen flex justify-center items-center bg-grayscale-iron`}
         >
             {/* opening video  */}
-            <div className="fixed flex flex-col h-screen justify-center items-center">
+            <div className="fixed bg-grayscale-iron flex flex-col max-w-[1440px] h-screen justify-center items-center">
                 <div className="w-full h-[80%]">
                     <video
                         className="w-full h-full"
@@ -60,7 +56,7 @@ export function Spinner() {
                 {/* skip video */}
                 <button
                     onClick={handleVidEnd}
-                    className="absolute right-[24px] bottom-[32px] en-body-1 uppercase text-grayscale-light cursor-pointer"
+                    className="absolute right-[16px] bottom-[32px] en-body-1 uppercase text-grayscale-light cursor-pointer"
                 >
                     <button
                         onClick={handleVidEnd}

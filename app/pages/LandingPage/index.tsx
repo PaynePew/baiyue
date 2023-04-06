@@ -1,5 +1,5 @@
 import { useNavigation } from "@remix-run/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Footer } from "~/components/Footer";
 import { Spinner } from "~/components/Spinner";
 import spinnerStyles from "~/components/Spinner/styles.css";
@@ -215,15 +215,43 @@ function Contact() {
 }
 
 export function LandingPage() {
+    const [isVidVisible, setIsVidVisible] = useState(true);
     const [playVideo, setPlayVideo] = useState(false);
+    const vidRef = useRef(null);
 
     const handleVideoPlay = () => {
         setPlayVideo(true);
+        setTimeout(() => {
+            handleVideoOpen();
+            vidRef.current.currentTime = 0;
+            vidRef.current.play();
+            setPlayVideo(false);
+        }, 550);
     };
+    const handleVideoOpen = () => {
+        setIsVidVisible(!isVidVisible);
+    };
+
+    // const handlePlayVideo = () => {
+    //     vidRef.current.currentTime = 0;
+    //     vidRef.current.play();
+    //     setToggleAnimtion(false);
+    // };
 
     return (
         <section className="w-full bg-grayscale-iron">
-            <Spinner />
+            {/* overlay animation */}
+            <div
+                className={`fixed z-50 w-full h-full bg-black opacity-0 pointer-events-none ${
+                    playVideo ? "overlay-animation" : ""
+                }`}
+            ></div>
+            <Spinner
+                vidRef={vidRef}
+                playVideo={playVideo}
+                isVidVisible={isVidVisible}
+                handleVideoOpen={handleVideoOpen}
+            />
 
             {/* <div className="">
                 <video autoPlay preload={"auto"} muted playsInline controls className="" id="vid">

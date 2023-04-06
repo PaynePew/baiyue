@@ -28,3 +28,19 @@
     border-radius: 3.61739px;
 }
 
+/* .overlay-animation {
+    animation: overlay-fade 1s normal;
+}
+
+@keyframes overlay-fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+    45%,
+    55% {
+        opacity: 1;
+    }
+} */

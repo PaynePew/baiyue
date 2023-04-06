@@ -1,5 +1,5 @@
 import { useNavigation } from "@remix-run/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Footer } from "~/components/Footer";
 import { Spinner } from "~/components/Spinner";
 import spinnerStyles from "~/components/Spinner/styles.css";
@@ -215,6 +215,12 @@ function Contact() {
 }
 
 export function LandingPage() {
+    const [playVideo, setPlayVideo] = useState(false);
+
+    const handleVideoPlay = () => {
+        setPlayVideo(true);
+    };
+
     return (
         <section className="w-full bg-grayscale-iron">
             <Spinner />
@@ -229,10 +235,15 @@ export function LandingPage() {
                 <div className="relative z-40 w-full flex justify-center items-center">
                     <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end">
                         <div className="relative flex flex-col items-center gap-[16px] bottom-[-56px]">
-                            <button className="button-shadow-2  bg-primary w-[40px] h-[40px] rounded-full flex justify-center items-center">
+                            <button
+                                onClick={handleVideoPlay}
+                                className="button-shadow-2 bg-primary w-[40px] h-[40px] rounded-full flex justify-center items-center"
+                            >
                                 <div className="border-grayscale-iron border-y-transparent border-r-transparent border-solid border-l-[8px] border-y-[4px]"></div>
                             </button>
-                            <div className="en-body-1 text-secondary-light">IMAGE VIDEO</div>
+                            <div onClick={handleVideoPlay} className="en-body-1 text-secondary-light cursor-pointer">
+                                IMAGE VIDEO
+                            </div>
                         </div>
                     </div>
                     <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">

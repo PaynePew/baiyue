@@ -36,13 +36,41 @@ export function Spinner() {
     };
 
     return (
-        <section className={`${isVidVisible ? "fixed" : "hidden"} z-50 w-full h-screen`}>
-            <div className="fixed bg-grayscale-iron flex w-full h-screen justify-center items-center">
-                <video ref={vidRef} preload={"auto"} muted playsInline onEnded={handleVidEnd} id="vid">
-                    <source src="/assets/baiyu_logo_animation.mp4" type="video/mp4" />
-                    Sorry, your browser doesn't support videos.
-                </video>
+        <section
+            className={`${
+                isVidVisible ? "fixed" : "hidden"
+            } z-50 w-full h-screen flex justify-center items-center bg-grayscale-iron`}
+        >
+            {/* opening video  */}
+            <div className="fixed flex flex-col h-screen justify-center items-center">
+                <div className="w-full h-[80%]">
+                    <video
+                        className="w-full h-full"
+                        ref={vidRef}
+                        preload="auto"
+                        playsInline
+                        muted
+                        onEnded={handleVidEnd}
+                        id="vid"
+                    >
+                        <source src="/assets/baiyu_logo_animation.mp4" type="video/mp4" />
+                        Sorry, your browser doesn't support videos.
+                    </video>
+                </div>
+                {/* skip video */}
+                <button
+                    onClick={handleVidEnd}
+                    className="absolute right-[24px] bottom-[32px] en-body-1 uppercase text-grayscale-light cursor-pointer"
+                >
+                    <button
+                        onClick={handleVidEnd}
+                        className="py-[8px] border-b-[1px] hover:text-grayscale-light uppercase cursor-pointer"
+                    >
+                        SKIP VIDEO
+                    </button>
+                </button>
             </div>
+            {/* opening loading */}
             {isVisible && (
                 <section
                     className="fixed flex bg-grayscale-iron w-full h-screen justify-center items-center"
@@ -59,7 +87,7 @@ export function Spinner() {
             )}
             {/* overlay animation */}
             <div
-                className={`absolute z-50 w-full h-full bg-black opacity-0 ${
+                className={`absolute w-full h-full bg-black opacity-0 pointer-events-none ${
                     toggleAnimation ? "overlay-animation" : ""
                 }`}
             ></div>

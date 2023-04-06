@@ -21,9 +21,12 @@ const projectTab = [
 function ProjectDropMenu() {
     return (
         <section className="flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            <Link
+                to="/projects"
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 全部
-            </button>
+            </Link>
             <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
                 住宅
             </button>
@@ -54,12 +57,13 @@ function ProjectMenu() {
         <section className="mt-[20px] flex flex-wrap gap-[8px] md:mt-[16px] md:max-w-[432px]">
             {projectTab.map(({ title }) => {
                 return (
-                    <button
+                    <Link
+                        to="/projects"
                         key={title}
                         className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
                     >
                         {title}
-                    </button>
+                    </Link>
                 );
             })}
         </section>
@@ -77,7 +81,7 @@ function ModalMenu() {
                         <div className="nav-title text-white">關於百越</div>
                         <div className="en-h4 text-[18px] text-primary">ABOUT US</div>
                     </Link>
-                    <div className="flex flex-col gap-[4px] md:gap-[8px]">
+                    <div className="flex flex-col cursor-pointer gap-[4px] md:gap-[8px]">
                         <div className="nav-title text-white" onClick={() => toggleOpen(prev => !prev)}>
                             工程實績
                         </div>
@@ -86,7 +90,7 @@ function ModalMenu() {
                         </div>
                         {isOpen ? <ProjectMenu /> : null}
                     </div>
-                    <Link to="/insight" className="flex flex-col gap-[4px] md:gap-[8px]">
+                    <Link to="/insights" className="flex flex-col gap-[4px] md:gap-[8px]">
                         <div className="nav-title text-white">百越觀點</div>
                         <div className="en-h4 text-[18px] text-primary">INSIGHT</div>
                     </Link>
@@ -135,7 +139,7 @@ export function Header() {
                     <button className="nav-title" onClick={() => toggleProjectOpen(prev => !prev)}>
                         工程實績
                     </button>
-                    <Link to="/insight" className="nav-title">
+                    <Link to="/insights" className="nav-title">
                         百越觀點
                     </Link>
                     <Link to="/contact" className="nav-title">

@@ -38,10 +38,10 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
             } z-50 w-full h-screen flex justify-center items-center bg-grayscale-iron`}
         >
             {/* opening video  */}
-            <div className="bg-grayscale-iron flex flex-col max-w-[1440px] h-[85%] justify-center items-center">
-                <div className="w-full h-full">
+            <div className="bg-grayscale-iron flex flex-col w-full h-full justify-center items-center">
+                <div className="w-full h-[85%]">
                     <video
-                        className="w-full h-full"
+                        className="w-full h-full md:object-cover"
                         ref={vidRef}
                         preload="auto"
                         playsInline
@@ -56,7 +56,7 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
                 {/* skip video */}
                 <button
                     onClick={handleVidEnd}
-                    className="absolute right-[15%] bottom-[18px] en-body-1 uppercase text-grayscale-light cursor-pointer"
+                    className="absolute right-[16px] bottom-[18px] en-body-1 uppercase text-grayscale-light cursor-pointer"
                 >
                     <button
                         onClick={handleVidEnd}

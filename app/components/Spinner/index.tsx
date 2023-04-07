@@ -46,6 +46,7 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
                         preload="auto"
                         playsInline
                         muted
+                        controls
                         onEnded={handleVidEnd}
                         id="vid"
                     >

@@ -247,8 +247,8 @@ export function LandingPage() {
                 }`}
             ></div>
             {/* Decoration Triangle-1 */}
-            <div className="absolute z-10 w-[75.11px] h-[75.11px] bottom-[-5.1%] right-[6.7%] triangle-shadow md:bottom-[5.2%] md:right-[13.5%] lg:bottom-[5.4%] lg:right-[6.8%] ">
-                <div className="triangle-dec lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
+            <div className="absolute z-10 bottom-[-5.1%] right-[6.7%] triangle-shadow md:bottom-[5.2%] md:right-[13.5%] lg:bottom-[5.4%] lg:right-[6.8%] ">
+                <div className="triangle-dec w-[75.11px] h-[75.11px] lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
             </div>
             {/* Decoration Triangle-2 */}
             <div className="hidden md:inline-block absolute z-10 w-[46.12px] h-[46.12px] left-[14.5%] top-[18.1%] triangle-dec-2 bg-primary lg:left-[20.5%] lg:top-[24.8%] lg:w-[67.8px] lg:h-[67.8px]">
@@ -307,9 +307,9 @@ export function LandingPage() {
                     </div>
                 </div>
                 {/* Decoration Rectangle-1 */}
-                <div className="absolute dec-shadow-4 w-[68.81px] h-[18.37px] z-10 top-[17.5%] right-[-10%] md:right-[11%] md:top-[26%]"></div>
+                <div className="absolute dec-shadow-4 w-[68.81px] h-[18.37px] z-10 top-[17.5%] right-[-24.28px] md:right-[11%] md:top-[26%]"></div>
                 {/* Decoration Rectangle-2 */}
-                <div className="absolute dec-shadow-4 w-[107.39px] h-[43.6px] z-10 left-[-15%] md:left-[-2.5%] md:bottom-[16%] lg:left-[10.13%] lg:bottom-[18.3%]"></div>
+                <div className="absolute dec-shadow-4 w-[107.39px] h-[43.6px] z-10 left-[-40px] bottom-[10.2%] md:left-[-2.5%] md:bottom-[16%] lg:left-[10.13%] lg:bottom-[18.3%]"></div>
                 {/* Decoration Right Tower For Tablet */}
                 <div className="hidden absolute right-[0] bottom-[7.2%] md:max-lg:inline-block">
                     <img src="/assets/tower_r_t.png" alt="bg_tower" />

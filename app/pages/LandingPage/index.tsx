@@ -240,28 +240,35 @@ export function LandingPage() {
 
     return (
         <section className="w-full bg-grayscale-iron">
-            {/* overlay animation */}
+            {/* Overlay Animation */}
             <div
                 className={`fixed z-50 w-full h-full bg-black opacity-0 pointer-events-none ${
                     playVideo ? "overlay-animation" : ""
                 }`}
             ></div>
-            <Spinner
+            {/* Decoration Triangle-1 */}
+            <div className="absolute z-10 w-[75.11px] h-[75.11px] bottom-[-5.1%] right-[6.7%] triangle-shadow md:bottom-[5.2%] md:right-[13.5%] lg:bottom-[5.4%] lg:right-[6.8%] ">
+                <div className="triangle-dec lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
+            </div>
+            {/* Decoration Triangle-2 */}
+            <div className="hidden md:inline-block absolute z-10 w-[46.12px] h-[46.12px] left-[14.5%] top-[18.1%] triangle-dec-2 bg-primary lg:left-[20.5%] lg:top-[24.8%] lg:w-[67.8px] lg:h-[67.8px]">
+                <div className="absolute w-[29.44px] h-[29.44px] right-[5px] bottom-[5px] triangle-dec-2-filter bg-grayscale-iron lg:w-[43.3px] lg:h-[43.3px] lg:right-[7px] lg:bottom-[7px]"></div>
+            </div>
+
+            {/* <Spinner
                 vidRef={vidRef}
                 playVideo={playVideo}
                 isVidVisible={isVidVisible}
                 handleVideoOpen={handleVideoOpen}
-            />
+            /> */}
 
-            {/* <div className="">
-                <video autoPlay preload={"auto"} muted playsInline controls className="" id="vid">
-                    <source src="/assets/baiyu_logo_animation.mp4" type="video/mp4" />
-                    Sorry, your browser doesn't support videos.
-                </video>
-            </div> */}
+            {/* Layout */}
             <div className="relative w-full h-screen flex justify-center items-center overflow-clip">
+                {/* Hero Middle Section */}
                 <div className="relative z-40 w-full flex justify-center items-center">
+                    {/* Outer Circle Shadow */}
                     <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end">
+                        {/* Video Play Buttom */}
                         <div className="relative flex flex-col items-center gap-[16px] bottom-[-56px]">
                             <button
                                 onClick={handleVideoPlay}
@@ -274,10 +281,13 @@ export function LandingPage() {
                             </div>
                         </div>
                     </div>
+                    {/* Hero Image */}
                     <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
                         <img className="" src="/assets/hero.png" alt="hero_image" />
                     </div>
+                    {/* Blend filter */}
                     <div className="absolute inner-shadow mix-blend-multiply w-[381px] h-[381px] md:w-[431px] md:h-[431px]"></div>
+                    {/* Hero Text */}
                     <div className="absolute flex flex-col md:items-center">
                         <div className="flex flex-col md:flex-row">
                             <div className="flex items-end self-center text-[#E7E7E7] md:items-center">
@@ -296,18 +306,24 @@ export function LandingPage() {
                         </div>
                     </div>
                 </div>
-                <div className="absolute dec-shadow-4 w-[68.81px] h-[18.37px] z-10 top-[17.5%] right-[-10%] md:right-[11%] md:top-[26%] "></div>
-                <div className="absolute dec-shadow-4 w-[107.39px] h-[43.6px] z-10 top-[83%] left-[-15%] md:left-[10.13%] md:bottom-[18.3%]  "></div>
-                <div className="hidden absolute right-[0] bottom-[13%] md:max-lg:inline-block">
+                {/* Decoration Rectangle-1 */}
+                <div className="absolute dec-shadow-4 w-[68.81px] h-[18.37px] z-10 top-[17.5%] right-[-10%] md:right-[11%] md:top-[26%]"></div>
+                {/* Decoration Rectangle-2 */}
+                <div className="absolute dec-shadow-4 w-[107.39px] h-[43.6px] z-10 left-[-15%] md:left-[-2.5%] md:bottom-[16%] lg:left-[10.13%] lg:bottom-[18.3%]"></div>
+                {/* Decoration Right Tower For Tablet */}
+                <div className="hidden absolute right-[0] bottom-[7.2%] md:max-lg:inline-block">
                     <img src="/assets/tower_r_t.png" alt="bg_tower" />
                 </div>
-                <div className="hidden absolute right-[0] bottom-[13%] lg:inline-block">
+                {/* Decoration Right Tower For Desktop */}
+                <div className="hidden absolute right-[0] bottom-[10%] lg:inline-block">
                     <img src="/assets/tower_r.png" alt="bg_tower" />
                 </div>
-                <div className="hidden absolute left-[0] bottom-[13%] md:max-lg:inline-block">
+                {/* Decoration Left Tower For Tablet */}
+                <div className="hidden absolute left-[0] bottom-[7.2%] md:max-lg:inline-block">
                     <img src="/assets/tower_l_t.png" alt="bg_tower" />
                 </div>
-                <div className="hidden absolute left-[0] bottom-[13%] lg:inline-block">
+                {/* Decoration Left Tower For Desktop */}
+                <div className="hidden absolute left-[0] bottom-[10%] lg:inline-block">
                     <img src="/assets/tower_l.png" alt="bg_tower" />
                 </div>
             </div>

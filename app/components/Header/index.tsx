@@ -20,7 +20,7 @@ const projectTab = [
 
 function ProjectDropMenu() {
     return (
-        <section className="flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
+        <div className="flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
             <Link
                 to="/projects"
                 className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
@@ -48,13 +48,13 @@ function ProjectDropMenu() {
             <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
                 其他
             </button>
-        </section>
+        </div>
     );
 }
 
 function ProjectMenu() {
     return (
-        <section className="mt-[20px] flex flex-wrap gap-[8px] md:mt-[16px] md:max-w-[432px]">
+        <div className="mt-[20px] flex flex-wrap gap-[8px] md:mt-[16px] md:max-w-[432px]">
             {projectTab.map(({ title }) => {
                 return (
                     <Link
@@ -66,7 +66,7 @@ function ProjectMenu() {
                     </Link>
                 );
             })}
-        </section>
+        </div>
     );
 }
 
@@ -74,7 +74,7 @@ function ModalMenu() {
     const [isOpen, toggleOpen] = useState(false);
 
     return (
-        <section className="absolute -z-10 h-screen w-screen bg-grayscale-dim">
+        <div className="absolute -z-10 h-screen w-screen bg-grayscale-dim">
             <div className="flex flex-col mx-[48px] mt-[128px] md:mx-[129px] md:mt-[248px]">
                 <div className="flex flex-col gap-[32px] md:gap-[56px]">
                     <Link to="/about" className="flex flex-col gap-[4px] md:gap-[8px]">
@@ -105,7 +105,7 @@ function ModalMenu() {
                     Copyright © 2022 BAIYUE INFORMATION CO.,LTD. All rights reserved .
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
 
@@ -114,7 +114,7 @@ export function Header() {
     const [isProjectOpen, toggleProjectOpen] = useState(false);
 
     return (
-        <section className="fixed z-50 w-full ">
+        <div className="fixed z-50 w-full ">
             {isOpen ? <ModalMenu /> : null}
             <div className="flex flex-shrink justify-between px-[24px] pt-[24px] md:px-[40px] md:pt-[32px] lg:px-[48px]">
                 <Link
@@ -156,6 +156,6 @@ export function Header() {
                     <span className="nav-icon"></span>
                 </button>
             </div>
-        </section>
+        </div>
     );
 }

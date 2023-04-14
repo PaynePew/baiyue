@@ -32,7 +32,7 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
     };
 
     return (
-        <section
+        <div
             className={`${
                 isVidVisible ? "fixed" : "hidden"
             } z-50 w-full h-screen flex justify-center items-center bg-grayscale-iron`}
@@ -69,7 +69,7 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
             </div>
             {/* opening loading */}
             {isVisible && (
-                <section
+                <div
                     className="fixed flex bg-grayscale-iron w-full h-screen justify-center items-center"
                     onAnimationEnd={handleAnimationEnd}
                 >
@@ -80,7 +80,7 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
                         </div>
                         <img className="opacity-50" src="/assets/logo_loading.svg" alt="logo_opacity_pic" />
                     </div>
-                </section>
+                </div>
             )}
             {/* overlay animation */}
             <div
@@ -88,6 +88,6 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
                     toggleAnimation ? "overlay-animation" : ""
                 }`}
             ></div>
-        </section>
+        </div>
     );
 }

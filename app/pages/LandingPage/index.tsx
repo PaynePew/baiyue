@@ -1,5 +1,6 @@
 import { useNavigation } from "@remix-run/react";
 import { useEffect, useState, useRef } from "react";
+import { throttle } from "~/utils/helpers";
 import { Footer } from "~/components/Footer";
 import { Spinner } from "~/components/Spinner";
 import spinnerStyles from "~/components/Spinner/styles.css";
@@ -33,9 +34,78 @@ const fakePartners = [
 
 const fakePartnersTablet = [{ pic: "logo_9" }, { pic: "logo_10" }, { pic: "logo_11" }, { pic: "logo_12" }];
 
+function Hero({ handleVideoPlay }) {
+    return (
+        <section className="relative w-full h-screen flex justify-center items-center overflow-clip">
+            {/* Hero Middle Section */}
+            <div className="relative z-40 w-full flex justify-center items-center">
+                {/* Outer Circle Shadow */}
+                <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end">
+                    {/* Video Play Buttom */}
+                    <div className="relative flex flex-col items-center gap-[16px] bottom-[-56px]">
+                        <button
+                            onClick={handleVideoPlay}
+                            className="button-shadow-2 bg-primary w-[40px] h-[40px] rounded-full flex justify-center items-center"
+                        >
+                            <div className="border-grayscale-iron border-y-transparent border-r-transparent border-solid border-l-[8px] border-y-[4px]"></div>
+                        </button>
+                        <div onClick={handleVideoPlay} className="en-body-1 text-secondary-light cursor-pointer">
+                            IMAGE VIDEO
+                        </div>
+                    </div>
+                </div>
+                {/* Hero Image */}
+                <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
+                    <img className="" src="/assets/hero.png" alt="hero_image" />
+                </div>
+                {/* Blend filter */}
+                <div className="absolute inner-shadow mix-blend-multiply w-[381px] h-[381px] md:w-[431px] md:h-[431px]"></div>
+                {/* Hero Text */}
+                <div className="absolute flex flex-col md:items-center">
+                    <div className="flex flex-col md:flex-row">
+                        <div className="flex items-end self-center text-[#E7E7E7] md:items-center">
+                            <div className="display-2">能讓</div>
+                            <div className="flex justify-center items-center w-[82px] h-[42px] border-[1px] border-solid border-primary rounded-[95.7px] md:w-[120px] md:h-[54.4px]">
+                                <div className="en-h1">BIM</div>
+                            </div>
+                        </div>
+                        <div className="display-2 text-[#E7E7E7]">引以為傲的工程</div>
+                    </div>
+                    <div className="flex items-end text-[#E7E7E7] md:items-center">
+                        <div className="display-2 text-[#E7E7E7]">才是真實的</div>
+                        <div className="flex justify-center items-center w-[82px] h-[42px] border-[1px] border-solid border-primary rounded-[95.7px] md:w-[120px] md:h-[54.4px]">
+                            <div className="en-h1">BIM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Decoration Rectangle-1 */}
+            <div className="absolute dec-shadow-4 w-[68.81px] h-[18.37px] z-10 top-[17.5%] right-[-24.28px] md:right-[11%] md:top-[26%]"></div>
+            {/* Decoration Rectangle-2 */}
+            <div className="absolute dec-shadow-4 w-[107.39px] h-[43.6px] z-10 left-[-40px] bottom-[10.2%] md:left-[-2.5%] md:bottom-[16%] lg:left-[10.13%] lg:bottom-[18.3%]"></div>
+            {/* Decoration Right Tower For Tablet */}
+            <div className="hidden absolute right-[0] bottom-[7.2%] md:max-lg:inline-block">
+                <img src="/assets/tower_r_t.png" alt="bg_tower" />
+            </div>
+            {/* Decoration Right Tower For Desktop */}
+            <div className="hidden absolute right-[0] bottom-[10%] lg:inline-block">
+                <img src="/assets/tower_r.png" alt="bg_tower" />
+            </div>
+            {/* Decoration Left Tower For Tablet */}
+            <div className="hidden absolute left-[0] bottom-[7.2%] md:max-lg:inline-block">
+                <img src="/assets/tower_l_t.png" alt="bg_tower" />
+            </div>
+            {/* Decoration Left Tower For Desktop */}
+            <div className="hidden absolute left-[0] bottom-[10%] lg:inline-block">
+                <img src="/assets/tower_l.png" alt="bg_tower" />
+            </div>
+        </section>
+    );
+}
+
 function About() {
     return (
-        <section className="w-full bg-grayscale-dim flex justify-center items-center">
+        <section className="w-full flex justify-center items-center">
             <div className="relative flex flex-col max-w-[312px] pt-[74px] pb-[103px] mx-[24px] md:max-w-none md:mx-[129px] md:pb-[92px] md:w-[510px] lg:flex-row lg:w-auto lg:gap-[126px]">
                 {/* TODO: BG PIC */}
                 {/* <div className="absolute -z-10 bg-grayscale-dim about-bg-shadow w-[80%] h-[20%] bottom-[0] left-[0]"></div> */}
@@ -116,7 +186,7 @@ function FeaturedProject() {
 
 function Partners() {
     return (
-        <section className="w-full flex justify-center items-center bg-grayscale-dim">
+        <section className="w-full flex justify-center items-center">
             <div className="w-full flex flex-col justify-center items-center pt-[64px] pb-[80px] mx-[24px] md:pt-[80px] md:mx-[40px] md:pb-[120px] lg:flex-row lg:gap-[161px] lg:pt-[120px] lg:mx-[120px] lg:pb-[183px] lg:items-start">
                 <div className="flex flex-col items-center justify-center gap-[8px] mb-[40px] md:mb-[64px] lg:items-start">
                     <h1 className="text-grayscale-gainsboro">信賴夥伴</h1>
@@ -154,7 +224,7 @@ function Partners() {
 
 function Contact() {
     return (
-        <section className="w-full flex justify-center items-center bg-grayscale-dim">
+        <section className="w-full flex justify-center items-center">
             <div className="w-full flex flex-col justify-center items-center pb-[64px] mx-[24px] gap-[40px] md:mx-[40px] md:gap-[64px] md:pb-[80px] lg:pb-[120px] lg:mx-[120px] lg:flex-row lg:gap-[126px]">
                 <div className="flex flex-col gap-[16px] md:gap-[24px] lg:gap-[48px] lg:max-w-[384px]">
                     <div className="flex flex-col items-center justify-center gap-[8px] lg:items-start">
@@ -217,7 +287,56 @@ function Contact() {
 export function LandingPage() {
     const [isVidVisible, setIsVidVisible] = useState(true);
     const [playVideo, setPlayVideo] = useState(false);
+    const colors = [
+        "bg-grayscale-iron",
+        "bg-grayscale-dim",
+        "bg-grayscale-iron",
+        "bg-grayscale-dim",
+        "bg-grayscale-dim",
+    ];
+    const [colorIndex, setColorIndex] = useState(0);
     const vidRef = useRef(null);
+    // const [vidRef, heroSection, aboutSection, featuredProjectSection, partnersSection, contactSection] = [
+    //     useRef(null),
+    //     useRef(null),
+    //     useRef(null),
+    //     useRef(null),
+    //     useRef(null),
+    //     useRef(null),
+    // ];
+    // const handleAnimation = [
+    //     { section: heroSection, bgColor: "bg-grayscale-iron" },
+    //     { section: aboutSection, bgColor: "bg-grayscale-dim" },
+    //     { section: featuredProjectSection, bgColor: "bg-grayscale-iron" },
+    //     { section: partnersSection, bgColor: "bg-grayscale-dim" },
+    //     { section: featuredProjectSection, bgColor: "bg-grayscale-dim" },
+    //     { section: contactSection, bgColor: "bg-grayscale-iron" },
+    // ];
+
+    useEffect(() => {
+        // handleAnimation.map(({ section, bgColor }) => {
+        //     if (section.current) {
+        //         return section.current["offsetTop"] + section.current["clientHeight"] / 2
+        //     }
+        //     return null
+        // });
+        const handleScroll = () => {
+            const scrollFromTop = window.pageYOffset;
+            const sectionElements = [...document.getElementsByTagName("section")];
+
+            console.log(sectionElements);
+            for (let i = 0; sectionElements.length > i; i++) {
+                if (scrollFromTop <= sectionElements[i].offsetTop + sectionElements[i].clientHeight / 2) {
+                    setColorIndex(i);
+                    break;
+                }
+            }
+        };
+        const throttledScroll = throttle(handleScroll);
+        throttledScroll();
+        window.addEventListener("scroll", throttledScroll);
+        return () => window.removeEventListener("scroll", throttledScroll);
+    }, []);
 
     const handleVideoPlay = () => {
         setPlayVideo(true);
@@ -232,14 +351,8 @@ export function LandingPage() {
         setIsVidVisible(!isVidVisible);
     };
 
-    // const handlePlayVideo = () => {
-    //     vidRef.current.currentTime = 0;
-    //     vidRef.current.play();
-    //     setToggleAnimtion(false);
-    // };
-
     return (
-        <section className="w-full bg-grayscale-iron">
+        <div className={`w-full ${colors[colorIndex]} transition-all duration-500`}>
             {/* Overlay Animation */}
             <div
                 className={`fixed z-50 w-full h-full bg-black opacity-0 pointer-events-none ${
@@ -255,83 +368,13 @@ export function LandingPage() {
                 <div className="absolute w-[29.44px] h-[29.44px] right-[5px] bottom-[5px] triangle-dec-2-filter bg-grayscale-iron lg:w-[43.3px] lg:h-[43.3px] lg:right-[7px] lg:bottom-[7px]"></div>
             </div>
 
-            {/* <Spinner
-                vidRef={vidRef}
-                playVideo={playVideo}
-                isVidVisible={isVidVisible}
-                handleVideoOpen={handleVideoOpen}
-            /> */}
-
-            {/* Layout */}
-            <div className="relative w-full h-screen flex justify-center items-center overflow-clip">
-                {/* Hero Middle Section */}
-                <div className="relative z-40 w-full flex justify-center items-center">
-                    {/* Outer Circle Shadow */}
-                    <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end">
-                        {/* Video Play Buttom */}
-                        <div className="relative flex flex-col items-center gap-[16px] bottom-[-56px]">
-                            <button
-                                onClick={handleVideoPlay}
-                                className="button-shadow-2 bg-primary w-[40px] h-[40px] rounded-full flex justify-center items-center"
-                            >
-                                <div className="border-grayscale-iron border-y-transparent border-r-transparent border-solid border-l-[8px] border-y-[4px]"></div>
-                            </button>
-                            <div onClick={handleVideoPlay} className="en-body-1 text-secondary-light cursor-pointer">
-                                IMAGE VIDEO
-                            </div>
-                        </div>
-                    </div>
-                    {/* Hero Image */}
-                    <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
-                        <img className="" src="/assets/hero.png" alt="hero_image" />
-                    </div>
-                    {/* Blend filter */}
-                    <div className="absolute inner-shadow mix-blend-multiply w-[381px] h-[381px] md:w-[431px] md:h-[431px]"></div>
-                    {/* Hero Text */}
-                    <div className="absolute flex flex-col md:items-center">
-                        <div className="flex flex-col md:flex-row">
-                            <div className="flex items-end self-center text-[#E7E7E7] md:items-center">
-                                <div className="display-2">能讓</div>
-                                <div className="flex justify-center items-center w-[82px] h-[42px] border-[1px] border-solid border-primary rounded-[95.7px] md:w-[120px] md:h-[54.4px]">
-                                    <div className="en-h1">BIM</div>
-                                </div>
-                            </div>
-                            <div className="display-2 text-[#E7E7E7]">引以為傲的工程</div>
-                        </div>
-                        <div className="flex items-end text-[#E7E7E7] md:items-center">
-                            <div className="display-2 text-[#E7E7E7]">才是真實的</div>
-                            <div className="flex justify-center items-center w-[82px] h-[42px] border-[1px] border-solid border-primary rounded-[95.7px] md:w-[120px] md:h-[54.4px]">
-                                <div className="en-h1">BIM</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* Decoration Rectangle-1 */}
-                <div className="absolute dec-shadow-4 w-[68.81px] h-[18.37px] z-10 top-[17.5%] right-[-24.28px] md:right-[11%] md:top-[26%]"></div>
-                {/* Decoration Rectangle-2 */}
-                <div className="absolute dec-shadow-4 w-[107.39px] h-[43.6px] z-10 left-[-40px] bottom-[10.2%] md:left-[-2.5%] md:bottom-[16%] lg:left-[10.13%] lg:bottom-[18.3%]"></div>
-                {/* Decoration Right Tower For Tablet */}
-                <div className="hidden absolute right-[0] bottom-[7.2%] md:max-lg:inline-block">
-                    <img src="/assets/tower_r_t.png" alt="bg_tower" />
-                </div>
-                {/* Decoration Right Tower For Desktop */}
-                <div className="hidden absolute right-[0] bottom-[10%] lg:inline-block">
-                    <img src="/assets/tower_r.png" alt="bg_tower" />
-                </div>
-                {/* Decoration Left Tower For Tablet */}
-                <div className="hidden absolute left-[0] bottom-[7.2%] md:max-lg:inline-block">
-                    <img src="/assets/tower_l_t.png" alt="bg_tower" />
-                </div>
-                {/* Decoration Left Tower For Desktop */}
-                <div className="hidden absolute left-[0] bottom-[10%] lg:inline-block">
-                    <img src="/assets/tower_l.png" alt="bg_tower" />
-                </div>
-            </div>
+            <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
+            <Hero handleVideoPlay={handleVideoPlay} />
             <About />
             <FeaturedProject />
             <Partners />
             <Contact />
             <Footer />
-        </section>
+        </div>
     );
 }

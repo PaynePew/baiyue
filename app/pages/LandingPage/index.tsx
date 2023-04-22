@@ -86,18 +86,62 @@ function Hero({ handleVideoPlay }) {
             {/* Decoration Right Tower For Tablet */}
             <div className="hidden absolute right-[0] bottom-[7.2%] md:max-lg:inline-block">
                 <img src="/assets/tower_r_t.png" alt="bg_tower" />
+                {/* border-arrow-6 */}
+                <div className="absolute -rotate-45 bottom-[45px] left-[-10px] border-arrow-wrapper">
+                    <div className="absolute w-[654px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-10 */}
+                <div className="absolute bottom-[-29px] left-[25px] border-arrow-wrapper">
+                    <div className="absolute w-[517px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
             </div>
             {/* Decoration Right Tower For Desktop */}
             <div className="hidden absolute right-[0] bottom-[10%] lg:inline-block">
                 <img src="/assets/tower_r.png" alt="bg_tower" />
+                {/* border-arrow-6 */}
+                <div className="absolute -rotate-45 bottom-[60px] left-[-10px] border-arrow-wrapper">
+                    <div className="absolute w-[654px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-10 */}
+                <div className="absolute bottom-[-33px] left-[30px] border-arrow-wrapper">
+                    <div className="absolute w-[598px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
             </div>
             {/* Decoration Left Tower For Tablet */}
             <div className="hidden absolute left-[0] bottom-[7.2%] md:max-lg:inline-block">
                 <img src="/assets/tower_l_t.png" alt="bg_tower" />
+                {/* border-arrow-5 */}
+                <div className="absolute top-[195px] right-[320px] border-arrow-wrapper">
+                    <div className="absolute w-[91px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-7 */}
+                <div className="absolute rotate-90 top-[270px] right-[90px] border-arrow-wrapper">
+                    <div className="absolute w-[126px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-9 */}
+                <div className="absolute bottom-[-29px] left-[-175px] border-arrow-wrapper">
+                    <div className="absolute w-[517px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
             </div>
             {/* Decoration Left Tower For Desktop */}
             <div className="hidden absolute left-[0] bottom-[10%] lg:inline-block">
                 <img src="/assets/tower_l.png" alt="bg_tower" />
+                {/* border-arrow-5 */}
+                <div className="absolute top-[220px] right-[365px] border-arrow-wrapper">
+                    <div className="absolute w-[105px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-7 */}
+                <div className="absolute rotate-90 top-[310px] right-[110px] border-arrow-wrapper">
+                    <div className="absolute w-[145px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-8 */}
+                <div className="absolute rotate-90 top-[250px] right-[530px] border-arrow-wrapper">
+                    <div className="absolute w-[245px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-9 */}
+                <div className="absolute bottom-[-33px] left-[-40px] border-arrow-wrapper">
+                    <div className="absolute w-[598px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
             </div>
         </section>
     );

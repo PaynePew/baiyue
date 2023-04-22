@@ -287,6 +287,8 @@ function Contact() {
 export function LandingPage() {
     const [isVidVisible, setIsVidVisible] = useState(true);
     const [playVideo, setPlayVideo] = useState(false);
+    const [colorIndex, setColorIndex] = useState(0);
+    const vidRef = useRef(null);
     const colors = [
         "bg-grayscale-iron",
         "bg-grayscale-dim",
@@ -294,8 +296,6 @@ export function LandingPage() {
         "bg-grayscale-dim",
         "bg-grayscale-dim",
     ];
-    const [colorIndex, setColorIndex] = useState(0);
-    const vidRef = useRef(null);
     // const [vidRef, heroSection, aboutSection, featuredProjectSection, partnersSection, contactSection] = [
     //     useRef(null),
     //     useRef(null),
@@ -324,7 +324,6 @@ export function LandingPage() {
             const scrollFromTop = window.pageYOffset;
             const sectionElements = [...document.getElementsByTagName("section")];
 
-            console.log(sectionElements);
             for (let i = 0; sectionElements.length > i; i++) {
                 if (scrollFromTop <= sectionElements[i].offsetTop + sectionElements[i].clientHeight / 2) {
                     setColorIndex(i);
@@ -364,11 +363,25 @@ export function LandingPage() {
                 <div className="triangle-dec w-[75.11px] h-[75.11px] lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
             </div>
             {/* Decoration Triangle-2 */}
-            <div className="hidden md:inline-block absolute z-10 w-[46.12px] h-[46.12px] left-[14.5%] top-[18.1%] triangle-dec-2 bg-primary lg:left-[20.5%] lg:top-[24.8%] lg:w-[67.8px] lg:h-[67.8px]">
-                <div className="absolute w-[29.44px] h-[29.44px] right-[5px] bottom-[5px] triangle-dec-2-filter bg-grayscale-iron lg:w-[43.3px] lg:h-[43.3px] lg:right-[7px] lg:bottom-[7px]"></div>
+            <div className="hidden md:block absolute z-10 left-[14.5%] top-[18.1%] lg:left-[20.5%] lg:top-[24.8%] ">
+                <div className="w-[46.12px] h-[46.12px]  triangle-dec-2 bg-primary lg:w-[67.8px] lg:h-[67.8px]">
+                    <div className="absolute w-[29.44px] h-[29.44px] right-[5px] bottom-[5px] triangle-dec-2-filter bg-grayscale-iron lg:w-[43.3px] lg:h-[43.3px] lg:right-[7px] lg:bottom-[7px]"></div>
+                </div>
+                {/* border-arrow-1 */}
+                <div className="absolute bottom-[-12px] left-[-40px] lg:bottom-[-18px] lg:left-[-60px] border-arrow-wrapper">
+                    <div className="absolute w-[125px] lg:w-[183px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-2 */}
+                <div className="absolute rotate-90 right-[-12px] top-[-40px] lg:right-[-18px] lg:top-[-60px] border-arrow-wrapper">
+                    <div className="absolute w-[125px] lg:w-[183px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
+                {/* border-arrow-3 */}
+                <div className="absolute -rotate-45 left-[-40px] bottom-[-25px] lg:left-[-60px] lg:bottom-[-35px] border-arrow-wrapper">
+                    <div className="absolute w-[160px] lg:w-[235px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                </div>
             </div>
 
-            <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
+            {/* <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} /> */}
             <Hero handleVideoPlay={handleVideoPlay} />
             <About />
             <FeaturedProject />

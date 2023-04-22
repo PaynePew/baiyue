@@ -128,7 +128,7 @@ export function Header() {
                     />
                 </Link>
                 {/* Header for PC */}
-                <div
+                <nav
                     className={`hidden w-[532px] bg-grayscale-iron  menu-shadow  justify-center items-center flex-wrap gap-[48px] h-fit px-[48px] py-[24px] rounded-[128px] text-grayscale-light lg:flex ${
                         isProjectOpen ? "dropdown-header" : ""
                     }`}
@@ -146,7 +146,7 @@ export function Header() {
                         聯絡我們
                     </Link>
                     {isProjectOpen ? <ProjectDropMenu /> : null}
-                </div>
+                </nav>
                 {/* Hamburger for Mobile & Tablet */}
                 <button
                     className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] lg:hidden"

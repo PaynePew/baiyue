@@ -40,7 +40,7 @@ function Hero({ handleVideoPlay }) {
             {/* Hero Middle Section */}
             <div className="relative z-40 w-full flex justify-center items-center">
                 {/* Outer Circle Shadow */}
-                <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end">
+                <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end expand-order-1">
                     {/* Video Play Buttom */}
                     <div className="relative flex flex-col items-center gap-[16px] bottom-[-56px]">
                         <button
@@ -87,11 +87,11 @@ function Hero({ handleVideoPlay }) {
             <div className="hidden absolute right-[0] bottom-[7.2%] md:max-lg:inline-block">
                 <img src="/assets/tower_r_t.png" alt="bg_tower" />
                 {/* border-arrow-6 */}
-                <div className="absolute -rotate-45 bottom-[45px] left-[-10px] border-arrow-wrapper">
+                <div className="absolute -rotate-45 bottom-[45px] left-[-10px] border-arrow-wrapper expand-order-6">
                     <div className="absolute w-[654px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-10 */}
-                <div className="absolute bottom-[-29px] left-[25px] border-arrow-wrapper">
+                <div className="absolute bottom-[-29px] left-[25px] border-arrow-wrapper expand-order-10">
                     <div className="absolute w-[517px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
             </div>
@@ -99,11 +99,11 @@ function Hero({ handleVideoPlay }) {
             <div className="hidden absolute right-[0] bottom-[10%] lg:inline-block">
                 <img src="/assets/tower_r.png" alt="bg_tower" />
                 {/* border-arrow-6 */}
-                <div className="absolute -rotate-45 bottom-[60px] left-[-10px] border-arrow-wrapper">
+                <div className="absolute bottom-[60px] left-[-10px] border-arrow-wrapper -rotate-45 expand-order-6">
                     <div className="absolute w-[654px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-10 */}
-                <div className="absolute bottom-[-33px] left-[30px] border-arrow-wrapper">
+                <div className="absolute bottom-[-33px] left-[30px] border-arrow-wrapper expand-order-10">
                     <div className="absolute w-[598px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
             </div>
@@ -111,15 +111,15 @@ function Hero({ handleVideoPlay }) {
             <div className="hidden absolute left-[0] bottom-[7.2%] md:max-lg:inline-block">
                 <img src="/assets/tower_l_t.png" alt="bg_tower" />
                 {/* border-arrow-5 */}
-                <div className="absolute top-[195px] right-[320px] border-arrow-wrapper">
+                <div className="absolute top-[195px] right-[320px] border-arrow-wrapper expand-order-5">
                     <div className="absolute w-[91px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-7 */}
-                <div className="absolute rotate-90 top-[270px] right-[90px] border-arrow-wrapper">
+                <div className="absolute rotate-90 top-[270px] right-[90px] border-arrow-wrapper expand-order-7">
                     <div className="absolute w-[126px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-9 */}
-                <div className="absolute bottom-[-29px] left-[-175px] border-arrow-wrapper">
+                <div className="absolute bottom-[-29px] left-[-175px] border-arrow-wrapper expand-order-9">
                     <div className="absolute w-[517px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
             </div>
@@ -127,19 +127,19 @@ function Hero({ handleVideoPlay }) {
             <div className="hidden absolute left-[0] bottom-[10%] lg:inline-block">
                 <img src="/assets/tower_l.png" alt="bg_tower" />
                 {/* border-arrow-5 */}
-                <div className="absolute top-[220px] right-[365px] border-arrow-wrapper">
+                <div className="absolute top-[220px] right-[365px] border-arrow-wrapper expand-order-5">
                     <div className="absolute w-[105px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-7 */}
-                <div className="absolute rotate-90 top-[310px] right-[110px] border-arrow-wrapper">
+                <div className="absolute rotate-90 top-[310px] right-[110px] border-arrow-wrapper expand-order-7">
                     <div className="absolute w-[145px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-8 */}
-                <div className="absolute rotate-90 top-[250px] right-[530px] border-arrow-wrapper">
+                <div className="absolute rotate-90 top-[250px] right-[530px] border-arrow-wrapper expand-order-8">
                     <div className="absolute w-[245px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-9 */}
-                <div className="absolute bottom-[-33px] left-[-40px] border-arrow-wrapper">
+                <div className="absolute bottom-[-33px] left-[-40px] border-arrow-wrapper expand-order-9">
                     <div className="absolute w-[598px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
             </div>
@@ -412,15 +412,15 @@ export function LandingPage() {
                     <div className="absolute w-[29.44px] h-[29.44px] right-[5px] bottom-[5px] triangle-dec-2-filter bg-grayscale-iron lg:w-[43.3px] lg:h-[43.3px] lg:right-[7px] lg:bottom-[7px]"></div>
                 </div>
                 {/* border-arrow-1 */}
-                <div className="absolute bottom-[-12px] left-[-40px] lg:bottom-[-18px] lg:left-[-60px] border-arrow-wrapper">
+                <div className="absolute bottom-[-12px] left-[-40px] lg:bottom-[-18px] lg:left-[-60px] border-arrow-wrapper expand-order-3">
                     <div className="absolute w-[125px] lg:w-[183px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-2 */}
-                <div className="absolute rotate-90 right-[-12px] top-[-40px] lg:right-[-18px] lg:top-[-60px] border-arrow-wrapper">
+                <div className="absolute rotate-90 right-[-12px] top-[-40px] lg:right-[-18px] lg:top-[-60px] border-arrow-wrapper expand-order-2">
                     <div className="absolute w-[125px] lg:w-[183px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-3 */}
-                <div className="absolute -rotate-45 left-[-40px] bottom-[-25px] lg:left-[-60px] lg:bottom-[-35px] border-arrow-wrapper">
+                <div className="absolute -rotate-45 left-[-40px] bottom-[-25px] lg:left-[-60px] lg:bottom-[-35px] border-arrow-wrapper expand-order-4">
                     <div className="absolute w-[160px] lg:w-[235px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
             </div>

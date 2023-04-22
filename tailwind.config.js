@@ -32,6 +32,15 @@ module.exports = {
                     black: "#211F21",
                 },
             },
+            animation: {
+                "expand-slow": "expand 5s ease-in-out forwards",
+            },
+            keyframes: {
+                expand: {
+                    "0%": { transform: "scale(0)" },
+                    "100%": { transform: "scale(1)" },
+                },
+            },
         },
     },
     plugins: [

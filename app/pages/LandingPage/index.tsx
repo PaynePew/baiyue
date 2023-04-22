@@ -34,7 +34,7 @@ const fakePartners = [
 
 const fakePartnersTablet = [{ pic: "logo_9" }, { pic: "logo_10" }, { pic: "logo_11" }, { pic: "logo_12" }];
 
-function Hero({ handleVideoPlay }) {
+function Hero({ handleVideoPlay, colors, colorIndex }) {
     return (
         <section className="relative w-full h-screen flex justify-center items-center overflow-clip">
             {/* Hero Middle Section */}
@@ -42,7 +42,9 @@ function Hero({ handleVideoPlay }) {
                 {/* Outer Circle Shadow */}
                 <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end expand-order-1">
                     {/* Video Play Buttom */}
-                    <div className="relative flex flex-col items-center gap-[16px] bottom-[-56px]">
+                    <div
+                        className={`relative bg-${colors[colorIndex]} transition-all duration-500  z-50 flex flex-col items-center gap-[16px] bottom-[-56px]`}
+                    >
                         <button
                             onClick={handleVideoPlay}
                             className="button-shadow-2 bg-primary w-[40px] h-[40px] rounded-full flex justify-center items-center"
@@ -54,6 +56,19 @@ function Hero({ handleVideoPlay }) {
                         </div>
                     </div>
                 </div>
+                <svg className="absolute w-[440px] h-[440px] md:w-[500px] md:h-[500px] rotate-90">
+                    <circle
+                        className={`stroke-${colors[colorIndex]} transition-all duration-500 `}
+                        id="circle"
+                        fill="none"
+                        stroke="none"
+                        stroke-width="15"
+                        stroke-miterlimit="10"
+                        cx="250"
+                        cy="250"
+                        r="250"
+                    />
+                </svg>
                 {/* Hero Image */}
                 <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
                     <img className="" src="/assets/hero.png" alt="hero_image" />
@@ -333,13 +348,7 @@ export function LandingPage() {
     const [playVideo, setPlayVideo] = useState(false);
     const [colorIndex, setColorIndex] = useState(0);
     const vidRef = useRef(null);
-    const colors = [
-        "bg-grayscale-iron",
-        "bg-grayscale-dim",
-        "bg-grayscale-iron",
-        "bg-grayscale-dim",
-        "bg-grayscale-dim",
-    ];
+    const colors = ["grayscale-iron", "grayscale-dim", "grayscale-iron", "grayscale-dim", "grayscale-dim"];
     // const [vidRef, heroSection, aboutSection, featuredProjectSection, partnersSection, contactSection] = [
     //     useRef(null),
     //     useRef(null),
@@ -395,7 +404,7 @@ export function LandingPage() {
     };
 
     return (
-        <div className={`w-full ${colors[colorIndex]} transition-all duration-500`}>
+        <div className={`w-full bg-${colors[colorIndex]} transition-all duration-500`}>
             {/* Overlay Animation */}
             <div
                 className={`fixed z-50 w-full h-full bg-black opacity-0 pointer-events-none ${
@@ -426,7 +435,7 @@ export function LandingPage() {
             </div>
 
             {/* <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} /> */}
-            <Hero handleVideoPlay={handleVideoPlay} />
+            <Hero handleVideoPlay={handleVideoPlay} colors={colors} colorIndex={colorIndex} />
             <About />
             <FeaturedProject />
             <Partners />

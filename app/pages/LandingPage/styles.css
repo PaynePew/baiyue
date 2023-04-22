@@ -9,19 +9,30 @@
     border-radius: 9999px;
     box-shadow: inset 0px 0px 7.05217px rgba(9, 8, 8, 0.7);
 }
-/* .outter-shadow-wrapper {
+.outter-shadow-wrapper {
     filter: drop-shadow(-0.881521px -0.881521px 0.881521px #414041) drop-shadow(-1.76304px -1.76304px 1.76304px #252426)
         drop-shadow(inset -0.881521px -0.881521px 0.881521px #414041)
         drop-shadow(inset -1.76304px -1.76304px 1.76304px #262527);
-} */
+}
 
 .outter-shadow {
     /* grayscale/iron-gray */
-    background: #302e31;
+    /* background: #302e31; */
     /* clip-path: circle(50% at 50% 50%); */
     box-shadow: -0.881521px -0.881521px 0.881521px #414041, -1.76304px -1.76304px 1.76304px #252426,
         inset -0.881521px -0.881521px 0.881521px #414041, inset -1.76304px -1.76304px 1.76304px #262527;
     border-radius: 50%;
+}
+#circle {
+    stroke-dasharray: 1570; /* 設定線條的總長度，這裡假設半徑為50，圓周長度為2 * π * r = 2 * 3.14 * 50 = 314 */
+    stroke-dashoffset: 0; /* 設定線條的偏移量，初始值設為總長度，使線條隱藏起來 */
+    animation: drawCircle 3s linear forwards; /* 使用動畫名稱、持續時間、動畫篡改函數、和動畫完成後狀態來定義動畫效果 */
+}
+
+@keyframes drawCircle {
+    to {
+        stroke-dashoffset: -1570; /* 設定線條的偏移量，終點值設為0，使線條完全畫出 */
+    }
 }
 
 .about-bg-shadow {

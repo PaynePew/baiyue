@@ -23,7 +23,7 @@
         inset -0.881521px -0.881521px 0.881521px #414041, inset -1.76304px -1.76304px 1.76304px #262527;
     border-radius: 50%;
 }
-#circle {
+.draw-circle {
     stroke-dasharray: 1570; /* 設定線條的總長度，這裡假設半徑為50，圓周長度為2 * π * r = 2 * 3.14 * 50 = 314 */
     stroke-dashoffset: 0; /* 設定線條的偏移量，初始值設為總長度，使線條隱藏起來 */
     animation: drawCircle 3s linear forwards; /* 使用動畫名稱、持續時間、動畫篡改函數、和動畫完成後狀態來定義動畫效果 */

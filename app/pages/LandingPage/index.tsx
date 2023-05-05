@@ -35,9 +35,6 @@ const fakePartners = [
 const fakePartnersTablet = [{ pic: "logo_9" }, { pic: "logo_10" }, { pic: "logo_11" }, { pic: "logo_12" }];
 
 function Hero({ handleVideoPlay, colors, colorIndex }) {
-    console.log(colors[colorIndex]);
-    const circleRef = useRef(null);
-
     return (
         <section className="relative w-full h-screen flex justify-center items-center overflow-clip">
             {/* Hero Middle Section */}
@@ -46,7 +43,7 @@ function Hero({ handleVideoPlay, colors, colorIndex }) {
                 <div className="absolute outter-shadow w-[440px] h-[440px] md:w-[497px] md:h-[497px] flex justify-center items-end expand-order-1">
                     {/* Video Play Buttom */}
                     <div
-                        className={`relative bg-${colors[colorIndex]} transition-all duration-500  z-50 flex flex-col items-center gap-[16px] bottom-[-56px]`}
+                        className={`relative bg-${colors[colorIndex]} transition-all duration-500 z-50 flex flex-col items-center gap-[16px] bottom-[-56px]`}
                     >
                         <button
                             onClick={handleVideoPlay}
@@ -60,8 +57,7 @@ function Hero({ handleVideoPlay, colors, colorIndex }) {
                     </div>
                 </div>
                 <svg
-                    ref={circleRef}
-                    className={`absolute stroke-${colors[colorIndex]} transition-all duration-500  w-[440px] h-[440px] md:w-[500px] md:h-[500px] rotate-90`}
+                    className={`absolute stroke-grayscale-iron  w-[440px] h-[440px] md:w-[500px] md:h-[500px] rotate-90`}
                 >
                     <circle
                         className={`draw-circle`}

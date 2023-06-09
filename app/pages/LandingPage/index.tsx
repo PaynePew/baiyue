@@ -434,7 +434,7 @@ export function LandingPage() {
                 </div>
             </div>
 
-            {/* <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} /> */}
+            <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
             <Hero handleVideoPlay={handleVideoPlay} colors={colors} colorIndex={colorIndex} />
             <About />
             <FeaturedProject />

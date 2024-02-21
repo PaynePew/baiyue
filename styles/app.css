@@ -1,5 +1,7 @@
 @tailwind base;
+
 @layer base {
+
     h1,
     h2,
     h3,
@@ -8,68 +10,86 @@
     h6 {
         @apply font-sans tracking-[.1em] font-thin;
     }
+
     h1 {
         font-size: 30px;
         line-height: 140%;
     }
+
     h2 {
         font-size: 22px;
         line-height: 150%;
     }
+
     h3 {
         font-size: 22px;
         line-height: 190%;
     }
+
     h4 {
         font-size: 20px;
         line-height: 170%;
     }
+
     h5 {
         font-size: 18px;
         line-height: 140%;
     }
+
     h6 {
         font-size: 16px;
         line-height: 140%;
     }
+
     @media screen(md) {
         h1 {
             font-size: 44px;
         }
+
         h2 {
             font-size: 28px;
         }
+
         h3 {
             font-size: 24px;
         }
+
         h4 {
             font-size: 22px;
         }
+
         h5 {
             font-size: 24px;
         }
+
         h6 {
             font-size: 20px;
         }
     }
+
     @media screen(lg) {
         h1 {
             font-size: 56px;
         }
+
         h2 {
             font-size: 40px;
         }
+
         h3 {
             font-size: 32px;
         }
+
         h4 {
             font-size: 28px;
         }
     }
 }
+
 @tailwind components;
 
 @layer components {
+
     /* typography */
     .display-1,
     .display-2,
@@ -84,55 +104,68 @@
         font-size: 32px;
         line-height: 140%;
     }
+
     .display-2 {
         font-size: 36px;
         line-height: 140%;
     }
+
     .nav-title {
         font-size: 24px;
         line-height: 160%;
         font-weight: 400;
         letter-spacing: 0.2em;
     }
+
     .body-1 {
         font-size: 14px;
         line-height: 160%;
     }
+
     .body-2 {
         font-size: 15px;
         line-height: 210%;
         font-weight: 300;
     }
+
     .body-3 {
         font-size: 13px;
         line-height: 160%;
         font-weight: 400;
     }
+
     @media screen(md) {
         .display-1 {
             font-size: 48px;
         }
+
         .display-2 {
             font-size: 44px;
         }
+
         .nav-title {
             font-size: 32px;
         }
+
         .body-1 {
             font-size: 15px;
         }
     }
+
     @media screen(lg) {
         .display-1 {
             font-size: 64px;
         }
+
         .display-2 {
             font-size: 52px;
         }
+
         .nav-title {
             font-size: 15px;
         }
     }
+
     /* english typography */
     .en-h1,
     .en-h2,
@@ -143,61 +176,77 @@
     .en-minimum {
         @apply font-ga tracking-[.1em];
     }
+
     .en-h1 {
         font-size: 36px;
         line-height: 140%;
     }
+
     .en-h2 {
         font-size: 22px;
         line-height: 170%;
     }
+
     .en-h3 {
         font-size: 24px;
         line-height: 120%;
     }
+
     .en-h4 {
         font-size: 16px;
         line-height: 170%;
     }
+
     .en-body-1 {
         font-size: 14px;
         line-height: 160%;
     }
+
     .en-body-1-ag {
         font-size: 15px;
         line-height: 160%;
     }
+
     .en-minimum {
         font-size: 12px;
         line-height: 160%;
     }
+
     @media screen(md) {
         .en-h1 {
             font-size: 48px;
         }
+
         .en-h2 {
             font-size: 30px;
         }
+
         .en-h3 {
             font-size: 26px;
         }
+
         .en-h4 {
             font-size: 18px;
         }
+
         .en-body-1 {
             font-size: 15px;
         }
     }
+
     @media screen(lg) {
         .en-h1 {
             font-size: 52px;
         }
+
         .en-h2 {
             font-size: 42px;
         }
+
         .en-h3 {
             font-size: 32px;
         }
+
         .en-h4 {
             font-size: 48px;
         }
@@ -219,24 +268,31 @@
     .card-shadow {
         box-shadow: 4.99561px 5px 12px rgba(33, 32, 34, 0.3), -4.99561px -4.99561px 12px #343235;
     }
+
     .menu-shadow {
         box-shadow: 4px 4px 12px #212022, -4px -4px 12px #343235;
     }
+
     .button-shadow-1 {
         box-shadow: 4px 4px 12px -4px rgba(33, 32, 34, 0.3), -5px -5px 12px -4px rgba(81, 81, 81, 0.9);
     }
+
     .button-shadow-2 {
         box-shadow: 4px 4px 12px #212022, -4px -4px 12px #343235;
     }
+
     .dec-shadow-1 {
         box-shadow: 4px 4px 16px #212022, -4px -4px 16px #343235;
     }
+
     .dec-shadow-2 {
         box-shadow: 8px 8px 16px rgba(33, 32, 34, 0.1), -4px -4px 32px -4px #383639;
     }
+
     .dec-shadow-3 {
         box-shadow: 8px 8px 16px rgba(33, 32, 34, 0.1), -4px -4px 32px -4px #3d3b3f;
     }
+
     .dec-shadow-4 {
         @apply bg-grayscale-dim;
         box-shadow: 4.99561px 6.24451px 14.9868px #212022, -4.99561px -4.99561px 14.9868px #343235;

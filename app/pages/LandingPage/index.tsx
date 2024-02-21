@@ -244,15 +244,50 @@ function FeaturedProject() {
 }
 
 function Partners() {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const ballRef = useRef<HTMLDivElement>(null);
+    const [ballPosition, setBallPosition] = useState({ x: 0, y: 0 });
+
+    const handleMouseMove = (event: React.MouseEvent) => {
+        const container = containerRef.current;
+        const ball = ballRef.current;
+
+        if (!container || !ball) {
+            return;
+        }
+        // 處理mouseMove event
+        const containerRect = container.getBoundingClientRect();
+        const ballSpotlight = ball.getBoundingClientRect();
+
+        let x = event.clientX - containerRect.left - ballSpotlight.width / 2;
+        let y = event.clientY - containerRect.top - ballSpotlight.width / 2;
+        if (containerRect.left > event.clientX) {
+            x = -ballSpotlight.width / 2;
+        } else if (containerRect.right < event.clientX) {
+            x = containerRect.width - ballSpotlight.width / 2;
+        }
+        if (event.clientY < containerRect.top) {
+            y = -ballSpotlight.width / 2;
+        } else if (event.clientY > containerRect.bottom) {
+            y = containerRect.height - ballSpotlight.width / 2;
+        }
+        setBallPosition({ x, y });
+    };
+
     return (
-        <section className="w-full flex justify-center items-center">
+        <section className="w-full flex justify-center items-center" onMouseMove={handleMouseMove}>
             <div className="w-full flex flex-col justify-center items-center pt-[64px] pb-[80px] mx-[24px] md:pt-[80px] md:mx-[40px] md:pb-[120px] lg:flex-row lg:gap-[161px] lg:pt-[120px] lg:mx-[120px] lg:pb-[183px] lg:items-start">
                 <div className="flex flex-col items-center justify-center gap-[8px] mb-[40px] md:mb-[64px] lg:items-start">
                     <h1 className="text-grayscale-gainsboro">信賴夥伴</h1>
                     <div className="en-h3 text-primary">PARTNERS</div>
                 </div>
-                <div className="relative">
-                    <div className="hidden absolute z-20  w-[500px] h-[500px] bg-secondary-spotlight lg:block rounded-full mix-blend-overlay"></div>
+                <div ref={containerRef} className="relative overflow-hidden">
+                    {/* <div className="hidden absolute bg-white z-30 w-[500px] h-[500px]  lg:block"></div> */}
+                    <div
+                        ref={ballRef}
+                        className="hidden absolute z-20  w-[500px] h-[500px] bg-secondary-spotlight lg:block rounded-full mix-blend-overlay"
+                        style={{ transform: `translate(${ballPosition.x}px, ${ballPosition.y}px)` }}
+                    ></div>
                     <div className="relative z-10 flex flex-wrap gap-[24px] justify-center items-center lg:gap-[32px] lg:max-w-[792px]">
                         {fakePartners.map(({ pic }) => {
                             return (
@@ -373,8 +408,8 @@ export function LandingPage() {
         //     }
         //     return null
         // });
-        const handleScroll = () => {
-            const scrollFromTop = window.pageYOffset;
+        const handleScrollColor = () => {
+            const scrollFromTop = window.scrollY;
             const sectionElements = [...document.getElementsByTagName("section")];
 
             for (let i = 0; sectionElements.length > i; i++) {
@@ -384,7 +419,7 @@ export function LandingPage() {
                 }
             }
         };
-        const throttledScroll = throttle(handleScroll);
+        const throttledScroll = throttle(handleScrollColor);
         throttledScroll();
         window.addEventListener("scroll", throttledScroll);
         return () => window.removeEventListener("scroll", throttledScroll);
@@ -434,7 +469,7 @@ export function LandingPage() {
                 </div>
             </div>
 
-            <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
+            {/* <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} /> */}
             <Hero handleVideoPlay={handleVideoPlay} colors={colors} colorIndex={colorIndex} />
             <About />
             <FeaturedProject />

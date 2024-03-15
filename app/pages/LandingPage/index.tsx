@@ -1,8 +1,8 @@
-import { useNavigation } from "@remix-run/react";
+// import { useNavigation } from "@remix-run/react";
 import { useEffect, useState, useRef } from "react";
 import { throttle } from "~/utils/helpers";
 import { Footer } from "~/components/Footer";
-import { Spinner } from "~/components/Spinner";
+// import { Spinner } from "~/components/Spinner";
 import spinnerStyles from "~/components/Spinner/styles.css";
 
 import styles from "./styles.css";
@@ -68,6 +68,7 @@ function Hero({ handleVideoPlay, colors, colorIndex }) {
                         cy="250"
                         r="250"
                     />
+                    !!!!!!!!
                 </svg>
                 {/* Hero Image */}
                 <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
@@ -281,19 +282,31 @@ function Partners() {
                     <h1 className="text-grayscale-gainsboro">信賴夥伴</h1>
                     <div className="en-h3 text-primary">PARTNERS</div>
                 </div>
+                {/* Todo: make seperate spotlight */}
                 <div ref={containerRef} className="relative overflow-hidden">
-                    {/* <div className="hidden absolute bg-white z-30 w-[500px] h-[500px]  lg:block"></div> */}
                     <div
                         ref={ballRef}
-                        className="hidden absolute z-20  w-[500px] h-[500px] bg-secondary-spotlight lg:block rounded-full mix-blend-overlay"
+                        className="hidden absolute z-100 w-[500px] h-[500px] bg-secondary-spotlight lg:block rounded-full mix-blend-overlay pointer-events-none "
                         style={{ transform: `translate(${ballPosition.x}px, ${ballPosition.y}px)` }}
                     ></div>
-                    <div className="relative z-10 flex flex-wrap gap-[24px] justify-center items-center lg:gap-[32px] lg:max-w-[792px]">
+                    {/* <div className="absolute z-100 flex flex-col" >
+                        <div className="w-[792px] h-[30px] bg-grayscale-dim mt-[121px]"></div>
+                        <div className="w-[792px] h-[30px] bg-grayscale-dim mt-[122px]"></div>
+                        <div className="w-[792px] h-[30px] bg-grayscale-dim mt-[123px]"></div>
+                    </div>
+                    <div className="absolute z-100 flex h-full" >
+                        <div className="w-[30px] ml-[241px] bg-grayscale-dim"></div>
+                        <div className="w-[30px] ml-[242px] bg-grayscale-dim"></div>
+                    </div> */}
+                    {/* <div className="absolute z-35 w-full h-full bg-grayscale-iron"></div> */}
+                    {/* <div className="absolute w-[792px] grid grid-cols-3 gap-[32px] lg:border-[32px] lg:border-grayscale-iron"></div> */}
+                    <div className="flex flex-wrap gap-[24px] justify-center items-center lg:gap-[32px] lg:max-w-[792px] ">
+                        {/* <div className="relative z-25 bg-grayscale-dim grid grid-cols-3 gap-[24px] lg:gap-[32px] lg:max-w-[792px] "> */}
                         {fakePartners.map(({ pic }) => {
                             return (
                                 <div
                                     key={pic}
-                                    className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]"
+                                    className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px] "
                                 >
                                     <img className="" src={`assets/${pic}.png`} alt={pic} />
                                 </div>
@@ -303,7 +316,7 @@ function Partners() {
                             return (
                                 <div
                                     key={pic}
-                                    className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px]"
+                                    className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px] "
                                 >
                                     <img className="" src={`assets/${pic}.png`} alt={pic} />
                                 </div>
@@ -337,7 +350,20 @@ function Contact() {
                     </button>
                 </div>
                 <div className="relative w-[312px] h-[300px] contact-shadow rounded-[4px] overflow-clip md:w-[510px] md:h-[490px] md:rounded-[16px] lg:w-[690px] lg:h-[660px]">
-                    <img src="assets/contact_bg.png" alt="contact_bg_pic" />
+                    {/* Decoration Triangle-1 */}
+                    <div className="hidden  absolute z-10 top-[6.5%] right-[6.7%] triangle-shadow lg:block ">
+                        <div className="triangle-dec w-[75.11px] h-[75.11px] lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
+                    </div>
+                    {/* Decoration Triangle-2 */}
+                    <div className="hidden absolute z-10 left-[-5%] top-[6.5%] lg:block ">
+                        <div className="triangle-dec-2 bg-primary w-[67.8px] h-[67.8px]">
+                            <div className="absolute w-[29.44px] h-[29.44px] right-[5px] bottom-[5px] triangle-dec-2-filter bg-grayscale-dim lg:w-[43.3px] lg:h-[43.3px] lg:right-[7px] lg:bottom-[7px]"></div>
+                        </div>
+                    </div>
+                    <div className="relative">
+                        <img src="assets/contact_bg.png" alt="contact_bg_pic" />
+                    </div>
+
                     <img
                         className="absolute w-[71.18px] h-[71.18px] rounded-full top-[10.8%] left-[13.3%] md:w-[115.2px] md:h-[115.2px] lg:w-[155.41px] lg:h-[155.41px]"
                         src="assets/contact_symbol_1.png"

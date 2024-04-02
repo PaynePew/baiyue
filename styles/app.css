@@ -1,7 +1,6 @@
 @tailwind base;
 
 @layer base {
-
     h1,
     h2,
     h3,
@@ -89,7 +88,6 @@
 @tailwind components;
 
 @layer components {
-
     /* typography */
     .display-1,
     .display-2,
@@ -298,6 +296,10 @@
         box-shadow: 4.99561px 6.24451px 14.9868px #212022, -4.99561px -4.99561px 14.9868px #343235;
         border-radius: 4px;
     }
+    .square-shadow-1 {
+        box-shadow: -5px 0 15px rgba(52, 50, 53, 1), 5px 0 15px rgba(33, 32, 34, 1);
+    }
 }
 
 @tailwind utilities;
+

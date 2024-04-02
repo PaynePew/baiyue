@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef } from "react";
 import { throttle } from "~/utils/helpers";
 import { Footer } from "~/components/Footer";
+import { About } from "./components/About";
 // import { Spinner } from "~/components/Spinner";
 import spinnerStyles from "~/components/Spinner/styles.css";
 
@@ -157,41 +158,6 @@ function Hero({ handleVideoPlay, colors, colorIndex }) {
                 {/* border-arrow-9 */}
                 <div className="absolute bottom-[-33px] left-[-40px] border-arrow-wrapper expand-order-9">
                     <div className="absolute w-[598px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
-                </div>
-            </div>
-        </section>
-    );
-}
-
-function About() {
-    return (
-        <section className="w-full flex justify-center items-center">
-            <div className="relative flex flex-col max-w-[312px] pt-[74px] pb-[103px] mx-[24px] md:max-w-none md:mx-[129px] md:pb-[92px] md:w-[510px] lg:flex-row lg:w-auto lg:gap-[126px]">
-                {/* TODO: BG PIC */}
-                {/* <div className="absolute -z-10 bg-grayscale-dim about-bg-shadow w-[80%] h-[20%] bottom-[0] left-[0]"></div> */}
-                <div className="divine mb-[32px]"></div>
-                <div className="flex flex-col gap-[16px] lg:w-[384px] lg:h-fit lg:items-start lg:gap-[24px]">
-                    <div className="flex flex-col items-center justify-center gap-[8px] lg:items-start">
-                        <h1 className="text-grayscale-gainsboro">百越價值</h1>
-                        <div className="en-h3 text-primary">ABOUT US</div>
-                    </div>
-                    <div className="body-1 text-white text-center lg:text-left">
-                        彙來說辦何歡希天大資難張為等思堆櫥凍鳳恩則原。攪一的繃欒業試上癸狂如著轉三大處過銘論若！稚秒脂我曼！
-                    </div>
-                    <button className="hidden button-shadow-1 bg-grayscale-gray nav-title lg:flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] lg:w-[173px] hover:bg-grayscale-light hover:text-grayscale-iron">
-                        <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
-                        <div className="">關於百越</div>
-                    </button>
-                </div>
-                <div className="divine mt-[32px] mb-[48px]"></div>
-                <div className="flex flex-col gap-[48px]">
-                    <div className="flex justify-center items-center">
-                        <img className="" src="assets/about_pic.png" alt="about_pic" />
-                    </div>
-                    <button className="button-shadow-1 bg-grayscale-gray nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] lg:hidden hover:bg-grayscale-light hover:text-grayscale-iron">
-                        <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
-                        <div className="">關於百越</div>
-                    </button>
                 </div>
             </div>
         </section>

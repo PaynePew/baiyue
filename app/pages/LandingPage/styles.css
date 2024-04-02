@@ -89,17 +89,23 @@
 }
 
 .border-arrow-wrapper {
-    filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);
     transform: scale(0);
     animation: expand 1s ease-in-out forwards;
 }
 
 .border-arrow {
     height: 1px;
+    filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);
     /* width: 50px; */
 }
 
-.border-arrow::after {
+.border-arrow-vertical {
+    width: 1px;
+    filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);
+}
+
+.border-arrow::after,
+.border-arrow-vertical::after {
     content: "";
     position: absolute;
     width: 4px;
@@ -109,7 +115,8 @@
     clip-path: polygon(0 0, 0% 100%, 100% 50%);
 }
 
-.border-arrow::before {
+.border-arrow::before,
+.border-arrow-vertical::before {
     content: "";
     position: absolute;
     width: 4px;

@@ -1,7 +1,3 @@
-import styles from "../styles.css";
-export function links() {
-    return [{ rel: "stylesheet", href: styles }];
-}
 export function About() {
     return (
         <section className="relative w-full h-screen flex justify-center items-center">

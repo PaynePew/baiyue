@@ -1,8 +1,8 @@
 import type { LinksFunction } from "@remix-run/node";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import styles from "~/components/Header/styles.css";
-
+import useScrollListener from "~/hooks/useScrollListener";
 export const links: LinksFunction = () => {
     return [{ rel: "stylesheet", href: styles }];
 };
@@ -111,7 +111,29 @@ function ModalMenu() {
 
 export function Header() {
     const [isOpen, toggleOpen] = useState(false);
+    const [isScrollOpen, toggleScrollOpen] = useState(false);
     const [isProjectOpen, toggleProjectOpen] = useState(false);
+    const [scrollHeader, setScrollHeader] = useState<string[]>([]);
+    const [scrollLogo, setScrollLogo] = useState<string[]>([]);
+    const [scrollNav, setScrollNav] = useState<string[]>([]);
+    const [scrollHamburger, setScrollHamburger] = useState<string[]>([]);
+    const scroll = useScrollListener();
+    useEffect(() => {
+        const _classList: string[] = [];
+        const _classListLogo: string[] = [];
+        const _classListNav: string[] = [];
+        const _classListHamburger: string[] = [];
+        if (scroll.y > 150) {
+            _classList.push("scroll-header-animation");
+            _classListLogo.push("scroll-logo-animation");
+            _classListNav.push("scroll-nav-animation");
+            _classListHamburger.push("scroll-hamburger-animation");
+        }
+        setScrollHeader(_classList);
+        setScrollLogo(_classListLogo);
+        setScrollNav(_classListNav);
+        setScrollHamburger(_classListHamburger);
+    }, [scroll.y]);
 
     return (
         <div className="fixed z-50 w-full ">
@@ -119,42 +141,52 @@ export function Header() {
             <div className="flex flex-shrink justify-between px-[24px] pt-[24px] md:px-[40px] md:pt-[32px] lg:px-[48px]">
                 <Link
                     to="/"
-                    className="menu-shadow bg-grayscale-iron w-[72px] h-[48px] flex justify-center items-center rounded-[128px] hover:bg-grayscale-dim md:w-[144.81px] md:h-[64px] lg:w-[256px] lg:h-[120px]"
+                    className={`menu-shadow bg-grayscale-iron w-[72px] h-[48px] flex justify-center items-center rounded-[128px] hover:bg-grayscale-dim md:w-[144.81px] md:h-[64px] lg:w-[256px] lg:h-[120px] transition-all ease-in-out duration-1000 ${scrollHeader}`}
                 >
                     <img
-                        className="w-[45px] h-[19px] md:w-[90px] md:h-[38px] lg:w-[160px] lg:h-[67.38px]"
+                        className={`transition-all ease-in-out duration-1000 w-[45px] h-[19px] md:w-[90px] md:h-[38px] lg:w-[160px] lg:h-[67.38px] ${scrollLogo}`}
                         src="/assets/logo.png"
                         alt="logo"
                     />
                 </Link>
                 {/* Header for PC */}
-                <nav
-                    className={`hidden w-[532px] bg-grayscale-iron  menu-shadow  justify-center items-center flex-wrap gap-[48px] h-fit px-[48px] py-[24px] rounded-[128px] text-grayscale-light lg:flex ${
-                        isProjectOpen ? "dropdown-header" : ""
-                    }`}
-                >
-                    <Link to="/about" className="nav-title">
-                        關於百越
-                    </Link>
-                    <button className="nav-title" onClick={() => toggleProjectOpen(prev => !prev)}>
-                        工程實績
+                <div className="flex justify-between items-center gap-[24px]">
+                    <nav
+                        className={`hidden transition-all esae-in-out duration-500 w-[532px] bg-grayscale-iron menu-shadow flex-wrap justify-center items-center gap-[48px] h-fit px-[48px] py-[24px] rounded-[128px] text-grayscale-light lg:flex ${scrollNav} ${
+                            isScrollOpen ? "scroll-nav-toggle-animation" : ""
+                        } ${isProjectOpen ? "dropdown-header" : ""}`}
+                    >
+                        <Link to="/about" className="nav-title">
+                            關於百越
+                        </Link>
+                        <button className="nav-title" onClick={() => toggleProjectOpen(prev => !prev)}>
+                            工程實績
+                        </button>
+                        <Link to="/insights" className="nav-title">
+                            百越觀點
+                        </Link>
+                        <Link to="/contact" className="nav-title">
+                            聯絡我們
+                        </Link>
+                        {isProjectOpen ? <ProjectDropMenu /> : null}
+                    </nav>
+                    {/*Desktop Hamburger*/}
+                    <button
+                        className={`hidden menu-shadow w-[64px] h-[56px] flex-col gap-[8px] justify-center items-center rounded-[128px] ${scrollHamburger}`}
+                        onClick={() => toggleScrollOpen(prev => !prev)}
+                    >
+                        <span className="nav-icon"></span>
+                        <span className="nav-icon"></span>
                     </button>
-                    <Link to="/insights" className="nav-title">
-                        百越觀點
-                    </Link>
-                    <Link to="/contact" className="nav-title">
-                        聯絡我們
-                    </Link>
-                    {isProjectOpen ? <ProjectDropMenu /> : null}
-                </nav>
-                {/* Hamburger for Mobile & Tablet */}
-                <button
-                    className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] lg:hidden"
-                    onClick={() => toggleOpen(prev => !prev)}
-                >
-                    <span className="nav-icon"></span>
-                    <span className="nav-icon"></span>
-                </button>
+                    {/* Hamburger for Mobile & Tablet */}
+                    <button
+                        className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] lg:hidden"
+                        onClick={() => toggleOpen(prev => !prev)}
+                    >
+                        <span className="nav-icon"></span>
+                        <span className="nav-icon"></span>
+                    </button>
+                </div>
             </div>
         </div>
     );

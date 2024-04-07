@@ -70,11 +70,13 @@ function ProjectMenu() {
     );
 }
 
+//Todo: update animation
+
 function ModalMenu() {
     const [isOpen, toggleOpen] = useState(false);
 
     return (
-        <div className="absolute -z-10 h-screen w-screen bg-grayscale-dim">
+        <div className="transition-all ease-in-out duration-500 absolute -z-10 h-screen w-screen bg-grayscale-dim">
             <div className="flex flex-col mx-[48px] mt-[128px] md:mx-[129px] md:mt-[248px]">
                 <div className="flex flex-col gap-[32px] md:gap-[56px]">
                     <Link to="/about" className="flex flex-col gap-[4px] md:gap-[8px]">
@@ -175,16 +177,32 @@ export function Header() {
                         className={`hidden menu-shadow w-[64px] h-[56px] flex-col gap-[8px] justify-center items-center rounded-[128px] ${scrollHamburger}`}
                         onClick={() => toggleScrollOpen(prev => !prev)}
                     >
-                        <span className="nav-icon"></span>
-                        <span className="nav-icon"></span>
+                        <span
+                            className={`transition-all ease-in-out duration-500 nav-icon ${
+                                isScrollOpen ? "translate-y-[4.5px]" : "translate-y-0"
+                            }`}
+                        ></span>
+                        <span
+                            className={`transition-all ease-in-out duration-500 nav-icon ${
+                                isScrollOpen ? "translate-y-[-4.5px]" : "translate-y-0"
+                            }`}
+                        ></span>
                     </button>
                     {/* Hamburger for Mobile & Tablet */}
                     <button
                         className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] lg:hidden"
                         onClick={() => toggleOpen(prev => !prev)}
                     >
-                        <span className="nav-icon"></span>
-                        <span className="nav-icon"></span>
+                        <span
+                            className={`transition-all ease-in-out duration-500 nav-icon ${
+                                isOpen ? "translate-y-[4.5px]" : "translate-y-0"
+                            }`}
+                        ></span>
+                        <span
+                            className={`transition-all ease-in-out duration-500 nav-icon ${
+                                isOpen ? "translate-y-[-4.5px]" : "translate-y-0"
+                            }`}
+                        ></span>
                     </button>
                 </div>
             </div>

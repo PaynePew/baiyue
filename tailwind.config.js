@@ -9,6 +9,7 @@ module.exports = {
             md: "768px",
             lg: "1440px",
         },
+        container: { center: true, sm: "360px", md: "768px", lg: "1440px" },
         fontFamily: {
             sans: ["Noto Sans TC", "sans-serif"],
             ga: ["Gafata", "serif"],

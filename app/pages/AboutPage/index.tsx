@@ -146,9 +146,9 @@ function Carousel() {
 function Services() {
     return (
         <section className="pb-[80px] md:pb-[129px]">
-            <div className="relative flex flex-col mx-[24px] gap-[64px] md:mx-[40px] lg:flex-row lg:gap-[167.5px] lg:items-start lg:justify-center lg:mx-[120px]">
-                <div className="flex flex-col items-start justify-center gap-[8px] lg:sticky top-[25%]">
-                    <h1 className="text-grayscale-gainsboro">服務項目</h1>
+            <div className="relative flex flex-col mx-[24px] gap-[64px] md:mx-[40px] lg:flex-row lg:items-start lg:justify-between lg:mx-[120px]">
+                <div className="flex flex-col items-start justify-center gap-[8px] lg:w-[px] lg:sticky top-[25%]">
+                    <h1 className="text-grayscale-gainsboro font-[250]">服務項目</h1>
                     <div className="en-h3 text-primary">OUR SERVICES</div>
                 </div>
                 {/* Card-Services */}
@@ -248,7 +248,7 @@ export function AboutPage() {
                         {/*About Us Title*/}
                         <div className="flex justify-between items-end">
                             <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
-                                <div className="display-1 text-grayscale-gainsboro">關於百越</div>
+                                <div className="display-1 text-grayscale-gainsboro font-[250]">關於百越</div>
                                 <div className="en-h2 text-primary">ABOUT US</div>
                             </div>
                             <div className="hidden lg:flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">

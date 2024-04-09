@@ -138,7 +138,7 @@ export function Header() {
     }, [scroll.y]);
 
     return (
-        <div className="fixed z-50 w-full ">
+        <div className="fixed z-50 w-full">
             {isOpen ? <ModalMenu /> : null}
             <div className="flex flex-shrink justify-between px-[24px] pt-[24px] md:px-[40px] md:pt-[32px] lg:px-[48px]">
                 <Link

@@ -42,11 +42,11 @@
     ::-webkit-scrollbar {
         height: 2px;
         width: 10px;
-        background: rgba(191, 191, 191, 0.2);
         border-radius: 99px;
     }
-
     ::-webkit-scrollbar-track {
+        height: 2px;
+        background: rgba(191, 191, 191, 0.2);
     }
 
     ::-webkit-scrollbar-thumb {
@@ -54,6 +54,10 @@
         height: 10px;
         border-radius: 99px;
         border: 1px solid rgba(191, 191, 191, 1);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        margin-right: 24px;
     }
 
     @media screen(md) {
@@ -80,6 +84,9 @@
         h6 {
             font-size: 20px;
         }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            margin: 0px 89px;
+        }
     }
 
     @media screen(lg) {
@@ -97,6 +104,9 @@
 
         h4 {
             font-size: 28px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            margin: 0 366.5px;
         }
     }
 }

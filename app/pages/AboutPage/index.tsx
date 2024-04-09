@@ -112,7 +112,7 @@ const fakeCarouselData = [
 
 function Carousel() {
     return (
-        <section className="relative flex h-[500px] mx-[24px] mb-[80px] md:mx-[40px] lg:mx-[120px] ">
+        <section className="relative flex h-[500px] mx-[24px] mb-[80px] md:mx-[40px] md:mb-[120px] lg:mx-[120px] lg:mb-[260px] ">
             {/* About Carousel */}
             {/* todo: carousel animation and bg proper align */}
             <div className="relative w-screen overflow-x-scroll">
@@ -261,7 +261,11 @@ export function AboutPage() {
                         </div>
                         {/*About Us Body*/}
                         <div className="flex flex-col gap-[38.13px] md:gap-[72.6px] md:items-end lg:gap-[65.26px]">
-                            <div className="relative flex flex-col items-start justify-center text-white md:w-full md:justify-start md:left-[38px] lg:left-[102px]">
+                            <div className="relative flex flex-col items-start justify-center text-white md:w-full md:justify-start md:pl-[38px] lg:pl-[102px]">
+                                {/* border-arrow-2 */}
+                                <div className="hidden rotate-90 absolute w-[112px] md:block md:left-0 lg:left-[60px] top-[50%] translate-x-[-50%]">
+                                    <div className="absolute w-full bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                                </div>
                                 <div className="flex justify-center items-center gap-[5px]">
                                     {/*About Us Subtitle*/}
                                     <div className="en-h2 flex justify-center items-center h-[27.68px] px-[5.2px] border-[1px] border-solid border-primary rounded-[39.72px] md:h-[44.83px] md:w-[80.61px] lg:w-[101.52px] lg:h-[54.38px]">

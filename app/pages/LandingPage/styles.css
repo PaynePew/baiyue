@@ -92,7 +92,6 @@
     transform: scale(0);
     animation: expand 1s ease-in-out forwards;
 }
-
 .border-arrow {
     height: 1px;
     filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);

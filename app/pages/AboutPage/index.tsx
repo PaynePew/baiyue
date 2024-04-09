@@ -112,10 +112,10 @@ const fakeCarouselData = [
 
 function Carousel() {
     return (
-        <section className="relative flex h-[500px] mx-[24px] mb-[80px] md:mx-[40px] md:mb-[120px] lg:mx-[120px] lg:mb-[260px] ">
+        <section className="relative flex h-[500px] ml-[24px] mb-[80px] md:ml-[40px] md:mb-[120px] lg:ml-[120px] lg:mb-[260px] ">
             {/* About Carousel */}
             {/* todo: carousel animation and bg proper align */}
-            <div className="relative w-screen overflow-x-scroll">
+            <div className="relative w-full overflow-x-scroll">
                 <div className="absolute flex gap-[16px] md:gap-[40px] ">
                     {fakeCarouselData.map(({ desc, title, subTitle, pic, index, w, h }) => {
                         return (

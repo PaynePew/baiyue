@@ -39,6 +39,22 @@
         font-size: 16px;
         line-height: 140%;
     }
+    ::-webkit-scrollbar {
+        height: 2px;
+        width: 10px;
+        background: rgba(191, 191, 191, 0.2);
+        border-radius: 99px;
+    }
+
+    ::-webkit-scrollbar-track {
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(191, 191, 191, 1);
+        height: 10px;
+        border-radius: 99px;
+        border: 1px solid rgba(191, 191, 191, 1);
+    }
 
     @media screen(md) {
         h1 {

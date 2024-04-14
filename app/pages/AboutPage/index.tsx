@@ -1,6 +1,8 @@
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 import landingPageStyles from "~/pages/LandingPage/styles.css";
+import { useEffect, useState, useRef, forwardRef } from "react";
+
 export function links() {
     return [
         { rel: "stylesheet", href: styles },
@@ -110,12 +112,12 @@ const fakeCarouselData = [
     },
 ];
 
-function Carousel() {
+const Carousel = forwardRef<HTMLDivElement, {}>(({}, ref) => {
     return (
-        <section className="relative flex h-[500px] ml-[24px] mb-[80px] md:ml-[40px] md:mb-[120px] lg:ml-[120px] lg:mb-[260px] ">
+        <section className="relative flex h-[500px] ml-[24px] mb-[80px] md:ml-[40px] md:mb-[120px] lg:ml-[120px] lg:mb-[260px]">
             {/* About Carousel */}
             {/* todo: carousel animation and bg proper align */}
-            <div className="relative w-full overflow-x-scroll custom-scrollbar">
+            <div ref={ref} className="relative w-full overflow-x-scroll custom-scrollbar">
                 <div className="absolute flex gap-[16px] md:gap-[40px] ">
                     {fakeCarouselData.map(({ desc, title, subTitle, pic, index, w, h }) => {
                         return (
@@ -141,43 +143,119 @@ function Carousel() {
             </div>
         </section>
     );
-}
+});
 
-function Services() {
+const Services = forwardRef<HTMLDivElement, {}>(({}, ref) => {
     return (
         <section className="pb-[80px] md:pb-[129px]">
-            <div className="relative flex flex-col mx-[24px] gap-[64px] md:mx-[40px] lg:flex-row lg:items-start lg:justify-between lg:mx-[120px]">
-                <div className="flex flex-col items-start justify-center gap-[8px] lg:w-[px] lg:sticky top-[25%]">
+            <div className="flex flex-col mx-[24px] gap-[64px] md:mx-[40px] lg:flex-row lg:items-start lg:justify-between lg:mx-[120px] lg:h-[720px]">
+                <div className="flex flex-col items-start justify-center gap-[8px]">
                     <h1 className="text-grayscale-gainsboro font-[250]">服務項目</h1>
                     <div className="en-h3 text-primary">OUR SERVICES</div>
                 </div>
                 {/* Card-Services */}
-                <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:max-w-[792px]">
-                    {fakeData.map(({ pic, title, desc, alt }) => {
-                        return (
-                            <div
-                                key={alt}
-                                className="relative flex card-shadow min-h-[212px] w-[312px] rounded-[12px] overflow-clip md:flex-col md:even:top-[40px] md:rounded-[16px] md:w-[332px] lg:w-[384px]"
-                            >
-                                <div className="basis-[50%] md:basis-auto md:h-[250px] lg:h-[290px]">
-                                    <img className="h-full max-w-full object-cover md:w-full" src={pic} alt={alt} />
-                                </div>
-                                <div className="basis-[50%] md:basis-auto">
-                                    <div className="flex flex-col p-[20px] gap-[12px] md:p-[24px] md:gap-[16px]">
-                                        <h5 className="text-white">{title}</h5>
-                                        <div className="body-1 text-grayscale-light">{desc}</div>
+                <div ref={ref} className="lg:overflow-y-scroll service-custom-scrollbar lg:h-full">
+                    <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:max-w-[793px]">
+                        {fakeData.map(({ pic, title, desc, alt }) => {
+                            return (
+                                <div
+                                    key={alt}
+                                    className="relative flex card-shadow min-h-[212px] w-[312px] rounded-[12px] overflow-clip md:flex-col md:even:top-[40px] md:rounded-[16px] md:w-[332px] lg:w-[384px]"
+                                >
+                                    <div className="basis-[50%] md:basis-auto md:h-[250px] lg:h-[290px]">
+                                        <img className="h-full max-w-full object-cover md:w-full" src={pic} alt={alt} />
+                                    </div>
+                                    <div className="basis-[50%] md:basis-auto">
+                                        <div className="flex flex-col p-[20px] gap-[12px] md:p-[24px] md:gap-[16px]">
+                                            <h5 className="text-white">{title}</h5>
+                                            <div className="body-1 text-grayscale-light">{desc}</div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        );
-                    })}
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>
     );
-}
-
+});
+// TODO:Update Scroll Animation
 export function AboutPage() {
+    const carouselScrollRef = useRef<HTMLDivElement>(null);
+    const serviceScrollRef = useRef<HTMLDivElement>(null);
+
+    const [section, setSection] = useState(0);
+
+    const handleWheelEvent = (e: WheelEvent) => {
+        const maxScrollHeight = serviceScrollRef?.current!.scrollHeight - 720;
+        const maxScrollWidth = carouselScrollRef?.current!.scrollWidth - 1320;
+        console.log(e.deltaY);
+        if (section === 0) {
+            if (
+                e.deltaY > 0 &&
+                window.innerHeight > carouselScrollRef?.current!.getBoundingClientRect().top + 500 &&
+                carouselScrollRef?.current!.scrollLeft <= maxScrollWidth
+            ) {
+                if (carouselScrollRef?.current!.scrollLeft === maxScrollWidth) {
+                    serviceScrollRef?.current!.scrollIntoView({
+                        behavior: "auto",
+                        block: "center",
+                        inline: "center",
+                    });
+                    setSection(1);
+                    return;
+                }
+                e.preventDefault();
+                carouselScrollRef?.current!.scrollBy(e.deltaY, 0);
+            }
+            if (
+                e.deltaY < 0 &&
+                window.innerHeight > carouselScrollRef?.current!.getBoundingClientRect().top + 500 &&
+                carouselScrollRef?.current!.scrollLeft <= maxScrollWidth
+            ) {
+                if (carouselScrollRef?.current!.scrollLeft === 0) {
+                    return;
+                }
+                e.preventDefault();
+                carouselScrollRef?.current!.scrollBy(e.deltaY, 0);
+            }
+        }
+        if (section === 1) {
+            if (
+                e.deltaY > 0 &&
+                window.innerHeight > serviceScrollRef?.current!.getBoundingClientRect().top + 720 &&
+                serviceScrollRef?.current!.scrollTop < maxScrollHeight
+            ) {
+                e.preventDefault();
+                serviceScrollRef?.current!.scrollBy(0, e.deltaY);
+            }
+            if (
+                e.deltaY < 0 &&
+                window.innerHeight > serviceScrollRef?.current!.getBoundingClientRect().top + 720 &&
+                serviceScrollRef?.current!.scrollTop <= maxScrollHeight
+            ) {
+                if (serviceScrollRef?.current!.scrollTop === 0) {
+                    carouselScrollRef?.current!.scrollIntoView({
+                        behavior: "auto",
+                        block: "start",
+                        inline: "start",
+                    });
+                    setSection(0);
+                    return;
+                }
+                e.preventDefault();
+                serviceScrollRef?.current!.scrollBy(0, e.deltaY);
+            }
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("wheel", handleWheelEvent, { passive: false });
+        return () => {
+            document.removeEventListener("wheel", handleWheelEvent);
+        };
+    });
     return (
         <>
             <section className="w-full bg-grayscale-iron flex">
@@ -298,8 +376,8 @@ export function AboutPage() {
                         {/*Liner-Gradient for bg Image*/}
                         <div className="hidden absolute md:block md:top-[162px] lg:top-[170px] w-full h-[235px] about-bg-gradient"></div>
                     </div>
-                    <Carousel />
-                    <Services />
+                    <Carousel ref={carouselScrollRef} />
+                    <Services ref={serviceScrollRef} />
                 </section>
             </section>
             <FooterSimple />

@@ -1,7 +1,6 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useNavigation } from "@remix-run/react";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 import { Header } from "~/components/Header";
-import { Spinner } from "./components/Spinner";
 import tailWindStyles from "./styles/app.css";
 import headerStyles from "~/components/Header/styles.css";
 import footerStyles from "~/components/Footer/styles.css";
@@ -33,8 +32,7 @@ export default function App() {
                 <Meta />
                 <Links />
             </head>
-            <body className="">
-                {/* <Spinner /> */}
+            <body className="bg-grayscale-iron">
                 <Header />
                 <Outlet />
                 <ScrollRestoration />

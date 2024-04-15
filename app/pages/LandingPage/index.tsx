@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { throttle } from "~/utils/helpers";
 import { Footer } from "~/components/Footer";
 import { About, Contact, FeaturedProject, Partners, Hero } from "./components";
-// import { Spinner } from "~/components/Spinner";
+import { Spinner } from "~/components/Spinner";
 import spinnerStyles from "~/components/Spinner/styles.css";
 
 import styles from "./styles.css";
@@ -106,7 +106,7 @@ export function LandingPage() {
                 </div>
             </div>
 
-            {/* <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} /> */}
+            <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
             <Hero handleVideoPlay={handleVideoPlay} colors={colors} colorIndex={colorIndex} />
             <About />
             <FeaturedProject />

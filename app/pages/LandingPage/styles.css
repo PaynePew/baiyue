@@ -45,49 +45,6 @@
     border-radius: 3.61739px;
 }
 
-.triangle-shadow {
-    filter: drop-shadow(0.44027px 5.55033px 13.3208px #212022) drop-shadow(-4.44027px -4.44027px 13.3208px #343235);
-    /* -webkit-filter: drop-shadow(0.44027px 5.55033px 13.3208px #212022, -4.44027px -4.44027px 13.3208px #343235); */
-}
-
-.triangle-dec {
-    border-radius: 2px 4% 0px 100% / 2px 100% 0px 4%;
-    clip-path: polygon(0 0, 0% 100%, 100% 0);
-
-    /* border-style: solid; */
-    /* border-width: 0 100px 100px 100px; */
-    /* border-color: transparent transparent #007bff transparent; */
-    /* clip-path: polygon(0 0, 0 0, 100% 100%); */
-
-    /* border-width: 100px 100px 0 0; */
-    /* border-color: #007bff transparent transparent transparent; */
-
-    /* border-width: 0 50px 50px 50px;
-    border-color: transparent transparent #007bff transparent; */
-    /* border-radius: 2px 2px 0 2px; */
-
-    /* width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 100px 100px 0 0px;
-    border-color: #007bff transparent transparent transparent;
-    border-radius: 20px; */
-
-    /* border-top: 84.5px solid #e5ae00;
-    border-right: 84.5px solid transparent;
-    border-bottom: 0px solid transparent;
-    border-left: 0px solid transparent; */
-}
-
-.triangle-dec-2 {
-    border-radius: 0px 100% 2px 4% / 0px 4% 2px 100%;
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-}
-.triangle-dec-2-filter {
-    border-radius: 0px 100% 2px 4% / 0px 4% 2px 100%;
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
-}
-
 .border-arrow-wrapper {
     transform: scale(0);
     animation: expand 1s ease-in-out forwards;

@@ -1,8 +1,12 @@
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
+import landingPageStyles from "~/pages/LandingPage/styles.css";
 
 export function links() {
-    return [{ rel: "stylesheet", href: styles }];
+    return [
+        { rel: "stylesheet", href: styles },
+        { rel: "stylesheet", href: landingPageStyles },
+    ];
 }
 
 const projectTab = [
@@ -54,7 +58,7 @@ function ProjectsList() {
                                         其他
                                     </button>
                                     <img
-                                        className="hidden w-[38px] md:h-[11px] md:block"
+                                        className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
                                         src="assets/arrow_r.png"
                                         alt="arrorw_r_pic"
                                     />
@@ -78,7 +82,7 @@ function ProjectsList() {
                                     其他
                                 </button>
                                 <img
-                                    className="hidden w-[38px] md:h-[11px] md:block"
+                                    className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
                                     src="assets/arrow_r.png"
                                     alt="arrorw_r_pic"
                                 />
@@ -93,39 +97,52 @@ function ProjectsList() {
 
 export function ProjectPage() {
     return (
-        <section className="w-full bg-grayscale-iron overflow-hidden">
-            <div className="flex flex-col pt-[141px] mx-[24px] mb-[104px] gap-[32px] md:mx-[40px] md:pt-[206px] md:mb-[244px] md:gap-[48px] lg:pt-[336px] lg:mx-[120px] lg:mb-[306.48px] lg:gap-[64px]">
-                <div className="flex justify-between items-end">
-                    <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
-                        <div className="display-1 text-grayscale-gainsboro">工程實績</div>
-                        <div className="en-h2 text-primary uppercase">PROJECT</div>
+        <section className="w-full bg-grayscale-iron">
+            <section className="container">
+                <div className="flex flex-col pt-[141px] mx-[24px] mb-[104px] gap-[32px] md:mx-[40px] md:pt-[206px] md:mb-[244px] md:gap-[48px] lg:pt-[336px] lg:mx-[120px] lg:mb-[306.48px] lg:gap-[64px]">
+                    <div className="flex justify-between items-end">
+                        <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
+                            <div className="display-1 text-grayscale-gainsboro">工程實績</div>
+                            <div className="en-h2 text-primary uppercase">PROJECT</div>
+                        </div>
+                        <div className="hidden lg:flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">
+                            <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
+                            <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
+                            <div className="py-[8px] opacity-50 hover:text-grayscale-light hover:opacity-100">
+                                工程實績
+                            </div>
+                        </div>
                     </div>
-                    <div className="hidden lg:flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">
-                        <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
-                        <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
-                        <div className="py-[8px] opacity-50 hover:text-grayscale-light hover:opacity-100">工程實績</div>
+                    <div className="relative w-full overflow-x-scroll custom-project-scrollbar  flex justify-start items-center h-[94px] md:h-[111px]">
+                        {/* border-arrow-top */}
+                        <div className="absolute w-[99%] left-[50%] top-0 translate-x-[-50%]">
+                            <div className="absolute w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                        </div>
+                        {/* border-arrow-bottom */}
+                        <div className="absolute w-[99%] left-[50%] bottom-0 translate-x-[-50%]">
+                            <div className="absolute w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                        </div>
+                        {/*ProjectTab List*/}
+                        {/*TODO: overflow problem*/}
+                        <div className="absolute flex justify-start items-center gap-[12px] ">
+                            {projectTab.map(({ title }) => {
+                                return (
+                                    <button
+                                        key={title}
+                                        className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                                    >
+                                        {title}
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+                    <ProjectsList />
+                    <div className="flex en-body-1 text-grayscale-light justify-center items-center cursor-pointer">
+                        <div className="py-[8px] border-b-[1px] hover:text-grayscale-light uppercase">load more</div>
                     </div>
                 </div>
-                {/* todo: scroll animation */}
-                <div className="relative w-full h-[94px] md:h-[111px]">
-                    <div className="absolute flex justify-start items-center gap-[12px] flex-shrink">
-                        {projectTab.map(({ title }) => {
-                            return (
-                                <button
-                                    key={title}
-                                    className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-                                >
-                                    {title}
-                                </button>
-                            );
-                        })}
-                    </div>
-                </div>
-                <ProjectsList />
-                <div className="flex en-body-1 text-grayscale-light justify-center items-center cursor-pointer">
-                    <div className="py-[8px] border-b-[1px] hover:text-grayscale-light uppercase">load more</div>
-                </div>
-            </div>
+            </section>
             <FooterSimple />
         </section>
     );

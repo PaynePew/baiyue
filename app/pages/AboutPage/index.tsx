@@ -161,7 +161,7 @@ export function AboutPage() {
                             </div>
                             <div className="hidden lg:flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">
                                 <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
-                                <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
+                                <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark"></span>
                                 <div className="py-[8px] opacity-50 hover:text-grayscale-light hover:opacity-100">
                                     關於百越
                                 </div>

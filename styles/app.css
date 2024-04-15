@@ -59,6 +59,9 @@
     .custom-scrollbar::-webkit-scrollbar-track {
         margin-right: 24px;
     }
+    .custom-project-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
     @media screen(md) {
         h1 {

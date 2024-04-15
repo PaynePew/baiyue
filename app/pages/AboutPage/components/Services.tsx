@@ -63,9 +63,26 @@ const fakeData = [
 ];
 export const Services = forwardRef<HTMLDivElement, {}>(({}, ref) => {
     return (
-        <section className="pb-[80px] md:pb-[129px]">
+        <section className="relative pb-[80px] md:pb-[129px]">
+            {/*Decoration Square-Service*/}
+            <div className="absolute hidden lg:inline-block bottom-[16px] left-[0px] w-[364px] h-[180px] rounded-[16px] bg-grayscale-iron square-shadow-contact"></div>
+            {/* Decoration Triangle-Service */}
+            <div className="hidden absolute lg:inline-block z-10 bottom-[161px] left-[155px]">
+                <div className="triangle-dec-bltr w-[84.5px] h-[84.5px] bg-primary"></div>
+            </div>
+            {/*Decoration Oval*/}
+            <div className="hidden absolute top-[-109px] right-[57.5px] bg-grayscale-iron lg:inline-block w-[127px] h-[44.66px] rounded-[16px] square-shadow-contact"></div>
+            {/*triangle decoration original:95.62x95.62(135x134) resize:74.1x74.1*/}
+            <div className="hidden lg:block absolute rotate-90 top-[-186px] right-[104px]">
+                <img className="w-[104.5px] h-[104px]" src="assets/triangle_3.png" alt="triangle_3_pic" />
+            </div>{" "}
+            {/*Service Title*/}
             <div className="flex flex-col mx-[24px] gap-[64px] md:mx-[40px] lg:flex-row lg:items-start lg:justify-between lg:mx-[120px] lg:h-[720px]">
-                <div className="flex flex-col items-start justify-center gap-[8px]">
+                <div className="relative flex flex-col items-start justify-center w-fit gap-[8px]">
+                    {/* border-arrow-2 */}
+                    <div className="absolute w-full md:left-0 lg:left-[0px] top-[-21.5px]">
+                        <div className="absolute w-full bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
+                    </div>
                     <h1 className="text-grayscale-gainsboro font-[250]">服務項目</h1>
                     <div className="en-h3 text-primary">OUR SERVICES</div>
                 </div>

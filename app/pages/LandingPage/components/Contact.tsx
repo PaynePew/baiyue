@@ -21,7 +21,7 @@ export function Contact() {
                     </div>
                     <div className="relative">
                         {/* Decoration Triangle-1 */}
-                        <div className="hidden  absolute z-10 bottom-[4%] right-[-9%] triangle-shadow lg:block ">
+                        <div className="hidden absolute z-10 bottom-[4%] right-[-9%] triangle-shadow lg:block ">
                             <div className="triangle-dec w-[75.11px] h-[75.11px] lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
                         </div>
                         {/* Decoration Triangle-2 */}

@@ -93,20 +93,24 @@ function InsightsList() {
 export function InsightsPage() {
     return (
         <section className="w-full bg-grayscale-iron">
-            <div className="flex flex-col pt-[141px] mx-[24px] mb-[80px] gap-[32px] md:mx-[40px] md:pt-[206px] md:mb-[120px] md:gap-[64px] lg:pt-[336px] lg:mx-[120px] lg:mb-[149.5px] lg:gap-[64px]">
-                <div className="flex justify-between items-end">
-                    <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
-                        <div className="display-1 text-grayscale-gainsboro">百越觀點</div>
-                        <div className="en-h2 text-primary uppercase">insights</div>
+            <section className="container">
+                <div className="flex flex-col pt-[141px] mx-[24px] mb-[80px] gap-[32px] md:mx-[40px] md:pt-[206px] md:mb-[120px] md:gap-[64px] lg:pt-[336px] lg:mx-[120px] lg:mb-[149.5px] lg:gap-[64px]">
+                    <div className="flex justify-between items-end">
+                        <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
+                            <div className="display-1 text-grayscale-gainsboro">百越觀點</div>
+                            <div className="en-h2 text-primary uppercase">insights</div>
+                        </div>
+                        <div className="hidden lg:flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">
+                            <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
+                            <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
+                            <div className="py-[8px] opacity-50 hover:text-grayscale-light hover:opacity-100">
+                                百越觀點
+                            </div>
+                        </div>
                     </div>
-                    <div className="hidden lg:flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">
-                        <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
-                        <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
-                        <div className="py-[8px] opacity-50 hover:text-grayscale-light hover:opacity-100">百越觀點</div>
-                    </div>
+                    <InsightsList />
                 </div>
-                <InsightsList />
-            </div>
+            </section>
             <FooterSimple />
         </section>
     );

@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 import landingPageStyles from "~/pages/LandingPage/styles.css";
@@ -57,11 +58,13 @@ function ProjectsList() {
                                     <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
                                         其他
                                     </button>
-                                    <img
-                                        className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
-                                        src="assets/arrow_r.png"
-                                        alt="arrorw_r_pic"
-                                    />
+                                    <Link to="/projects/1">
+                                        <img
+                                            className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
+                                            src="assets/arrow_r.png"
+                                            alt="arrorw_r_pic"
+                                        />
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -81,11 +84,13 @@ function ProjectsList() {
                                 <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
                                     其他
                                 </button>
-                                <img
-                                    className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
-                                    src="assets/arrow_r.png"
-                                    alt="arrorw_r_pic"
-                                />
+                                <Link to="/projects/1">
+                                    <img
+                                        className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
+                                        src="assets/arrow_r.png"
+                                        alt="arrorw_r_pic"
+                                    />
+                                </Link>
                             </div>
                         </div>
                     </div>

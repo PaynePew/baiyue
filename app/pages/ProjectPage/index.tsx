@@ -39,7 +39,7 @@ const fakeData = [
 
 function ProjectsList() {
     return (
-        <div className="flex flex-wrap justify-center gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center mb-[32px] md:mb-[64px]">
+        <div className="flex flex-wrap justify-center gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center">
             {fakeData.map(({ alt, pic, desc }, idx) => {
                 if (idx === 0) {
                     return (
@@ -98,8 +98,13 @@ function ProjectsList() {
 export function ProjectPage() {
     return (
         <section className="w-full bg-grayscale-iron">
-            <section className="container">
-                <div className="flex flex-col pt-[141px] mx-[24px] mb-[104px] gap-[32px] md:mx-[40px] md:pt-[206px] md:mb-[244px] md:gap-[48px] lg:pt-[336px] lg:mx-[120px] lg:mb-[306.48px] lg:gap-[64px]">
+            <section className="container relative">
+                {/*Decoration Square-Bottom Left*/}
+                <div className="hidden absolute bottom-[-160px] left-0 bg-grayscale-iron square-shadow-contact lg:inline-block w-[386px] h-[328px]" />
+                {/*Decoration Triangle-Bottom Left*/}
+                <div className="hidden absolute z-10 bg-primary rotate-180 lg:inline-block bottom-[-73px] left-[359px] triangle-dec-primary w-[48px] h-[48px]" />
+                {/*ProjectPage Content*/}
+                <div className="flex flex-col pt-[141px] mx-[24px] mb-[104px] gap-[32px] md:mx-[40px] md:pt-[206px] md:mb-[136px] md:gap-[48px] lg:pt-[336px] lg:mx-[120px] lg:mb-[176px] lg:gap-[64px]">
                     <div className="flex justify-between items-end">
                         <div className="flex flex-col items-start justify-center gap-[4px] md:gap-[8px]">
                             <div className="display-1 text-grayscale-gainsboro">工程實績</div>
@@ -138,7 +143,7 @@ export function ProjectPage() {
                         </div>
                     </div>
                     <ProjectsList />
-                    <div className="flex en-body-1 text-grayscale-light justify-center items-center cursor-pointer">
+                    <div className="flex en-body-1 md:mt-[16px] text-grayscale-light justify-center items-center cursor-pointer">
                         <div className="py-[8px] border-b-[1px] hover:text-grayscale-light uppercase">load more</div>
                     </div>
                 </div>

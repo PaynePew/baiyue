@@ -62,6 +62,9 @@
     .custom-project-scrollbar::-webkit-scrollbar {
         display: none;
     }
+    .custom-projectdetail-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
 
     @media screen(md) {
         h1 {
@@ -186,6 +189,38 @@
     .triangle-dec-2-filter {
         border-radius: 0px 100% 2px 4% / 0px 4% 2px 100%;
         clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    }
+    .border-arrow {
+        height: 1px;
+        filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);
+        /* width: 50px; */
+    }
+
+    .border-arrow-vertical {
+        width: 1px;
+        filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);
+    }
+
+    .border-arrow::after,
+    .border-arrow-vertical::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 5px;
+        top: -2px;
+        right: -4px;
+        clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    }
+
+    .border-arrow::before,
+    .border-arrow-vertical::before {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 5px;
+        top: -2px;
+        left: -4px;
+        clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
     }
 
     @media screen(md) {

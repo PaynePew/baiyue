@@ -217,7 +217,6 @@ export function ProjectDetail({ projectId }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">
-                {" "}
                 {/* Breadcrumb for Desktop */}
                 <div className="hidden lg:flex lg:pt-[344px] lg:mx-[120px]">
                     <div className="lg:flex gap-[24px] nav-title text-grayscale-light justify-start items-center cursor-pointer">
@@ -266,8 +265,13 @@ export function ProjectDetail({ projectId }) {
                             </div>
                         </div>
                         {/* Project Introduce */}
-                        <div className="flex flex-col p-[24px] gap-[24px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[32px] lg:basis-[57.5%] lg:gap-[48px]">
+                        <div className="flex flex-col p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:basis-[57.5%] lg:gap-[24px]">
                             <div className="body-3 text-grayscale-light">專案介紹</div>
+                            {/*Border*/}
+                            <div className="relative w-full">
+                                <div className="w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                            </div>
+                            {/*Content*/}
                             <div className="flex flex-col gap-[8px] md:w-2/3 md:gap-[24px] md:grid md:grid-cols-2 lg:w-full">
                                 <div className="flex items-center gap-[8px] md:gap-[16px]">
                                     <div className="en-body-1 text-primary">/1</div>
@@ -304,9 +308,15 @@ export function ProjectDetail({ projectId }) {
                             </div>
                         </div>
                         {/* Project Process */}
-                        <div className="flex flex-col p-[24px] gap-[24px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 w-full">
+                        <div className="flex flex-col w-full p-[24px] pr-0 gap-[12px] md:gap-[16px] lg:gap-[24px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 ">
                             <div className="body-3 text-grayscale-light">專案流程</div>
-                            <div className="w-full overflow-x-scroll">
+                            {/*Border*/}
+                            {/*TODO:strech all over*/}
+                            <div className="relative w-[96%]">
+                                <div className="w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                            </div>
+                            {/*Flow*/}
+                            <div className="w-full overflow-x-scroll custom-projectdetail-scrollbar">
                                 <div className="flex justify-start items-center gap-[16px] min-w-[1200px]">
                                     {flow.map(({ step, desc }, idx) => {
                                         return (

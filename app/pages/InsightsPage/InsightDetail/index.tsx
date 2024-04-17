@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import styles from "./styles.css";
 import { FooterSimple } from "~/components/Footer";
 
@@ -47,11 +48,13 @@ function OthersInsights() {
                                         <div className="body-3 text-grayscale-light/50">{catgory}</div>
                                     </div>
                                     <div className="flex items-center">
-                                        <img
-                                            className="hidden w-[38px] md:h-[11px] md:block"
-                                            src="/assets/arrow_r.png"
-                                            alt="arrorw_r_pic"
-                                        />
+                                        <Link to="/insights/1">
+                                            <img
+                                                className="hidden w-[38px] md:h-[11px] md:block"
+                                                src="/assets/arrow_r.png"
+                                                alt="arrorw_r_pic"
+                                            />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +70,6 @@ export function InsightDetail({ insightId }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">
-                {" "}
                 {/* Breadcrumb for Desktop */}
                 <div className="hidden lg:flex lg:pt-[344px] lg:mx-[120px]">
                     <div className="lg:flex gap-[24px] nav-title text-grayscale-light justify-start items-center cursor-pointer">

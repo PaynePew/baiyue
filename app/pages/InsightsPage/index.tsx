@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 
@@ -76,11 +77,13 @@ function InsightsList() {
                                 <div className="body-3 text-grayscale-light/50">{catgory}</div>
                             </div>
                             <div className="flex items-center">
-                                <img
-                                    className="hidden w-[38px] md:h-[11px] md:block"
-                                    src="/assets/arrow_r.png"
-                                    alt="arrorw_r_pic"
-                                />
+                                <Link to="/insights/1">
+                                    <img
+                                        className="hidden w-[38px] md:h-[11px] md:block"
+                                        src="/assets/arrow_r.png"
+                                        alt="arrorw_r_pic"
+                                    />
+                                </Link>
                             </div>
                         </div>
                     </div>

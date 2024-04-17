@@ -222,7 +222,12 @@
         left: -4px;
         clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
     }
-
+    /*Button*/
+    .main-button {
+    }
+    .main-button:hover > span {
+        display: none;
+    }
     @media screen(md) {
         .display-1 {
             font-size: 48px;

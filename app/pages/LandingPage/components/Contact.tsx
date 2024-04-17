@@ -14,9 +14,9 @@ export function Contact() {
                         <div className="body-1 text-white text-center lg:text-left">
                             一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案
                         </div>
-                        <button className="hidden button-shadow-1 w-[189px] bg-grayscale-gray lg:flex justify-center items-center gap-[16px] nav-title text-[15px] text-grayscale-light h-[56px] rounded-[128px]  hover:bg-grayscale-light hover:text-grayscale-iron">
+                        <button className="main-button hidden button-shadow-1 w-[189px] lg:flex gap-[16px] nav-title text-[15px] h-[56px]">
                             <div className="">聯絡我們</div>
-                            <img className="hover:hidden" src="assets/icon_mail_send.png" alt="icon_mail_send" />
+                            <img className="" src="assets/icon_mail_send.png" alt="icon_mail_send" />
                         </button>
                     </div>
                     <div className="relative">
@@ -68,9 +68,9 @@ export function Contact() {
                             />
                         </div>
                     </div>
-                    <button className="button-shadow-1 w-[312px] bg-grayscale-gray flex justify-center items-center gap-[16px] nav-title text-[15px] text-grayscale-light h-[56px] rounded-[128px]  hover:bg-grayscale-light hover:text-grayscale-iron lg:hidden">
+                    <button className="main-button button-shadow-1 w-[312px] flex gap-[16px] nav-title text-[15px] h-[56px] lg:hidden">
                         <div className="">聯絡我們</div>
-                        <img className="hover:hidden" src="assets/icon_mail_send.png" alt="icon_mail_send" />
+                        <img className="" src="assets/icon_mail_send.png" alt="icon_mail_send" />
                     </button>
                 </div>
             </div>

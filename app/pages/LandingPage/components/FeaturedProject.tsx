@@ -46,8 +46,8 @@ export function FeaturedProject() {
                             );
                         })}
                     </div>
-                    <button className="button-shadow-1 w-[312px] bg-grayscale-gray nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] lg:w-[173px] hover:bg-grayscale-light hover:text-grayscale-iron">
-                        <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
+                    <button className="main-button button-shadow-1 w-[312px] nav-title flex gap-[16px] text-[15px] h-[56px] md:mx-[99px] lg:w-[173px]">
+                        <span className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></span>
                         <div className="">所有實績</div>
                     </button>
                 </div>

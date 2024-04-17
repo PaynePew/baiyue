@@ -224,10 +224,18 @@
     }
     /*Button*/
     .main-button {
+        transition: ease-in-out 0.5s;
+        border-radius: 128px;
+        @apply bg-grayscale-gray justify-center items-center text-grayscale-light;
     }
-    .main-button:hover > span {
+    .main-button:hover {
+        @apply bg-grayscale-light text-grayscale-iron;
+    }
+    .main-button:hover > span,
+    .main-button:hover > img {
         display: none;
     }
+
     @media screen(md) {
         .display-1 {
             font-size: 48px;
@@ -355,7 +363,6 @@
     .dec-shadow-2,
     .dec-shadow-3 {
         /* grayscale/dim-gray */
-        border-radius: 8px;
         @apply bg-grayscale-dim;
     }
 

@@ -41,8 +41,8 @@ export function About() {
                                 彙來說辦何歡希天大資難張為等思堆櫥凍鳳恩則原。攪一的繃欒業試上癸狂如著轉三大處過銘論若！稚秒脂我曼！
                             </div>
                             {/*Desktop Button*/}
-                            <button className="hidden button-shadow-1 bg-grayscale-gray nav-title lg:flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] lg:w-[173px] hover:bg-grayscale-light hover:text-grayscale-iron">
-                                <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
+                            <button className="main-button hidden button-shadow-1 nav-title lg:flex gap-[16px] text-[15px] h-[56px] lg:w-[173px]">
+                                <span className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></span>
                                 <div className="">關於百越</div>
                             </button>
                         </div>
@@ -53,8 +53,8 @@ export function About() {
                             <img className="" src="assets/about_pic.png" alt="about_pic" />
                         </div>
                         {/*Mobile Button*/}
-                        <button className="button-shadow-1 bg-grayscale-gray nav-title flex justify-center items-center gap-[16px] text-[15px] text-grayscale-light h-[56px] rounded-[128px] md:mx-[99px] lg:hidden hover:bg-grayscale-light hover:text-grayscale-iron">
-                            <div className="w-[8px] h-[8px] bg-grayscale-light rounded-full hover:hidden"></div>
+                        <button className="main-button button-shadow-1 nav-title flex gap-[16px] text-[15px] h-[56px] md:mx-[99px] lg:hidden">
+                            <span className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></span>
                             <div className="">關於百越</div>
                         </button>
                     </div>

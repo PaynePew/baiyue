@@ -21,7 +21,7 @@ export function Hero({ handleVideoPlay, colors, colorIndex }) {
                     </div>
                 </div>
                 <svg
-                    className={`absolute stroke-grayscale-iron  w-[440px] h-[440px] md:w-[500px] md:h-[500px] rotate-90`}
+                    className={`absolute stroke-grayscale-iron w-[440px] h-[440px] md:w-[500px] md:h-[500px] rotate-90`}
                 >
                     <circle
                         className={`draw-circle`}

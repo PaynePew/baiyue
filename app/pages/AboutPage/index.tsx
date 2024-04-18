@@ -1,7 +1,7 @@
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 import landingPageStyles from "~/pages/LandingPage/styles.css";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import { Services, Carousel } from "./components";
 export function links() {
     return [
@@ -12,80 +12,79 @@ export function links() {
 
 // TODO:Update Scroll Animation
 export function AboutPage() {
-    const carouselScrollRef = useRef<HTMLDivElement>(null);
-    const serviceScrollRef = useRef<HTMLDivElement>(null);
+    const carouselScrollRef = useRef<HTMLDivElement | null>(null);
+    const serviceScrollRef = useRef<HTMLDivElement | null>(null);
 
-    const [section, setSection] = useState(0);
+    // const [section, setSection] = useState(0);
+    //
+    //    useEffect(() => {
+    //        const positionService = window.scrollY + serviceScrollRef?.current!.getBoundingClientRect().top;
+    //        console.log("position", positionService);
+    //        console.log("now", window.scrollY + window.innerWidth);
+    //        document.documentElement.scrollTop = positionService;
+    //    });
 
-    const handleWheelEvent = (e: WheelEvent) => {
-        const maxScrollHeight = serviceScrollRef?.current!.scrollHeight - 720;
-        const maxScrollWidth = carouselScrollRef?.current!.scrollWidth - 1320;
-        console.log(e.deltaY);
-        if (section === 0) {
-            if (
-                e.deltaY > 0 &&
-                window.innerHeight > carouselScrollRef?.current!.getBoundingClientRect().top + 500 &&
-                carouselScrollRef?.current!.scrollLeft <= maxScrollWidth
-            ) {
-                if (carouselScrollRef?.current!.scrollLeft === maxScrollWidth) {
-                    serviceScrollRef?.current!.scrollIntoView({
-                        behavior: "auto",
-                        block: "center",
-                        inline: "center",
-                    });
-                    setSection(1);
-                    return;
-                }
-                e.preventDefault();
-                carouselScrollRef?.current!.scrollBy(e.deltaY, 0);
-            }
-            if (
-                e.deltaY < 0 &&
-                window.innerHeight > carouselScrollRef?.current!.getBoundingClientRect().top + 500 &&
-                carouselScrollRef?.current!.scrollLeft <= maxScrollWidth
-            ) {
-                if (carouselScrollRef?.current!.scrollLeft === 0) {
-                    return;
-                }
-                e.preventDefault();
-                carouselScrollRef?.current!.scrollBy(e.deltaY, 0);
-            }
-        }
-        if (section === 1) {
-            if (
-                e.deltaY > 0 &&
-                window.innerHeight > serviceScrollRef?.current!.getBoundingClientRect().top + 720 &&
-                serviceScrollRef?.current!.scrollTop < maxScrollHeight
-            ) {
-                e.preventDefault();
-                serviceScrollRef?.current!.scrollBy(0, e.deltaY);
-            }
-            if (
-                e.deltaY < 0 &&
-                window.innerHeight > serviceScrollRef?.current!.getBoundingClientRect().top + 720 &&
-                serviceScrollRef?.current!.scrollTop <= maxScrollHeight
-            ) {
-                if (serviceScrollRef?.current!.scrollTop === 0) {
-                    carouselScrollRef?.current!.scrollIntoView({
-                        behavior: "auto",
-                        block: "start",
-                        inline: "start",
-                    });
-                    setSection(0);
-                    return;
-                }
-                e.preventDefault();
-                serviceScrollRef?.current!.scrollBy(0, e.deltaY);
-            }
-        }
-    };
+    //    const handleWheelEvent = (e: WheelEvent) => {
+    //        const maxScrollHeight = serviceScrollRef?.current!.scrollHeight - 720;
+    //        const maxScrollWidth = carouselScrollRef?.current!.scrollWidth - 1320;
+    //        console.log(e.deltaY);
+    //        console.log("no?", serviceScrollRef?.current!.getBoundingClientRect().top);
+    //
+    //        if (section === 0) {
+    //            if (
+    //                e.deltaY > 0 &&
+    //                window.innerHeight > carouselScrollRef?.current!.getBoundingClientRect().top + 500 &&
+    //                carouselScrollRef?.current!.scrollLeft <= maxScrollWidth
+    //            ) {
+    //                e.preventDefault();
+    //                carouselScrollRef?.current!.scrollBy(e.deltaY, 0);
+    //                if (carouselScrollRef?.current!.scrollLeft >= maxScrollWidth) {
+    //                    console.log("OOOOOO");
+    //                    setSection(1);
+    //                    return;
+    //                }
+    //            }
+    //            if (
+    //                e.deltaY < 0 &&
+    //                window.innerHeight < carouselScrollRef?.current!.getBoundingClientRect().bottom + 500 &&
+    //                carouselScrollRef?.current?.scrollLeft !== 0
+    //            ) {
+    //                console.log("????????????????????");
+    //                e.preventDefault();
+    //                carouselScrollRef?.current!.scrollBy(e.deltaY, 0);
+    //            }
+    //        }
+    //        if (section === 1) {
+    //            if (
+    //                e.deltaY > 0 &&
+    //                window.innerHeight > serviceScrollRef?.current!.getBoundingClientRect().top + 606 &&
+    //                serviceScrollRef?.current!.scrollTop <= maxScrollHeight
+    //            ) {
+    //                e.preventDefault();
+    //                serviceScrollRef?.current!.scrollBy(0, e.deltaY);
+    //            }
+    //            if (
+    //                e.deltaY < 0 &&
+    //                window.innerHeight < serviceScrollRef?.current!.getBoundingClientRect().top + 606 &&
+    //                serviceScrollRef?.current!.scrollTop <= maxScrollHeight
+    //            ) {
+    //                e.preventDefault();
+    //                serviceScrollRef?.current!.scrollBy(0, e.deltaY);
+    //                if (serviceScrollRef?.current!.scrollTop === 0) {
+    //                    console.log("wowowow");
+    //                    setSection(0);
+    //                    return;
+    //                }
+    //            }
+    //        }
+    //    };
 
-    useEffect(() => {
-        document.addEventListener("wheel", handleWheelEvent, { passive: false });
-        return () => {
-            document.removeEventListener("wheel", handleWheelEvent);
-        };
-    });
+    //    useEffect(() => {
+    //        document.addEventListener("wheel", handleWheelEvent, { passive: false });
+    //        return () => {
+    //            document.removeEventListener("wheel", handleWheelEvent);
+    //        };
+    //    });
     return (
         <>
             <section className="w-full bg-grayscale-iron flex">

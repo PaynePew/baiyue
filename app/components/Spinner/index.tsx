@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import styles from "./styles.css";
 export function links() {
     return [
@@ -6,8 +6,14 @@ export function links() {
         { rel: "preload", as: "video", href: "/assets/baiyu_logo_animation.mp4" },
     ];
 }
+type HandleVideoOpenPropType = () => void;
+interface SpinnerPropType {
+    isVidVisible: Boolean;
+    vidRef: React.MutableRefObject<HTMLVideoElement | null>;
+    handleVideoOpen: HandleVideoOpenPropType;
+}
 
-export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
+export function Spinner({ vidRef, isVidVisible, handleVideoOpen }: SpinnerPropType) {
     const [isVisible, setIsVisible] = useState(true);
     const [toggleAnimation, setToggleAnimtion] = useState(false);
 
@@ -15,8 +21,10 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
         setToggleAnimtion(true);
         setTimeout(() => {
             setIsVisible(false);
-            vidRef.current.currentTime = 0;
-            vidRef.current.play();
+            if (vidRef.current) {
+                vidRef.current.currentTime = 0;
+                vidRef.current.play();
+            }
             setToggleAnimtion(false);
         }, 550);
     };
@@ -25,8 +33,10 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }) {
         setToggleAnimtion(true);
         setTimeout(() => {
             handleVideoOpen();
-            vidRef.current.pause();
-            vidRef.current.currentTime = 0;
+            if (vidRef.current) {
+                vidRef.current.pause();
+                vidRef.current.currentTime = 0;
+            }
             setToggleAnimtion(false);
         }, 550);
     };

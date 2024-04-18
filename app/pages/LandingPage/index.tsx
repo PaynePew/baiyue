@@ -19,32 +19,11 @@ export function LandingPage() {
     const [isVidVisible, setIsVidVisible] = useState(true);
     const [playVideo, setPlayVideo] = useState(false);
     const [colorIndex, setColorIndex] = useState(0);
-    const vidRef = useRef(null);
+    const vidRef = useRef<HTMLVideoElement | null>(null);
     const colors = ["grayscale-iron", "grayscale-dim", "grayscale-iron", "grayscale-dim", "grayscale-dim"];
-    // const [vidRef, heroSection, aboutSection, featuredProjectSection, partnersSection, contactSection] = [
-    //     useRef(null),
-    //     useRef(null),
-    //     useRef(null),
-    //     useRef(null),
-    //     useRef(null),
-    //     useRef(null),
-    // ];
-    // const handleAnimation = [
-    //     { section: heroSection, bgColor: "bg-grayscale-iron" },
-    //     { section: aboutSection, bgColor: "bg-grayscale-dim" },
-    //     { section: featuredProjectSection, bgColor: "bg-grayscale-iron" },
-    //     { section: partnersSection, bgColor: "bg-grayscale-dim" },
-    //     { section: featuredProjectSection, bgColor: "bg-grayscale-dim" },
-    //     { section: contactSection, bgColor: "bg-grayscale-iron" },
-    // ];
 
+    //Gradient Background Colors
     useEffect(() => {
-        // handleAnimation.map(({ section, bgColor }) => {
-        //     if (section.current) {
-        //         return section.current["offsetTop"] + section.current["clientHeight"] / 2
-        //     }
-        //     return null
-        // });
         const handleScrollColor = () => {
             const scrollFromTop = window.scrollY;
             const sectionElements = [...document.getElementsByTagName("section")];
@@ -62,15 +41,20 @@ export function LandingPage() {
         return () => window.removeEventListener("scroll", throttledScroll);
     }, []);
 
+    //Play Video
     const handleVideoPlay = () => {
         setPlayVideo(true);
         setTimeout(() => {
             handleVideoOpen();
-            vidRef.current.currentTime = 0;
-            vidRef.current.play();
+            if (vidRef.current) {
+                vidRef.current.currentTime = 0;
+                vidRef.current.play();
+            }
             setPlayVideo(false);
         }, 550);
     };
+
+    //Determine Video is Play or Not
     const handleVideoOpen = () => {
         setIsVidVisible(!isVidVisible);
     };
@@ -93,21 +77,38 @@ export function LandingPage() {
                     <div className="absolute w-[29.44px] h-[29.44px] right-[5px] bottom-[5px] triangle-dec-2-filter bg-grayscale-iron lg:w-[43.3px] lg:h-[43.3px] lg:right-[7px] lg:bottom-[7px]"></div>
                 </div>
                 {/* border-arrow-1 */}
-                <div className="absolute bottom-[-12px] left-[-40px] lg:bottom-[-18px] lg:left-[-60px] border-arrow-wrapper expand-order-3">
+                <div
+                    className={`absolute bottom-[-12px] left-[-40px] lg:bottom-[-18px] lg:left-[-60px] ${
+                        isVidVisible ? "" : "border-arrow-wrapper expand-order-3"
+                    }`}
+                >
                     <div className="absolute w-[125px] lg:w-[183px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-2 */}
-                <div className="absolute rotate-90 right-[-12px] top-[-40px] lg:right-[-18px] lg:top-[-60px] border-arrow-wrapper expand-order-2">
+                <div
+                    className={`absolute rotate-90 right-[-12px] top-[-40px] lg:right-[-18px] lg:top-[-60px] ${
+                        isVidVisible ? "" : "border-arrow-wrapper expand-order-2"
+                    }`}
+                >
                     <div className="absolute w-[125px] lg:w-[183px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
                 {/* border-arrow-3 */}
-                <div className="absolute -rotate-45 left-[-40px] bottom-[-25px] lg:left-[-60px] lg:bottom-[-35px] border-arrow-wrapper expand-order-4">
+                <div
+                    className={`absolute -rotate-45 left-[-40px] bottom-[-25px] lg:left-[-60px] lg:bottom-[-35px] ${
+                        isVidVisible ? "" : "border-arrow-wrapper expand-order-4"
+                    }`}
+                >
                     <div className="absolute w-[160px] lg:w-[235px] bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                 </div>
             </div>
 
             <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
-            <Hero handleVideoPlay={handleVideoPlay} colors={colors} colorIndex={colorIndex} />
+            <Hero
+                handleVideoPlay={handleVideoPlay}
+                colors={colors}
+                colorIndex={colorIndex}
+                isVidVisible={isVidVisible}
+            />
             <About />
             <FeaturedProject />
             <Partners />

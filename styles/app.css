@@ -1,4 +1,5 @@
 @tailwind base;
+
 @layer base {
     h1,
     h2,
@@ -8,65 +9,114 @@
     h6 {
         @apply font-sans tracking-[.1em] font-thin;
     }
+
     h1 {
         font-size: 30px;
         line-height: 140%;
     }
+
     h2 {
         font-size: 22px;
         line-height: 150%;
     }
+
     h3 {
         font-size: 22px;
         line-height: 190%;
     }
+
     h4 {
         font-size: 20px;
         line-height: 170%;
     }
+
     h5 {
         font-size: 18px;
         line-height: 140%;
     }
+
     h6 {
         font-size: 16px;
         line-height: 140%;
     }
+    ::-webkit-scrollbar {
+        height: 2px;
+        width: 10px;
+        border-radius: 99px;
+    }
+    ::-webkit-scrollbar-track {
+        height: 2px;
+        background: rgba(191, 191, 191, 0.2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(191, 191, 191, 1);
+        height: 10px;
+        border-radius: 99px;
+        border: 1px solid rgba(191, 191, 191, 1);
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        margin-right: 24px;
+    }
+    .custom-project-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+    .custom-projectdetail-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
     @media screen(md) {
         h1 {
             font-size: 44px;
         }
+
         h2 {
             font-size: 28px;
         }
+
         h3 {
             font-size: 24px;
         }
+
         h4 {
             font-size: 22px;
         }
+
         h5 {
             font-size: 24px;
         }
+
         h6 {
             font-size: 20px;
         }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            margin: 0px 89px;
+        }
     }
+
     @media screen(lg) {
         h1 {
             font-size: 56px;
         }
+
         h2 {
             font-size: 40px;
         }
+
         h3 {
             font-size: 32px;
         }
+
         h4 {
             font-size: 28px;
         }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            margin: 0 366.5px;
+        }
     }
 }
+
 @tailwind components;
 
 @layer components {
@@ -84,55 +134,140 @@
         font-size: 32px;
         line-height: 140%;
     }
+
     .display-2 {
         font-size: 36px;
         line-height: 140%;
     }
+
     .nav-title {
         font-size: 24px;
         line-height: 160%;
         font-weight: 400;
         letter-spacing: 0.2em;
     }
+
     .body-1 {
         font-size: 14px;
         line-height: 160%;
     }
+
     .body-2 {
         font-size: 15px;
         line-height: 210%;
         font-weight: 300;
     }
+
     .body-3 {
         font-size: 13px;
         line-height: 160%;
         font-weight: 400;
     }
+    .triangle-dec-primary {
+        box-shadow: -5px -5px 14.99px 0px #343235, 5px 6.24px 14.99px 0px #212022;
+        border-radius: 6px 5% 6px 0% / 6px 5% 6px 0%;
+        clip-path: polygon(0 0, 100% 0, 100% 100%);
+    }
+    .triangle-shadow {
+        filter: drop-shadow(0.44027px 5.55033px 13.3208px #212022) drop-shadow(-4.44027px -4.44027px 13.3208px #343235);
+        /* -webkit-filter: drop-shadow(0.44027px 5.55033px 13.3208px #212022, -4.44027px -4.44027px 13.3208px #343235); */
+    }
+    .triangle-dec-bltr {
+        box-shadow: -5px -5px 14.99px 0px rgba(52, 50, 53, 1), 5px 6.24px 14.99px 0px rgba(33, 32, 34, 1);
+        border-radius: 6px 0 6px 5% / 6px 0 6px 5%;
+        clip-path: polygon(0 0, 0 100%, 100% 100%);
+    }
+    .triangle-dec {
+        border-radius: 2px 4% 0px 100% / 2px 100% 0px 4%;
+        clip-path: polygon(0 0, 0% 100%, 100% 0);
+    }
+
+    .triangle-dec-2 {
+        border-radius: 0px 100% 2px 4% / 0px 4% 2px 100%;
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    }
+    .triangle-dec-2-filter {
+        border-radius: 0px 100% 2px 4% / 0px 4% 2px 100%;
+        clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    }
+    .border-arrow {
+        height: 1px;
+        filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);
+        /* width: 50px; */
+    }
+
+    .border-arrow-vertical {
+        width: 1px;
+        filter: drop-shadow(-1px -1px 1px #414041) drop-shadow(-2px -2px 1px #252426);
+    }
+
+    .border-arrow::after,
+    .border-arrow-vertical::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 5px;
+        top: -2px;
+        right: -4px;
+        clip-path: polygon(0 0, 0% 100%, 100% 50%);
+    }
+
+    .border-arrow::before,
+    .border-arrow-vertical::before {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 5px;
+        top: -2px;
+        left: -4px;
+        clip-path: polygon(100% 0%, 100% 100%, 0% 50%);
+    }
+    /*Button*/
+    .main-button {
+        transition: ease-in-out 0.5s;
+        border-radius: 128px;
+        @apply bg-grayscale-gray justify-center items-center text-grayscale-light;
+    }
+    .main-button:hover {
+        @apply bg-grayscale-light text-grayscale-iron;
+    }
+    .main-button:hover > span,
+    .main-button:hover > img {
+        display: none;
+    }
+
     @media screen(md) {
         .display-1 {
             font-size: 48px;
         }
+
         .display-2 {
             font-size: 44px;
         }
+
         .nav-title {
             font-size: 32px;
         }
+
         .body-1 {
             font-size: 15px;
         }
     }
+
     @media screen(lg) {
         .display-1 {
             font-size: 64px;
         }
+
         .display-2 {
             font-size: 52px;
         }
+
         .nav-title {
             font-size: 15px;
         }
     }
+
     /* english typography */
     .en-h1,
     .en-h2,
@@ -143,61 +278,77 @@
     .en-minimum {
         @apply font-ga tracking-[.1em];
     }
+
     .en-h1 {
         font-size: 36px;
         line-height: 140%;
     }
+
     .en-h2 {
         font-size: 22px;
         line-height: 170%;
     }
+
     .en-h3 {
         font-size: 24px;
         line-height: 120%;
     }
+
     .en-h4 {
         font-size: 16px;
         line-height: 170%;
     }
+
     .en-body-1 {
         font-size: 14px;
         line-height: 160%;
     }
+
     .en-body-1-ag {
         font-size: 15px;
         line-height: 160%;
     }
+
     .en-minimum {
         font-size: 12px;
         line-height: 160%;
     }
+
     @media screen(md) {
         .en-h1 {
             font-size: 48px;
         }
+
         .en-h2 {
             font-size: 30px;
         }
+
         .en-h3 {
             font-size: 26px;
         }
+
         .en-h4 {
             font-size: 18px;
         }
+
         .en-body-1 {
             font-size: 15px;
         }
     }
+
     @media screen(lg) {
         .en-h1 {
             font-size: 52px;
         }
+
         .en-h2 {
             font-size: 42px;
         }
+
         .en-h3 {
             font-size: 32px;
         }
+
         .en-h4 {
             font-size: 48px;
         }
@@ -212,35 +363,47 @@
     .dec-shadow-2,
     .dec-shadow-3 {
         /* grayscale/dim-gray */
-        border-radius: 8px;
         @apply bg-grayscale-dim;
     }
 
     .card-shadow {
         box-shadow: 4.99561px 5px 12px rgba(33, 32, 34, 0.3), -4.99561px -4.99561px 12px #343235;
     }
+
     .menu-shadow {
         box-shadow: 4px 4px 12px #212022, -4px -4px 12px #343235;
     }
+
     .button-shadow-1 {
         box-shadow: 4px 4px 12px -4px rgba(33, 32, 34, 0.3), -5px -5px 12px -4px rgba(81, 81, 81, 0.9);
     }
+
     .button-shadow-2 {
         box-shadow: 4px 4px 12px #212022, -4px -4px 12px #343235;
     }
+
     .dec-shadow-1 {
         box-shadow: 4px 4px 16px #212022, -4px -4px 16px #343235;
     }
+
     .dec-shadow-2 {
         box-shadow: 8px 8px 16px rgba(33, 32, 34, 0.1), -4px -4px 32px -4px #383639;
     }
+
     .dec-shadow-3 {
         box-shadow: 8px 8px 16px rgba(33, 32, 34, 0.1), -4px -4px 32px -4px #3d3b3f;
     }
+
     .dec-shadow-4 {
         @apply bg-grayscale-dim;
         box-shadow: 4.99561px 6.24451px 14.9868px #212022, -4.99561px -4.99561px 14.9868px #343235;
         border-radius: 4px;
+    }
+    .square-shadow-1 {
+        box-shadow: -5px 0 15px rgba(52, 50, 53, 1), 5px 0 15px rgba(33, 32, 34, 1);
+    }
+    .square-shadow-contact {
+        box-shadow: -5px -5px 31px -6px rgba(56, 54, 57, 1), 8px 8px 15px 0px rgba(33, 32, 34, 0.1);
     }
 }
 

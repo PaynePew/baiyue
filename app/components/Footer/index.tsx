@@ -1,7 +1,13 @@
 export function Footer() {
+    const handleScrollIntoTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
     return (
         <div className="relative bg-grayscale-iron border-t-[1px] border-grayscale-gray rounded-tl-[16px] rounded-tr-[16px] mt-[-16px]">
-            <div className="absolute right-[24px] top-[-41px] flex flex-col justify-center items-center gap-[10px] bg-grayscale-iron button-shadow-2 rounded-[16px] w-[85px] h-[82px] hover:bg-grayscale-dim lg:w-[101px] lg:h-[98px] lg:right-[72px]">
+            <div
+                onClick={handleScrollIntoTop}
+                className="absolute cursor-pointer right-[24px] top-[-41px] flex flex-col justify-center items-center gap-[10px] bg-grayscale-iron button-shadow-2 rounded-[16px] w-[85px] h-[82px] hover:bg-grayscale-dim lg:w-[101px] lg:h-[98px] lg:right-[72px]"
+            >
                 <div className="border-primary border-x-transparent border-t-transparent border-solid border-b-[14px] border-x-[14px] rounded-[2px]"></div>
                 <div className="en-body-1 text-[15px] text-secondary-light">TO TOP</div>
             </div>
@@ -37,9 +43,15 @@ export function Footer() {
 }
 
 export function FooterSimple() {
+    const handleScrollIntoTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
     return (
         <div className="relative bg-grayscale-iron border-t-[1px] border-grayscale-gray rounded-tl-[16px] rounded-tr-[16px] mt-[-16px]">
-            <div className="absolute right-[24px] top-[-41px] flex flex-col justify-center items-center gap-[10px] bg-grayscale-iron button-shadow-2 rounded-[16px] w-[85px] h-[82px] hover:bg-grayscale-dim lg:w-[101px] lg:h-[98px] lg:right-[72px]">
+            <div
+                onClick={handleScrollIntoTop}
+                className="absolute cursor-pointer right-[24px] top-[-41px] flex flex-col justify-center items-center gap-[10px] bg-grayscale-iron button-shadow-2 rounded-[16px] w-[85px] h-[82px] hover:bg-grayscale-dim lg:w-[101px] lg:h-[98px] lg:right-[72px]"
+            >
                 <div className="border-primary border-x-transparent border-t-transparent border-solid border-b-[14px] border-x-[14px] rounded-[2px]"></div>
                 <div className="en-body-1 text-[15px] text-secondary-light">TO TOP</div>
             </div>

@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import styles from "./styles.css";
 import { FooterSimple } from "~/components/Footer";
 
@@ -47,11 +48,13 @@ function OthersSection() {
                                             <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
                                                 其他
                                             </button>
-                                            <img
-                                                className="hidden w-[38px] md:h-[11px] md:block"
-                                                src="/assets/arrow_r.png"
-                                                alt="arrorw_r_pic"
-                                            />
+                                            <Link to="/projects/1">
+                                                <img
+                                                    className="hidden w-[38px] md:h-[11px] md:block"
+                                                    src="/assets/arrow_r.png"
+                                                    alt="arrorw_r_pic"
+                                                />
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -71,11 +74,13 @@ function OthersSection() {
                                         <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
                                             其他
                                         </button>
-                                        <img
-                                            className="hidden w-[38px] md:h-[11px] md:block"
-                                            src="/assets/arrow_r.png"
-                                            alt="arrorw_r_pic"
-                                        />
+                                        <Link to="/projects/1">
+                                            <img
+                                                className="hidden w-[38px] md:h-[11px] md:block"
+                                                src="/assets/arrow_r.png"
+                                                alt="arrorw_r_pic"
+                                            />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -216,116 +221,131 @@ function ProjectDetailCards() {
 export function ProjectDetail({ projectId }) {
     return (
         <section className="w-full bg-grayscale-iron">
-            {/* Breadcrumb for Desktop */}
-            <div className="hidden lg:flex lg:pt-[344px] lg:mx-[120px]">
-                <div className="lg:flex gap-[24px] nav-title text-grayscale-light justify-start items-center cursor-pointer">
-                    <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
-                    <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
-                    <div className="py-[8px] border-b-[1px] hover:text-grayscale-light hover:opacity-100">工程實績</div>
-                    <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
-                </div>
-            </div>
-            <div className="flex flex-col pt-[131px] mx-[24px] gap-[32px] mb-[60.5px] md:mx-[40px] md:pt-[200px] md:gap-[64px] md:mb-[77px] lg:pt-[120px] lg:mx-[120px] lg:mb-[80px] lg:gap-[80px] ">
-                <div className="w-full flex flex-col gap-[32px] md:gap-[64px] lg:flex-row lg:gap-[0] lg:items-start lg:justify-end">
-                    {/* Project Title */}
-                    <div className="flex flex-col justify-center items-center gap-[12px] lg:items-start lg:ml-[40px] lg:gap-[32px]">
-                        <h2 className="text-grayscale-gainsboro text-center lg:text-left">
-                            臺北市殯葬管理處第二殯儀館二期整建工程
-                        </h2>
-                        <button className="body-3 flex justify-center items-center py-[8px] px-[16px] bg-grayscale-dark rounded-[128px] text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
-                            其他
-                        </button>
-                    </div>
-                    {/* Project Image */}
-                    <div className="w-full flex justify-center items-center lg:basis-[57.5%] lg:flex-shrink-0 lg:ml-[126px]">
-                        <img
-                            src="/assets/projectlist_1.png"
-                            className="w-full object-cover rounded-[12px] md:w-[510px] md:rounded-[16px] lg:w-full"
-                            alt="project_img"
-                        />
+            <section className="container">
+                {/* Breadcrumb for Desktop */}
+                <div className="hidden lg:flex lg:pt-[344px] lg:mx-[120px]">
+                    <div className="lg:flex gap-[24px] nav-title text-grayscale-light justify-start items-center cursor-pointer">
+                        <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
+                        <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
+                        <div className="py-[8px] border-b-[1px] hover:text-grayscale-light hover:opacity-100">
+                            工程實績
+                        </div>
+                        <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
                     </div>
                 </div>
-                {/* Project Category */}
-                <div className="w-full flex flex-col gap-[16px] lg:gap-[24px] lg:flex-row lg:flex-wrap">
-                    <div className="flex flex-col gap-[16px] md:flex-row lg:flex-col lg:basis-[40.5%]">
-                        <div className="flex flex-col basis-1/3 p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:flex-row lg:items-center lg:gap-[40px]">
-                            <div className="body-3  text-grayscale-light flex-shrink-0">專案類型</div>
-                            <div className="body-2 text-white">施工階段/建築、結構、景觀、機電</div>
+                <div className="flex flex-col pt-[131px] mx-[24px] gap-[32px] mb-[60.5px] md:mx-[40px] md:pt-[200px] md:gap-[64px] md:mb-[77px] lg:pt-[120px] lg:mx-[120px] lg:mb-[80px] lg:gap-[80px] ">
+                    <div className="w-full flex flex-col gap-[32px] md:gap-[64px] lg:flex-row lg:gap-[0] lg:items-start lg:justify-end">
+                        {/* Project Title */}
+                        <div className="flex flex-col justify-center items-center gap-[12px] lg:items-start lg:ml-[40px] lg:gap-[32px]">
+                            <h2 className="text-grayscale-gainsboro text-center lg:text-left">
+                                臺北市殯葬管理處第二殯儀館二期整建工程
+                            </h2>
+                            <button className="body-3 flex justify-center items-center py-[8px] px-[16px] bg-grayscale-dark rounded-[128px] text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+                                其他
+                            </button>
                         </div>
-                        <div className="flex flex-col basis-1/3 p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:flex-row lg:items-center lg:gap-[40px]">
-                            <div className="body-3 text-grayscale-light flex-shrink-0">合作單位</div>
-                            <div className="body-2 text-white">應州工程有限公司，楊瑞禎聯合建築師事務所</div>
-                        </div>
-                        <div className="flex flex-col basis-1/3 p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:flex-row lg:items-center lg:gap-[40px]">
-                            <div className="body-3 text-grayscale-light flex-shrink-0">專案內容</div>
-                            <div className="body-2 text-white">地上5層，地下4層，約19,791㎡</div>
-                        </div>
-                    </div>
-                    {/* Project Introduce */}
-                    <div className="flex flex-col p-[24px] gap-[24px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[32px] lg:basis-[57.5%] lg:gap-[48px]">
-                        <div className="body-3 text-grayscale-light">專案介紹</div>
-                        <div className="flex flex-col gap-[8px] md:w-2/3 md:gap-[24px] md:grid md:grid-cols-2 lg:w-full">
-                            <div className="flex items-center gap-[8px] md:gap-[16px]">
-                                <div className="en-body-1 text-primary">/1</div>
-                                <div className="body-2 text-white">BIM工程師駐地建模</div>
-                            </div>
-                            <div className="flex items-center gap-[8px] md:gap-[16px]">
-                                <div className="en-body-1 text-primary">/2</div>
-                                <div className="body-2 text-white">建模、碰撞檢討</div>
-                            </div>
-                            <div className="flex items-center gap-[8px] md:gap-[16px]">
-                                <div className="en-body-1 text-primary">/3</div>
-                                <div className="body-2 text-white">施工可行性檢討</div>
-                            </div>
-                            <div className="flex items-center gap-[8px] md:gap-[16px] md:self-end">
-                                <div className="en-body-1 text-primary">/4</div>
-                                <div className="body-2 text-white">4D模擬動畫</div>
-                            </div>
-                            <div className="flex items-center gap-[8px] md:gap-[16px]">
-                                <div className="en-body-1 text-primary">/5</div>
-                                <div className="body-2 text-white">雙週會議報告</div>
-                            </div>
-                            <div className="flex items-center gap-[8px] md:gap-[16px]">
-                                <div className="en-body-1 text-primary">/6</div>
-                                <div className="body-2 text-white">BIM教育訓練</div>
-                            </div>
-                            <div className="flex items-center gap-[8px] md:gap-[16px]">
-                                <div className="en-body-1 text-primary">/7</div>
-                                <div className="body-2 text-white">階段成果報告</div>
-                            </div>
-                            <div className="flex items-center gap-[8px] md:gap-[16px]">
-                                <div className="en-body-1 text-primary">/8</div>
-                                <div className="body-2 text-white">BEP擬定</div>
-                            </div>
+                        {/* Project Image */}
+                        <div className="w-full flex justify-center items-center lg:basis-[57.5%] lg:flex-shrink-0 lg:ml-[126px]">
+                            <img
+                                src="/assets/projectlist_1.png"
+                                className="w-full object-cover rounded-[12px] md:w-[510px] md:rounded-[16px] lg:w-full"
+                                alt="project_img"
+                            />
                         </div>
                     </div>
-                    {/* Project Process */}
-                    <div className="flex flex-col p-[24px] gap-[24px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 w-full">
-                        <div className="body-3 text-grayscale-light">專案流程</div>
-                        <div className="w-full overflow-x-scroll">
-                            <div className="flex justify-start items-center gap-[16px] min-w-[1200px]">
-                                {flow.map(({ step, desc }, idx) => {
-                                    return (
-                                        <div key={idx} className="flex items-center gap-[16px] process-hidden">
-                                            <div className="flex flex-col w-[109px] h-[122px] py-[16px] px-[20px] gap-[8px] border-[1px] border-solid border-grayscale-light/50 rounded-[16px]">
-                                                <div className="en-minimum text-grayscale-silver">{step}</div>
-                                                <div className="body-3 text-grayscale-gainsboro">{desc}</div>
+                    {/* Project Category */}
+                    <div className="w-full flex flex-col gap-[16px] lg:gap-[24px] lg:flex-row lg:flex-wrap">
+                        <div className="flex flex-col gap-[16px] md:flex-row lg:flex-col lg:basis-[40.5%]">
+                            <div className="flex flex-col basis-1/3 p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:flex-row lg:items-center lg:gap-[40px]">
+                                <div className="body-3  text-grayscale-light flex-shrink-0">專案類型</div>
+                                <div className="body-2 text-white">施工階段/建築、結構、景觀、機電</div>
+                            </div>
+                            <div className="flex flex-col basis-1/3 p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:flex-row lg:items-center lg:gap-[40px]">
+                                <div className="body-3 text-grayscale-light flex-shrink-0">合作單位</div>
+                                <div className="body-2 text-white">應州工程有限公司，楊瑞禎聯合建築師事務所</div>
+                            </div>
+                            <div className="flex flex-col basis-1/3 p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:flex-row lg:items-center lg:gap-[40px]">
+                                <div className="body-3 text-grayscale-light flex-shrink-0">專案內容</div>
+                                <div className="body-2 text-white">地上5層，地下4層，約19,791㎡</div>
+                            </div>
+                        </div>
+                        {/* Project Introduce */}
+                        <div className="flex flex-col p-[24px] gap-[12px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 md:p-[32px] md:gap-[16px] lg:basis-[57.5%] lg:gap-[24px]">
+                            <div className="body-3 text-grayscale-light">專案介紹</div>
+                            {/*Border*/}
+                            <div className="relative w-full">
+                                <div className="w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                            </div>
+                            {/*Content*/}
+                            <div className="flex flex-col gap-[8px] md:w-2/3 md:gap-[24px] md:grid md:grid-cols-2 lg:w-full">
+                                <div className="flex items-center gap-[8px] md:gap-[16px]">
+                                    <div className="en-body-1 text-primary">/1</div>
+                                    <div className="body-2 text-white">BIM工程師駐地建模</div>
+                                </div>
+                                <div className="flex items-center gap-[8px] md:gap-[16px]">
+                                    <div className="en-body-1 text-primary">/2</div>
+                                    <div className="body-2 text-white">建模、碰撞檢討</div>
+                                </div>
+                                <div className="flex items-center gap-[8px] md:gap-[16px]">
+                                    <div className="en-body-1 text-primary">/3</div>
+                                    <div className="body-2 text-white">施工可行性檢討</div>
+                                </div>
+                                <div className="flex items-center gap-[8px] md:gap-[16px] md:self-end">
+                                    <div className="en-body-1 text-primary">/4</div>
+                                    <div className="body-2 text-white">4D模擬動畫</div>
+                                </div>
+                                <div className="flex items-center gap-[8px] md:gap-[16px]">
+                                    <div className="en-body-1 text-primary">/5</div>
+                                    <div className="body-2 text-white">雙週會議報告</div>
+                                </div>
+                                <div className="flex items-center gap-[8px] md:gap-[16px]">
+                                    <div className="en-body-1 text-primary">/6</div>
+                                    <div className="body-2 text-white">BIM教育訓練</div>
+                                </div>
+                                <div className="flex items-center gap-[8px] md:gap-[16px]">
+                                    <div className="en-body-1 text-primary">/7</div>
+                                    <div className="body-2 text-white">階段成果報告</div>
+                                </div>
+                                <div className="flex items-center gap-[8px] md:gap-[16px]">
+                                    <div className="en-body-1 text-primary">/8</div>
+                                    <div className="body-2 text-white">BEP擬定</div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Project Process */}
+                        <div className="flex flex-col w-full p-[24px] pr-0 gap-[12px] md:gap-[16px] lg:gap-[24px] bg-grayscale-dim rounded-[12px] project-detail-shadow-1 ">
+                            <div className="body-3 text-grayscale-light">專案流程</div>
+                            {/*Border*/}
+                            {/*TODO:strech all over*/}
+                            <div className="relative w-[96%]">
+                                <div className="w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                            </div>
+                            {/*Flow*/}
+                            <div className="w-full overflow-x-scroll custom-projectdetail-scrollbar">
+                                <div className="flex justify-start items-center gap-[16px] min-w-[1200px]">
+                                    {flow.map(({ step, desc }, idx) => {
+                                        return (
+                                            <div key={idx} className="flex items-center gap-[16px] process-hidden">
+                                                <div className="flex flex-col w-[109px] h-[122px] py-[16px] px-[20px] gap-[8px] border-[1px] border-solid border-grayscale-light/50 rounded-[16px]">
+                                                    <div className="en-minimum text-grayscale-silver">{step}</div>
+                                                    <div className="body-3 text-grayscale-gainsboro">{desc}</div>
+                                                </div>
+                                                <img
+                                                    className="w-[6px] h-[12px]"
+                                                    src="/assets/next_r.png"
+                                                    alt="next_slide_icon"
+                                                />
                                             </div>
-                                            <img
-                                                className="w-[6px] h-[12px]"
-                                                src="/assets/next_r.png"
-                                                alt="next_slide_icon"
-                                            />
-                                        </div>
-                                    );
-                                })}
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <ProjectDetailCards />
-            <OthersSection />
+                <ProjectDetailCards />
+                <OthersSection />
+            </section>
             <FooterSimple />
         </section>
     );

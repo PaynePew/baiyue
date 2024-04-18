@@ -9,6 +9,7 @@ module.exports = {
             md: "768px",
             lg: "1440px",
         },
+        container: { center: true, sm: "360px", md: "768px", lg: "1440px" },
         fontFamily: {
             sans: ["Noto Sans TC", "sans-serif"],
             ga: ["Gafata", "serif"],
@@ -30,6 +31,15 @@ module.exports = {
                     dim: "#363437",
                     iron: "#302E31",
                     black: "#211F21",
+                },
+            },
+            animation: {
+                "expand-slow": "expand 5s ease-in-out forwards",
+            },
+            keyframes: {
+                expand: {
+                    "0%": { transform: "scale(0)" },
+                    "100%": { transform: "scale(1)" },
                 },
             },
         },

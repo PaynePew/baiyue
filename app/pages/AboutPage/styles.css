@@ -7,6 +7,21 @@
 }
 
 .tablet-card-layout:nth-child(even) {
-    position:relative;
-    top:40px;
+    position: relative;
+    top: 40px;
+}
+
+.about-bg-gradient {
+    background: linear-gradient(180deg, rgba(48, 46, 49, 0) 2.5%, #302e31 50%);
+}
+
+.decoration-rounded-triangle {
+    fill: rgba(74, 72, 75, 1);
+    stroke: rgba(74, 72, 75, 1);
+    stroke-width: 10;
+    filter: drop-shadow(-5px -5px 14.99px 0px rgba(52, 50, 53, 1), 5px 6.24px 14.99px 0px rgba(33, 32, 34, 1));
+}
+
+.service-custom-scrollbar::-webkit-scrollbar {
+    width: 0px;
 }

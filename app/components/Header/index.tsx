@@ -3,9 +3,21 @@ import { useState, useEffect } from "react";
 import { Link } from "@remix-run/react";
 import styles from "~/components/Header/styles.css";
 import useScrollListener from "~/hooks/useScrollListener";
+
 export const links: LinksFunction = () => {
     return [{ rel: "stylesheet", href: styles }];
 };
+
+type HandleModalOpenPropType = () => void;
+type HandleProjectMenuPropType = () => void;
+
+interface ModalMenuProps {
+    handleModalOpen: HandleModalOpenPropType;
+    isModalOpen: Boolean;
+}
+interface ProjectMenuProps {
+    handleModalOpen: HandleProjectMenuPropType;
+}
 
 const projectTab = [
     { title: "全部" },
@@ -52,13 +64,14 @@ function ProjectDropMenu() {
     );
 }
 
-function ProjectMenu() {
+function ProjectMenu({ handleModalOpen }: ProjectMenuProps) {
     return (
         <div className="mt-[20px] flex flex-wrap gap-[8px] md:mt-[16px] md:max-w-[432px]">
             {projectTab.map(({ title }) => {
                 return (
                     <Link
                         to="/projects"
+                        onClick={handleModalOpen}
                         key={title}
                         className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
                     >
@@ -72,14 +85,18 @@ function ProjectMenu() {
 
 //Todo: update animation
 
-function ModalMenu() {
+function ModalMenu({ handleModalOpen, isModalOpen }: ModalMenuProps) {
     const [isOpen, toggleOpen] = useState(false);
 
     return (
-        <div className="transition-all ease-in-out duration-500 absolute -z-10 h-screen w-screen bg-grayscale-dim">
+        <div
+            className={`absolute transition-all ease-in-out duration-500 -z-10 h-screen w-screen bg-grayscale-dim translate-y-[-100%] opacity-0 ${
+                isModalOpen ? "modal-animation" : ""
+            } `}
+        >
             <div className="flex flex-col mx-[48px] mt-[128px] md:mx-[129px] md:mt-[248px]">
                 <div className="flex flex-col gap-[32px] md:gap-[56px]">
-                    <Link to="/about" className="flex flex-col gap-[4px] md:gap-[8px]">
+                    <Link to="/about" onClick={handleModalOpen} className="flex flex-col gap-[4px] md:gap-[8px]">
                         <div className="nav-title text-white">關於百越</div>
                         <div className="en-h4 text-[18px] text-primary">ABOUT US</div>
                     </Link>
@@ -90,13 +107,13 @@ function ModalMenu() {
                         <div className="en-h4 text-[18px] text-primary" onClick={() => toggleOpen(prev => !prev)}>
                             PROJECTS
                         </div>
-                        {isOpen ? <ProjectMenu /> : null}
+                        {isOpen ? <ProjectMenu handleModalOpen={handleModalOpen} /> : null}
                     </div>
-                    <Link to="/insights" className="flex flex-col gap-[4px] md:gap-[8px]">
+                    <Link to="/insights" onClick={handleModalOpen} className="flex flex-col gap-[4px] md:gap-[8px]">
                         <div className="nav-title text-white">百越觀點</div>
                         <div className="en-h4 text-[18px] text-primary">INSIGHT</div>
                     </Link>
-                    <Link to="/contact" className="flex flex-col gap-[4px] md:gap-[8px]">
+                    <Link to="/contact" onClick={handleModalOpen} className="flex flex-col gap-[4px] md:gap-[8px]">
                         <div className="nav-title text-white">聯絡我們</div>
                         <div className="en-h4 text-[18px] text-primary">CONTACT US</div>
                     </Link>
@@ -112,7 +129,7 @@ function ModalMenu() {
 }
 
 export function Header() {
-    const [isOpen, toggleOpen] = useState(false);
+    const [isModalOpen, toggleModalOpen] = useState(false);
     const [isScrollOpen, toggleScrollOpen] = useState(false);
     const [isProjectOpen, toggleProjectOpen] = useState(false);
     const [scrollHeader, setScrollHeader] = useState<string[]>([]);
@@ -120,6 +137,11 @@ export function Header() {
     const [scrollNav, setScrollNav] = useState<string[]>([]);
     const [scrollHamburger, setScrollHamburger] = useState<string[]>([]);
     const scroll = useScrollListener();
+
+    const handleModalOpen = () => {
+        toggleModalOpen(pre => (pre = !pre));
+    };
+
     useEffect(() => {
         const _classList: string[] = [];
         const _classListLogo: string[] = [];
@@ -139,7 +161,7 @@ export function Header() {
 
     return (
         <div className="fixed z-50 w-full">
-            {isOpen ? <ModalMenu /> : null}
+            <ModalMenu isModalOpen={isModalOpen} handleModalOpen={handleModalOpen} />
             <div className="flex flex-shrink justify-between px-[24px] pt-[24px] md:px-[40px] md:pt-[32px] lg:px-[48px]">
                 <Link
                     to="/"
@@ -191,16 +213,16 @@ export function Header() {
                     {/* Hamburger for Mobile & Tablet */}
                     <button
                         className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] lg:hidden"
-                        onClick={() => toggleOpen(prev => !prev)}
+                        onClick={() => toggleModalOpen(prev => !prev)}
                     >
                         <span
                             className={`transition-all ease-in-out duration-500 nav-icon ${
-                                isOpen ? "translate-y-[4.5px]" : "translate-y-0"
+                                isModalOpen ? "translate-y-[4.5px]" : "translate-y-0"
                             }`}
                         ></span>
                         <span
                             className={`transition-all ease-in-out duration-500 nav-icon ${
-                                isOpen ? "translate-y-[-4.5px]" : "translate-y-0"
+                                isModalOpen ? "translate-y-[-4.5px]" : "translate-y-0"
                             }`}
                         ></span>
                     </button>

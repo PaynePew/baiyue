@@ -10,6 +10,7 @@ export const links: LinksFunction = () => {
 
 type HandleModalOpenPropType = () => void;
 type HandleProjectMenuPropType = () => void;
+type HandleProjectDetailPropType = () => void;
 
 interface ModalMenuProps {
     handleModalOpen: HandleModalOpenPropType;
@@ -17,6 +18,9 @@ interface ModalMenuProps {
 }
 interface ProjectMenuProps {
     handleModalOpen: HandleProjectMenuPropType;
+}
+interface ProjectDropMenuProps {
+    handleProjectDetailOpen: HandleProjectDetailPropType;
 }
 
 const projectTab = [
@@ -30,36 +34,65 @@ const projectTab = [
     { title: "其他" },
 ];
 
-function ProjectDropMenu() {
+function ProjectDropMenu({ handleProjectDetailOpen }: ProjectDropMenuProps) {
     return (
         <div className="flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
             <Link
+                onClick={() => handleProjectDetailOpen()}
                 to="/projects"
                 className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
             >
                 全部
             </Link>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            <Link
+                to="/projects"
+                onClick={() => handleProjectDetailOpen()}
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 住宅
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            </Link>
+            <Link
+                to="/projects"
+                onClick={() => handleProjectDetailOpen()}
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 辦公
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            </Link>
+            <Link
+                to="/projects"
+                onClick={() => handleProjectDetailOpen()}
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 教育
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            </Link>
+            <Link
+                to="/projects"
+                onClick={() => handleProjectDetailOpen()}
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 工業
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            </Link>
+            <Link
+                to="/projects"
+                onClick={() => handleProjectDetailOpen()}
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 停車場
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            </Link>
+            <Link
+                to="/projects"
+                onClick={() => handleProjectDetailOpen()}
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 營區
-            </button>
-            <button className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron">
+            </Link>
+            <Link
+                to="/projects"
+                onClick={() => handleProjectDetailOpen()}
+                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+            >
                 其他
-            </button>
+            </Link>
         </div>
     );
 }
@@ -71,7 +104,7 @@ function ProjectMenu({ handleModalOpen }: ProjectMenuProps) {
                 return (
                     <Link
                         to="/projects"
-                        onClick={handleModalOpen}
+                        onClick={() => handleModalOpen()}
                         key={title}
                         className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
                     >
@@ -82,8 +115,6 @@ function ProjectMenu({ handleModalOpen }: ProjectMenuProps) {
         </div>
     );
 }
-
-//Todo: update animation
 
 function ModalMenu({ handleModalOpen, isModalOpen }: ModalMenuProps) {
     const [isOpen, toggleOpen] = useState(false);
@@ -139,7 +170,10 @@ export function Header() {
     const scroll = useScrollListener();
 
     const handleModalOpen = () => {
-        toggleModalOpen(pre => (pre = !pre));
+        toggleModalOpen(pre => !pre);
+    };
+    const handleProjectDetailOpen = () => {
+        toggleProjectOpen(pre => !pre);
     };
 
     useEffect(() => {
@@ -192,7 +226,7 @@ export function Header() {
                         <Link to="/contact" className="nav-title">
                             聯絡我們
                         </Link>
-                        {isProjectOpen ? <ProjectDropMenu /> : null}
+                        {isProjectOpen ? <ProjectDropMenu handleProjectDetailOpen={handleProjectDetailOpen} /> : null}
                     </nav>
                     {/*Desktop Hamburger*/}
                     <button

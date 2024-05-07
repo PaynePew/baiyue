@@ -3,8 +3,8 @@ import { useEffect, useState, useRef } from "react";
 import { throttle } from "~/utils/helpers";
 import { Footer } from "~/components/Footer";
 import { About, Contact, FeaturedProject, Partners, Hero } from "./components";
-import { Spinner } from "~/components/Spinner";
-import spinnerStyles from "~/components/Spinner/styles.css";
+import { OpVideo } from "~/components/OpVideo";
+import spinnerStyles from "~/components/OpVideo/styles.css";
 
 import styles from "./styles.css";
 export function links() {
@@ -17,7 +17,6 @@ export function links() {
 
 export function LandingPage() {
     const [isVidVisible, setIsVidVisible] = useState(true);
-    const [playVideo, setPlayVideo] = useState(false);
     const [colorIndex, setColorIndex] = useState(0);
     const vidRef = useRef<HTMLVideoElement | null>(null);
     const colors = ["grayscale-iron", "grayscale-dim", "grayscale-iron", "grayscale-dim", "grayscale-dim"];
@@ -43,15 +42,11 @@ export function LandingPage() {
 
     //Play Video
     const handleVideoPlay = () => {
-        setPlayVideo(true);
-        setTimeout(() => {
-            handleVideoOpen();
-            if (vidRef.current) {
-                vidRef.current.currentTime = 0;
-                vidRef.current.play();
-            }
-            setPlayVideo(false);
-        }, 550);
+        handleVideoOpen();
+        if (vidRef.current) {
+            vidRef.current.currentTime = 0;
+            vidRef.current.play();
+        }
     };
 
     //Determine Video is Play or Not
@@ -61,12 +56,6 @@ export function LandingPage() {
 
     return (
         <div className={`w-full bg-${colors[colorIndex]} transition-all duration-500`}>
-            {/* Overlay Animation */}
-            <div
-                className={`fixed z-50 w-full h-full bg-black opacity-0 pointer-events-none ${
-                    playVideo ? "overlay-animation" : ""
-                }`}
-            ></div>
             {/* Decoration Triangle-1 */}
             <div className="absolute z-10 bottom-[-5.1%] right-[6.7%] triangle-shadow md:bottom-[5.2%] md:right-[13.5%] lg:bottom-[5.4%] lg:right-[6.8%] ">
                 <div className="triangle-dec w-[75.11px] h-[75.11px] lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
@@ -102,7 +91,7 @@ export function LandingPage() {
                 </div>
             </div>
 
-            <Spinner vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
+            <OpVideo vidRef={vidRef} isVidVisible={isVidVisible} handleVideoOpen={handleVideoOpen} />
             <Hero
                 handleVideoPlay={handleVideoPlay}
                 colors={colors}

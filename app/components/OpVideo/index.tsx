@@ -7,38 +7,30 @@ export function links() {
     ];
 }
 type HandleVideoOpenPropType = () => void;
-interface SpinnerPropType {
+
+interface OpVideoPropType {
     isVidVisible: Boolean;
     vidRef: React.MutableRefObject<HTMLVideoElement | null>;
     handleVideoOpen: HandleVideoOpenPropType;
 }
 
-export function Spinner({ vidRef, isVidVisible, handleVideoOpen }: SpinnerPropType) {
+export function OpVideo({ vidRef, isVidVisible, handleVideoOpen }: OpVideoPropType) {
     const [isVisible, setIsVisible] = useState(true);
-    const [toggleAnimation, setToggleAnimtion] = useState(false);
 
     const handleAnimationEnd = () => {
-        setToggleAnimtion(true);
-        setTimeout(() => {
-            setIsVisible(false);
-            if (vidRef.current) {
-                vidRef.current.currentTime = 0;
-                vidRef.current.play();
-            }
-            setToggleAnimtion(false);
-        }, 550);
+        setIsVisible(false);
+        if (vidRef.current) {
+            vidRef.current.currentTime = 0;
+            vidRef.current.play();
+        }
     };
 
     const handleVidEnd = () => {
-        setToggleAnimtion(true);
-        setTimeout(() => {
-            handleVideoOpen();
-            if (vidRef.current) {
-                vidRef.current.pause();
-                vidRef.current.currentTime = 0;
-            }
-            setToggleAnimtion(false);
-        }, 550);
+        handleVideoOpen();
+        if (vidRef.current) {
+            vidRef.current.pause();
+            vidRef.current.currentTime = 0;
+        }
     };
 
     return (
@@ -92,12 +84,6 @@ export function Spinner({ vidRef, isVidVisible, handleVideoOpen }: SpinnerPropTy
                     </div>
                 </div>
             )}
-            {/* overlay animation */}
-            <div
-                className={`absolute w-full h-full bg-black opacity-0 pointer-events-none ${
-                    toggleAnimation ? "overlay-animation" : ""
-                }`}
-            ></div>
         </div>
     );
 }

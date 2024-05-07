@@ -123,7 +123,7 @@ export function ProjectPage() {
                             </div>
                         </div>
                     </div>
-                    <div className="relative w-full overflow-x-scroll custom-project-scrollbar flex justify-start items-center h-[94px] md:h-[111px]">
+                    <div className="relative w-full overflow-x-scroll overflow-y-hidden custom-project-scrollbar flex justify-start items-center h-[94px] md:h-[111px]">
                         {/* border-arrow-top */}
                         <div className="absolute w-[99%] left-[50%] top-0 translate-x-[-50%]">
                             <div className="absolute w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>

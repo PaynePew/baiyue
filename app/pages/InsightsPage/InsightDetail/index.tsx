@@ -121,13 +121,13 @@ export function InsightDetail({ insightId }) {
                                 <div className="en-body-1 uppercase text-grayscale-silver">share</div>
                                 <div className="flex gap-[10px]">
                                     <div className="flex justify-center items-center w-[39px] h-[39px] rounded-[16px] bg-grayscale-dim buttom-shadow-2 hover:bg-grayscale-gainsboro">
-                                        <img className="" src="/assets/social_1.png" alt="fb-icon" />
+                                        <img className="" src="/assets/icon_facebook.svg" alt="fb-icon" />
                                     </div>
                                     <div className="flex justify-center items-center w-[39px] h-[39px] rounded-[16px] bg-grayscale-dim buttom-shadow-2 hover:bg-grayscale-gainsboro">
-                                        <img src="/assets/social_2.png" alt="ig-icon" />
+                                        <img src="/assets/icon_instagram.svg" alt="ig-icon" />
                                     </div>
                                     <div className="flex justify-center items-center w-[39px] h-[39px] rounded-[16px] bg-grayscale-dim buttom-shadow-2 hover:bg-grayscale-gainsboro">
-                                        <img src="/assets/social_3.png" alt="twitter-icon" />
+                                        <img src="/assets/icon_twitter.svg" alt="twitter-icon" />
                                     </div>
                                 </div>
                             </div>

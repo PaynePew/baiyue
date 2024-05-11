@@ -48,7 +48,7 @@ export function ContactPage() {
                     <div className="z-10 flex flex-col gap-[12px] md:gap-[16px] lg:flex-row lg:gap-[24px]">
                         <div className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]">
                             <div className="flex items-center justify-center gap-[16px]">
-                                <img src="/assets/icon_map.png" alt="icon_map" />
+                                <img src="/assets/icon_map.svg" alt="icon_map" />
                                 <div className="body-1 font-[300] text-grayscale-light">
                                     桃園市大園區大成路一段2號6樓
                                 </div>
@@ -56,13 +56,13 @@ export function ContactPage() {
                         </div>
                         <div className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]">
                             <div className="flex items-center gap-[16px]">
-                                <img src="/assets/icon_phone.png" alt="icon_phone" />
+                                <img src="/assets/icon_phone.svg" alt="icon_phone" />
                                 <div className="en-body-1 text-grayscale-light">(03)287-5465</div>
                             </div>
                         </div>
                         <div className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]">
                             <div className="flex items-center justify-center gap-[16px]">
-                                <img src="/assets/icon_mail.png" alt="icon_mail" />
+                                <img src="/assets/icon_mail.svg" alt="icon_mail" />
                                 <div className="en-body-1 text-grayscale-light uppercase">SERVICE@mryc.com.tw</div>
                             </div>
                         </div>

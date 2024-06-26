@@ -63,30 +63,27 @@ function InsightsList() {
         <div className="flex flex-col items-center justify-center gap-[24px] md:flex-row md:flex-wrap md:items-center lg:gap-[40px]">
             {fakeData.map(({ alt, pic, time, title, catgory }, idx) => {
                 return (
-                    <div
-                        className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[1200px]"
-                        key={idx}
-                    >
-                        <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[282px] ">
-                            <img className="w-full h-full object-cover" src={`/assets/${pic}`} alt={alt} />
-                        </div>
-                        <div className="flex justify-between w-full md:px-[32px] md:pt-[24px] md:pb-[27px] lg:py-[64px] lg:px-[48px]">
-                            <div className="flex flex-col gap-[4px] py-[24px] px-[20px] md:p-[0] lg:gap-[24.5px]">
-                                <div className="en-body-1 text-grayscale-light">{time}</div>
-                                <h6 className="text-grayscale-gainsboro min-h-[56px]">{title}</h6>
-                                <div className="body-3 text-grayscale-light/50">{catgory}</div>
+                    <Link key={idx} to="/insights/1">
+                        <div className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[1200px]">
+                            <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[282px] ">
+                                <img className="w-full h-full object-cover" src={`/assets/${pic}`} alt={alt} />
                             </div>
-                            <div className="flex items-center">
-                                <Link to="/insights/1">
+                            <div className="flex justify-between w-full md:px-[32px] md:pt-[24px] md:pb-[27px] lg:py-[64px] lg:px-[48px]">
+                                <div className="flex flex-col gap-[4px] py-[24px] px-[20px] md:p-[0] lg:gap-[24.5px]">
+                                    <div className="en-body-1 text-grayscale-light">{time}</div>
+                                    <h6 className="text-grayscale-gainsboro min-h-[56px]">{title}</h6>
+                                    <div className="body-3 text-grayscale-light/50">{catgory}</div>
+                                </div>
+                                <div className="flex items-center">
                                     <img
                                         className="hidden w-[38px] md:h-[11px] md:block"
                                         src="/assets/arrow_r.png"
                                         alt="arrorw_r_pic"
                                     />
-                                </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 );
             })}
         </div>

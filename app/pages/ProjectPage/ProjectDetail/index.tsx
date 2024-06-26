@@ -34,56 +34,54 @@ function OthersSection() {
                     {fakeData.map(({ alt, pic, desc }, idx) => {
                         if (idx === 0) {
                             return (
-                                <div
-                                    className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]"
-                                    key={idx}
-                                >
-                                    <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-full lg:w-[512px]">
-                                        <img className="object-cover w-full h-full" src={`/assets/${pic}`} alt={alt} />
-                                    </div>
-                                    <div className="flex flex-col gap-[16px] p-[24px] lg:p-[40px] lg:h-full lg:justify-between">
-                                        <h6 className="text-grayscale-gainsboro lg:hidden">{desc}</h6>
-                                        <h5 className="hidden text-grayscale-gainsboro lg:block">{desc}</h5>
-                                        <div className="flex justify-between items-center">
-                                            <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                                其他
-                                            </button>
-                                            <Link to="/projects/1">
+                                <Link key={idx} to="/projects/1">
+                                    <div className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]">
+                                        <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-full lg:w-[512px]">
+                                            <img
+                                                className="object-cover w-full h-full"
+                                                src={`/assets/${pic}`}
+                                                alt={alt}
+                                            />
+                                        </div>
+                                        <div className="flex flex-col gap-[16px] p-[24px] lg:p-[40px] lg:h-full lg:justify-between">
+                                            <h6 className="text-grayscale-gainsboro lg:hidden">{desc}</h6>
+                                            <h5 className="hidden text-grayscale-gainsboro lg:block">{desc}</h5>
+                                            <div className="flex justify-between items-center">
+                                                <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
+                                                    其他
+                                                </button>
                                                 <img
                                                     className="hidden w-[38px] md:h-[11px] md:block"
                                                     src="/assets/arrow_r.png"
                                                     alt="arrorw_r_pic"
                                                 />
-                                            </Link>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                </Link>
                             );
                         }
                         return (
-                            <div
-                                className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
-                                key={idx}
-                            >
-                                <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-[220px]">
-                                    <img className="object-cover w-full h-full" src={`/assets/${pic}`} alt={alt} />
-                                </div>
-                                <div className="flex flex-col gap-[16px] p-[24px]">
-                                    <h6 className="text-grayscale-gainsboro md:min-h-[56px]">{desc}</h6>
-                                    <div className="flex justify-between items-center">
-                                        <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                            其他
-                                        </button>
-                                        <Link to="/projects/1">
+                            <Link key={idx} to="/projects/1">
+                                <div className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]">
+                                    <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-[220px]">
+                                        <img className="object-cover w-full h-full" src={`/assets/${pic}`} alt={alt} />
+                                    </div>
+                                    <div className="flex flex-col gap-[16px] p-[24px]">
+                                        <h6 className="text-grayscale-gainsboro md:min-h-[56px]">{desc}</h6>
+                                        <div className="flex justify-between items-center">
+                                            <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
+                                                其他
+                                            </button>
                                             <img
                                                 className="hidden w-[38px] md:h-[11px] md:block"
                                                 src="/assets/arrow_r.png"
                                                 alt="arrorw_r_pic"
                                             />
-                                        </Link>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         );
                     })}
                 </div>

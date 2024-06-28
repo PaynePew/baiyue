@@ -27,7 +27,8 @@
     top: 100%;
     width: 2px;
     height: 100%;
-    transition: 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
+    background-color: rgba(191, 191, 191, 1);
 }
 
 .arrow-icon::before {
@@ -45,6 +46,32 @@
 
 .down .arrow-icon::after {
     transform: rotate(-135deg);
+}
+
+nav > div {
+    color: rgba(191, 191, 191, 1);
+}
+
+nav:hover > div {
+    color: rgba(191, 191, 191, 0.5);
+}
+
+nav:hover .arrow-icon::after,
+nav:hover .arrow-icon::before {
+    background-color: rgba(191, 191, 191, 0.5);
+}
+
+nav a:hover {
+    color: rgba(191, 191, 191, 1);
+}
+
+nav button:hover {
+    color: rgba(191, 191, 191, 1);
+}
+
+nav button:hover .arrow-icon::after,
+nav button:hover .arrow-icon::before {
+    background-color: rgba(191, 191, 191, 1);
 }
 
 @media screen and (min-width: 1440px) {
@@ -69,5 +96,6 @@
     }
     .dropdown-header {
         height: 230px;
+        padding: 24px 48px;
     }
 }

@@ -172,27 +172,27 @@ export function Header() {
                 {/* Header for PC */}
                 <div className="flex justify-between items-start gap-[24px]">
                     <nav
-                        className={`hidden transition-all esae-in-out duration-1000 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] text-grayscale-light lg:flex ${scrollNav} ${
+                        className={`hidden transition-all esae-in-out duration-1000 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] lg:flex ${scrollNav} ${
                             isProjectOpen ? "dropdown-header" : ""
                         } ${isScrollOpen ? "scroll-nav-toggle-animation" : ""} `}
                     >
                         <div className="relative flex gap-[48px]">
-                            <Link to="/about" className="nav-title">
+                            <Link to="/about" className="nav-title h-fit">
                                 關於百越
                             </Link>
                             <button
-                                className="nav-title flex gap-[8px]"
+                                className="nav-title flex gap-[8px] h-fit"
                                 onClick={() => toggleProjectOpen(prev => !prev)}
                             >
                                 工程實績
                                 <div className={`relative ${isProjectOpen ? "down" : ""}`}>
-                                    <div className="arrow-icon before:bg-grayscale-light after:bg-grayscale-light" />
+                                    <div className="arrow-icon" />
                                 </div>
                             </button>
-                            <Link to="/insights" className="nav-title">
+                            <Link to="/insights" className="nav-title h-fit">
                                 百越觀點
                             </Link>
-                            <Link to="/contact" className="nav-title">
+                            <Link to="/contact" className="nav-title h-fit">
                                 聯絡我們
                             </Link>
                             <ProjectDropMenu handleProjectOpen={handleProjectOpen} />
@@ -200,7 +200,7 @@ export function Header() {
                     </nav>
                     {/*Desktop Hamburger*/}
                     <button
-                        className={`hidden menu-shadow w-[64px] h-[56px] flex-col gap-[8px] justify-center items-center rounded-[128px] ${scrollHamburger}`}
+                        className={`hidden menu-shadow w-[64px] h-[56px] flex-col gap-[8px] justify-center items-center rounded-[128px] hover:bg-grayscale-gray ${scrollHamburger}`}
                         onClick={() => toggleScrollOpen(prev => !prev)}
                     >
                         <span
@@ -216,7 +216,7 @@ export function Header() {
                     </button>
                     {/* Hamburger for Mobile & Tablet */}
                     <button
-                        className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] lg:hidden"
+                        className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] hover:bg-grayscale-gray lg:hidden"
                         onClick={() => toggleModalOpen(prev => !prev)}
                     >
                         <span

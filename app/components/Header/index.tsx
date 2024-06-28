@@ -36,7 +36,7 @@ const projectTab = [
 
 function ProjectDropMenu({ handleProjectOpen }: ProjectDropMenuProps) {
     return (
-        <div className="flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
+        <div className="absolute top-[64px] left-0 flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
             {projectTab.map(({ title }) => {
                 return (
                     <Link
@@ -116,12 +116,18 @@ function ModalMenu({ handleModalOpen, isModalOpen }: ModalMenuProps) {
 }
 
 export function Header() {
+    // Laptop and Mobile Nav Modal toggle
     const [isModalOpen, toggleModalOpen] = useState(false);
-    const [isScrollOpen, toggleScrollOpen] = useState(false);
+    // Nav ProjectDropDown toggle
     const [isProjectOpen, toggleProjectOpen] = useState(false);
+    // Nav toggle detect at Y-150pixel
+    const [isScrollOpen, toggleScrollOpen] = useState(false);
+    // Main Logo with header scroll detect
     const [scrollHeader, setScrollHeader] = useState<string[]>([]);
     const [scrollLogo, setScrollLogo] = useState<string[]>([]);
+    // Nav toggle to hamburger animation detect at Y-150pixel
     const [scrollNav, setScrollNav] = useState<string[]>([]);
+    // Hemberger animation state
     const [scrollHamburger, setScrollHamburger] = useState<string[]>([]);
     const scroll = useScrollListener();
 
@@ -166,29 +172,31 @@ export function Header() {
                 {/* Header for PC */}
                 <div className="flex justify-between items-start gap-[24px]">
                     <nav
-                        className={`hidden transition-all esae-in-out duration-500 max-w-[550px] bg-grayscale-iron menu-shadow flex-wrap justify-center items-center gap-[48px] h-fit px-[48px] py-[24px] rounded-[128px] text-grayscale-light lg:flex ${scrollNav} ${
-                            isScrollOpen ? "scroll-nav-toggle-animation" : ""
-                        } ${isProjectOpen ? "dropdown-header" : ""}`}
+                        className={`hidden transition-all esae-in-out duration-1000 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] text-grayscale-light lg:flex ${scrollNav} ${
+                            isProjectOpen ? "dropdown-header" : ""
+                        } ${isScrollOpen ? "scroll-nav-toggle-animation" : ""} `}
                     >
-                        <Link to="/about" className="nav-title">
-                            關於百越
-                        </Link>
-                        <button
-                            className="nav-title flex items-center gap-[8px]"
-                            onClick={() => toggleProjectOpen(prev => !prev)}
-                        >
-                            工程實績
-                            <div className={`relative ${isProjectOpen ? "down" : ""}`}>
-                                <div className="arrow-icon before:bg-grayscale-light after:bg-grayscale-light" />
-                            </div>
-                        </button>
-                        <Link to="/insights" className="nav-title">
-                            百越觀點
-                        </Link>
-                        <Link to="/contact" className="nav-title">
-                            聯絡我們
-                        </Link>
-                        {isProjectOpen ? <ProjectDropMenu handleProjectOpen={handleProjectOpen} /> : null}
+                        <div className="relative flex gap-[48px]">
+                            <Link to="/about" className="nav-title">
+                                關於百越
+                            </Link>
+                            <button
+                                className="nav-title flex gap-[8px]"
+                                onClick={() => toggleProjectOpen(prev => !prev)}
+                            >
+                                工程實績
+                                <div className={`relative ${isProjectOpen ? "down" : ""}`}>
+                                    <div className="arrow-icon before:bg-grayscale-light after:bg-grayscale-light" />
+                                </div>
+                            </button>
+                            <Link to="/insights" className="nav-title">
+                                百越觀點
+                            </Link>
+                            <Link to="/contact" className="nav-title">
+                                聯絡我們
+                            </Link>
+                            <ProjectDropMenu handleProjectOpen={handleProjectOpen} />
+                        </div>
                     </nav>
                     {/*Desktop Hamburger*/}
                     <button

@@ -1,3 +1,4 @@
+import { APIProvider, Map, AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 
@@ -34,14 +35,34 @@ export function ContactPage() {
                         <h2 className="text-grayscale-gainsboro">百越工程資訊有限公司</h2>
                         {/* todo: update googleMap */}
                         <div className="z-10 w-full h-[216px] md:h-[230px] lg:h-[400px]">
+                            <APIProvider
+                                apiKey={"AIzaSyDZDzayaRgUH0TG9dq7FkDevltW1ZmJx-Q"}
+                                onLoad={() => console.log("Maps API has loaded.")}
+                            >
+                                <Map
+                                    defaultZoom={17}
+                                    defaultCenter={{ lat: 25.018318544017912, lng: 121.22366080912673 }}
+                                    mapId="f82cd6aa8a843f4b"
+                                >
+                                    <AdvancedMarker position={{ lat: 25.018318544017912, lng: 121.22366080912673 }}>
+                                        <Pin background={"#FBBC04"} glyphColor={"#000"} borderColor={"#000"} />
+                                    </AdvancedMarker>
+                                </Map>
+                            </APIProvider>
+                            {/*
                             <iframe
                                 title="百越工程資訊有限公司"
-                                className="border-0 w-full h-full max-w-full grayscale"
-                                loading="lazy"
+                                className="border-0 w-full h-full max-w-full black"
+                                loading="lazy"                                    <AdvancedMarker
+                                        position={{ lat: 25.018318544017912, lng: 121.22366080912673 }}
+                                    ></AdvancedMarker>
                                 allowFullScreen
                                 referrerPolicy="no-referrer-when-downgrade"
-                                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD78M-Wm7jw8EBXT6eg1AqiTUQWv6zn344&q=桃園市大園區大成路一段2號6樓`}
+                                src={`
+          https://maps.googleapis.com/maps/api/js?key=AIzaSyDZDzayaRgUH0TG9dq7FkDevltW1ZmJx-Q&center=25.018152257420578,121.22364495&zoom=18&format=png&maptype=roadmap&style=element:geometry%7Ccolor:0x212121&style=element:labels.icon%7Cvisibility:off&style=element:labels.text.fill%7Ccolor:0x757575&style=element:labels.text.stroke%7Ccolor:0x212121&style=feature:administrative%7Celement:geometry%7Ccolor:0x757575&style=feature:administrative.country%7Celement:labels.text.fill%7Ccolor:0x9e9e9e&style=feature:administrative.land_parcel%7Cvisibility:off&style=feature:administrative.locality%7Celement:labels.text.fill%7Ccolor:0xbdbdbd&style=feature:poi%7Celement:labels.text.fill%7Ccolor:0x757575&style=feature:poi.park%7Celement:geometry%7Ccolor:0x181818&style=feature:poi.park%7Celement:labels.text.fill%7Ccolor:0x616161&style=feature:poi.park%7Celement:labels.text.stroke%7Ccolor:0x1b1b1b&style=feature:road%7Celement:geometry.fill%7Ccolor:0x2c2c2c&style=feature:road%7Celement:labels.text.fill%7Ccolor:0x8a8a8a&style=feature:road.arterial%7Celement:geometry%7Ccolor:0x373737&style=feature:road.highway%7Celement:geometry%7Ccolor:0x3c3c3c&style=feature:road.highway.controlled_access%7Celement:geometry%7Ccolor:0x4e4e4e&style=feature:road.local%7Celement:labels.text.fill%7Ccolor:0x616161&style=feature:transit%7Celement:labels.text.fill%7Ccolor:0x757575&style=feature:water%7Celement:geometry%7Ccolor:0x000000&style=feature:water%7Celement:labels.text.fill%7Ccolor:0x3d3d3d&size=480x360
+        `}
                             ></iframe>
+             */}
                         </div>
                     </div>
                     {/* Contact Info */}

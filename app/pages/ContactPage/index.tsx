@@ -34,7 +34,7 @@ export function ContactPage() {
 
                         <h2 className="text-grayscale-gainsboro">百越工程資訊有限公司</h2>
                         {/* todo: update googleMap */}
-                        <div className="z-10 w-full h-[216px] md:h-[230px] lg:h-[400px]">
+                        <div className="z-10 w-full h-[216px] rounded-[16px] overflow-clip md:h-[230px] lg:h-[400px]">
                             <APIProvider
                                 apiKey={"AIzaSyDZDzayaRgUH0TG9dq7FkDevltW1ZmJx-Q"}
                                 onLoad={() => console.log("Maps API has loaded.")}

@@ -205,12 +205,14 @@ function ProjectCard() {
 function ProjectDetailCards() {
     return (
         <section className="w-full bg-grayscale-dim">
-            <div className="flex flex-col py-[48px] mx-[24px] gap-[64px] md:mx-[40px] md:py-[80px] md:gap-[80px] lg:py-[160px] lg:mx-[120px] lg:gap-[120px]">
-                <ProjectCard />
-                <ProjectCardReverse />
-                <ProjectGallery />
-                <ProjectCardPlain />
-                <ProjectCardPlainReverse />
+            <div className="container">
+                <div className="flex flex-col justify-center items-center py-[48px] mx-[24px] gap-[64px] md:mx-[40px] md:py-[80px] md:gap-[80px] lg:py-[160px] lg:mx-[120px] lg:gap-[120px]">
+                    <ProjectCard />
+                    <ProjectCardReverse />
+                    <ProjectGallery />
+                    <ProjectCardPlain />
+                    <ProjectCardPlainReverse />
+                </div>
             </div>
         </section>
     );
@@ -341,9 +343,11 @@ export function ProjectDetail({ projectId }) {
                         </div>
                     </div>
                 </div>
-                <ProjectDetailCards />
-                <OthersSection />
             </section>
+            <ProjectDetailCards />
+            <div className="container">
+                <OthersSection />
+            </div>
             <FooterSimple />
         </section>
     );

@@ -26,37 +26,43 @@ const fakeData = [
 function OthersInsights() {
     return (
         <section className="w-full bg-grayscale-dim">
-            <div className="flex flex-col pt-[48px] pb-[80px] mx-[24px] md:mx-[40px] md:pt-[40px] md:pb-[120px] lg:pt-[80px] lg:pb-[218px] lg:mx-[120px]">
-                <div className="flex flex-col items-start justify-cente mb-[40px] gap-[2px] md:gap-[4px] lg:gap-[8px] md:mb-[64px]">
-                    <h3 className="text-grayscale-gainsboro">其他文章</h3>
-                    <div className="en-h4 lg:text-[24px] text-primary uppercase">others</div>
-                </div>
-                <div className="flex flex-col items-center justify-center gap-[24px] md:flex-row md:flex-wrap md:items-center lg:gap-[24px]">
-                    {fakeData.map(({ alt, pic, time, title, catgory }, idx) => {
-                        return (
-                            <Link key={idx} to="/insights/1">
-                                <div className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[588px]">
-                                    <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[180px] ">
-                                        <img className="w-full h-full object-cover" src={`/assets/${pic}`} alt={alt} />
-                                    </div>
-                                    <div className="flex justify-between w-full md:px-[32px] md:pt-[24px] md:pb-[27px] lg:py-[21px] lg:px-[32px]">
-                                        <div className="flex flex-col gap-[4px] py-[24px] px-[20px] md:p-[0] lg:gap-[4px]">
-                                            <div className="en-body-1 text-grayscale-light">{time}</div>
-                                            <h6 className="text-grayscale-gainsboro min-h-[56px]">{title}</h6>
-                                            <div className="body-3 text-grayscale-light/50">{catgory}</div>
-                                        </div>
-                                        <div className="flex items-center">
+            <div className="container">
+                <div className="flex flex-col pt-[48px] pb-[80px] mx-[24px] md:mx-[40px] md:pt-[40px] md:pb-[120px] lg:pt-[80px] lg:pb-[218px] lg:mx-[120px]">
+                    <div className="flex flex-col items-start justify-center mb-[40px] gap-[2px] md:gap-[4px] lg:gap-[8px] md:mb-[64px]">
+                        <h3 className="text-grayscale-gainsboro">其他文章</h3>
+                        <div className="en-h4 lg:text-[24px] text-primary uppercase">others</div>
+                    </div>
+                    <div className="flex flex-col items-center justify-center gap-[24px] md:flex-row md:flex-wrap md:items-center lg:gap-[24px]">
+                        {fakeData.map(({ alt, pic, time, title, catgory }, idx) => {
+                            return (
+                                <Link key={idx} to="/insights/1">
+                                    <div className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[588px]">
+                                        <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[180px] ">
                                             <img
-                                                className="hidden w-[38px] md:h-[11px] md:block"
-                                                src="/assets/arrow_r.png"
-                                                alt="arrorw_r_pic"
+                                                className="w-full h-full object-cover"
+                                                src={`/assets/${pic}`}
+                                                alt={alt}
                                             />
                                         </div>
+                                        <div className="flex justify-between w-full md:px-[32px] md:pt-[24px] md:pb-[27px] lg:py-[21px] lg:px-[32px]">
+                                            <div className="flex flex-col gap-[4px] py-[24px] px-[20px] md:p-[0] lg:gap-[4px]">
+                                                <div className="en-body-1 text-grayscale-light">{time}</div>
+                                                <h6 className="text-grayscale-gainsboro min-h-[56px]">{title}</h6>
+                                                <div className="body-3 text-grayscale-light/50">{catgory}</div>
+                                            </div>
+                                            <div className="flex items-center">
+                                                <img
+                                                    className="hidden w-[38px] md:h-[11px] md:block"
+                                                    src="/assets/arrow_r.png"
+                                                    alt="arrorw_r_pic"
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
-                        );
-                    })}
+                                </Link>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>
@@ -131,8 +137,8 @@ export function InsightDetail({ insightId }) {
                         </div>
                     </div>
                 </div>
-                <OthersInsights />
             </section>
+            <OthersInsights />
             <FooterSimple />
         </section>
     );

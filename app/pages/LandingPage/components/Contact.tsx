@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 export function Contact() {
     return (
         <section className="w-full flex justify-center items-center">
@@ -14,10 +15,13 @@ export function Contact() {
                         <div className="body-1 text-white text-center lg:text-left">
                             一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案
                         </div>
-                        <button className="main-button hidden button-shadow-1 w-[189px] lg:flex gap-[16px] nav-title text-[15px] h-[56px]">
+                        <Link
+                            to="/contact"
+                            className="main-button hidden button-shadow-1 w-[189px] lg:flex gap-[16px] nav-title text-[15px] h-[56px]"
+                        >
                             <div className="">聯絡我們</div>
                             <img className="" src="assets/icon_mail_send.svg" alt="icon_mail_send" />
-                        </button>
+                        </Link>
                     </div>
                     <div className="relative">
                         {/* Decoration Triangle-1 */}

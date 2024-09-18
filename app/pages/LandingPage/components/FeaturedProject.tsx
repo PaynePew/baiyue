@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 const fakeData = [
     { alt: "project_pic1", pic: "project_1.png", desc: "臺北市殯葬管理處第二殯儀館二期整建工程" },
     { alt: "project_pic2", pic: "project_2.png", desc: "大潭電廠建燃氣複循環機組發電計畫" },
@@ -46,10 +47,13 @@ export function FeaturedProject() {
                             );
                         })}
                     </div>
-                    <button className="main-button button-shadow-1 w-[312px] nav-title flex gap-[16px] text-[15px] h-[56px] md:mx-[99px] lg:w-[173px]">
+                    <Link
+                        to="/projects"
+                        className="main-button button-shadow-1 w-[312px] nav-title flex gap-[16px] text-[15px] h-[56px] md:mx-[99px] lg:w-[173px]"
+                    >
                         <span className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></span>
                         <div className="">所有實績</div>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

@@ -27,6 +27,14 @@ export default function App() {
                 <title>百越工程</title>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+                <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+                <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+                {/*<!-- iOS Favicon -->*/}
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                {/*<!-- Android Favicon -->*/}
+                <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png" />
+                <link rel="icon" sizes="512x512" href="/android-chrome-512x512.png" />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Gafata&family=Noto+Sans+TC:wght@100;400&display=swap"
                     rel="stylesheet"

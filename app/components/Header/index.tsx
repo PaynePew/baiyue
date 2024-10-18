@@ -144,10 +144,16 @@ export function Header() {
         const _classListNav: string[] = [];
         const _classListHamburger: string[] = [];
         if (scroll.y > 150) {
+            // Main Logo and header height-width
             _classList.push("scroll-header-animation");
             _classListLogo.push("scroll-logo-animation");
+            // Nav toggle to hamburger animation detect at Y-150pixel (pair with "scroll-nav-toggle-animation")
             _classListNav.push("scroll-nav-animation");
+            //Hamburger animation
             _classListHamburger.push("scroll-hamburger-animation");
+        }
+        if (scroll.y < 150) {
+            toggleScrollOpen(false);
         }
         setScrollHeader(_classList);
         setScrollLogo(_classListLogo);
@@ -170,13 +176,13 @@ export function Header() {
                     />
                 </Link>
                 {/* Header for PC */}
-                <div className="flex justify-between items-start gap-[24px]">
+                <div className="flex justify-between items-start flex-nowrap gap-[24px]">
                     <nav
-                        className={`hidden transition-all esae-in-out duration-1000 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] lg:flex ${scrollNav} ${
+                        className={`hidden transition-all esae-in-out duration-500 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] lg:flex ${scrollNav} ${
                             isProjectOpen ? "dropdown-header" : ""
                         } ${isScrollOpen ? "scroll-nav-toggle-animation" : ""} `}
                     >
-                        <div className="relative flex gap-[48px]">
+                        <div className="relative flex gap-[48px] overflow-hidden">
                             <Link to="/about" className="nav-title h-fit">
                                 關於百越
                             </Link>

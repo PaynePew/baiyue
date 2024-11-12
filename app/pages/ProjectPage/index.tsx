@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { motion } from "framer-motion";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 import landingPageStyles from "~/pages/LandingPage/styles.css";
@@ -45,7 +46,12 @@ function ProjectsList() {
                 if (idx === 0) {
                     return (
                         <Link key={idx} to="/projects/1">
-                            <div className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]">
+                            <motion.div
+                                className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1, transition: { duration: 1 } }}
+                                viewport={{ once: false, amount: 0.5 }}
+                            >
                                 <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-full lg:w-[512px]">
                                     <img className="object-cover w-full h-full" src={`assets/${pic}`} alt={alt} />
                                 </div>
@@ -63,13 +69,18 @@ function ProjectsList() {
                                         />
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </Link>
                     );
                 }
                 return (
                     <Link key={idx} to="/projects/1">
-                        <div className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]">
+                        <motion.div
+                            className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1, transition: { duration: 1 } }}
+                            viewport={{ once: false, amount: 0.5 }}
+                        >
                             <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-[220px]">
                                 <img className="object-cover w-full h-full" src={`assets/${pic}`} alt={alt} />
                             </div>
@@ -86,7 +97,7 @@ function ProjectsList() {
                                     />
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </Link>
                 );
             })}
@@ -142,9 +153,14 @@ export function ProjectPage() {
                         </div>
                     </div>
                     <ProjectsList />
-                    <div className="flex en-body-1 md:mt-[16px] text-grayscale-light justify-center items-center cursor-pointer">
+                    <motion.div
+                        className="flex en-body-1 md:mt-[16px] text-grayscale-light justify-center items-center cursor-pointer"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { duration: 1 } }}
+                        viewport={{ once: false, amount: 0.5 }}
+                    >
                         <div className="py-[8px] border-b-[1px] hover:text-grayscale-light uppercase">load more</div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
             <FooterSimple />

@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { motion } from "framer-motion";
 
 const fakeCarouselData = [
     {
@@ -47,9 +48,12 @@ export const Carousel = forwardRef<HTMLDivElement, {}>(({}, ref) => {
                 <div className="absolute flex gap-[16px] md:gap-[40px] ">
                     {fakeCarouselData.map(({ desc, title, subTitle, pic, index, w, h }) => {
                         return (
-                            <div
+                            <motion.div
                                 key={index}
                                 className="relative dec-shadow-1 w-[312px] h-[439px] pt-[48px] pb-[65px] px-[40px] rounded-[16px] overflow-clip md:w-[584px] md:h-[390px] md:pb-[79px] lg:h-[439px]"
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1, transition: { duration: 1 } }}
+                                viewport={{ once: false, amount: 0.5 }}
                             >
                                 <div className="absolute z-10 top-[76.33px] right-[-78.33px] md:right-[30px]">
                                     <img className={`w-[${w}] h-[${h}]`} src={`assets/${pic}.png`} alt={pic} />
@@ -62,7 +66,7 @@ export const Carousel = forwardRef<HTMLDivElement, {}>(({}, ref) => {
                                     </div>
                                 </div>
                                 <div className="relative body-2 z-20 text-grayscale-light">{desc}</div>
-                            </div>
+                            </motion.div>
                         );
                     })}
                 </div>

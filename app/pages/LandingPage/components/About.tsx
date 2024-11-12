@@ -1,8 +1,14 @@
 import { Link } from "@remix-run/react";
+import { motion } from "framer-motion";
 export function About() {
     return (
         <section className="relative w-full h-fit flex justify-center items-center">
-            <div className="container relative">
+            <motion.div
+                className="container relative"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
+                viewport={{ once: false, amount: 0.5 }}
+            >
                 {/*Decoration Square-1*/}
                 <div className="absolute bottom-0 left-0 w-[268px] h-[285px] md:w-[448px] md:h-[288px] lg:w-[445px] lg:h-[142px] rounded-[4px] bg-grayscale-dim square-shadow-1"></div>
                 {/*Decoration Square-2*/}
@@ -52,7 +58,12 @@ export function About() {
                         </div>
                     </div>
                     {/* Right Section*/}
-                    <div className="flex flex-col gap-[48px]">
+                    <motion.div
+                        className="flex flex-col gap-[48px]"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { delay: 0.2, duration: 0.5 } }}
+                        viewport={{ once: false, amount: 0.5 }}
+                    >
                         <div className="flex justify-center items-center">
                             <img className="" src="assets/about_pic.png" alt="about_pic" />
                         </div>
@@ -61,9 +72,9 @@ export function About() {
                             <span className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></span>
                             <div className="">關於百越</div>
                         </button>
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </motion.div>
         </section>
     );
 }

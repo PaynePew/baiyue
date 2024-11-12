@@ -1,5 +1,6 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLocation } from "@remix-run/react";
+import { motion } from "framer-motion";
 import { Header } from "~/components/Header";
 import tailWindStyles from "./styles/app.css";
 import headerStyles from "~/components/Header/styles.css";
@@ -21,6 +22,7 @@ export const links: LinksFunction = () => {
 };
 
 export default function App() {
+    const location = useLocation();
     return (
         <html lang="en">
             <head>
@@ -45,7 +47,15 @@ export default function App() {
             </head>
             <body className="bg-grayscale-iron">
                 <Header />
-                <Outlet />
+                <motion.div
+                    key={location.pathname}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                    <Outlet />
+                </motion.div>
                 <ScrollRestoration />
                 <Scripts />
                 <LiveReload />

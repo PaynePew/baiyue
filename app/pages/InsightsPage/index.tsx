@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { motion } from "framer-motion";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 
@@ -64,7 +65,12 @@ function InsightsList() {
             {fakeData.map(({ alt, pic, time, title, catgory }, idx) => {
                 return (
                     <Link key={idx} to="/insights/1">
-                        <div className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[1200px]">
+                        <motion.div
+                            className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[1200px]"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
+                            viewport={{ once: false, amount: 0.5 }}
+                        >
                             <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[282px] ">
                                 <img className="w-full h-full object-cover" src={`/assets/${pic}`} alt={alt} />
                             </div>
@@ -82,7 +88,7 @@ function InsightsList() {
                                     />
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </Link>
                 );
             })}

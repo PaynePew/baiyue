@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { motion } from "framer-motion";
 import styles from "./styles.css";
 import { FooterSimple } from "~/components/Footer";
 
@@ -28,15 +29,31 @@ function OthersInsights() {
         <section className="w-full bg-grayscale-dim">
             <div className="container">
                 <div className="flex flex-col pt-[48px] pb-[80px] mx-[24px] md:mx-[40px] md:pt-[40px] md:pb-[120px] lg:pt-[80px] lg:pb-[218px] lg:mx-[120px]">
-                    <div className="flex flex-col items-start justify-center mb-[40px] gap-[2px] md:gap-[4px] lg:gap-[8px] md:mb-[64px]">
+                    <motion.div
+                        className="flex flex-col items-start justify-center mb-[40px] gap-[2px] md:gap-[4px] lg:gap-[8px] md:mb-[64px]"
+                        initial={{ opacity: 0 }}
+                        whileInView={{
+                            opacity: 1,
+                            transition: { duration: 0.5 },
+                        }}
+                        viewport={{ once: false, amount: 1 }}
+                    >
                         <h3 className="text-grayscale-gainsboro">其他文章</h3>
                         <div className="en-h4 lg:text-[24px] text-primary uppercase">others</div>
-                    </div>
+                    </motion.div>
                     <div className="flex flex-col items-center justify-center gap-[24px] md:flex-row md:flex-wrap md:items-center lg:gap-[24px]">
                         {fakeData.map(({ alt, pic, time, title, catgory }, idx) => {
                             return (
                                 <Link key={idx} to="/insights/1">
-                                    <div className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[588px]">
+                                    <motion.div
+                                        className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[588px]"
+                                        initial={{ opacity: 0 }}
+                                        whileInView={{
+                                            opacity: 1,
+                                            transition: { delay: (idx + 1) * 0.15, duration: 0.5 },
+                                        }}
+                                        viewport={{ once: false, amount: 1 }}
+                                    >
                                         <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[180px] ">
                                             <img
                                                 className="w-full h-full object-cover"
@@ -58,7 +75,7 @@ function OthersInsights() {
                                                 />
                                             </div>
                                         </div>
-                                    </div>
+                                    </motion.div>
                                 </Link>
                             );
                         })}
@@ -92,13 +109,28 @@ export function InsightDetail({ insightId }) {
                             <div className="body-3 text-grayscale-light/50">專案近期檢討成果分享</div>
                         </div>
                         <div className="w-full h-[201.67px] rounded-[12px] overflow-clip md:w-[510px] md:h-[329.65px] lg:w-[792px] lg:h-[512px]">
-                            <img
+                            <motion.img
                                 className="object-cover w-full h-full"
                                 src="/assets/insight_1.png"
                                 alt="insight_1_pic"
+                                initial={{ opacity: 0, scale: 1.2 }}
+                                whileInView={{
+                                    opacity: 1,
+                                    scale: 1,
+                                    transition: { duration: 0.5 },
+                                }}
+                                viewport={{ once: false, amount: 0.3 }}
                             />
                         </div>
-                        <div className="flex flex-col gap-[32px] ">
+                        <motion.div
+                            className="flex flex-col gap-[32px]"
+                            initial={{ opacity: 0 }}
+                            whileInView={{
+                                opacity: 1,
+                                transition: { duration: 0.5 },
+                            }}
+                            viewport={{ once: false, amount: 0.3 }}
+                        >
                             <div className="body-2 text-grayscale-light">
                                 在原設計圖說上看似符合法規的停車格設計，經3D建模各材質、實際尺寸後探討出設計所忽略事項:
                             </div>
@@ -167,7 +199,7 @@ export function InsightDetail({ insightId }) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>

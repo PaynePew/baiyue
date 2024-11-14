@@ -139,7 +139,7 @@ export function ProjectPage() {
                         </div>
                         {/*ProjectTab List*/}
                         {/*TODO: overflow problem*/}
-                        <div className="absolute flex justify-start items-center gap-[12px] ">
+                        <div className="absolute flex justify-start items-center gap-[12px]">
                             {projectTab.map(({ title }) => {
                                 return (
                                     <button

@@ -86,7 +86,7 @@ function OthersInsights() {
     );
 }
 
-export function InsightDetail({ insightId }) {
+export function InsightDetail({ insightData }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">
@@ -151,7 +151,6 @@ export function InsightDetail({ insightId }) {
                                 <br />
                                 將會導致現場竣工查驗出現問題。各位也不妨試試丈量家中停車格是否符合法規呢?
                             </div>
-                            {/* todo: border line and hover color */}
                             <div className="w-full flex justify-start items-center gap-[16px] py-[31.5px]">
                                 <div className="en-body-1 uppercase text-grayscale-silver">share</div>
                                 <div className="flex gap-[10px]">

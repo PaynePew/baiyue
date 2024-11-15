@@ -131,7 +131,6 @@ function InsightsList({ insightsData }) {
 }
 
 export function InsightsPage({ insightsData }) {
-    console.log("contentful", insightsData);
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">

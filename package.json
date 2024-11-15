@@ -12,6 +12,7 @@
         "format": "prettier --write app/"
     },
     "dependencies": {
+        "@contentful/rich-text-react-renderer": "^16.0.0",
         "@netlify/functions": "^1.3.0",
         "@remix-run/netlify": "^1.12.0",
         "@remix-run/node": "^1.12.0",

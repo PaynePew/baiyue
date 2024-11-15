@@ -87,6 +87,8 @@ function OthersInsights() {
 }
 
 export function InsightDetail({ insightData }) {
+    console.log("data", insightData);
+    const { featuredImage, publishDate, subtitle, title } = insightData;
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">
@@ -104,14 +106,14 @@ export function InsightDetail({ insightData }) {
                 <div className="flex flex-col pt-[131px] mx-[24px] mb-[64px] md:mx-[40px] md:pt-[200px] md:gap-[64px] md:mb-[77px] lg:pt-[80px] lg:mx-[324px] lg:pb-[120px] lg:items-center">
                     <div className="w-full flex flex-col gap-[32px] md:gap-[63px] md:items-center lg:w-[792px]">
                         <div className="flex flex-col gap-[12px] items-center lg:gap-[16px]">
-                            <div className="en-body-1 text-grayscale-light">2022-10-03</div>
-                            <h2 className="text-grayscale-gainsboro">BIM技術，離您生活如此貼近</h2>
-                            <div className="body-3 text-grayscale-light/50">專案近期檢討成果分享</div>
+                            <div className="en-body-1 text-grayscale-light">{publishDate}</div>
+                            <h2 className="text-grayscale-gainsboro">{title}</h2>
+                            <div className="body-3 text-grayscale-light/50">{subtitle}</div>
                         </div>
                         <div className="w-full h-[201.67px] rounded-[12px] overflow-clip md:w-[510px] md:h-[329.65px] lg:w-[792px] lg:h-[512px]">
                             <motion.img
                                 className="object-cover w-full h-full"
-                                src="/assets/insight_1.png"
+                                src={`https:${featuredImage.fields.file.url}`}
                                 alt="insight_1_pic"
                                 initial={{ opacity: 0, scale: 1.2 }}
                                 whileInView={{

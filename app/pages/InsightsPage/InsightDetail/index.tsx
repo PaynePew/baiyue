@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { motion } from "framer-motion";
 import styles from "./styles.css";
 import { FooterSimple } from "~/components/Footer";
@@ -88,7 +89,7 @@ function OthersInsights() {
 
 export function InsightDetail({ insightData }) {
     console.log("data", insightData);
-    const { featuredImage, publishDate, subtitle, title } = insightData;
+    const { content, featuredImage, publishDate, subtitle, title } = insightData;
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">
@@ -133,6 +134,10 @@ export function InsightDetail({ insightData }) {
                             }}
                             viewport={{ once: false, amount: 0.3 }}
                         >
+                            {/*Content*/}
+                            {/*TODO: adjust text color and size*/}
+                            <div className="body-2 text-grayscale-light">{documentToReactComponents(content)}</div>
+                            {/*
                             <div className="body-2 text-grayscale-light">
                                 在原設計圖說上看似符合法規的停車格設計，經3D建模各材質、實際尺寸後探討出設計所忽略事項:
                             </div>
@@ -153,6 +158,8 @@ export function InsightDetail({ insightData }) {
                                 <br />
                                 將會導致現場竣工查驗出現問題。各位也不妨試試丈量家中停車格是否符合法規呢?
                             </div>
+              */}
+                            {/*SNS Button*/}
                             <div className="w-full flex justify-start items-center gap-[16px] py-[31.5px]">
                                 <div className="en-body-1 uppercase text-grayscale-silver">share</div>
                                 <div className="flex gap-[10px]">

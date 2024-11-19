@@ -22,30 +22,13 @@ const projectTab = [
     { title: "其他" },
 ];
 
-const fakeData = [
-    { alt: "project_pic1", pic: "projectlist_1.png", desc: "臺北市殯葬管理處第二殯儀館二期整建工程" },
-    { alt: "project_pic2", pic: "projectlist_2.png", desc: "大潭電廠建燃氣複循環機組發電計畫" },
-    { alt: "project_pic3", pic: "projectlist_3.png", desc: "臺北市萬華區莒光段公共住宅新建工程" },
-    { alt: "project_pic4", pic: "projectlist_4.png", desc: "臺北市立明倫高級中學多功能大樓新建工程" },
-    { alt: "project_pic5", pic: "projectlist_5.png", desc: "桃園流行音樂露天劇場新建工程" },
-    { alt: "project_pic6", pic: "projectlist_6.png", desc: "頎邦科技新竹光復廠辦工程" },
-    { alt: "project_pic7", pic: "projectlist_7.png", desc: "台北市信義區松信社會住宅新建工程" },
-    { alt: "project_pic8", pic: "projectlist_8.png", desc: "雙連安養中心四期新建工程" },
-    { alt: "project_pic9", pic: "projectlist_9.png", desc: "臺北市士林區百齡水岸社會住宅新建工程" },
-    { alt: "project_pic10", pic: "projectlist_10.png", desc: "板橋五權公園停車場統包工程" },
-    { alt: "project_pic11", pic: "projectlist_11.png", desc: "新北市樹林區長壽公園停車場新建統包工程" },
-    { alt: "project_pic12", pic: "projectlist_12.png", desc: "明台化工湖口廠新建工程" },
-    { alt: "project_pic13", pic: "projectlist_13.png", desc: "中壢區仁和段公共化幼兒園新建工程" },
-    { alt: "project_pic14", pic: "projectlist_14.png", desc: "頎邦科技新竹光復廠辦工程" },
-];
-
-function ProjectsList() {
+function ProjectsList({ projectsData }) {
     return (
         <div className="flex flex-wrap justify-center gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center">
-            {fakeData.map(({ alt, pic, desc }, idx) => {
+            {projectsData.map((project, idx) => {
                 if (idx === 0) {
                     return (
-                        <Link key={idx} to="/projects/1">
+                        <Link key={idx} to={`/projects/${project.fields.slug}`}>
                             <motion.div
                                 className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]"
                                 initial={{ opacity: 0 }}
@@ -53,14 +36,18 @@ function ProjectsList() {
                                 viewport={{ once: false, amount: 0.5 }}
                             >
                                 <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-full lg:w-[512px]">
-                                    <img className="object-cover w-full h-full" src={`assets/${pic}`} alt={alt} />
+                                    <img
+                                        className="object-cover w-full h-full"
+                                        src={`https:${project.fields.thumbnail.fields.file.url}`}
+                                        alt={`${project.fields.thumbnail.fields.title}`}
+                                    />
                                 </div>
                                 <div className="flex flex-col gap-[16px] p-[24px] lg:p-[40px] lg:h-full lg:justify-between">
-                                    <h6 className="text-grayscale-gainsboro lg:hidden">{desc}</h6>
-                                    <h5 className="hidden text-grayscale-gainsboro lg:block">{desc}</h5>
+                                    <h6 className="text-grayscale-gainsboro lg:hidden">{project.fields.title}</h6>
+                                    <h5 className="hidden text-grayscale-gainsboro lg:block">{project.fields.title}</h5>
                                     <div className="flex justify-between items-center">
                                         <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                            其他
+                                            {project.fields.category}
                                         </button>
                                         <img
                                             className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
@@ -74,7 +61,7 @@ function ProjectsList() {
                     );
                 }
                 return (
-                    <Link key={idx} to="/projects/1">
+                    <Link key={idx} to={`/projects/${project.fields.slug}`}>
                         <motion.div
                             className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
                             initial={{ opacity: 0 }}
@@ -82,13 +69,17 @@ function ProjectsList() {
                             viewport={{ once: false, amount: 0.5 }}
                         >
                             <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-[220px]">
-                                <img className="object-cover w-full h-full" src={`assets/${pic}`} alt={alt} />
+                                <img
+                                    className="object-cover w-full h-full"
+                                    src={`https:${project.fields.thumbnail.fields.file.url}`}
+                                    alt={`${project.fields.thumbnail.fields.title}`}
+                                />
                             </div>
                             <div className="flex flex-col gap-[16px] p-[24px]">
-                                <h6 className="text-grayscale-gainsboro md:min-h-[56px]">{desc}</h6>
+                                <h6 className="text-grayscale-gainsboro md:min-h-[56px]">{project.fields.title}</h6>
                                 <div className="flex justify-between items-center">
                                     <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                        其他
+                                        {project.fields.category}
                                     </button>
                                     <img
                                         className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
@@ -105,7 +96,7 @@ function ProjectsList() {
     );
 }
 
-export function ProjectPage() {
+export function ProjectPage({ projectsData }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container relative">
@@ -152,7 +143,7 @@ export function ProjectPage() {
                             })}
                         </div>
                     </div>
-                    <ProjectsList />
+                    <ProjectsList projectsData={projectsData} />
                     <motion.div
                         className="flex en-body-1 md:mt-[16px] text-grayscale-light justify-center items-center cursor-pointer"
                         initial={{ opacity: 0 }}

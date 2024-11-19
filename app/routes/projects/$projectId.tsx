@@ -1,18 +1,22 @@
-import { useLoaderData, useParams } from "@remix-run/react";
-import type { LoaderArgs, ActionArgs } from "@remix-run/node";
-import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+import type { LoaderArgs } from "@remix-run/node";
+import { client } from "~/contentful.server";
 import { ProjectDetail } from "~/pages/ProjectPage/ProjectDetail";
-
 export { links } from "~/pages/ProjectPage/ProjectDetail";
 
-export async function loader({ params }: LoaderArgs) {
-    return json({ projectId: params.projectId });
-}
+export const loader = async ({ params }: LoaderArgs) => {
+    const slug = params.projectId;
+    const response = await client.getEntries({ content_type: "projects", "fields.slug": slug });
+    const [entry] = response.items;
+
+    if (!entry) {
+        throw new Response("Not Found", { status: 404 });
+    }
+
+    return entry.fields;
+};
 
 export default function ProjectDetailRoute() {
-    // const params = useParams();
-    // const id = params.projectId;
-    // console.log("id", id);
-    const { projectId } = useLoaderData();
-    return <ProjectDetail projectId={projectId} />;
+    const projectDetailData = useLoaderData();
+    return <ProjectDetail projectDetailData={projectDetailData} />;
 }

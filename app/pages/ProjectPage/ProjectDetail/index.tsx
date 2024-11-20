@@ -163,41 +163,55 @@ function ProjectCardPlain() {
     );
 }
 
-function ProjectGallery() {
+function ProjectGalleryLong({ galleryLong }) {
     return (
-        <div className="w-full flex flex-col gap-[16px] lg:[24px]">
+        <div className="flex flex-col gap-[16px] lg:gap-[24px]">
+            {galleryLong.map((img, idx) => {
+                return (
+                    <div
+                        key={idx}
+                        className="w-full h-[120px] flex justify-center items-center rounded-[12px] bg-grayscale-gray md:rounded-[16px] md:h-[246.5px] lg:h-[430px]"
+                    >
+                        <motion.img
+                            className="object-scale-down w-full h-full"
+                            src={`https:${img.fields.file.url}`}
+                            alt={img.fields.title}
+                            initial={{ opacity: 0, scale: 1.2 }}
+                            whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
+                            viewport={{ once: false, amount: 0.5 }}
+                        />
+                    </div>
+                );
+            })}
+        </div>
+    );
+}
+
+function ProjectGallery({ gallery, galleryLong }) {
+    console.log("gallery", gallery);
+    console.log("galleryLong", galleryLong);
+    return (
+        <div className="w-full flex flex-col gap-[16px] lg:gap-[24px]">
             <div className="w-full flex flex-col gap-[16px] md:flex-row lg:[24px]">
-                <div className="w-full h-[120px] rounded-[12px] overflow-hidden md:rounded-[16px] md:h-[246.5px] lg:h-[430px]">
-                    <motion.img
-                        className="object-cover w-full h-full"
-                        src="/assets/project_sample_3.png"
-                        alt="project_model_3"
-                        initial={{ opacity: 0, scale: 1.2 }}
-                        whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
-                        viewport={{ once: false, amount: 0.5 }}
-                    />
-                </div>
-                <div className="w-full h-[120px] rounded-[12px] overflow-hidden md:rounded-[16px] md:h-[246.5px] lg:h-[430px]">
-                    <motion.img
-                        className="object-cover w-full h-full"
-                        src="/assets/project_sample_4.png"
-                        alt="project_model_4"
-                        initial={{ opacity: 0, scale: 1.2 }}
-                        whileInView={{ opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.8 } }}
-                        viewport={{ once: false, amount: 0.5 }}
-                    />
-                </div>
+                {gallery.map((img, idx) => {
+                    return (
+                        <div
+                            key={idx}
+                            className="w-full h-[120px] rounded-[12px] overflow-hidden md:rounded-[16px] md:h-[246.5px] lg:h-[430px]"
+                        >
+                            <motion.img
+                                className="object-cover w-full h-full"
+                                src={`https:${img.fields.file.url}`}
+                                alt={img.fields.title}
+                                initial={{ opacity: 0, scale: 1.2 }}
+                                whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
+                                viewport={{ once: false, amount: 0.5 }}
+                            />
+                        </div>
+                    );
+                })}
             </div>
-            <div className="w-full h-[120px] flex justify-center items-center rounded-[12px] bg-grayscale-gray md:rounded-[16px] md:h-[246.5px] lg:h-[430px]">
-                <motion.img
-                    className="object-scale-down w-full h-full"
-                    src="/assets/project_sample_5.png"
-                    alt="project_model_5"
-                    initial={{ opacity: 0, scale: 1.2 }}
-                    whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
-                    viewport={{ once: false, amount: 0.5 }}
-                />
-            </div>
+            {galleryLong ? <ProjectGalleryLong galleryLong={galleryLong} /> : null}
         </div>
     );
 }
@@ -256,14 +270,15 @@ function ProjectCard({ content, image }) {
 
 function ProjectDetailCards({ projectDetailData }) {
     console.log("Cards", projectDetailData);
-    const { contentLeft, contentRight, imageLeft, imageRight } = projectDetailData;
+    const { contentLeft, contentRight, imageLeft, imageRight, gallery, galleryLong } = projectDetailData;
     return (
         <section className="w-full bg-grayscale-dim">
             <div className="container">
                 <div className="flex flex-col justify-center items-center py-[48px] mx-[24px] gap-[64px] md:mx-[40px] md:py-[80px] md:gap-[80px] lg:py-[160px] lg:mx-[120px] lg:gap-[120px]">
                     {contentLeft ? <ProjectCard content={contentLeft} image={imageRight} /> : null}
                     {contentRight ? <ProjectCardReverse content={contentRight} image={imageLeft} /> : null}
-                    <ProjectGallery />
+
+                    {gallery ? <ProjectGallery gallery={gallery} galleryLong={galleryLong} /> : null}
                     <ProjectCardPlain />
                     <ProjectCardPlainReverse />
                 </div>

@@ -65,7 +65,7 @@ function OthersSection({ projectsData }) {
                             );
                         }
                         return (
-                            <Link key={idx} to={`projects/${project.fields.slug}`}>
+                            <Link key={idx} to={`/projects/${project.fields.slug}`}>
                                 <motion.div
                                     className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
                                     initial={{ opacity: 0 }}

@@ -8,7 +8,7 @@ export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
 
-function OthersSection({ projectsData }) {
+function OthersSection({ recommendedProjects }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <div className="flex flex-col pt-[48px] pb-[80px] mx-[24px] md:mx-[40px] md:pt-[40px] md:pb-[120px] lg:pt-[80px] lg:pb-[218px] lg:mx-[120px]">
@@ -22,7 +22,7 @@ function OthersSection({ projectsData }) {
                     <div className="en-h4 lg:text-[24px] text-primary uppercase">others</div>
                 </motion.div>
                 <div className="flex flex-wrap justify-center gap-[24px] md:items-cente">
-                    {projectsData.map((project, idx) => {
+                    {recommendedProjects.map((project, idx) => {
                         if (idx === 0) {
                             return (
                                 <Link key={idx} to={`/projects/${project.fields.slug}`}>
@@ -51,7 +51,7 @@ function OthersSection({ projectsData }) {
                                             </h5>
                                             <div className="flex justify-between items-center">
                                                 <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                                    其他
+                                                    {project.fields.category}
                                                 </button>
                                                 <img
                                                     className="hidden w-[38px] md:h-[11px] md:block"
@@ -208,7 +208,6 @@ function ProjectCard({ content, image }) {
 }
 
 function ProjectDetailCards({ projectDetailData }) {
-    console.log("Cards", projectDetailData);
     const {
         contentLeft,
         contentRight,
@@ -241,9 +240,8 @@ function ProjectDetailCards({ projectDetailData }) {
     );
 }
 
-export function ProjectDetail({ projectDetailData, projectsData }) {
+export function ProjectDetail({ projectDetailData, recommendedProjects }) {
     const { title, category, featuredImage, type, partner, description, introduce, flow } = projectDetailData;
-    console.log(introduce);
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">
@@ -380,7 +378,7 @@ export function ProjectDetail({ projectDetailData, projectsData }) {
             </section>
             <ProjectDetailCards projectDetailData={projectDetailData} />
             <div className="container">
-                <OthersSection projectsData={projectsData} />
+                <OthersSection recommendedProjects={recommendedProjects} />
             </div>
             <FooterSimple />
         </section>

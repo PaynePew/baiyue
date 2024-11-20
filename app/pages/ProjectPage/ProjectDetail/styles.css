@@ -5,3 +5,8 @@
 .process-hidden:last-child > img {
     display: none;
 }
+
+.content > h3 {
+    color: rgba(226, 226, 226, 1);
+    font-weight: 250;
+}

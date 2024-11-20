@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { motion } from "framer-motion";
 import styles from "./styles.css";
 import { FooterSimple } from "~/components/Footer";
@@ -7,7 +8,7 @@ export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
 
-function OthersSection() {
+function OthersSection({ projectsData }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <div className="flex flex-col pt-[48px] pb-[80px] mx-[24px] md:mx-[40px] md:pt-[40px] md:pb-[120px] lg:pt-[80px] lg:pb-[218px] lg:mx-[120px]">
@@ -21,10 +22,10 @@ function OthersSection() {
                     <div className="en-h4 lg:text-[24px] text-primary uppercase">others</div>
                 </motion.div>
                 <div className="flex flex-wrap justify-center gap-[24px] md:items-cente">
-                    {fakeData.map(({ alt, pic, desc }, idx) => {
+                    {projectsData.map((project, idx) => {
                         if (idx === 0) {
                             return (
-                                <Link key={idx} to="/projects/1">
+                                <Link key={idx} to={`/projects/${project.fields.slug}`}>
                                     <motion.div
                                         className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]"
                                         initial={{ opacity: 0 }}
@@ -37,13 +38,17 @@ function OthersSection() {
                                         <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-full lg:w-[512px]">
                                             <img
                                                 className="object-cover w-full h-full"
-                                                src={`/assets/${pic}`}
-                                                alt={alt}
+                                                src={`https:${project.fields.thumbnail.fields.file.url}`}
+                                                alt={`${project.fields.thumbnail.title}`}
                                             />
                                         </div>
                                         <div className="flex flex-col gap-[16px] p-[24px] lg:p-[40px] lg:h-full lg:justify-between">
-                                            <h6 className="text-grayscale-gainsboro lg:hidden">{desc}</h6>
-                                            <h5 className="hidden text-grayscale-gainsboro lg:block">{desc}</h5>
+                                            <h6 className="text-grayscale-gainsboro lg:hidden">
+                                                {project.fields.title}
+                                            </h6>
+                                            <h5 className="hidden text-grayscale-gainsboro lg:block">
+                                                {project.fields.title}
+                                            </h5>
                                             <div className="flex justify-between items-center">
                                                 <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
                                                     其他
@@ -60,7 +65,7 @@ function OthersSection() {
                             );
                         }
                         return (
-                            <Link key={idx} to="/projects/1">
+                            <Link key={idx} to={`projects/${project.fields.slug}`}>
                                 <motion.div
                                     className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
                                     initial={{ opacity: 0 }}
@@ -71,13 +76,19 @@ function OthersSection() {
                                     viewport={{ once: false, amount: 0.5 }}
                                 >
                                     <div className="shrink-0 w-[116px] bg-white md:w-full md:h-[157px] lg:h-[220px]">
-                                        <img className="object-cover w-full h-full" src={`/assets/${pic}`} alt={alt} />
+                                        <img
+                                            className="object-cover w-full h-full"
+                                            src={`https:${project.fields.thumbnail.fields.file.url}`}
+                                            alt={`${project.fields.thumbnail.title}`}
+                                        />
                                     </div>
                                     <div className="flex flex-col gap-[16px] p-[24px]">
-                                        <h6 className="text-grayscale-gainsboro md:min-h-[56px]">{desc}</h6>
+                                        <h6 className="text-grayscale-gainsboro md:min-h-[56px]">
+                                            {project.fields.title}
+                                        </h6>
                                         <div className="flex justify-between items-center">
                                             <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                                其他
+                                                {project.fields.category}
                                             </button>
                                             <img
                                                 className="hidden w-[38px] md:h-[11px] md:block"
@@ -191,7 +202,7 @@ function ProjectGallery() {
     );
 }
 
-function ProjectCardReverse() {
+function ProjectCardReverse({ content, image }) {
     return (
         <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
             <motion.div
@@ -200,17 +211,13 @@ function ProjectCardReverse() {
                 whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
                 viewport={{ once: false, amount: 0.5 }}
             >
-                <h3 className="text-grayscale-gainsboro md:text-right">(左圖右文)_段落標題</h3>
-                <div className="body-2 text-grayscale-light">
-                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
-                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。
-                </div>
+                <div className="body-2 text-grayscale-light content">{documentToReactComponents(content)}</div>
             </motion.div>
             <div className="w-full flex justify-center items-center bg-grayscale-gray rounded-[12px] md:basis-[50%] order-1 md:h-[246.5px] lg:h-[430px]">
                 <motion.img
                     className="object-scale-down w-full h-full"
-                    src="/assets/project_sample_2.png"
-                    alt="project_model_2"
+                    src={`https:${image.fields.file.url}`}
+                    alt={image.fields.title}
                     initial={{ opacity: 0, scale: 1.2 }}
                     whileInView={{ opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.8 } }}
                     viewport={{ once: false, amount: 0.5 }}
@@ -220,7 +227,7 @@ function ProjectCardReverse() {
     );
 }
 
-function ProjectCard() {
+function ProjectCard({ content, image }) {
     return (
         <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
             <motion.div
@@ -229,33 +236,33 @@ function ProjectCard() {
                 whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
                 viewport={{ once: false, amount: 0.5 }}
             >
-                <h3 className="text-grayscale-gainsboro">(左文右圖)_段落標題</h3>
-                <div className="body-2 text-grayscale-light">
-                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，
-                    能怎樂歡後白星老片民萃統驢也湊的變。力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
-                </div>
+                <div className="body-2 text-grayscale-light content">{documentToReactComponents(content)}</div>
             </motion.div>
-            <motion.div className="w-full flex justify-center items-center bg-grayscale-gray rounded-[12px] md:basis-[50%] md:h-[246.5px] lg:h-[430px]">
-                <motion.img
-                    className="object-scale-down w-full h-full"
-                    src="/assets/project_sample_1.png"
-                    alt="project_model_1"
-                    initial={{ opacity: 0, scale: 1.2 }}
-                    whileInView={{ opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.8 } }}
-                    viewport={{ once: false, amount: 0.5 }}
-                />
-            </motion.div>
+            {image ? (
+                <motion.div className="w-full flex justify-center items-center bg-grayscale-gray rounded-[12px] md:basis-[50%] md:h-[246.5px] lg:h-[430px]">
+                    <motion.img
+                        className="object-scale-down w-full h-full"
+                        src={`https:${image.fields.file.url}`}
+                        alt={image.fields.title}
+                        initial={{ opacity: 0, scale: 1.2 }}
+                        whileInView={{ opacity: 1, scale: 1, transition: { delay: 0.2, duration: 0.8 } }}
+                        viewport={{ once: false, amount: 0.5 }}
+                    />
+                </motion.div>
+            ) : null}
         </div>
     );
 }
 
 function ProjectDetailCards({ projectDetailData }) {
+    console.log("Cards", projectDetailData);
+    const { contentLeft, contentRight, imageLeft, imageRight } = projectDetailData;
     return (
         <section className="w-full bg-grayscale-dim">
             <div className="container">
                 <div className="flex flex-col justify-center items-center py-[48px] mx-[24px] gap-[64px] md:mx-[40px] md:py-[80px] md:gap-[80px] lg:py-[160px] lg:mx-[120px] lg:gap-[120px]">
-                    <ProjectCard />
-                    <ProjectCardReverse />
+                    {contentLeft ? <ProjectCard content={contentLeft} image={imageRight} /> : null}
+                    {contentRight ? <ProjectCardReverse content={contentRight} image={imageLeft} /> : null}
                     <ProjectGallery />
                     <ProjectCardPlain />
                     <ProjectCardPlainReverse />
@@ -265,7 +272,7 @@ function ProjectDetailCards({ projectDetailData }) {
     );
 }
 
-export function ProjectDetail({ projectDetailData }) {
+export function ProjectDetail({ projectDetailData, projectsData }) {
     const { title, category, featuredImage, type, partner, description, introduce, flow } = projectDetailData;
     console.log(introduce);
     return (
@@ -404,7 +411,7 @@ export function ProjectDetail({ projectDetailData }) {
             </section>
             <ProjectDetailCards projectDetailData={projectDetailData} />
             <div className="container">
-                <OthersSection />
+                <OthersSection projectsData={projectsData} />
             </div>
             <FooterSimple />
         </section>

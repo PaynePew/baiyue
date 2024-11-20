@@ -8,15 +8,17 @@ export const loader = async ({ params }: LoaderArgs) => {
     const slug = params.projectId;
     const response = await client.getEntries({ content_type: "projects", "fields.slug": slug });
     const [entry] = response.items;
+    const entries = await client.getEntries({ content_type: "projects" });
 
-    if (!entry) {
+    if (!entry || !entries) {
         throw new Response("Not Found", { status: 404 });
     }
 
-    return entry.fields;
+    return [entry.fields, entries.items];
 };
 
 export default function ProjectDetailRoute() {
-    const projectDetailData = useLoaderData();
-    return <ProjectDetail projectDetailData={projectDetailData} />;
+    const projectDetailData = useLoaderData()[0];
+    const projectsData = useLoaderData()[1];
+    return <ProjectDetail projectDetailData={projectDetailData} projectsData={projectsData} />;
 }

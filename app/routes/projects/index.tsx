@@ -6,6 +6,9 @@ export { ProjectPage } from "~/pages/ProjectPage";
 
 export const loader = async () => {
     const entries = await client.getEntries({ content_type: "projects" });
+    if (!entries) {
+        throw new Response("Not Found", { status: 404 });
+    }
     return entries.items;
 };
 

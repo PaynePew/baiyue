@@ -5,6 +5,9 @@ export { links } from "~/pages/InsightsPage";
 
 export const loader = async () => {
     const entries = await client.getEntries({ content_type: "insights" });
+    if (!entries) {
+        throw new Response("Not Found", { status: 404 });
+    }
     return entries.items;
 };
 

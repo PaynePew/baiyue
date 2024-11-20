@@ -1,4 +1,5 @@
 import { useLoaderData } from "@remix-run/react";
+import { useMemo } from "react";
 import type { LoaderArgs } from "@remix-run/node";
 import { client } from "~/contentful.server";
 import { ProjectDetail } from "~/pages/ProjectPage/ProjectDetail";
@@ -36,6 +37,9 @@ export const loader = async ({ params }: LoaderArgs) => {
 export default function ProjectDetailRoute() {
     const projectDetailData = useLoaderData()[0];
     const projectsData = useLoaderData()[1];
-    const recommendedProjects = getRecommendedProjects(projectDetailData, projectsData);
+    const recommendedProjects = useMemo(() => {
+        return getRecommendedProjects(projectDetailData, projectsData);
+    }, [projectDetailData, projectsData]);
+
     return <ProjectDetail projectDetailData={projectDetailData} recommendedProjects={recommendedProjects} />;
 }

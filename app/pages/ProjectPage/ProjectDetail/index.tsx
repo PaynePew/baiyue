@@ -107,62 +107,6 @@ function OthersSection({ projectsData }) {
     );
 }
 
-function ProjectCardPlainReverse() {
-    return (
-        <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
-            <div className="flex flex-col md:basis-[50%] order-2">
-                <motion.div
-                    className="body-2 text-grayscale-light"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
-                    viewport={{ once: false, amount: 0.5 }}
-                >
-                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
-                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。
-                </motion.div>
-            </div>
-            <div className="w-full h-[230px] flex justify-center items-center bg-grayscale-gray rounded-[12px] order-1 md:basis-[50%] md:h-[246.5px] lg:h-[430px]">
-                <motion.img
-                    className="object-scale-down w-full h-full"
-                    src="/assets/project_sample_7.png"
-                    alt="project_model_7"
-                    initial={{ opacity: 0, scale: 1.2 }}
-                    whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
-                    viewport={{ once: false, amount: 0.5 }}
-                />
-            </div>
-        </div>
-    );
-}
-
-function ProjectCardPlain() {
-    return (
-        <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
-            <div className="flex flex-col md:basis-[50%] ">
-                <motion.div
-                    className="body-2 text-grayscale-light"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
-                    viewport={{ once: false, amount: 0.5 }}
-                >
-                    應州工程有限公司，楊瑞禎聯合建築師事務所年春排的活風所到任結較中朝村是學到樵建快將館錶部都…人洩妹日且你章喜人的裕生方，華一針，能怎樂歡後白星老片民萃統驢也湊的變。
-                    力蟄不聖鵬系四！當到要目近裔肆部工。此，坑謝籌手盔禦斜想當因政結感資諦後許…
-                </motion.div>
-            </div>
-            <div className="w-full h-[230px] flex justify-center items-center bg-grayscale-gray rounded-[12px] md:basis-[50%] md:h-[246.5px] lg:h-[430px]">
-                <motion.img
-                    className="object-scale-down w-full h-full"
-                    src="/assets/project_sample_6.png"
-                    alt="project_model_6"
-                    initial={{ opacity: 0, scale: 1.2 }}
-                    whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
-                    viewport={{ once: false, amount: 0.5 }}
-                />
-            </div>
-        </div>
-    );
-}
-
 function ProjectGalleryLong({ galleryLong }) {
     return (
         <div className="flex flex-col gap-[16px] lg:gap-[24px]">
@@ -187,31 +131,26 @@ function ProjectGalleryLong({ galleryLong }) {
     );
 }
 
-function ProjectGallery({ gallery, galleryLong }) {
-    console.log("gallery", gallery);
-    console.log("galleryLong", galleryLong);
+function ProjectGallery({ gallery }) {
     return (
-        <div className="w-full flex flex-col gap-[16px] lg:gap-[24px]">
-            <div className="w-full flex flex-col gap-[16px] md:flex-row lg:[24px]">
-                {gallery.map((img, idx) => {
-                    return (
-                        <div
-                            key={idx}
-                            className="w-full h-[120px] rounded-[12px] overflow-hidden md:rounded-[16px] md:h-[246.5px] lg:h-[430px]"
-                        >
-                            <motion.img
-                                className="object-cover w-full h-full"
-                                src={`https:${img.fields.file.url}`}
-                                alt={img.fields.title}
-                                initial={{ opacity: 0, scale: 1.2 }}
-                                whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
-                                viewport={{ once: false, amount: 0.5 }}
-                            />
-                        </div>
-                    );
-                })}
-            </div>
-            {galleryLong ? <ProjectGalleryLong galleryLong={galleryLong} /> : null}
+        <div className="w-full flex flex-col gap-[16px] md:flex-row lg:[24px]">
+            {gallery.map((img, idx) => {
+                return (
+                    <div
+                        key={idx}
+                        className="w-full h-[120px] rounded-[12px] overflow-hidden md:rounded-[16px] md:h-[246.5px] lg:h-[430px]"
+                    >
+                        <motion.img
+                            className="object-cover w-full h-full"
+                            src={`https:${img.fields.file.url}`}
+                            alt={img.fields.title}
+                            initial={{ opacity: 0, scale: 1.2 }}
+                            whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.8 } }}
+                            viewport={{ once: false, amount: 0.5 }}
+                        />
+                    </div>
+                );
+            })}
         </div>
     );
 }
@@ -270,17 +209,32 @@ function ProjectCard({ content, image }) {
 
 function ProjectDetailCards({ projectDetailData }) {
     console.log("Cards", projectDetailData);
-    const { contentLeft, contentRight, imageLeft, imageRight, gallery, galleryLong } = projectDetailData;
+    const {
+        contentLeft,
+        contentRight,
+        imageLeft,
+        imageRight,
+        gallery,
+        galleryLong,
+        extraContentLeft,
+        extraContentRight,
+        extraImageRight,
+        extraImageLeft,
+    } = projectDetailData;
     return (
         <section className="w-full bg-grayscale-dim">
             <div className="container">
                 <div className="flex flex-col justify-center items-center py-[48px] mx-[24px] gap-[64px] md:mx-[40px] md:py-[80px] md:gap-[80px] lg:py-[160px] lg:mx-[120px] lg:gap-[120px]">
                     {contentLeft ? <ProjectCard content={contentLeft} image={imageRight} /> : null}
                     {contentRight ? <ProjectCardReverse content={contentRight} image={imageLeft} /> : null}
-
-                    {gallery ? <ProjectGallery gallery={gallery} galleryLong={galleryLong} /> : null}
-                    <ProjectCardPlain />
-                    <ProjectCardPlainReverse />
+                    <div className="w-full flex flex-col gap-[16px] lg:gap-[24px]">
+                        {gallery ? <ProjectGallery gallery={gallery} /> : null}
+                        {galleryLong ? <ProjectGalleryLong galleryLong={galleryLong} /> : null}
+                    </div>
+                    {extraContentLeft ? <ProjectCard content={extraContentLeft} image={extraImageRight} /> : null}
+                    {extraContentRight ? (
+                        <ProjectCardReverse content={extraContentRight} image={extraImageLeft} />
+                    ) : null}
                 </div>
             </div>
         </section>

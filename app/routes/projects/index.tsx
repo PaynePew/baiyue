@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { client } from "~/contentful.server";
 import { useLoaderData } from "react-router";
 import { ProjectPage } from "~/pages/ProjectPage";
@@ -14,5 +15,9 @@ export const loader = async () => {
 
 export default function ProjectPageIndex() {
     const projectsData = useLoaderData();
-    return <ProjectPage projectsData={projectsData} />;
+    const sortedProjectsData = useMemo(() => {
+        return [...projectsData].sort((a, b) => a.fields.order - b.fields.order);
+    }, [projectsData]);
+    console.log(sortedProjectsData);
+    return <ProjectPage projectsData={sortedProjectsData} />;
 }

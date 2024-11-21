@@ -1,3 +1,34 @@
 .sns-effect:hover > svg > path {
     fill: rgb(54, 52, 55);
 }
+/* 假設 .custom-ol 是你的有序列表 className */
+.custom-ol {
+    list-style: none; /* 移除默認的標號樣式 */
+    counter-reset: custom-counter; /* 初始化計數器 */
+}
+
+.custom-ol li {
+    counter-increment: custom-counter; /* 計數器自增 */
+    position: relative; /* 為自定義標號提供定位 */
+    display: inline-block;
+    margin-left: 24px;
+}
+.custom-ol li:first-child {
+    margin-top: 32px;
+}
+.custom-ol li:last-child {
+    margin-bottom: 32px;
+}
+.custom-ol li::before {
+    content: counter(custom-counter) "/ "; /* 添加自定義標號 */
+    color: rgba(229, 174, 0, 1); /* 標號顏色 */
+    font-weight: 400; /* 標號樣式 */
+    position: absolute; /* 定位 */
+    left: 0; /* 靠左對齊 */
+}
+
+.custom-ol li span {
+    color: rgba(255, 255, 255, 1); /* 列表文字的顏色 */
+    display: inline-block;
+    margin-left: 2rem; /* 確保文字與標號分開 */
+}

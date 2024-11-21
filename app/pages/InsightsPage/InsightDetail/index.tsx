@@ -7,6 +7,16 @@ import { FooterSimple } from "~/components/Footer";
 export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
+const customRenderOptions = {
+    renderNode: {
+        "ordered-list": (node, children) => <ol className="custom-ol">{children}</ol>,
+        "list-item": (node, children) => (
+            <li>
+                <span>{children}</span>
+            </li>
+        ),
+    },
+};
 
 function OthersInsights({ recommendedInsights }) {
     return (
@@ -114,7 +124,7 @@ export function InsightDetail({ insightData, recommendedInsights }) {
                             />
                         </div>
                         <motion.div
-                            className="flex flex-col gap-[32px]"
+                            className="flex flex-col gap-[32px] w-full"
                             initial={{ opacity: 0 }}
                             whileInView={{
                                 opacity: 1,
@@ -123,30 +133,9 @@ export function InsightDetail({ insightData, recommendedInsights }) {
                             viewport={{ once: false, amount: 0.3 }}
                         >
                             {/*Content*/}
-                            {/*TODO: adjust text color and size*/}
-                            <div className="body-2 text-grayscale-light">{documentToReactComponents(content)}</div>
-                            {/*
                             <div className="body-2 text-grayscale-light">
-                                在原設計圖說上看似符合法規的停車格設計，經3D建模各材質、實際尺寸後探討出設計所忽略事項:
+                                {documentToReactComponents(content, customRenderOptions)}
                             </div>
-                            <div className="flex flex-col gap-[4px]">
-                                <div className="flex items-start gap-[16px]">
-                                    <div className="en-body-1 text-primary pt-[5px]">/1</div>
-                                    <div className="body-2 text-white">
-                                        CAD圖資為線性表現，忽略了現場停車格線10cm厚度。
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-[16px]">
-                                    <div className="en-body-1 text-primary pt-[5px]">/2</div>
-                                    <div className="body-2 text-white">CAD圖資為結構完成面，忽略了粉刷層厚度。</div>
-                                </div>
-                            </div>
-                            <div className="body-2 text-grayscale-light">
-                                由於停車格查驗方式為線心至線心距離，在後續現場實際加入柱粉刷層厚度(3cm)及停車格線(10cm)後，導致停車格無法符合250x250法規標準，停車格線會截斷在柱位上。
-                                <br />
-                                將會導致現場竣工查驗出現問題。各位也不妨試試丈量家中停車格是否符合法規呢?
-                            </div>
-              */}
                             {/*SNS Button*/}
                             <div className="w-full flex justify-start items-center gap-[16px] py-[31.5px]">
                                 <div className="en-body-1 uppercase text-grayscale-silver">share</div>

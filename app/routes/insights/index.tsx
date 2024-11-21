@@ -1,6 +1,7 @@
 import { client } from "~/contentful.server";
 import { useLoaderData } from "react-router";
 import { InsightsPage } from "~/pages/InsightsPage";
+import { useMemo } from "react";
 export { links } from "~/pages/InsightsPage";
 
 export const loader = async () => {
@@ -13,5 +14,10 @@ export const loader = async () => {
 
 export default function Index() {
     const insightsData = useLoaderData();
-    return <InsightsPage insightsData={insightsData} />;
+    console.log("raw", insightsData);
+    const sortedInsightsData = useMemo(() => {
+        return [...insightsData].sort((a, b) => b.fields.order - a.fields.order);
+    }, [insightsData]);
+    console.log(sortedInsightsData);
+    return <InsightsPage insightsData={sortedInsightsData} />;
 }

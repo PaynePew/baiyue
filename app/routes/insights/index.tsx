@@ -14,10 +14,8 @@ export const loader = async () => {
 
 export default function Index() {
     const insightsData = useLoaderData();
-    console.log("raw", insightsData);
     const sortedInsightsData = useMemo(() => {
         return [...insightsData].sort((a, b) => b.fields.order - a.fields.order);
     }, [insightsData]);
-    console.log(sortedInsightsData);
     return <InsightsPage insightsData={sortedInsightsData} />;
 }

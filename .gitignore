@@ -1,5 +1,6 @@
 node_modules
 
+pakcage-lock.json
 /.cache
 /public/build
 /.netlify

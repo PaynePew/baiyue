@@ -16,7 +16,7 @@ export const loader = async () => {
 export default function ProjectPageIndex() {
     const projectsData = useLoaderData();
     const sortedProjectsData = useMemo(() => {
-        return [...projectsData].sort((a, b) => a.fields.order - b.fields.order);
+        return [...projectsData].sort((a, b) => b.fields.order - a.fields.order);
     }, [projectsData]);
     console.log(sortedProjectsData);
     return <ProjectPage projectsData={sortedProjectsData} />;

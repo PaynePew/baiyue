@@ -8,24 +8,7 @@ export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
 
-const fakeData = [
-    {
-        alt: "insight_pic2",
-        pic: "insight_2.png",
-        time: "2022-10-03",
-        title: "有了BIM，提早發現問題",
-        catgory: "專案近期檢討成果分享",
-    },
-    {
-        alt: "insight_pic3",
-        pic: "insight_3.png",
-        time: "2022-10-03",
-        title: "2D圖面可能不會檢討到的事",
-        catgory: "專案近期檢討成果分享",
-    },
-];
-
-function OthersInsights() {
+function OthersInsights({ recommendedInsights }) {
     return (
         <section className="w-full bg-grayscale-dim">
             <div className="container">
@@ -43,9 +26,9 @@ function OthersInsights() {
                         <div className="en-h4 lg:text-[24px] text-primary uppercase">others</div>
                     </motion.div>
                     <div className="flex flex-col items-center justify-center gap-[24px] md:flex-row md:flex-wrap md:items-center lg:gap-[24px]">
-                        {fakeData.map(({ alt, pic, time, title, catgory }, idx) => {
+                        {recommendedInsights.map((post, idx) => {
                             return (
-                                <Link key={idx} to="/insights/1">
+                                <Link key={idx} to={`/insights/${post.fields.slug}`}>
                                     <motion.div
                                         className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[588px]"
                                         initial={{ opacity: 0 }}
@@ -58,15 +41,21 @@ function OthersInsights() {
                                         <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[180px] ">
                                             <img
                                                 className="w-full h-full object-cover"
-                                                src={`/assets/${pic}`}
-                                                alt={alt}
+                                                src={`https:${post.fields.thumbnail.fields.file.url}`}
+                                                alt={`post.fields.thumbnail.fields.title`}
                                             />
                                         </div>
                                         <div className="flex justify-between w-full md:px-[32px] md:pt-[24px] md:pb-[27px] lg:py-[21px] lg:px-[32px]">
                                             <div className="flex flex-col gap-[4px] py-[24px] px-[20px] md:p-[0] lg:gap-[4px]">
-                                                <div className="en-body-1 text-grayscale-light">{time}</div>
-                                                <h6 className="text-grayscale-gainsboro min-h-[56px]">{title}</h6>
-                                                <div className="body-3 text-grayscale-light/50">{catgory}</div>
+                                                <div className="en-body-1 text-grayscale-light">
+                                                    {post.fields.publishDate}
+                                                </div>
+                                                <h6 className="text-grayscale-gainsboro min-h-[56px]">
+                                                    {post.fields.title}
+                                                </h6>
+                                                <div className="body-3 text-grayscale-light/50">
+                                                    {post.fields.subtitle}
+                                                </div>
                                             </div>
                                             <div className="flex items-center">
                                                 <img
@@ -87,8 +76,7 @@ function OthersInsights() {
     );
 }
 
-export function InsightDetail({ insightData }) {
-    console.log("data", insightData);
+export function InsightDetail({ insightData, recommendedInsights }) {
     const { content, featuredImage, publishDate, subtitle, title } = insightData;
     return (
         <section className="w-full bg-grayscale-iron">
@@ -211,7 +199,7 @@ export function InsightDetail({ insightData }) {
                     </div>
                 </div>
             </section>
-            <OthersInsights />
+            <OthersInsights recommendedInsights={recommendedInsights} />
             <FooterSimple />
         </section>
     );

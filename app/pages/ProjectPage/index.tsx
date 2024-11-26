@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
@@ -97,6 +98,17 @@ function ProjectsList({ projectsData }) {
 }
 
 export function ProjectPage({ projectsData }) {
+    const projectPerLoad = 14;
+    const [data, setData] = useState(projectsData.slice(0, projectPerLoad));
+    const [count, setCount] = useState(projectPerLoad);
+
+    const handleLoadMore = () => {
+        const start = count;
+        const end = start + projectPerLoad;
+        const nextData = projectsData.slice(start, end);
+        setData(prevData => [...prevData, ...nextData]);
+        setCount(end);
+    };
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container relative">
@@ -155,15 +167,22 @@ export function ProjectPage({ projectsData }) {
                             })}
                         </div>
                     </div>
-                    <ProjectsList projectsData={projectsData} />
-                    <motion.div
-                        className="flex en-body-1 md:mt-[16px] text-grayscale-light justify-center items-center cursor-pointer"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1, transition: { duration: 1 } }}
-                        viewport={{ once: false, amount: 0.5 }}
-                    >
-                        <div className="py-[8px] border-b-[1px] hover:text-grayscale-light uppercase">load more</div>
-                    </motion.div>
+                    <ProjectsList projectsData={data} />
+                    {count < projectsData.length && (
+                        <motion.div
+                            className="flex en-body-1 md:mt-[16px] text-grayscale-light justify-center items-center cursor-pointer"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1, transition: { duration: 1 } }}
+                            viewport={{ once: false, amount: 0.5 }}
+                        >
+                            <div
+                                className="py-[8px] border-b-[1px] hover:text-grayscale-light uppercase"
+                                onClick={handleLoadMore}
+                            >
+                                load more
+                            </div>
+                        </motion.div>
+                    )}
                 </div>
             </section>
             <FooterSimple />

@@ -24,24 +24,36 @@ interface ProjectDropMenuProps {
 }
 
 const projectTab = [
-    { title: "全部" },
-    { title: "住宅" },
-    { title: "辦公" },
-    { title: "教育" },
-    { title: "工業" },
-    { title: "停車場" },
-    { title: "營區" },
-    { title: "其他" },
+    { title: "全部", tag: "all" },
+    { title: "住宅", tag: "residence" },
+    { title: "辦公", tag: "office" },
+    { title: "教育", tag: "education" },
+    { title: "工業", tag: "industry" },
+    { title: "停車場", tag: "parking" },
+    { title: "營區", tag: "military" },
+    { title: "其他", tag: "others" },
 ];
 
 function ProjectDropMenu({ handleProjectOpen }: ProjectDropMenuProps) {
     return (
         <div className="absolute top-[64px] left-0 flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
-            {projectTab.map(({ title }) => {
+            {projectTab.map(({ title, tag }) => {
+                if (tag === "all") {
+                    return (
+                        <Link
+                            key={title}
+                            to={`/projects/`}
+                            onClick={() => handleProjectOpen()}
+                            className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                        >
+                            {title}
+                        </Link>
+                    );
+                }
                 return (
                     <Link
                         key={title}
-                        to="/projects"
+                        to={`/projects/${tag}`}
                         onClick={() => handleProjectOpen()}
                         className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
                     >
@@ -56,11 +68,23 @@ function ProjectDropMenu({ handleProjectOpen }: ProjectDropMenuProps) {
 function ProjectModalMenu({ handleModalOpen }: ProjectModalMenuProps) {
     return (
         <div className="mt-[20px] flex flex-wrap gap-[8px] md:mt-[16px] md:max-w-[432px]">
-            {projectTab.map(({ title }) => {
+            {projectTab.map(({ title, tag }) => {
+                if (tag === "all") {
+                    return (
+                        <Link
+                            key={title}
+                            to={`/projects/`}
+                            onClick={() => handleModalOpen()}
+                            className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                        >
+                            {title}
+                        </Link>
+                    );
+                }
                 return (
                     <Link
                         key={title}
-                        to="/projects"
+                        to={`/projects/${tag}`}
                         onClick={() => handleModalOpen()}
                         className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
                     >

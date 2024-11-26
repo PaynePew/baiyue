@@ -12,14 +12,14 @@ export function links() {
 }
 
 const projectTab = [
-    { title: "全部" },
-    { title: "住宅" },
-    { title: "辦公" },
-    { title: "教育" },
-    { title: "工業" },
-    { title: "停車場" },
-    { title: "營區" },
-    { title: "其他" },
+    { title: "全部", tag: "all" },
+    { title: "住宅", tag: "residence" },
+    { title: "辦公", tag: "office" },
+    { title: "教育", tag: "education" },
+    { title: "工業", tag: "industry" },
+    { title: "停車場", tag: "parking" },
+    { title: "營區", tag: "military" },
+    { title: "其他", tag: "others" },
 ];
 
 function ProjectsList({ projectsData }) {
@@ -28,7 +28,7 @@ function ProjectsList({ projectsData }) {
             {projectsData.map((project, idx) => {
                 if (idx === 0) {
                     return (
-                        <Link key={idx} to={`/projects/${project.fields.slug}`}>
+                        <Link key={idx} to={`/projects/${project.tag}/${project.fields.slug}`}>
                             <motion.div
                                 className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]"
                                 initial={{ opacity: 0 }}
@@ -51,7 +51,7 @@ function ProjectsList({ projectsData }) {
                                         </button>
                                         <img
                                             className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
-                                            src="assets/arrow_r.png"
+                                            src="/assets/arrow_r.png"
                                             alt="arrorw_r_pic"
                                         />
                                     </div>
@@ -61,7 +61,7 @@ function ProjectsList({ projectsData }) {
                     );
                 }
                 return (
-                    <Link key={idx} to={`/projects/${project.fields.slug}`}>
+                    <Link key={idx} to={`/projects/${project.tag}/${project.fields.slug}`}>
                         <motion.div
                             className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
                             initial={{ opacity: 0 }}
@@ -83,7 +83,7 @@ function ProjectsList({ projectsData }) {
                                     </button>
                                     <img
                                         className="hidden cursor-pointer w-[38px] md:h-[11px] md:block"
-                                        src="assets/arrow_r.png"
+                                        src="/assets/arrow_r.png"
                                         alt="arrorw_r_pic"
                                     />
                                 </div>
@@ -113,7 +113,7 @@ export function ProjectPage({ projectsData }) {
                         </div>
                         <div className="hidden lg:flex gap-[24px] nav-title text-grayscale-light justify-center items-center cursor-pointer">
                             <div className="py-[8px] border-b-[1px] hover:text-grayscale-light">首頁</div>
-                            <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark "></span>
+                            <span className="w-[0px] h-[16px] border-[1px] border-solid border-grayscale-dark"></span>
                             <div className="py-[8px] opacity-50 hover:text-grayscale-light hover:opacity-100">
                                 工程實績
                             </div>
@@ -131,14 +131,26 @@ export function ProjectPage({ projectsData }) {
                         {/*ProjectTab List*/}
                         {/*TODO: overflow problem*/}
                         <div className="absolute flex justify-start items-center gap-[12px]">
-                            {projectTab.map(({ title }) => {
+                            {projectTab.map(({ title, tag }) => {
+                                if (tag === "all") {
+                                    return (
+                                        <Link
+                                            key={title}
+                                            to={`/projects/`}
+                                            className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                                        >
+                                            {title}
+                                        </Link>
+                                    );
+                                }
                                 return (
-                                    <button
+                                    <Link
+                                        to={`/projects/${tag}`}
                                         key={title}
                                         className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
                                     >
                                         {title}
-                                    </button>
+                                    </Link>
                                 );
                             })}
                         </div>

@@ -25,7 +25,7 @@ function OthersSection({ recommendedProjects }) {
                     {recommendedProjects.map((project, idx) => {
                         if (idx === 0) {
                             return (
-                                <Link key={idx} to={`/projects/${project.fields.slug}`}>
+                                <Link key={idx} to={`/projects/${project.tag}/${project.fields.slug}`}>
                                     <motion.div
                                         className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:flex-row lg:w-[792px] lg:h-[377px]"
                                         initial={{ opacity: 0 }}
@@ -65,7 +65,7 @@ function OthersSection({ recommendedProjects }) {
                             );
                         }
                         return (
-                            <Link key={idx} to={`/projects/${project.fields.slug}`}>
+                            <Link key={idx} to={`/projects/${project.tag}/${project.fields.slug}`}>
                                 <motion.div
                                     className="relative card-shadow rounded-[12px] flex justify-center overflow-clip w-[312px] md:flex-col md:w-[332px] lg:w-[384px]"
                                     initial={{ opacity: 0 }}

@@ -1,3 +1,5 @@
+import { Link } from "@remix-run/react";
+import { motion } from "framer-motion";
 const fakeData = [
     { alt: "project_pic1", pic: "project_1.png", desc: "臺北市殯葬管理處第二殯儀館二期整建工程" },
     { alt: "project_pic2", pic: "project_2.png", desc: "大潭電廠建燃氣複循環機組發電計畫" },
@@ -9,17 +11,25 @@ export function FeaturedProject() {
         <section className="w-full flex justify-center items-center">
             <div className="container">
                 <div className="flex flex-col items-center max-w-[312px] gap-[48px] my-[80px] mx-[24px] md:max-w-[688px] md:gap-[64px] md:mx-[40px] lg:max-w-[1200px] lg:gap-[72px] lg:my-[113px] lg:mx-[120px] ">
-                    <div className="flex flex-col items-center justify-center gap-[8px]">
+                    <motion.div
+                        className="flex flex-col items-center justify-center gap-[8px]"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                        viewport={{ once: false, amount: 1 }}
+                    >
                         <h1 className="text-grayscale-gainsboro">近期實績</h1>
                         <div className="en-h3 text-primary">FEATURED PROJECT</div>
-                    </div>
+                    </motion.div>
                     {/* Card Project */}
                     <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center md:mb-[56px]">
                         {fakeData.map(({ alt, pic, desc }) => {
                             return (
-                                <div
+                                <motion.div
                                     className="relative card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col md:even:top-[56px] md:w-[332px] md:items-start lg:w-[580px]"
                                     key={alt}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                                    viewport={{ once: false, amount: 0.5 }}
                                 >
                                     <div className="basis-[37%] md:basis-[50%]">
                                         <img
@@ -42,14 +52,23 @@ export function FeaturedProject() {
                                             />
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             );
                         })}
                     </div>
-                    <button className="main-button button-shadow-1 w-[312px] nav-title flex gap-[16px] text-[15px] h-[56px] md:mx-[99px] lg:w-[173px]">
-                        <span className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></span>
-                        <div className="">所有實績</div>
-                    </button>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { duration: 1 } }}
+                        viewport={{ once: false, amount: 1 }}
+                    >
+                        <Link
+                            to="/projects"
+                            className="main-button button-shadow-1 w-[312px] nav-title flex gap-[16px] text-[15px] h-[56px] md:mx-[99px] lg:w-[173px]"
+                        >
+                            <span className="w-[8px] h-[8px] bg-grayscale-light rounded-full"></span>
+                            <div>所有實績</div>
+                        </Link>
+                    </motion.div>
                 </div>
             </div>
         </section>

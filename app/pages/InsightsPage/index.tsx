@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import { motion } from "framer-motion";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 
@@ -6,94 +7,48 @@ export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
 
-const fakeData = [
-    {
-        alt: "insight_pic1",
-        pic: "insight_1.png",
-        time: "2022-10-03",
-        title: "有了BIM，提早發現問題",
-        catgory: "專案近期檢討成果分享",
-    },
-    {
-        alt: "insight_pic2",
-        pic: "insight_2.png",
-        time: "2022-10-03",
-        title: "有了BIM，提早發現問題",
-        catgory: "專案近期檢討成果分享",
-    },
-    {
-        alt: "insight_pic3",
-        pic: "insight_3.png",
-        time: "2022-10-03",
-        title: "2D圖面可能不會檢討到的事",
-        catgory: "專案近期檢討成果分享",
-    },
-    {
-        alt: "insight_pic4",
-        pic: "insight_4.png",
-        time: "2022-10-03",
-        title: "企業BIM導入及顧問服務",
-        catgory: "專案近期檢討成果分享",
-    },
-    {
-        alt: "insight_pic5",
-        pic: "insight_5.png",
-        time: "2022-10-03",
-        title: "運用BIM排磚，減少裁磚沒煩惱",
-        catgory: "專案近期檢討成果分享",
-    },
-    {
-        alt: "insight_pic6",
-        pic: "insight_6.png",
-        time: "2022-10-03",
-        title: "討論-1",
-        catgory: "分類",
-    },
-    {
-        alt: "insight_pic7",
-        pic: "insight_7.png",
-        time: "2022-10-03",
-        title: "討論-2",
-        catgory: "分類",
-    },
-];
-
-function InsightsList() {
+function InsightsList({ insightsData }) {
     return (
         <div className="flex flex-col items-center justify-center gap-[24px] md:flex-row md:flex-wrap md:items-center lg:gap-[40px]">
-            {fakeData.map(({ alt, pic, time, title, catgory }, idx) => {
+            {insightsData.map(insight => {
                 return (
-                    <div
-                        className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[1200px]"
-                        key={idx}
-                    >
-                        <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[282px] ">
-                            <img className="w-full h-full object-cover" src={`/assets/${pic}`} alt={alt} />
-                        </div>
-                        <div className="flex justify-between w-full md:px-[32px] md:pt-[24px] md:pb-[27px] lg:py-[64px] lg:px-[48px]">
-                            <div className="flex flex-col gap-[4px] py-[24px] px-[20px] md:p-[0] lg:gap-[24.5px]">
-                                <div className="en-body-1 text-grayscale-light">{time}</div>
-                                <h6 className="text-grayscale-gainsboro min-h-[56px]">{title}</h6>
-                                <div className="body-3 text-grayscale-light/50">{catgory}</div>
+                    <Link key={insight.sys.id} to={`/insights/${insight.fields.slug}`}>
+                        <motion.div
+                            className="flex card-shadow rounded-[12px] w-[312px] overflow-clip md:rounded-[16px] md:w-[688px] lg:w-[1200px]"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
+                            viewport={{ once: false, amount: 0.5 }}
+                        >
+                            <div className="shrink-0 w-[90px] md:w-[180px] lg:w-[282px] ">
+                                <img
+                                    className="w-full h-full object-cover"
+                                    src={`https:${insight.fields.thumbnail.fields.file.url}`}
+                                    alt={insight.fields.thumbnail.fields.title}
+                                />
                             </div>
-                            <div className="flex items-center">
-                                <Link to="/insights/1">
+                            <div className="flex justify-between w-full md:px-[32px] md:pt-[24px] md:pb-[27px] lg:py-[64px] lg:px-[48px]">
+                                <div className="flex flex-col gap-[4px] py-[24px] px-[20px] md:p-[0] lg:gap-[24.5px]">
+                                    <div className="en-body-1 text-grayscale-light">{insight.fields.publishDate}</div>
+                                    <h6 className="text-grayscale-gainsboro min-h-[56px]">{insight.fields.title}</h6>
+                                    <div className="body-3 text-grayscale-light/50">{insight.fields.subtitle}</div>
+                                </div>
+                                <div className="flex items-center">
                                     <img
                                         className="hidden w-[38px] md:h-[11px] md:block"
                                         src="/assets/arrow_r.png"
                                         alt="arrorw_r_pic"
                                     />
-                                </Link>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </Link>
                 );
             })}
         </div>
     );
 }
 
-export function InsightsPage() {
+export function InsightsPage({ insightsData }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">
@@ -111,7 +66,7 @@ export function InsightsPage() {
                             </div>
                         </div>
                     </div>
-                    <InsightsList />
+                    <InsightsList insightsData={insightsData} />
                 </div>
             </section>
             <FooterSimple />

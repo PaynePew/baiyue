@@ -46,9 +46,13 @@ export function Hero({ handleVideoPlay, colors, colorIndex, isVidVisible }: Hero
                         r="250"
                     />
                 </svg>
-                {/* Hero Image */}
-                <div className="absolute w-[380px] min-w-[380px]  mx-auto rounded-full overflow-hidden md:w-[430px] md:max-w-[430px]">
-                    <img className="" src="/assets/hero.png" alt="hero_image" />
+                {/* Hero Video */}
+                <div className="absolute flex justify-center w-[380px] h-[380px] min-h-[380px] min-w-[380px] mx-auto rounded-full overflow-hidden md:w-[430px] md:h-[430px] md:max-w-[430px] md:max-h-[430px]">
+                    {/* <img className="" src="/assets/hero.png" alt="hero_image" /> */}
+                    <video className="object-cover" autoPlay loop preload="auto" muted id="vid">
+                        <source src="/assets/baiyu_logo_animation.mp4" type="video/mp4" />
+                        Sorry, your browser doesn't support videos.
+                    </video>
                 </div>
                 {/* Blend filter */}
                 <div className="absolute inner-shadow mix-blend-multiply w-[381px] h-[381px] md:w-[431px] md:h-[431px]"></div>

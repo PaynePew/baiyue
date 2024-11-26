@@ -9,104 +9,84 @@ export const links: LinksFunction = () => {
 };
 
 type HandleModalOpenPropType = () => void;
-type HandleProjectMenuPropType = () => void;
+type HandleProjectModalMenuPropType = () => void;
 type HandleProjectDetailPropType = () => void;
 
 interface ModalMenuProps {
     handleModalOpen: HandleModalOpenPropType;
     isModalOpen: Boolean;
 }
-interface ProjectMenuProps {
-    handleModalOpen: HandleProjectMenuPropType;
+interface ProjectModalMenuProps {
+    handleModalOpen: HandleProjectModalMenuPropType;
 }
 interface ProjectDropMenuProps {
-    handleProjectDetailOpen: HandleProjectDetailPropType;
+    handleProjectOpen: HandleProjectDetailPropType;
 }
 
 const projectTab = [
-    { title: "全部" },
-    { title: "住宅" },
-    { title: "辦公" },
-    { title: "教育" },
-    { title: "工業" },
-    { title: "停車場" },
-    { title: "營區" },
-    { title: "其他" },
+    { title: "全部", tag: "all" },
+    { title: "住宅", tag: "residence" },
+    { title: "辦公", tag: "office" },
+    { title: "教育", tag: "education" },
+    { title: "工業", tag: "industry" },
+    { title: "停車場", tag: "parking" },
+    { title: "營區", tag: "military" },
+    { title: "其他", tag: "others" },
 ];
 
-function ProjectDropMenu({ handleProjectDetailOpen }: ProjectDropMenuProps) {
+function ProjectDropMenu({ handleProjectOpen }: ProjectDropMenuProps) {
     return (
-        <div className="flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
-            <Link
-                onClick={() => handleProjectDetailOpen()}
-                to="/projects"
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                全部
-            </Link>
-            <Link
-                to="/projects"
-                onClick={() => handleProjectDetailOpen()}
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                住宅
-            </Link>
-            <Link
-                to="/projects"
-                onClick={() => handleProjectDetailOpen()}
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                辦公
-            </Link>
-            <Link
-                to="/projects"
-                onClick={() => handleProjectDetailOpen()}
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                教育
-            </Link>
-            <Link
-                to="/projects"
-                onClick={() => handleProjectDetailOpen()}
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                工業
-            </Link>
-            <Link
-                to="/projects"
-                onClick={() => handleProjectDetailOpen()}
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                停車場
-            </Link>
-            <Link
-                to="/projects"
-                onClick={() => handleProjectDetailOpen()}
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                營區
-            </Link>
-            <Link
-                to="/projects"
-                onClick={() => handleProjectDetailOpen()}
-                className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
-            >
-                其他
-            </Link>
+        <div className="absolute top-[64px] left-0 flex flex-wrap justify-self-start gap-[8px] w-[375px] h-[110px]">
+            {projectTab.map(({ title, tag }) => {
+                if (tag === "all") {
+                    return (
+                        <Link
+                            key={title}
+                            to={`/projects/`}
+                            onClick={() => handleProjectOpen()}
+                            className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                        >
+                            {title}
+                        </Link>
+                    );
+                }
+                return (
+                    <Link
+                        key={title}
+                        to={`/projects/${tag}`}
+                        onClick={() => handleProjectOpen()}
+                        className="flex justify-center items-center w-[80px] h-[47px] bg-grayscale-dim rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                    >
+                        {title}
+                    </Link>
+                );
+            })}
         </div>
     );
 }
 
-function ProjectMenu({ handleModalOpen }: ProjectMenuProps) {
+function ProjectModalMenu({ handleModalOpen }: ProjectModalMenuProps) {
     return (
         <div className="mt-[20px] flex flex-wrap gap-[8px] md:mt-[16px] md:max-w-[432px]">
-            {projectTab.map(({ title }) => {
+            {projectTab.map(({ title, tag }) => {
+                if (tag === "all") {
+                    return (
+                        <Link
+                            key={title}
+                            to={`/projects/`}
+                            onClick={() => handleModalOpen()}
+                            className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                        >
+                            {title}
+                        </Link>
+                    );
+                }
                 return (
                     <Link
-                        to="/projects"
-                        onClick={() => handleModalOpen()}
                         key={title}
-                        className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px]  body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
+                        to={`/projects/${tag}`}
+                        onClick={() => handleModalOpen()}
+                        className="button-shadow-2 flex justify-center items-center w-[80px] h-[47px] bg-grayscale-iron rounded-[24px] body-2 text-grayscale-light hover:bg-secondary-spotlight hover:text-grayscale-iron"
                     >
                         {title}
                     </Link>
@@ -138,7 +118,7 @@ function ModalMenu({ handleModalOpen, isModalOpen }: ModalMenuProps) {
                         <div className="en-h4 text-[18px] text-primary" onClick={() => toggleOpen(prev => !prev)}>
                             PROJECTS
                         </div>
-                        {isOpen ? <ProjectMenu handleModalOpen={handleModalOpen} /> : null}
+                        {isOpen ? <ProjectModalMenu handleModalOpen={handleModalOpen} /> : null}
                     </div>
                     <Link to="/insights" onClick={handleModalOpen} className="flex flex-col gap-[4px] md:gap-[8px]">
                         <div className="nav-title text-white">百越觀點</div>
@@ -160,19 +140,25 @@ function ModalMenu({ handleModalOpen, isModalOpen }: ModalMenuProps) {
 }
 
 export function Header() {
+    // Laptop and Mobile Nav Modal toggle
     const [isModalOpen, toggleModalOpen] = useState(false);
-    const [isScrollOpen, toggleScrollOpen] = useState(false);
+    // Nav ProjectDropDown toggle
     const [isProjectOpen, toggleProjectOpen] = useState(false);
+    // Nav toggle detect at Y-150pixel
+    const [isScrollOpen, toggleScrollOpen] = useState(false);
+    // Main Logo with header scroll detect
     const [scrollHeader, setScrollHeader] = useState<string[]>([]);
     const [scrollLogo, setScrollLogo] = useState<string[]>([]);
+    // Nav toggle to hamburger animation detect at Y-150pixel
     const [scrollNav, setScrollNav] = useState<string[]>([]);
+    // Hemberger animation state
     const [scrollHamburger, setScrollHamburger] = useState<string[]>([]);
     const scroll = useScrollListener();
 
     const handleModalOpen = () => {
         toggleModalOpen(pre => !pre);
     };
-    const handleProjectDetailOpen = () => {
+    const handleProjectOpen = () => {
         toggleProjectOpen(pre => !pre);
     };
 
@@ -182,10 +168,16 @@ export function Header() {
         const _classListNav: string[] = [];
         const _classListHamburger: string[] = [];
         if (scroll.y > 150) {
+            // Main Logo and header height-width
             _classList.push("scroll-header-animation");
             _classListLogo.push("scroll-logo-animation");
+            // Nav toggle to hamburger animation detect at Y-150pixel (pair with "scroll-nav-toggle-animation")
             _classListNav.push("scroll-nav-animation");
+            //Hamburger animation
             _classListHamburger.push("scroll-hamburger-animation");
+        }
+        if (scroll.y < 150) {
+            toggleScrollOpen(false);
         }
         setScrollHeader(_classList);
         setScrollLogo(_classListLogo);
@@ -208,29 +200,37 @@ export function Header() {
                     />
                 </Link>
                 {/* Header for PC */}
-                <div className="flex justify-between items-center gap-[24px]">
+                <div className="flex justify-between items-start flex-nowrap gap-[24px]">
                     <nav
-                        className={`hidden transition-all esae-in-out duration-500 w-[532px] bg-grayscale-iron menu-shadow flex-wrap justify-center items-center gap-[48px] h-fit px-[48px] py-[24px] rounded-[128px] text-grayscale-light lg:flex ${scrollNav} ${
-                            isScrollOpen ? "scroll-nav-toggle-animation" : ""
-                        } ${isProjectOpen ? "dropdown-header" : ""}`}
+                        className={`hidden transition-all esae-in-out duration-500 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] lg:flex ${scrollNav} ${
+                            isProjectOpen ? "dropdown-header" : ""
+                        } ${isScrollOpen ? "scroll-nav-toggle-animation" : ""} `}
                     >
-                        <Link to="/about" className="nav-title">
-                            關於百越
-                        </Link>
-                        <button className="nav-title" onClick={() => toggleProjectOpen(prev => !prev)}>
-                            工程實績
-                        </button>
-                        <Link to="/insights" className="nav-title">
-                            百越觀點
-                        </Link>
-                        <Link to="/contact" className="nav-title">
-                            聯絡我們
-                        </Link>
-                        {isProjectOpen ? <ProjectDropMenu handleProjectDetailOpen={handleProjectDetailOpen} /> : null}
+                        <div className="relative flex gap-[48px] overflow-hidden">
+                            <Link to="/about" className="nav-title h-fit">
+                                關於百越
+                            </Link>
+                            <button
+                                className="nav-title flex gap-[8px] h-fit"
+                                onClick={() => toggleProjectOpen(prev => !prev)}
+                            >
+                                工程實績
+                                <div className={`relative ${isProjectOpen ? "down" : ""}`}>
+                                    <div className="arrow-icon" />
+                                </div>
+                            </button>
+                            <Link to="/insights" className="nav-title h-fit">
+                                百越觀點
+                            </Link>
+                            <Link to="/contact" className="nav-title h-fit">
+                                聯絡我們
+                            </Link>
+                            <ProjectDropMenu handleProjectOpen={handleProjectOpen} />
+                        </div>
                     </nav>
                     {/*Desktop Hamburger*/}
                     <button
-                        className={`hidden menu-shadow w-[64px] h-[56px] flex-col gap-[8px] justify-center items-center rounded-[128px] ${scrollHamburger}`}
+                        className={`hidden menu-shadow w-[64px] h-[56px] flex-col gap-[8px] justify-center items-center rounded-[128px] hover:bg-grayscale-gray ${scrollHamburger}`}
                         onClick={() => toggleScrollOpen(prev => !prev)}
                     >
                         <span
@@ -246,7 +246,7 @@ export function Header() {
                     </button>
                     {/* Hamburger for Mobile & Tablet */}
                     <button
-                        className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] lg:hidden"
+                        className="menu-shadow w-[56px] h-[48px] flex flex-col gap-[8px] justify-center items-center rounded-[128px] hover:bg-grayscale-gray lg:hidden"
                         onClick={() => toggleModalOpen(prev => !prev)}
                     >
                         <span

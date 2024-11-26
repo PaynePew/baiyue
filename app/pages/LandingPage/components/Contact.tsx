@@ -1,9 +1,16 @@
+import { Link } from "@remix-run/react";
+import { motion } from "framer-motion";
 export function Contact() {
     return (
         <section className="w-full flex justify-center items-center">
             <div className="container">
                 <div className="flex flex-col justify-start items-center pb-[64px] mx-[24px] gap-[40px] md:mx-[40px] md:gap-[64px] md:pb-[80px] lg:pb-[120px] lg:mx-[120px] lg:flex-row lg:gap-[126px]">
-                    <div className="flex flex-col gap-[16px] md:gap-[24px] lg:gap-[48px] lg:max-w-[384px]">
+                    <motion.div
+                        className="flex flex-col gap-[16px] md:gap-[24px] lg:gap-[48px] lg:max-w-[384px]"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                        viewport={{ once: false, amount: 0.5 }}
+                    >
                         <div className="flex flex-col items-center justify-center gap-[8px] lg:items-start">
                             <div className="flex flex-col items-center justify-center lg:items-start">
                                 <h1 className="text-grayscale-gainsboro">與我們</h1>
@@ -14,12 +21,20 @@ export function Contact() {
                         <div className="body-1 text-white text-center lg:text-left">
                             一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案一句slogan或可引起聯絡動機的文案
                         </div>
-                        <button className="main-button hidden button-shadow-1 w-[189px] lg:flex gap-[16px] nav-title text-[15px] h-[56px]">
+                        <Link
+                            to="/contact"
+                            className="main-button hidden button-shadow-1 w-[189px] lg:flex gap-[16px] nav-title text-[15px] h-[56px]"
+                        >
                             <div className="">聯絡我們</div>
-                            <img className="" src="assets/icon_mail_send.png" alt="icon_mail_send" />
-                        </button>
-                    </div>
-                    <div className="relative">
+                            <img className="" src="assets/icon_mail_send.svg" alt="icon_mail_send" />
+                        </Link>
+                    </motion.div>
+                    <motion.div
+                        className="relative"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { delay: 0.3, duration: 0.8 } }}
+                        viewport={{ once: false, amount: 0.5 }}
+                    >
                         {/* Decoration Triangle-1 */}
                         <div className="hidden absolute z-10 bottom-[4%] right-[-9%] triangle-shadow lg:block ">
                             <div className="triangle-dec w-[75.11px] h-[75.11px] lg:w-[84.5px] lg:h-[84.5px] bg-primary"></div>
@@ -67,10 +82,10 @@ export function Contact() {
                                 alt="contact_symbol_pic_6"
                             />
                         </div>
-                    </div>
+                    </motion.div>
                     <button className="main-button button-shadow-1 w-[312px] flex gap-[16px] nav-title text-[15px] h-[56px] lg:hidden">
                         <div className="">聯絡我們</div>
-                        <img className="" src="assets/icon_mail_send.png" alt="icon_mail_send" />
+                        <img className="" src="assets/icon_mail_send.svg" alt="icon_mail_send" />
                     </button>
                 </div>
             </div>

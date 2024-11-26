@@ -1,4 +1,5 @@
 import { forwardRef } from "react";
+import { motion } from "framer-motion";
 const fakeData = [
     {
         pic: "assets/service_1.png",
@@ -64,36 +65,50 @@ const fakeData = [
 export const Services = forwardRef<HTMLDivElement, {}>(({}, ref) => {
     return (
         <section className="relative pb-[80px] md:pb-[129px]">
-            {/*Decoration Square-Service*/}
-            <div className="absolute hidden lg:inline-block bottom-[16px] left-[0px] w-[364px] h-[180px] rounded-[16px] bg-grayscale-iron square-shadow-contact"></div>
-            {/* Decoration Triangle-Service */}
-            <div className="hidden absolute lg:inline-block z-10 bottom-[161px] left-[155px]">
-                <div className="triangle-dec-bltr w-[84.5px] h-[84.5px] bg-primary"></div>
-            </div>
-            {/*Decoration Oval*/}
-            <div className="hidden absolute top-[-109px] right-[57.5px] bg-grayscale-iron lg:inline-block w-[127px] h-[44.66px] rounded-[16px] square-shadow-contact"></div>
-            {/*triangle decoration original:95.62x95.62(135x134) resize:74.1x74.1*/}
-            <div className="hidden lg:block absolute rotate-90 top-[-186px] right-[104px]">
-                <img className="w-[104.5px] h-[104px]" src="assets/triangle_3.png" alt="triangle_3_pic" />
-            </div>{" "}
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                viewport={{ once: false, amount: 1 }}
+            >
+                {/*Decoration Square-Service*/}
+                <div className="absolute hidden lg:inline-block bottom-[16px] left-[0px] w-[364px] h-[180px] rounded-[16px] bg-grayscale-iron square-shadow-contact"></div>
+                {/* Decoration Triangle-Service */}
+                <div className="hidden absolute lg:inline-block z-10 bottom-[161px] left-[155px]">
+                    <div className="triangle-dec-bltr w-[84.5px] h-[84.5px] bg-primary"></div>
+                </div>
+                {/*Decoration Oval*/}
+                <div className="hidden absolute top-[-109px] right-[57.5px] bg-grayscale-iron lg:inline-block w-[127px] h-[44.66px] rounded-[16px] square-shadow-contact"></div>
+                {/*triangle decoration original:95.62x95.62(135x134) resize:74.1x74.1*/}
+                <div className="hidden lg:block absolute rotate-90 top-[-186px] right-[104px]">
+                    <img className="w-[104.5px] h-[104px]" src="assets/triangle_3.png" alt="triangle_3_pic" />
+                </div>
+            </motion.div>
             {/*Service Title*/}
             <div className="flex flex-col mx-[24px] gap-[64px] md:mx-[40px] lg:flex-row lg:items-start lg:justify-between lg:mx-[120px] lg:h-[720px]">
-                <div className="relative flex flex-col items-start justify-center w-fit gap-[8px]">
+                <motion.div
+                    className="relative flex flex-col items-start justify-center w-fit gap-[8px]"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                    viewport={{ once: false, amount: 1 }}
+                >
                     {/* border-arrow-2 */}
                     <div className="absolute w-full md:left-0 lg:left-[0px] top-[-21.5px]">
                         <div className="absolute w-full bg-grayscale-iron before:bg-grayscale-iron after:bg-grayscale-iron border-arrow"></div>
                     </div>
                     <h1 className="text-grayscale-gainsboro font-[250]">服務項目</h1>
                     <div className="en-h3 text-primary">OUR SERVICES</div>
-                </div>
+                </motion.div>
                 {/* Card-Services */}
                 <div ref={ref} className="lg:overflow-y-scroll service-custom-scrollbar lg:h-full">
                     <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:max-w-[793px]">
                         {fakeData.map(({ pic, title, desc, alt }) => {
                             return (
-                                <div
+                                <motion.div
                                     key={alt}
                                     className="relative flex card-shadow min-h-[212px] w-[312px] rounded-[12px] overflow-clip md:flex-col md:even:top-[40px] md:rounded-[16px] md:w-[332px] lg:w-[384px]"
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                                    viewport={{ once: false, amount: 0.4 }}
                                 >
                                     <div className="basis-[50%] md:basis-auto md:h-[250px] lg:h-[290px]">
                                         <img className="h-full max-w-full object-cover md:w-full" src={pic} alt={alt} />
@@ -104,7 +119,7 @@ export const Services = forwardRef<HTMLDivElement, {}>(({}, ref) => {
                                             <div className="body-1 text-grayscale-light">{desc}</div>
                                         </div>
                                     </div>
-                                </div>
+                                </motion.div>
                             );
                         })}
                     </div>

@@ -39,7 +39,7 @@ export function NotFoundPage() {
                 </div>{" "}
                 {/*Rounded Triangle-8 original:72x83 46.77x52.2 lg:-12.615x15.4*/}
                 <div className="hidden absolute md:inline-block md:top-[144px] md:right-[60px] lg:top-[218px] lg:right-[152px]">
-                    <img className="" src="assets/rounded_triangle_8.svg" alt="decoration_rounded_triangle_8" />
+                    <img className="" src="/assets/rounded_triangle_8.svg" alt="decoration_rounded_triangle_8" />
                 </div>
                 {/* Decoration Triangle-With BorderLine */}
                 <div className="hidden md:block absolute z-10 right-[232px] bottom-[262px] lg:right-[477px] lg:bottom-[239px] ">

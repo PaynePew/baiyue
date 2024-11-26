@@ -1,3 +1,5 @@
+import { APIProvider, Map, AdvancedMarker, Pin } from "@vis.gl/react-google-maps";
+import { motion } from "framer-motion";
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 
@@ -33,39 +35,60 @@ export function ContactPage() {
 
                         <h2 className="text-grayscale-gainsboro">百越工程資訊有限公司</h2>
                         {/* todo: update googleMap */}
-                        <div className="z-10 w-full h-[216px] md:h-[230px] lg:h-[400px]">
-                            <iframe
-                                title="百越工程資訊有限公司"
-                                className="border-0 w-full h-full max-w-full grayscale"
-                                loading="lazy"
-                                allowFullScreen
-                                referrerPolicy="no-referrer-when-downgrade"
-                                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyD78M-Wm7jw8EBXT6eg1AqiTUQWv6zn344&q=桃園市大園區大成路一段2號6樓`}
-                            ></iframe>
+                        <div className="z-10 w-full h-[216px] rounded-[16px] overflow-clip md:h-[230px] lg:h-[400px]">
+                            <APIProvider
+                                apiKey={"AIzaSyDZDzayaRgUH0TG9dq7FkDevltW1ZmJx-Q"}
+                                onLoad={() => console.log("Maps API has loaded.")}
+                            >
+                                <Map
+                                    defaultZoom={17}
+                                    defaultCenter={{ lat: 25.018318544017912, lng: 121.22366080912673 }}
+                                    mapId="f82cd6aa8a843f4b"
+                                >
+                                    <AdvancedMarker position={{ lat: 25.018318544017912, lng: 121.22366080912673 }}>
+                                        <Pin background={"#FBBC04"} glyphColor={"#000"} borderColor={"#000"} />
+                                    </AdvancedMarker>
+                                </Map>
+                            </APIProvider>
                         </div>
                     </div>
                     {/* Contact Info */}
                     <div className="z-10 flex flex-col gap-[12px] md:gap-[16px] lg:flex-row lg:gap-[24px]">
-                        <div className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]">
+                        <motion.div
+                            className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1, transition: { duration: 0.5 } }}
+                            viewport={{ once: false, amount: 1 }}
+                        >
                             <div className="flex items-center justify-center gap-[16px]">
-                                <img src="/assets/icon_map.png" alt="icon_map" />
+                                <img src="/assets/icon_map.svg" alt="icon_map" />
                                 <div className="body-1 font-[300] text-grayscale-light">
                                     桃園市大園區大成路一段2號6樓
                                 </div>
                             </div>
-                        </div>
-                        <div className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]">
+                        </motion.div>
+                        <motion.div
+                            className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1, transition: { delay: 0.2, duration: 0.5 } }}
+                            viewport={{ once: false, amount: 1 }}
+                        >
                             <div className="flex items-center gap-[16px]">
-                                <img src="/assets/icon_phone.png" alt="icon_phone" />
+                                <img src="/assets/icon_phone.svg" alt="icon_phone" />
                                 <div className="en-body-1 text-grayscale-light">(03)287-5465</div>
                             </div>
-                        </div>
-                        <div className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]">
+                        </motion.div>
+                        <motion.div
+                            className="flex justify-start items-center w-full dec-shadow-1 py-[20px] px-[24px] rounded-[16px] md:p-[32px]"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1, transition: { delay: 0.4, duration: 0.5 } }}
+                            viewport={{ once: false, amount: 1 }}
+                        >
                             <div className="flex items-center justify-center gap-[16px]">
-                                <img src="/assets/icon_mail.png" alt="icon_mail" />
+                                <img src="/assets/icon_mail.svg" alt="icon_mail" />
                                 <div className="en-body-1 text-grayscale-light uppercase">SERVICE@mryc.com.tw</div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                     {/*Decoration Square-4*/}
                     <div className="absolute hidden md:block md:bottom-[-140px] md:left-[-40px] md:w-[218px] md:h-[297px] lg:bottom-[-160px] lg:left-[-120px] lg:w-[312.5px] lg:h-[315px] rounded-[16px] bg-grayscale-iron square-shadow-contact"></div>

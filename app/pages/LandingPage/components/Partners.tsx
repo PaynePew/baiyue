@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const fakePartners = [
     { pic: "logo_1" },
@@ -48,30 +49,29 @@ export function Partners() {
         <section className="w-full flex justify-center items-center" onMouseMove={handleMouseMove}>
             <div className="container">
                 <div className="flex flex-col justify-center items-center pt-[64px] pb-[80px] mx-[24px] md:pt-[80px] md:mx-[40px] md:pb-[120px] lg:flex-row lg:gap-[161px] lg:pt-[120px] lg:mx-[120px] lg:pb-[183px] lg:justify-start lg:items-start">
-                    <div className="flex flex-col items-center justify-center gap-[8px] mb-[40px] md:mb-[64px] lg:items-start">
+                    <motion.div
+                        className="flex flex-col items-center justify-center gap-[8px] mb-[40px] md:mb-[64px] lg:items-start"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
+                        viewport={{ once: false, amount: 1 }}
+                    >
                         <h1 className="text-grayscale-gainsboro">信賴夥伴</h1>
                         <div className="en-h3 text-primary">PARTNERS</div>
-                    </div>
+                    </motion.div>
                     {/* Todo: make seperate spotlight */}
-                    <div ref={containerRef} className="relative lg:py-[5px] lg:overflow-hidden">
+                    <motion.div
+                        ref={containerRef}
+                        className="relative lg:py-[5px] lg:overflow-hidden"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1, transition: { duration: 0 } }}
+                        viewport={{ once: false, amount: 0.5 }}
+                    >
                         <div
                             ref={ballRef}
                             className="hidden absolute z-100 w-[500px] h-[500px] bg-secondary-spotlight lg:block rounded-full mix-blend-overlay pointer-events-none "
                             style={{ transform: `translate(${ballPosition.x}px, ${ballPosition.y}px)` }}
                         ></div>
-                        {/* <div className="absolute z-100 flex flex-col" >
-                        <div className="w-[792px] h-[30px] bg-grayscale-dim mt-[121px]"></div>
-                        <div className="w-[792px] h-[30px] bg-grayscale-dim mt-[122px]"></div>
-                        <div className="w-[792px] h-[30px] bg-grayscale-dim mt-[123px]"></div>
-                    </div>
-                    <div className="absolute z-100 flex h-full" >
-                        <div className="w-[30px] ml-[241px] bg-grayscale-dim"></div>
-                        <div className="w-[30px] ml-[242px] bg-grayscale-dim"></div>
-                    </div> */}
-                        {/* <div className="absolute z-35 w-full h-full bg-grayscale-iron"></div> */}
-                        {/* <div className="absolute w-[792px] grid grid-cols-3 gap-[32px] lg:border-[32px] lg:border-grayscale-iron"></div> */}
                         <div className="flex flex-wrap gap-[24px] justify-center items-center lg:gap-[32px] lg:max-w-[792px] ">
-                            {/* <div className="relative z-25 bg-grayscale-dim grid grid-cols-3 gap-[24px] lg:gap-[32px] lg:max-w-[792px] "> */}
                             {fakePartners.map(({ pic }) => {
                                 return (
                                     <div
@@ -93,7 +93,7 @@ export function Partners() {
                                 );
                             })}
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

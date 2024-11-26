@@ -17,6 +17,13 @@ const projectTab = [
 ];
 
 export const loader = async ({ params }: LoaderArgs) => {
+    const tag = params.categoryId;
+    const [filterTab] = projectTab.filter(_tab => _tab.tag === tag);
+
+    if (!filterTab) {
+        throw new Response("Not Found", { status: 404 });
+    }
+
     const entries = await client.getEntries({ content_type: "projects" });
 
     if (!entries) {
@@ -26,7 +33,8 @@ export const loader = async ({ params }: LoaderArgs) => {
         const matchingTitleProject = projectTab.find(_tab => _tab.title === _project.fields.category[0]);
         return matchingTitleProject ? { ..._project, tag: matchingTitleProject.tag } : { ..._project };
     });
-    return updatedEntries;
+    const filterProjectsDataByTag = updatedEntries.filter(_project => _project.fields.category[0] == filterTab.title);
+    return filterProjectsDataByTag;
 };
 
 export default function ProjectPageIndex() {

@@ -25,7 +25,7 @@ const projectTab = [
 
 function ProjectsList({ projectsData }) {
     return (
-        <div className="flex flex-wrap justify-center gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center">
+        <div className="flex flex-wrap justify-center gap-[24px] mt-[126px] md:flex-row md:flex-wrap md:justify-center md:items-center md:mt-[159px] lg:mt-[175px]">
             {projectsData.map((project, idx) => {
                 if (idx === 0) {
                     return (
@@ -112,6 +112,16 @@ export function ProjectPage({ projectsData }) {
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container relative">
+                {/* border-arrow-top */}
+                <div className="absolute w-[85%] top-[259px] left-[26px] md:top-[379px] md:left-[42px] md:w-[89%] lg:top-[569px] lg:left-[122px] lg:w-[83%]">
+                    <div className="absolute w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                </div>
+                {/* tab-filter*/}
+                <div className="absolute z-50 tab-filter w-[32px] right-[-7%] top-[260px] md:right-[-1%] md:w-[64px] md:top-[380px] lg:hidden"></div>
+                {/* border-arrow-bottom */}
+                <div className="absolute w-[85%] top-[354px] left-[26px] md:top-[490px] md:left-[42px] md:w-[89%] lg:top-[680px] lg:left-[122px] lg:w-[83%]">
+                    <div className="absolute w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
+                </div>
                 {/*Decoration Square-Bottom Left*/}
                 <div className="hidden absolute bottom-[-160px] left-0 bg-grayscale-iron square-shadow-contact lg:inline-block w-[386px] h-[328px]" />
                 {/*Decoration Triangle-Bottom Left*/}
@@ -131,15 +141,7 @@ export function ProjectPage({ projectsData }) {
                             </div>
                         </div>
                     </div>
-                    <div className="relative w-full overflow-x-scroll overflow-y-hidden custom-project-scrollbar flex justify-start items-center h-[94px] md:h-[111px]">
-                        {/* border-arrow-top */}
-                        <div className="absolute w-[99%] left-[50%] top-0 translate-x-[-50%]">
-                            <div className="absolute w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
-                        </div>
-                        {/* border-arrow-bottom */}
-                        <div className="absolute w-[99%] left-[50%] bottom-0 translate-x-[-50%]">
-                            <div className="absolute w-full bg-grayscale-dim before:bg-grayscale-dim after:bg-grayscale-dim border-arrow"></div>
-                        </div>
+                    <div className="absolute top-[259px] w-full overflow-x-scroll overflow-y-hidden custom-project-scrollbar flex justify-start items-center h-[94px] md:h-[111px] md:top-[380px] lg:top-[569px]">
                         {/*ProjectTab List*/}
                         {/*TODO: overflow problem*/}
                         <div className="absolute flex justify-start items-center gap-[12px]">

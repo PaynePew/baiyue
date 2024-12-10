@@ -15,7 +15,7 @@ export function links() {
     ];
 }
 
-export function LandingPage() {
+export function LandingPage({ partnersData }) {
     const [isVidVisible, setIsVidVisible] = useState(true);
     const [colorIndex, setColorIndex] = useState(0);
     const vidRef = useRef<HTMLVideoElement | null>(null);
@@ -100,7 +100,7 @@ export function LandingPage() {
             />
             <About />
             <FeaturedProject />
-            <Partners />
+            <Partners partnersData={partnersData} />
             <Contact />
             <Footer />
         </div>

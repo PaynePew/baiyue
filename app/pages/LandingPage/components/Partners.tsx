@@ -1,19 +1,6 @@
 import { motion } from "framer-motion";
 
-const fakePartners = [
-    { pic: "logo_1" },
-    { pic: "logo_2" },
-    { pic: "logo_3" },
-    { pic: "logo_4" },
-    { pic: "logo_5" },
-    { pic: "logo_6" },
-    { pic: "logo_7" },
-    { pic: "logo_8" },
-];
-
-const fakePartnersTablet = [{ pic: "logo_9" }, { pic: "logo_10" }, { pic: "logo_11" }, { pic: "logo_12" }];
-
-export function Partners() {
+export function Partners({ partnersData }) {
     return (
         <section className="w-full flex justify-center items-center">
             <div className="container">
@@ -35,23 +22,16 @@ export function Partners() {
                         viewport={{ once: false, amount: 0.5 }}
                     >
                         <div className="flex flex-wrap gap-[24px] justify-center items-center lg:gap-[32px] lg:max-w-[792px] ">
-                            {fakePartners.map(({ pic }) => {
+                            {partnersData.map(partner => {
                                 return (
                                     <div
-                                        key={pic}
+                                        key={partner.fields.order}
                                         className="card-shadow flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px] hover:bg-secondary-spotlight"
                                     >
-                                        <img className="" src={`assets/${pic}.png`} alt={pic} />
-                                    </div>
-                                );
-                            })}
-                            {fakePartnersTablet.map(({ pic }) => {
-                                return (
-                                    <div
-                                        key={pic}
-                                        className="hidden card-shadow md:flex justify-center items-center w-[140px] h-[120px] px-[13px] rounded-[16px] md:p-[6px] lg:w-[240px] lg:p-[35px] hover:bg-secondary-spotlight"
-                                    >
-                                        <img className="" src={`assets/${pic}.png`} alt={pic} />
+                                        <img
+                                            src={`https:${partner.fields.partner.fields.file.url}`}
+                                            alt={partner.fields.title}
+                                        />
                                     </div>
                                 );
                             })}

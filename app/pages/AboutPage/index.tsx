@@ -1,7 +1,7 @@
 import { FooterSimple } from "~/components/Footer";
 import styles from "./styles.css";
 import landingPageStyles from "~/pages/LandingPage/styles.css";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Services, Carousel } from "./components";
 export function links() {
     return [
@@ -12,9 +12,74 @@ export function links() {
 
 // TODO:Update Scroll Animation
 export function AboutPage() {
-    const carouselScrollRef = useRef<HTMLDivElement | null>(null);
-    const serviceScrollRef = useRef<HTMLDivElement | null>(null);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const section1Ref = useRef<HTMLDivElement | null>(null);
+    const section2Ref = useRef<HTMLDivElement | null>(null);
+    const lastScrollTop = useRef(0); // 保存滾動位置
+    const isScrollingHorizontally = useRef(false); // 保存是否處於水平滾動狀態
 
+    useEffect(() => {
+        const container = containerRef.current;
+        const section1 = section1Ref.current;
+        const section2 = section2Ref.current;
+        if (!containerRef.current) {
+            console.error("Container reference is null. Ensure the container div is rendered.");
+            return;
+        }
+        if (!container || !section1 || !section2) {
+            console.error("Missing required DOM references.");
+            return;
+        }
+        console.log(section1.offsetTop);
+        const handleScroll = () => {
+            const scrollTop = container.scrollTop;
+            const isScrollingDown = scrollTop > lastScrollTop.current;
+
+            console.log("Current scrollTop:", scrollTop);
+            console.log("Last scrollTop:", lastScrollTop.current);
+            console.log("Is scrolling down:", isScrollingDown);
+
+            lastScrollTop.current = scrollTop; // 更新滾動位置
+
+            // 進入第一個 section，切換為水平滾動
+            if (scrollTop >= section1.offsetTop && scrollTop < section1.offsetTop + section1.offsetHeight) {
+                if (!isScrollingHorizontally.current) {
+                    container.style.overflowY = "hidden"; // 禁用垂直滾動
+                    isScrollingHorizontally.current = true;
+                    console.log("Switched to horizontal scrolling in Section 1.");
+                }
+
+                const scrollLeft = section1.scrollLeft;
+                console.log("Section 1 scrollLeft:", scrollLeft);
+
+                if (isScrollingDown) {
+                    section1.scrollLeft = Math.min(scrollLeft + 10, section1.scrollWidth - section1.clientWidth);
+                } else {
+                    section1.scrollLeft = Math.max(scrollLeft - 10, 0);
+                }
+
+                // 如果已經滾到底或滾到頭，恢復垂直滾動
+                if (section1.scrollLeft === 0 || section1.scrollLeft === section1.scrollWidth - section1.clientWidth) {
+                    isScrollingHorizontally.current = false;
+                    container.style.overflowY = "scroll";
+                    console.log("Exiting horizontal scrolling in Section 1.");
+                }
+            }
+
+            // 進入第二個 section，恢復垂直滾動
+            if (scrollTop >= section2.offsetTop) {
+                container.style.overflowY = "scroll";
+                isScrollingHorizontally.current = false;
+                console.log("Entered Section 2, vertical scrolling enabled.");
+            }
+        };
+        console.log("container", container);
+        container.addEventListener("scroll", handleScroll);
+
+        return () => {
+            container.removeEventListener("scroll", handleScroll);
+        };
+    });
     // const [section, setSection] = useState(0);
     //
     //    useEffect(() => {
@@ -87,7 +152,7 @@ export function AboutPage() {
     //    });
     return (
         <>
-            <section className="w-full bg-grayscale-iron flex">
+            <section ref={containerRef} className="w-full bg-grayscale-iron flex h-full">
                 <section className="container overflow-hidden">
                     <div className="relative flex flex-col pt-[141px] mx-[24px] gap-[47.87px] md:mx-[40px] md:pt-[206px] md:gap-[92.51px] lg:pt-[336px] lg:mx-[120px] lg:gap-[162.32px]">
                         {/*About Us Background Image*/}
@@ -205,8 +270,8 @@ export function AboutPage() {
                         {/*Liner-Gradient for bg Image*/}
                         <div className="hidden absolute md:block md:top-[162px] lg:top-[170px] w-full h-[235px] about-bg-gradient"></div>
                     </div>
-                    <Carousel ref={carouselScrollRef} />
-                    <Services ref={serviceScrollRef} />
+                    <Carousel ref={section1Ref} />
+                    <Services ref={section2Ref} />
                 </section>
             </section>
             <FooterSimple />

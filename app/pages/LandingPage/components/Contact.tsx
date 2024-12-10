@@ -83,10 +83,13 @@ export function Contact() {
                             />
                         </div>
                     </motion.div>
-                    <button className="main-button button-shadow-1 w-[312px] flex gap-[16px] nav-title text-[15px] h-[56px] lg:hidden">
+                    <Link
+                        to="/contact"
+                        className="main-button button-shadow-1 w-[312px] flex gap-[16px] nav-title text-[15px] h-[56px] lg:hidden"
+                    >
                         <div className="">聯絡我們</div>
                         <img className="" src="assets/icon_mail_send.svg" alt="icon_mail_send" />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

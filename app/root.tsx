@@ -7,11 +7,22 @@ import headerStyles from "~/components/Header/styles.css";
 import footerStyles from "~/components/Footer/styles.css";
 import { NotFoundPage } from "./pages/ErrorPage/NotFound";
 
-export const meta: MetaFunction = () => ({
-    charset: "utf-8",
-    title: "百越工程",
-    viewport: "width=device-width,initial-scale=1",
-});
+export const meta: MetaFunction = () => {
+    return {
+        charset: "utf-8",
+        viewport: "width=device-width,initial-scale=1",
+        title: "百越工程",
+        description: "能讓BIM引以為傲的工程才是真實的BIM",
+        // OG Meta Tag
+        "og:title": "百越工程",
+        "og:description": "能讓BIM引以為傲的工程才是真實的BIM",
+        "og:type": "website",
+        //Twitter Card Meta Tag
+        "twitter:card": "summary_large_image",
+        "twitter:title": "百越工程",
+        "twitter:description": "能讓BIM引以為傲的工程才是真實的BIM",
+    };
+};
 
 export const links: LinksFunction = () => {
     return [

@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import { useMemo } from "react";
-import type { LoaderArgs } from "@remix-run/node";
+import type { MetaFunction, LoaderArgs } from "@remix-run/node";
 import { client } from "~/contentful.server";
 import { InsightDetail } from "~/pages/InsightsPage/InsightDetail";
 
@@ -28,6 +28,23 @@ export async function loader({ params }: LoaderArgs) {
     }
     return [entry.fields, entries.items];
 }
+
+export const meta: MetaFunction = ({ data }) => {
+    return {
+        charset: "utf-8",
+        viewport: "width=device-width,initial-scale=1",
+        title: data[0].title,
+        description: "BIM工程實際案例",
+        // OG Meta Tag
+        "og:title": "工程實績",
+        "og:description": "BIM工程實際案例",
+        "og:type": "website",
+        //Twitter Card Meta Tag
+        "twitter:card": "summary_large_image",
+        "twitter:title": "工程實績",
+        "twitter:description": "BIM工程實際案例",
+    };
+};
 
 export default function InsightDetailRoute() {
     const insightData = useLoaderData()[0];

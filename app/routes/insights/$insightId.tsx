@@ -35,5 +35,18 @@ export default function InsightDetailRoute() {
     const recommendedInsights = useMemo(() => {
         return getRecommendedPosts(insightData, insightsData);
     }, [insightData, insightsData]);
-    return <InsightDetail insightData={insightData} recommendedInsights={recommendedInsights} />;
+    console.log(insightData);
+    const jsonLdData = {
+        "@type": "BlogPosting",
+        headline: insightData.title,
+        description: insightData.content.content,
+        datePublished: insightData.publishDate,
+        image: `https:${insightData.thumbnail.fields.file.url}`,
+    };
+    return (
+        <>
+            <InsightDetail insightData={insightData} recommendedInsights={recommendedInsights} />
+            <script type="application/ld+json">{JSON.stringify(jsonLdData)}</script>
+        </>
+    );
 }

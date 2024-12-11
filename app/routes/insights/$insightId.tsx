@@ -52,7 +52,6 @@ export default function InsightDetailRoute() {
     const recommendedInsights = useMemo(() => {
         return getRecommendedPosts(insightData, insightsData);
     }, [insightData, insightsData]);
-    console.log(insightData);
     const jsonLdData = {
         "@type": "BlogPosting",
         headline: insightData.title,

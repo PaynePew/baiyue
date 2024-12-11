@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import { useMemo } from "react";
-import type { LoaderArgs } from "@remix-run/node";
+import type { MetaFunction, LoaderArgs } from "@remix-run/node";
 import { client } from "~/contentful.server";
 import { ProjectDetail } from "~/pages/ProjectPage/ProjectDetail";
 export { links } from "~/pages/ProjectPage/ProjectDetail";
@@ -55,13 +55,41 @@ export const loader = async ({ params }: LoaderArgs) => {
     return [entry.fields, updatedEntries];
 };
 
+export const meta: MetaFunction = ({ data }) => {
+    return {
+        charset: "utf-8",
+        viewport: "width=device-width,initial-scale=1",
+        title: data[0].title,
+        description: data[0].type,
+        // OG Meta Tag
+        "og:title": data[0].title,
+        "og:description": data[0].type,
+        "og:type": "website",
+        // Twitter Card Meta Tag
+        "twitter:card": "summary_large_image",
+        "twitter:title": data[0].title,
+        "twitter:description": data[0].type,
+    };
+};
+
 export default function ProjectDetailIndex() {
     const projectDetailData = useLoaderData()[0];
     const projectsData = useLoaderData()[1];
-
+    console.log(projectDetailData);
+    const jsonLdData = {
+        "@type": "BlogPosting",
+        headline: projectDetailData.title,
+        description: projectDetailData.type,
+        image: `https:${projectDetailData.thumbnail.fields.file.url}`,
+    };
     const recommendedProjects = useMemo(() => {
         return getRecommendedProjects(projectDetailData, projectsData);
     }, [projectDetailData, projectsData]);
 
-    return <ProjectDetail projectDetailData={projectDetailData} recommendedProjects={recommendedProjects} />;
+    return (
+        <>
+            <ProjectDetail projectDetailData={projectDetailData} recommendedProjects={recommendedProjects} />
+            <script type="application/ld+json">{JSON.stringify(jsonLdData)}</script>
+        </>
+    );
 }

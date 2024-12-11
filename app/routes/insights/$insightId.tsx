@@ -1,6 +1,6 @@
+import type { MetaFunction, LoaderArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { useMemo } from "react";
-import type { MetaFunction, LoaderArgs } from "@remix-run/node";
 import { client } from "~/contentful.server";
 import { InsightDetail } from "~/pages/InsightsPage/InsightDetail";
 
@@ -34,15 +34,15 @@ export const meta: MetaFunction = ({ data }) => {
         charset: "utf-8",
         viewport: "width=device-width,initial-scale=1",
         title: data[0].title,
-        description: "BIM工程實際案例",
+        description: data[0].subtitle,
         // OG Meta Tag
-        "og:title": "工程實績",
-        "og:description": "BIM工程實際案例",
+        "og:title": data[0].title,
+        "og:description": data[0].subtitle,
         "og:type": "website",
-        //Twitter Card Meta Tag
+        // Twitter Card Meta Tag
         "twitter:card": "summary_large_image",
-        "twitter:title": "工程實績",
-        "twitter:description": "BIM工程實際案例",
+        "twitter:title": data[0].title,
+        "twitter:description": data[0].subtitle,
     };
 };
 

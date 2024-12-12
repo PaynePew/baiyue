@@ -1,4 +1,4 @@
-import type { MetaFunction, LoaderArgs } from "@remix-run/node";
+import type { MetaFunction } from "@remix-run/node";
 import { useMemo } from "react";
 import { client } from "~/contentful.server";
 import { useLoaderData } from "react-router";
@@ -6,7 +6,12 @@ import { ProjectPage } from "~/pages/ProjectPage";
 export { links } from "~/pages/ProjectPage";
 export { ProjectPage } from "~/pages/ProjectPage";
 
-const projectTab = [
+interface ProjectTab {
+    title: string;
+    tag: string;
+}
+
+const projectTab: readonly ProjectTab[] = [
     { title: "住宅", tag: "residence" },
     { title: "辦公", tag: "office" },
     { title: "教育", tag: "education" },
@@ -33,15 +38,19 @@ export const meta: MetaFunction = () => {
     };
 };
 
-export const loader = async ({ params }: LoaderArgs) => {
+export const loader = async () => {
     const entries = await client.getEntries({ content_type: "projects" });
 
     if (!entries) {
         throw new Response("Not Found", { status: 404 });
     }
     const updatedEntries = entries.items.map(_project => {
-        const matchingTitleProject = projectTab.find(_tab => _tab.title === _project.fields.category[0]);
-        return matchingTitleProject ? { ..._project, tag: matchingTitleProject.tag } : { ..._project };
+        const category = _project.fields.category;
+        if (Array.isArray(category) && category.length > 0) {
+            const matchingTitleProject = projectTab.find(_tab => _tab.title === category[0]);
+            return matchingTitleProject ? { ..._project, tag: matchingTitleProject.tag } : { ..._project };
+        }
+        return { ..._project };
     });
     return updatedEntries;
 };
@@ -49,7 +58,9 @@ export const loader = async ({ params }: LoaderArgs) => {
 export default function ProjectPageIndex() {
     const projectsData = useLoaderData();
     const sortedProjectsData = useMemo(() => {
-        return [...projectsData].sort((a, b) => b.fields.order - a.fields.order);
+        if (Array.isArray(projectsData)) {
+            return [...projectsData].sort((a, b) => b.fields.order - a.fields.order);
+        }
     }, [projectsData]);
     return <ProjectPage projectsData={sortedProjectsData}></ProjectPage>;
 }

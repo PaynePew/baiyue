@@ -6,7 +6,16 @@ import { InsightDetail } from "~/pages/InsightsPage/InsightDetail";
 
 export { links } from "~/pages/InsightsPage/InsightDetail";
 
-function getRecommendedPosts(currentPost, allPosts) {
+interface Post {
+    slug: string;
+}
+
+interface PostAll {
+    fields: {
+        slug: string;
+    };
+}
+function getRecommendedPosts(currentPost: Post, allPosts: PostAll[]) {
     const { slug } = currentPost;
     //隨機推薦兩篇文章
     const filterPosts = allPosts.filter(post => {

@@ -1,4 +1,4 @@
-// import { useNavigation } from "@remix-run/react";
+import type { PartnerData } from "~/types/PartnerTypes";
 import { useEffect, useState, useRef } from "react";
 import { throttle } from "~/utils/helpers";
 import { Footer } from "~/components/Footer";
@@ -15,7 +15,11 @@ export function links() {
     ];
 }
 
-export function LandingPage({ partnersData }) {
+interface LandingPageProps {
+    partnersData: PartnerData[];
+}
+
+export function LandingPage({ partnersData }: LandingPageProps) {
     const [isVidVisible, setIsVidVisible] = useState(true);
     const [colorIndex, setColorIndex] = useState(0);
     const vidRef = useRef<HTMLVideoElement | null>(null);

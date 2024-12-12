@@ -1,6 +1,11 @@
+import type { PartnerData } from "~/types/PartnerTypes";
 import { motion } from "framer-motion";
 
-export function Partners({ partnersData }) {
+interface PartnerSectionProps {
+    partnersData: PartnerData[];
+}
+
+export function Partners({ partnersData }: PartnerSectionProps) {
     return (
         <section className="w-full flex justify-center items-center">
             <div className="container">

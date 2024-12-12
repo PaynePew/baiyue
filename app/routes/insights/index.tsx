@@ -33,7 +33,9 @@ export const loader = async () => {
 export default function Index() {
     const insightsData = useLoaderData();
     const sortedInsightsData = useMemo(() => {
-        return [...insightsData].sort((a, b) => b.fields.order - a.fields.order);
+        if (Array.isArray(insightsData) && insightsData.length > 0) {
+            return [...insightsData].sort((a, b) => b.fields.order - a.fields.order);
+        }
     }, [insightsData]);
     return <InsightsPage insightsData={sortedInsightsData} />;
 }

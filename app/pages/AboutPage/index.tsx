@@ -30,7 +30,6 @@ export function AboutPage() {
             console.error("Missing required DOM references.");
             return;
         }
-        console.log(section1.offsetTop);
         const handleScroll = () => {
             const scrollTop = container.scrollTop;
             const isScrollingDown = scrollTop > lastScrollTop.current;
@@ -73,7 +72,6 @@ export function AboutPage() {
                 console.log("Entered Section 2, vertical scrolling enabled.");
             }
         };
-        console.log("container", container);
         container.addEventListener("scroll", handleScroll);
 
         return () => {

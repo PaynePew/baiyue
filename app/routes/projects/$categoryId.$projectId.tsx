@@ -5,7 +5,24 @@ import { client } from "~/contentful.server";
 import { ProjectDetail } from "~/pages/ProjectPage/ProjectDetail";
 export { links } from "~/pages/ProjectPage/ProjectDetail";
 
-const projectTab = [
+interface Project {
+    slug: string;
+    category: string;
+}
+
+interface ProjectAll {
+    fields: {
+        slug: string;
+        category: string[];
+    };
+}
+
+interface ProjectTab {
+    title: string;
+    tag: string;
+}
+
+const projectTab: readonly ProjectTab[] = [
     { title: "住宅", tag: "residence" },
     { title: "辦公", tag: "office" },
     { title: "教育", tag: "education" },
@@ -15,7 +32,7 @@ const projectTab = [
     { title: "其他", tag: "others" },
 ];
 
-function getRecommendedProjects(currentProject, allProjects) {
+function getRecommendedProjects(currentProject: Project, allProjects: ProjectAll[]) {
     const { slug, category } = currentProject;
     //篩選相關文章，以資料庫最新文章推薦
     const recommended = allProjects.filter(
@@ -48,8 +65,14 @@ export const loader = async ({ params }: LoaderArgs) => {
     }
 
     const updatedEntries = entries.items.map(_project => {
-        const matchingTitleProject = projectTab.find(_tab => _tab.title === _project.fields.category[0]);
-        return matchingTitleProject ? { ..._project, tag: matchingTitleProject.tag } : { ..._project };
+        const category = _project.fields.category;
+
+        if (Array.isArray(category) && category.length > 0) {
+            const matchingTitleProject = projectTab.find(_tab => _tab.title === category[0]);
+            return matchingTitleProject ? { ..._project, tag: matchingTitleProject.tag } : { ..._project };
+        }
+        // 如果 category 為 null 或空陣列，直接返回 _project
+        return { ..._project };
     });
 
     return [entry.fields, updatedEntries];
@@ -75,7 +98,6 @@ export const meta: MetaFunction = ({ data }) => {
 export default function ProjectDetailIndex() {
     const projectDetailData = useLoaderData()[0];
     const projectsData = useLoaderData()[1];
-    console.log(projectDetailData);
     const jsonLdData = {
         "@type": "BlogPosting",
         headline: projectDetailData.title,

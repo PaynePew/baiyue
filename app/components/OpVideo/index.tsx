@@ -57,7 +57,7 @@ export function OpVideo({ vidRef, isVidVisible, handleVideoOpen }: OpVideoPropTy
                     </video>
                 </div>
                 {/* skip video */}
-                <button
+                <div
                     onClick={handleVidEnd}
                     className="absolute right-[16px] bottom-[18px] en-body-1 uppercase text-grayscale-light cursor-pointer"
                 >
@@ -67,7 +67,7 @@ export function OpVideo({ vidRef, isVidVisible, handleVideoOpen }: OpVideoPropTy
                     >
                         SKIP VIDEO
                     </button>
-                </button>
+                </div>
             </div>
             {/* opening loading */}
             {isVisible && (

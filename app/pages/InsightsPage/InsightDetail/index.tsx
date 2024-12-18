@@ -1,3 +1,5 @@
+import type { InsightData, ArticleData } from "~/types/InsightType";
+import type { Node } from "@contentful/rich-text-types";
 import { Link } from "@remix-run/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { motion } from "framer-motion";
@@ -7,10 +9,20 @@ import { FooterSimple } from "~/components/Footer";
 export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
+
+interface InsightDetailProps {
+    insightData: ArticleData;
+    recommendedInsights: InsightData[];
+}
+
+interface OthersInsightsProps {
+    recommendedInsights: InsightData[];
+}
+
 const customRenderOptions = {
     renderNode: {
-        "ordered-list": (node, children) => <ol className="custom-ol">{children}</ol>,
-        "list-item": (node, children) => (
+        "ordered-list": (node: Node, children: React.ReactNode) => <ol className="custom-ol">{children}</ol>,
+        "list-item": (node: Node, children: React.ReactNode) => (
             <li>
                 <span>{children}</span>
             </li>
@@ -18,7 +30,7 @@ const customRenderOptions = {
     },
 };
 
-function OthersInsights({ recommendedInsights }) {
+function OthersInsights({ recommendedInsights }: OthersInsightsProps) {
     return (
         <section className="w-full bg-grayscale-dim">
             <div className="container">
@@ -86,7 +98,7 @@ function OthersInsights({ recommendedInsights }) {
     );
 }
 
-export function InsightDetail({ insightData, recommendedInsights }) {
+export function InsightDetail({ insightData, recommendedInsights }: InsightDetailProps) {
     const { content, featuredImage, publishDate, subtitle, title } = insightData;
     return (
         <section className="w-full bg-grayscale-iron">

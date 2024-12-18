@@ -1,3 +1,4 @@
+import type { InsightData } from "~/types/InsightType";
 import { Link } from "@remix-run/react";
 import { motion } from "framer-motion";
 import { FooterSimple } from "~/components/Footer";
@@ -7,7 +8,11 @@ export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
 
-function InsightsList({ insightsData }) {
+interface InsightsListProps {
+    insightsData: InsightData[];
+}
+
+function InsightsList({ insightsData }: InsightsListProps) {
     return (
         <div className="flex flex-col items-center justify-center gap-[24px] md:flex-row md:flex-wrap md:items-center lg:gap-[40px]">
             {insightsData.map(insight => {
@@ -48,7 +53,7 @@ function InsightsList({ insightsData }) {
     );
 }
 
-export function InsightsPage({ insightsData }) {
+export function InsightsPage({ insightsData }: InsightsListProps) {
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">

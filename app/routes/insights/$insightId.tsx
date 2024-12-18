@@ -15,6 +15,7 @@ interface PostAll {
         slug: string;
     };
 }
+
 function getRecommendedPosts(currentPost: Post, allPosts: PostAll[]) {
     const { slug } = currentPost;
     //隨機推薦兩篇文章

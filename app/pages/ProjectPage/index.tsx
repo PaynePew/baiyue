@@ -1,3 +1,4 @@
+import type { Project } from "~/types/ProjectTypes";
 import { Link } from "@remix-run/react";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -12,6 +13,10 @@ export function links() {
     ];
 }
 
+interface ProjectPageProps {
+    projectsData: Project[];
+}
+
 const projectTab = [
     { title: "全部", tag: "all" },
     { title: "住宅", tag: "residence" },
@@ -23,7 +28,7 @@ const projectTab = [
     { title: "其他", tag: "others" },
 ];
 
-function ProjectsList({ projectsData }) {
+function ProjectsList({ projectsData }: ProjectPageProps) {
     return (
         <div className="flex flex-wrap justify-center gap-[24px] mt-[126px] md:flex-row md:flex-wrap md:justify-center md:items-center md:mt-[159px] lg:mt-[175px]">
             {projectsData.map((project, idx) => {
@@ -97,7 +102,7 @@ function ProjectsList({ projectsData }) {
     );
 }
 
-export function ProjectPage({ projectsData }) {
+export function ProjectPage({ projectsData }: ProjectPageProps) {
     const projectPerLoad = 14;
     const [data, setData] = useState(projectsData.slice(0, projectPerLoad));
     const [count, setCount] = useState(projectPerLoad);

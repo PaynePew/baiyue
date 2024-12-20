@@ -25,11 +25,11 @@ interface ProjectCardProps {
 }
 
 interface ProjectGalleryProps {
-    gallery: ContentfulImage;
+    gallery: ContentfulImage[];
 }
 
 interface ProjectGalleryLongProps {
-    galleryLong: ContentfulImage;
+    galleryLong: ContentfulImage[];
 }
 
 interface OthersSectionProps {

@@ -1,12 +1,12 @@
+import type { Project } from "~/types/ProjectTypes";
 import { Link } from "@remix-run/react";
 import { motion } from "framer-motion";
-const fakeData = [
-    { alt: "project_pic1", pic: "project_1.png", desc: "臺北市殯葬管理處第二殯儀館二期整建工程" },
-    { alt: "project_pic2", pic: "project_2.png", desc: "大潭電廠建燃氣複循環機組發電計畫" },
-    { alt: "project_pic3", pic: "project_3.png", desc: "臺北市萬華區莒光段公共住宅新建工程" },
-    { alt: "project_pic4", pic: "project_4.png", desc: "臺北市立明倫高級中學多功能大樓新建工程" },
-];
-export function FeaturedProject() {
+
+interface FeaturedProjectProps {
+    featuredProjects: Project[];
+}
+
+export function FeaturedProject({ featuredProjects }: FeaturedProjectProps) {
     return (
         <section className="w-full flex justify-center items-center">
             <div className="container">
@@ -22,29 +22,31 @@ export function FeaturedProject() {
                     </motion.div>
                     {/* Card Project */}
                     <div className="flex flex-col gap-[24px] md:flex-row md:flex-wrap md:justify-center md:items-center md:mb-[56px]">
-                        {fakeData.map(({ alt, pic, desc }) => {
+                        {featuredProjects.map(_project => {
                             return (
                                 <motion.div
-                                    className="relative card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col md:even:top-[56px] md:w-[332px] md:items-start lg:w-[580px]"
-                                    key={alt}
+                                    className="relative card-shadow rounded-[12px] flex justify-center items-center overflow-clip md:flex-col md:even:top-[56px] md:w-[332px] md:items-start lg:w-[580px] lg:h-[459px]"
+                                    key={_project.fields.order}
                                     initial={{ opacity: 0 }}
                                     whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
                                     viewport={{ once: false, amount: 0.5 }}
                                 >
-                                    <div className="basis-[37%] md:basis-[50%]">
+                                    <div className="basis-[37%] md:basis-[50%] lg:h-[324px] lg:w-full">
                                         <img
-                                            className="object-cover h-[167px] md:h-full"
-                                            src={`assets/${pic}`}
-                                            alt={alt}
+                                            className="object-cover w-full h-[167px] md:h-full"
+                                            src={`https:${_project.fields.featuredImage.fields.file.url}`}
+                                            alt={_project.fields.title}
                                         />
                                     </div>
-                                    <div className="flex flex-col gap-[16px] basis-[63%] p-[24px] md:basis-[50%] md:w-full">
-                                        <h6 className="text-grayscale-gainsboro lg:hidden">{desc}</h6>
-                                        <h5 className="hidden text-grayscale-gainsboro lg:block">{desc}</h5>
+                                    <div className="flex flex-col gap-[16px] basis-[63%] p-[24px] md:basis-[50%] md:w-full lg:basis-[37%]">
+                                        <h6 className="text-grayscale-gainsboro lg:hidden">{_project.fields.title}</h6>
+                                        <h5 className="hidden text-grayscale-gainsboro lg:block">
+                                            {_project.fields.title}
+                                        </h5>
                                         <div className="flex justify-between items-center">
-                                            <button className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                                其他
-                                            </button>
+                                            <div className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
+                                                {_project.tagTitle}
+                                            </div>
                                             <img
                                                 className="hidden w-[38px] md:h-[11px] md:block"
                                                 src="assets/arrow_r.png"

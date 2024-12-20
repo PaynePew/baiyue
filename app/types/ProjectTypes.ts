@@ -68,7 +68,8 @@ export interface Project {
         extraContentRight: Document;
         extraImageLeft: ContentfulImage;
     };
-    tag: string;
+    tag?: string;
+    tagTitle?: string;
 }
 
 export interface ProjectDetailType {

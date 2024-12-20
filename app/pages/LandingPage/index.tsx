@@ -1,4 +1,5 @@
 import type { PartnerData } from "~/types/PartnerTypes";
+import type { Project } from "~/types/ProjectTypes";
 import { useEffect, useState, useRef } from "react";
 import { throttle } from "~/utils/helpers";
 import { Footer } from "~/components/Footer";
@@ -17,9 +18,10 @@ export function links() {
 
 interface LandingPageProps {
     partnersData: PartnerData[];
+    featuredProjects: Project[];
 }
 
-export function LandingPage({ partnersData }: LandingPageProps) {
+export function LandingPage({ partnersData, featuredProjects }: LandingPageProps) {
     const [isVidVisible, setIsVidVisible] = useState(true);
     const [colorIndex, setColorIndex] = useState(0);
     const vidRef = useRef<HTMLVideoElement | null>(null);
@@ -103,7 +105,7 @@ export function LandingPage({ partnersData }: LandingPageProps) {
                 isVidVisible={isVidVisible}
             />
             <About />
-            <FeaturedProject />
+            <FeaturedProject featuredProjects={featuredProjects} />
             <Partners partnersData={partnersData} />
             <Contact />
             <Footer />

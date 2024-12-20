@@ -236,7 +236,6 @@ function ProjectCard({ content, image }: ProjectCardProps) {
 }
 
 function ProjectDetailCards({ projectDetailData }: ProjectDetailCardsProps) {
-    console.log(projectDetailData);
     const {
         contentLeft,
         contentRight,

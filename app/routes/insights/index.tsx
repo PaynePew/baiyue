@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import type { InsightData } from "~/types/InsightType";
 import { client } from "~/contentful.server";
 import { useLoaderData } from "react-router";
 import { InsightsPage } from "~/pages/InsightsPage";
@@ -31,11 +32,9 @@ export const loader = async () => {
 };
 
 export default function Index() {
-    const insightsData = useLoaderData();
+    const insightsData = useLoaderData() as InsightData[];
     const sortedInsightsData = useMemo(() => {
-        if (Array.isArray(insightsData) && insightsData.length > 0) {
-            return [...insightsData].sort((a, b) => b.fields.order - a.fields.order);
-        }
+        return [...insightsData].sort((a, b) => b.fields.order - a.fields.order);
     }, [insightsData]);
     return <InsightsPage insightsData={sortedInsightsData} />;
 }

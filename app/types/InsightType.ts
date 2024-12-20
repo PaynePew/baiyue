@@ -51,16 +51,7 @@ export type InsightData = {
                 };
             };
         };
-        content: {
-            nodeType: string;
-            content: {
-                nodeType: string;
-                content: {
-                    nodeType: string;
-                    value: string;
-                }[];
-            }[];
-        };
+        content: Document;
         publishDate: string;
     };
 };

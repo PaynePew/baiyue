@@ -1,4 +1,4 @@
-import type { InsightData, ArticleData } from "~/types/InsightType";
+import type { InsightData } from "~/types/InsightType";
 import type { Node } from "@contentful/rich-text-types";
 import { Link } from "@remix-run/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -11,7 +11,7 @@ export function links() {
 }
 
 interface InsightDetailProps {
-    insightData: ArticleData;
+    insightData: InsightData;
     recommendedInsights: InsightData[];
 }
 
@@ -99,7 +99,7 @@ function OthersInsights({ recommendedInsights }: OthersInsightsProps) {
 }
 
 export function InsightDetail({ insightData, recommendedInsights }: InsightDetailProps) {
-    const { content, featuredImage, publishDate, subtitle, title } = insightData;
+    const { content, featuredImage, publishDate, subtitle, title } = insightData.fields;
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">

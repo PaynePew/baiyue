@@ -1,4 +1,4 @@
-import type { Project, ProjectDetailType, ContentfulImage } from "~/types/ProjectTypes";
+import type { Project, ContentfulImage } from "~/types/ProjectTypes";
 import type { Document } from "@contentful/rich-text-types";
 import { Link } from "@remix-run/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -11,11 +11,11 @@ export function links() {
 }
 
 interface ProjectDetailCardsProps {
-    projectDetailData: ProjectDetailType;
+    projectDetailData: Project;
 }
 
 interface ProjectDetailProps {
-    projectDetailData: ProjectDetailType;
+    projectDetailData: Project;
     recommendedProjects: Project[];
 }
 
@@ -247,7 +247,7 @@ function ProjectDetailCards({ projectDetailData }: ProjectDetailCardsProps) {
         extraContentRight,
         extraImageRight,
         extraImageLeft,
-    } = projectDetailData;
+    } = projectDetailData.fields;
     return (
         <section className="w-full bg-grayscale-dim">
             <div className="container">
@@ -269,7 +269,7 @@ function ProjectDetailCards({ projectDetailData }: ProjectDetailCardsProps) {
 }
 
 export function ProjectDetail({ projectDetailData, recommendedProjects }: ProjectDetailProps) {
-    const { title, category, featuredImage, type, partner, description, introduce, flow } = projectDetailData;
+    const { title, category, featuredImage, type, partner, description, introduce, flow } = projectDetailData.fields;
     return (
         <section className="w-full bg-grayscale-iron">
             <section className="container">

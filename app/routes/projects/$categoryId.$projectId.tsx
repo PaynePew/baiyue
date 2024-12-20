@@ -1,21 +1,10 @@
+import type { Project } from "~/types/ProjectTypes";
 import { useLoaderData } from "@remix-run/react";
 import { useMemo } from "react";
 import type { MetaFunction, LoaderArgs } from "@remix-run/node";
 import { client } from "~/contentful.server";
 import { ProjectDetail } from "~/pages/ProjectPage/ProjectDetail";
 export { links } from "~/pages/ProjectPage/ProjectDetail";
-
-interface Project {
-    slug: string;
-    category: string;
-}
-
-interface ProjectAll {
-    fields: {
-        slug: string;
-        category: string[];
-    };
-}
 
 interface ProjectTab {
     title: string;
@@ -32,12 +21,12 @@ const projectTab: readonly ProjectTab[] = [
     { title: "其他", tag: "others" },
 ];
 
-function getRecommendedProjects(currentProject: Project, allProjects: ProjectAll[]) {
-    const { slug, category } = currentProject;
+function getRecommendedProjects(currentProject: Project, allProjects: Project[]) {
+    const { slug, category } = currentProject.fields;
     //篩選相關文章，以資料庫最新文章推薦
     const recommended = allProjects.filter(
         project =>
-            project.fields.slug !== slug && project.fields.category.some(_category => _category.includes(category)),
+            project.fields.slug !== slug && project.fields.category.some(_category => _category.includes(category[0])),
     );
     //如果同類型文章少於兩篇，則隨機推薦文章
     if (recommended.length < 2) {
@@ -75,23 +64,23 @@ export const loader = async ({ params }: LoaderArgs) => {
         return { ..._project };
     });
 
-    return [entry.fields, updatedEntries];
+    return [entry, updatedEntries];
 };
 
 export const meta: MetaFunction = ({ data }) => {
     return {
         charset: "utf-8",
         viewport: "width=device-width,initial-scale=1",
-        title: data[0].title,
-        description: data[0].type,
+        title: data[0].fields.title,
+        description: data[0].fields.type,
         // OG Meta Tag
-        "og:title": data[0].title,
-        "og:description": data[0].type,
+        "og:title": data[0].fields.title,
+        "og:description": data[0].fields.type,
         "og:type": "website",
         // Twitter Card Meta Tag
         "twitter:card": "summary_large_image",
-        "twitter:title": data[0].title,
-        "twitter:description": data[0].type,
+        "twitter:title": data[0].fields.title,
+        "twitter:description": data[0].fields.type,
     };
 };
 
@@ -100,9 +89,9 @@ export default function ProjectDetailIndex() {
     const projectsData = useLoaderData()[1];
     const jsonLdData = {
         "@type": "BlogPosting",
-        headline: projectDetailData.title,
-        description: projectDetailData.type,
-        image: `https:${projectDetailData.thumbnail.fields.file.url}`,
+        headline: projectDetailData.fields.title,
+        description: projectDetailData.fields.type,
+        image: `https:${projectDetailData.fields.thumbnail.fields.file.url}`,
     };
     const recommendedProjects = useMemo(() => {
         return getRecommendedProjects(projectDetailData, projectsData);

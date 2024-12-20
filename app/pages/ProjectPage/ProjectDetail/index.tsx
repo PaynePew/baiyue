@@ -1,3 +1,5 @@
+import type { Project, ProjectDetailType, ContentfulImage } from "~/types/ProjectTypes";
+import type { Document } from "@contentful/rich-text-types";
 import { Link } from "@remix-run/react";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { motion } from "framer-motion";
@@ -8,7 +10,33 @@ export function links() {
     return [{ rel: "stylesheet", href: styles }];
 }
 
-function OthersSection({ recommendedProjects }) {
+interface ProjectDetailCardsProps {
+    projectDetailData: ProjectDetailType;
+}
+
+interface ProjectDetailProps {
+    projectDetailData: ProjectDetailType;
+    recommendedProjects: Project[];
+}
+
+interface ProjectCardProps {
+    content: Document;
+    image: ContentfulImage;
+}
+
+interface ProjectGalleryProps {
+    gallery: ContentfulImage;
+}
+
+interface ProjectGalleryLongProps {
+    galleryLong: ContentfulImage;
+}
+
+interface OthersSectionProps {
+    recommendedProjects: Project[];
+}
+
+function OthersSection({ recommendedProjects }: OthersSectionProps) {
     return (
         <section className="w-full bg-grayscale-iron">
             <div className="flex flex-col pt-[48px] pb-[80px] mx-[24px] md:mx-[40px] md:pt-[40px] md:pb-[120px] lg:pt-[80px] lg:pb-[218px] lg:mx-[120px]">
@@ -39,7 +67,7 @@ function OthersSection({ recommendedProjects }) {
                                             <img
                                                 className="object-cover w-full h-full"
                                                 src={`https:${project.fields.thumbnail.fields.file.url}`}
-                                                alt={`${project.fields.thumbnail.title}`}
+                                                alt={`${project.fields.thumbnail.fields.title}`}
                                             />
                                         </div>
                                         <div className="flex flex-col gap-[16px] p-[24px] lg:p-[40px] lg:h-full lg:justify-between">
@@ -79,7 +107,7 @@ function OthersSection({ recommendedProjects }) {
                                         <img
                                             className="object-cover w-full h-full"
                                             src={`https:${project.fields.thumbnail.fields.file.url}`}
-                                            alt={`${project.fields.thumbnail.title}`}
+                                            alt={`${project.fields.thumbnail.fields.title}`}
                                         />
                                     </div>
                                     <div className="flex flex-col gap-[16px] p-[24px]">
@@ -107,7 +135,7 @@ function OthersSection({ recommendedProjects }) {
     );
 }
 
-function ProjectGalleryLong({ galleryLong }) {
+function ProjectGalleryLong({ galleryLong }: ProjectGalleryLongProps) {
     return (
         <div className="flex flex-col gap-[16px] lg:gap-[24px]">
             {galleryLong.map((img, idx) => {
@@ -131,7 +159,7 @@ function ProjectGalleryLong({ galleryLong }) {
     );
 }
 
-function ProjectGallery({ gallery }) {
+function ProjectGallery({ gallery }: ProjectGalleryProps) {
     return (
         <div className="w-full flex flex-col gap-[16px] md:flex-row lg:[24px]">
             {gallery.map((img, idx) => {
@@ -155,7 +183,7 @@ function ProjectGallery({ gallery }) {
     );
 }
 
-function ProjectCardReverse({ content, image }) {
+function ProjectCardReverse({ content, image }: ProjectCardProps) {
     return (
         <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
             <motion.div
@@ -180,7 +208,7 @@ function ProjectCardReverse({ content, image }) {
     );
 }
 
-function ProjectCard({ content, image }) {
+function ProjectCard({ content, image }: ProjectCardProps) {
     return (
         <div className="flex flex-col gap-[24px] md:flex-row lg:gap-[124px]">
             <motion.div
@@ -207,7 +235,8 @@ function ProjectCard({ content, image }) {
     );
 }
 
-function ProjectDetailCards({ projectDetailData }) {
+function ProjectDetailCards({ projectDetailData }: ProjectDetailCardsProps) {
+    console.log(projectDetailData);
     const {
         contentLeft,
         contentRight,
@@ -240,7 +269,7 @@ function ProjectDetailCards({ projectDetailData }) {
     );
 }
 
-export function ProjectDetail({ projectDetailData, recommendedProjects }) {
+export function ProjectDetail({ projectDetailData, recommendedProjects }: ProjectDetailProps) {
     const { title, category, featuredImage, type, partner, description, introduce, flow } = projectDetailData;
     return (
         <section className="w-full bg-grayscale-iron">

@@ -1,3 +1,4 @@
+import type { Document } from "@contentful/rich-text-types";
 export interface ContentfulImage {
     metadata: {
         tags: string[];
@@ -43,21 +44,6 @@ export interface ContentfulImage {
     };
 }
 
-export interface ContentfulDocument {
-    data: Record<string, unknown>;
-    content: Array<{
-        data: Record<string, unknown>;
-        content: Array<{
-            data: Record<string, unknown>;
-            marks: unknown[];
-            value: string;
-            nodeType: string;
-        }>;
-        nodeType: string;
-    }>;
-    nodeType: string;
-}
-
 export interface Project {
     fields: {
         title: string;
@@ -71,16 +57,40 @@ export interface Project {
         description: string;
         introduce: string[];
         flow: string[];
-        contentLeft: ContentfulDocument;
+        contentLeft: Document;
         imageRight: ContentfulImage;
-        contentRight: ContentfulDocument;
+        contentRight: Document;
         imageLeft: ContentfulImage;
         gallery: ContentfulImage[];
         galleryLong: ContentfulImage[];
-        extraContentLeft: ContentfulDocument;
+        extraContentLeft: Document;
         extraImageRight: ContentfulImage;
-        extraContentRight: ContentfulDocument;
+        extraContentRight: Document;
         extraImageLeft: ContentfulImage;
     };
     tag: string;
+}
+
+export interface ProjectDetailType {
+    title: string;
+    order: number;
+    slug: string;
+    category: string[];
+    thumbnail: ContentfulImage;
+    featuredImage: ContentfulImage;
+    type: string;
+    partner: string;
+    description: string;
+    introduce: string[];
+    flow: string[];
+    contentLeft: Document;
+    imageRight: ContentfulImage;
+    contentRight: Document;
+    imageLeft: ContentfulImage;
+    gallery: ContentfulImage[];
+    galleryLong: ContentfulImage[];
+    extraContentLeft: Document;
+    extraImageRight: ContentfulImage;
+    extraContentRight: Document;
+    extraImageLeft: ContentfulImage;
 }

@@ -31,29 +31,33 @@ export function FeaturedProject({ featuredProjects }: FeaturedProjectProps) {
                                     whileInView={{ opacity: 1, transition: { duration: 0.8 } }}
                                     viewport={{ once: false, amount: 0.5 }}
                                 >
-                                    <div className="basis-[37%] md:basis-[50%] lg:h-[324px] lg:w-full">
-                                        <img
-                                            className="object-cover w-full h-[167px] md:h-full"
-                                            src={`https:${_project.fields.featuredImage.fields.file.url}`}
-                                            alt={_project.fields.title}
-                                        />
-                                    </div>
-                                    <div className="flex flex-col gap-[16px] basis-[63%] p-[24px] md:basis-[50%] md:w-full lg:basis-[37%]">
-                                        <h6 className="text-grayscale-gainsboro lg:hidden">{_project.fields.title}</h6>
-                                        <h5 className="hidden text-grayscale-gainsboro lg:block">
-                                            {_project.fields.title}
-                                        </h5>
-                                        <div className="flex justify-between items-center">
-                                            <div className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
-                                                {_project.tagTitle}
-                                            </div>
+                                    <Link to={`/projects/${_project.tag}/${_project.fields.slug}`}>
+                                        <div className="basis-[37%] md:basis-[50%] lg:h-[324px] lg:w-full">
                                             <img
-                                                className="hidden w-[38px] md:h-[11px] md:block"
-                                                src="assets/arrow_r.png"
-                                                alt="arrorw_r_pic"
+                                                className="object-cover w-full h-[167px] md:h-full"
+                                                src={`https:${_project.fields.featuredImage.fields.file.url}`}
+                                                alt={_project.fields.title}
                                             />
                                         </div>
-                                    </div>
+                                        <div className="flex flex-col gap-[16px] basis-[63%] p-[24px] md:basis-[50%] md:w-full lg:basis-[37%]">
+                                            <h6 className="text-grayscale-gainsboro lg:hidden">
+                                                {_project.fields.title}
+                                            </h6>
+                                            <h5 className="hidden text-grayscale-gainsboro lg:block">
+                                                {_project.fields.title}
+                                            </h5>
+                                            <div className="flex justify-between items-center">
+                                                <div className="body-3 w-fit py-[8px] px-[16px] bg-grayscale-dark text-grayscale-light rounded-[128px]">
+                                                    {_project.tagTitle}
+                                                </div>
+                                                <img
+                                                    className="hidden w-[38px] md:h-[11px] md:block"
+                                                    src="assets/arrow_r.png"
+                                                    alt="arrorw_r_pic"
+                                                />
+                                            </div>
+                                        </div>
+                                    </Link>
                                 </motion.div>
                             );
                         })}

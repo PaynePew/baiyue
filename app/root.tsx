@@ -52,6 +52,7 @@ export default function App() {
                     href="https://fonts.googleapis.com/css2?family=Gafata&family=Noto+Sans+TC:wght@100;400&display=swap"
                     rel="stylesheet"
                 />
+                <meta name="google-site-verification" content="IydkeHTepahaue7-XAHaNT1IVoOdarWLTcRuGJ8h8oU" />
                 <meta />
                 <Meta />
                 <Links />

@@ -202,7 +202,7 @@ export function Header() {
                 {/* Header for PC */}
                 <div className="flex justify-between items-start flex-nowrap gap-[24px]">
                     <nav
-                        className={`hidden transition-all esae-in-out duration-500 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] lg:flex ${scrollNav} ${
+                        className={`hidden transition-all ease-in-out duration-500 max-w-[550px] bg-grayscale-iron menu-shadow overflow-hidden h-[72px] px-[48px] py-[24px] rounded-[128px] lg:flex ${scrollNav} ${
                             isProjectOpen ? "dropdown-header" : ""
                         } ${isScrollOpen ? "scroll-nav-toggle-animation" : ""} `}
                     >

@@ -1,13 +1,10 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
-    serverBuildTarget: "netlify",
-    server: process.env.NETLIFY || process.env.NETLIFY_LOCAL ? "./server.js" : undefined,
+    // Default Node build target (server -> build/index.js, assets -> public/build).
+    // Served by the custom Express server in server.js. No longer Netlify-targeted.
     ignoredRouteFiles: ["**/.*"],
+    serverModuleFormat: "cjs",
     future: {
         v2_errorBoundary: true,
     },
-    // appDirectory: "app",
-    // assetsBuildDirectory: "public/build",
-    // serverBuildPath: ".netlify/functions-internal/server.js",
-    // publicPath: "/build/",
 };

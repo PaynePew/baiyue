@@ -5,7 +5,7 @@
         "prepare": "husky install",
         "build": "npm run build:css && remix build",
         "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
-        "start": "cross-env NODE_ENV=production netlify dev",
+        "start": "cross-env NODE_ENV=production node server.js",
         "dev:css": "postcss styles --base styles --dir app/styles -w",
         "build:css": "postcss styles --base styles --dir app/styles --env production",
         "typecheck": "tsc",
@@ -13,14 +13,16 @@
     },
     "dependencies": {
         "@contentful/rich-text-react-renderer": "^16.0.0",
-        "@netlify/functions": "^1.3.0",
-        "@remix-run/netlify": "^1.12.0",
+        "@remix-run/express": "^1.12.0",
         "@remix-run/node": "^1.12.0",
         "@remix-run/react": "^1.12.0",
         "@vis.gl/react-google-maps": "^1.2.0",
+        "compression": "^1.7.4",
         "contentful": "^11.2.1",
         "cross-env": "^7.0.3",
+        "express": "^4.18.2",
         "framer-motion": "^11.11.9",
+        "morgan": "^1.10.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "usehooks-ts": "^3.0.2"
@@ -43,7 +45,7 @@
         "typescript": "^4.8.4"
     },
     "engines": {
-        "node": ">=14"
+        "node": ">=18"
     },
     "lint-staged": {
         "app/**/*.{ts,tsx}": [

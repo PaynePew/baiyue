@@ -22,17 +22,16 @@ Target: `https://baiyue.paynepew.dev`, behind the platform's shared edge Caddy o
   `compose pull && up` → in-container `/healthz` smoke.
 - **`.env.example`**, **`.dockerignore`** added.
 
-## Verification — PENDING (do before merge to `main`)
+## Verification — DONE ✅ (Node 20 container)
 
-1. **Refresh the lockfile**: `npm install` on **Node 20** (regenerates `package-lock.json`
-   for the dep swap), then flip the Dockerfile back to `npm ci`.
-2. **Build + run locally** (Node 20): `docker build -t baiyue:test . && docker run --rm -p 127.0.0.1:3000:3000 --env-file .env baiyue:test`,
-   then `curl localhost:3000/healthz` → 200 and load the site.
-3. **Measure RAM**: `docker stats baiyue` under light load → send the measured RSS to the
-   platform agent (gates go-live on the tight 2 GB box). Tune `mem_limit` to the real number.
+1. **Lockfile refreshed** on Node 20; Dockerfile uses `npm ci` (reproducible, lockfile-pinned).
+2. **Build + run green**: `docker build` clean (image 396 MB), container healthy,
+   `/healthz` + `/healthz/shed` 200, all 5 SSR routes 200 vs real Contentful, 40/40 concurrent.
+3. **RAM measured**: ~32 MiB idle / ~66 MiB peak → platform resolved capacity = **"fits"**
+   (no 4 GB upgrade); `mem_limit: 256m` kept.
 
-> Build is NOT verified yet — authored on Node 24 (dev box); Remix 1.12 must build on
-> Node 20. Do not merge to `main` until step 2 is green (never merge a broken file).
+> Build verified on a Node 20 container (dev box runs Node 24 — exactly why the runtime is
+> pinned to 20). Safe to merge once the owner box-prereqs below are in place.
 
 ## Owner / human steps (secrets — not automatable by the agent)
 

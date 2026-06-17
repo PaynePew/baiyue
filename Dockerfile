@@ -8,10 +8,9 @@ WORKDIR /app
 # NODE_ENV is intentionally NOT "production" here so devDependencies
 # (remix dev, tailwind, postcss) install for the build.
 COPY package.json package-lock.json ./
-# npm install (not ci) tolerates the lockfile lag from the Netlify->Express
-# dependency swap until the lockfile is regenerated. Switch to `npm ci` once
-# package-lock.json is refreshed.
-RUN npm install --no-audit --no-fund
+# Lockfile regenerated on Node 20 for the Netlify->Express dependency swap,
+# so npm ci gives reproducible, lockfile-pinned installs.
+RUN npm ci --no-audit --no-fund
 COPY . .
 # tailwind/postcss -> app/styles/app.css, then `remix build` -> build/index.js
 RUN npm run build

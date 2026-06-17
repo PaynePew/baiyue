@@ -12,7 +12,8 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  IMAGE: ghcr.io/${{ github.repository_owner }}/baiyue
+  # GHCR requires a lowercase repo path; hardcode it (owner "PaynePew" would break the tag).
+  IMAGE: ghcr.io/paynepew/baiyue
 
 jobs:
   build-and-push:
